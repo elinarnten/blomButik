@@ -15,12 +15,7 @@ function Footer() {
 }
 
 const footStyle: CSSProperties = {
-  position: "absolute",
-  bottom: 0,
-  width: "100%",
-  justifyContent: "center",
-  paddingRight: "3rem",
-  paddingLeft: "3rem",
+  display: "flex",
 };
 
 const footContainer: CSSProperties = {
@@ -28,9 +23,13 @@ const footContainer: CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
   borderTop: "black solid 1px",
+  width: "100%",
+  marginRight: "4rem",
+  marginLeft: "4rem",
 };
 
 const footHolder: CSSProperties = {
+  margin: "1rem",
   display: "flex",
   justifyContent: "space-around",
   width: "100%",
