@@ -29,11 +29,15 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
+            variant="h4"
             component="div"
             sx={{ flexGrow: 1 }}
             fontFamily="rouge script"
-            style={{ display: "flex", justifyContent: "center" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontFamily: "Pacifico, cursive",
+            }}
           >
             Blombutiken
           </Typography>
