@@ -1,7 +1,6 @@
-.App{
-  background-color: hotpink;
-  color: red;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: x-large;
-  font-weight: bolder;
+* {
+  margin: 0;
+}
+html {
+  height: 100%;
 }
