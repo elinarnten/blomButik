@@ -1,30 +1,30 @@
-import Card from './card'
-import { shopItems } from '../data/shopContent'
+import CardView from './Card'
+import {shopItems} from '../data/ShopContent'
 
 
 
 
-interface Props{
+interface shopItems{
 img:string,
 title:string,
 price:number
-
-}
-
-
-// interface shopItems {
-//   shopItems: []
+    }
 
 
-// }
 
 
-export function Cardlist(shopItems:{ price: number, img: string, title:string }[]) {
+
+
+export function Cardlist(shopItems:shopItems[]) {
+
+
+
+
 return (
     <>
-       { shopItems.map((i) =>{
+       { shopItems.map((item,i) =>{
                return (
-                <Card key={i} img={shopItems[i].img} title={shopItems[i].title} price={shopItems[i].price}/>
+                <CardView key={item} img={shopItems[i].img} title={shopItems[i].title} price={shopItems[i].price}/>
                )
 
            })

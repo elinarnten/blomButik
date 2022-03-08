@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 
 
 
-export default function ImgMediaCard(img:string,title:string,price:number) {
+export default function CardView(img:string,title:string,price:number) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
