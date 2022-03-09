@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Favorite from "@mui/icons-material/Favorite";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 import { Menu, MenuItem } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -28,6 +29,7 @@ function Header() {
           backgroundColor: "white",
           //color: "#F4EAC6",
           color: "black",
+          boxShadow: "none",
         }}
       >
         <Toolbar>
@@ -81,7 +83,14 @@ function Header() {
               color="inherit"
               sx={{ flexGrow: 1 }}
             >
-              <Favorite sx={{ pr: 2 }} />
+              <Favorite />
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="Favoriter"
+              color="inherit"
+              sx={{ flexGrow: 1 }}
+            >
               <ShoppingBasket />
             </IconButton>
           </div>

@@ -4,6 +4,7 @@ import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import StartPage from "./StartPage";
+import CheckOut from "./CheckOut";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage />} />
+          <Route path="/varukorg" element={<CheckOut />} />
         </Routes>
       </BrowserRouter>
       <Footer />
