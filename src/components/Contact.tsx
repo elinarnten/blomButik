@@ -13,22 +13,26 @@ function Contact() {
       style={{
         width: "100%",
         height: "100%",
-        // backgroundImage: `url(${FlowerBackground})`,
-        // backgroundSize: "cover",
-        // backgroundRepeat: "no-repeat",
-        // backgroundPosition: "center",
+        backgroundImage: `url(${FlowerBackground})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
       }}
     >
+      <Typography variant="h4" sx={{ pt: 10, pl: 4, m: 3 }}>
+        Kontakt
+      </Typography>
+
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
-          my: "3rem",
-          backgroundImage: `url(${FlowerBackground})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
+          mb: "3rem",
+          // backgroundImage: `url(${FlowerBackground})`,
+          // backgroundSize: "cover",
+          // backgroundRepeat: "no-repeat",
+          // backgroundPosition: "center",
           height: "100vh",
         }}
       >
@@ -51,7 +55,7 @@ function Contact() {
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
-            Anders Personsgatan 18 <br></br> 416 64 Göteborg
+            Blomstergatan 18 <br></br> 416 64 Göteborg
           </Typography>
         </Card>
 
