@@ -1,7 +1,8 @@
 import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import React from "react";
-import startpageBackground from "../Assets/startPageBackground.jpg";
+//import startpageBackground from "../Assets/startPageBackground.jpg";
+import temporary from "../Assets/temporaryBackground.jpg";
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 
 function StartPage() {
@@ -9,10 +10,13 @@ function StartPage() {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
-        backgroundImage: `url(${startpageBackground})`,
-        backgroundSize: "contain",
+        height: "100vh",
+        //backgroundImage: `url(${startpageBackground})`,
+        backgroundImage: `url(${temporary})`,
+        backgroundSize: "cover",
+        //backgroundColor: "lightGreen",
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         display: "flex",
 
         justifyContent: "center",

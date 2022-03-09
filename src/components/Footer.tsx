@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import Edit from "@mui/icons-material/Edit";
 
 function Footer() {
   return (
@@ -9,6 +10,7 @@ function Footer() {
           <p>Om oss</p>
           <p>Leverans</p>
         </div>
+        <Edit style={{ display: "flex", justifyContent: "flex-end" }} />
       </div>
     </footer>
   );
