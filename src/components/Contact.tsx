@@ -1,18 +1,22 @@
 import React from "react";
-import { Box, Card, CardMedia, Typography, Paper } from "@mui/material";
-import { spacing } from "@mui/system";
+import { Box, Card, Typography, Paper } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import Image from "../assets/flowerBackground.png";
+import FlowerBackground from "../assets/flowerBackground.png";
 
 function Contact() {
   return (
-    <div
+    <Paper
+      elevation={0}
       style={{
-        backgroundImage:
-          "url(../assets/flowerBackground.png) no-repeat center center fixed",
+        width: "100%",
+        height: "100%",
+        // backgroundImage: `url(${FlowerBackground})`,
+        // backgroundSize: "cover",
+        // backgroundRepeat: "no-repeat",
+        // backgroundPosition: "center",
       }}
     >
       <Box
@@ -21,12 +25,20 @@ function Contact() {
           justifyContent: "space-around",
           alignItems: "center",
           my: "3rem",
-          background:
-            "url(../assets/flowerBackground.png) no-repeat center center fixed",
-          //height: "100vh",
+          backgroundImage: `url(${FlowerBackground})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          height: "100vh",
         }}
       >
-        <Card style={{ backgroundColor: "#F4EAC6", height: 180, width: 180 }}>
+        <Card
+          sx={{
+            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            height: 180,
+            width: 180,
+          }}
+        >
           <div
             style={{
               alignItems: "center",
@@ -43,7 +55,13 @@ function Contact() {
           </Typography>
         </Card>
 
-        <Card style={{ backgroundColor: "#F4EAC6", height: 180, width: 180 }}>
+        <Card
+          sx={{
+            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            height: 180,
+            width: 180,
+          }}
+        >
           <div
             style={{
               alignItems: "center",
@@ -83,7 +101,13 @@ function Contact() {
           </Typography>
         </Card>
 
-        <Card style={{ backgroundColor: "#F4EAC6", height: 180, width: 180 }}>
+        <Card
+          sx={{
+            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            height: 180,
+            width: 180,
+          }}
+        >
           <div
             style={{
               alignItems: "center",
@@ -95,10 +119,12 @@ function Contact() {
             <InstagramIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
           </div>
 
-          <Typography sx={{ mx: "auto", textAlign: "center" }}></Typography>
+          <Typography sx={{ mx: "auto", textAlign: "center" }}>
+            @blombutiken
+          </Typography>
         </Card>
       </Box>
-    </div>
+    </Paper>
   );
 }
 export default Contact;
