@@ -19,10 +19,9 @@ function Contact() {
         backgroundPosition: "center",
       }}
     >
-      <Typography variant="h4" sx={{ pt: 10, pl: 4, m: 3 }}>
+      <Typography variant="h4" component="div" sx={{ pt: 5, pl: 4, m: 3 }}>
         Kontakt
       </Typography>
-
       <Box
         sx={{
           display: "flex",
@@ -33,7 +32,7 @@ function Contact() {
           // backgroundSize: "cover",
           // backgroundRepeat: "no-repeat",
           // backgroundPosition: "center",
-          height: "100vh",
+          height: "100%",
         }}
       >
         <Card
