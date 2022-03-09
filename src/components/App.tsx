@@ -2,14 +2,13 @@ import React from "react";
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import StartPage from "./StartPage";
 
 function App() {
   return (
     <>
       <Header />
-      <div className="App">
-        <h1>hello world</h1>
-      </div>
+      <StartPage />
       <Footer />
     </>
   );
