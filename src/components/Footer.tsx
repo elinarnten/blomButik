@@ -16,7 +16,7 @@ function Footer() {
 
 const footStyle: CSSProperties = {
   display: "flex",
-  position: "absolute",
+
   bottom: 0,
   width: "100%",
 };

@@ -15,6 +15,7 @@ function Contact() {
         backgroundPosition: "center",
         height: "100%",
         m: "2rem",
+        flex: 1,
       }}
     >
       <Typography variant="h4" component="div" sx={{ pt: 5, pl: 4, m: 3 }}>
@@ -43,7 +44,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <LocationOnIcon style={{ fontSize: "4rem" }} />
+            <LocationOnIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
@@ -66,7 +67,9 @@ function Contact() {
               padding: 15,
             }}
           >
-            <AlternateEmailIcon style={{ fontSize: "4rem" }} />
+            <AlternateEmailIcon
+              style={{ color: "#84A86F", fontSize: "4rem" }}
+            />
           </div>
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
             info@bb.se
@@ -88,7 +91,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <PhoneIcon style={{ fontSize: "4rem" }} />
+            <PhoneIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
           </div>
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
             0712345678
@@ -110,7 +113,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <InstagramIcon style={{ fontSize: "4rem" }} />
+            <InstagramIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
