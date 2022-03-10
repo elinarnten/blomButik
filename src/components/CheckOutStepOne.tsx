@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { useState } from "react";
 
-function CheckOut() {
+function CheckOutStepOne() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -207,4 +207,4 @@ function CheckOut() {
   );
 }
 
-export default CheckOut;
+export default CheckOutStepOne;

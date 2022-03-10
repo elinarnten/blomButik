@@ -4,8 +4,9 @@ import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import StartPage from "./StartPage";
-import CheckOut from "./CheckOut";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CheckOutStepOne from "./CheckOutStepOne";
+import CheckOutStepTwo from "./CheckOutStepTwo";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage />} />
-          <Route path="/kunduppgifter" element={<CheckOut />} />
+          <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
+          <Route path="/betalning" element={<CheckOutStepTwo />} />
         </Routes>
       </BrowserRouter>
       <Footer />
