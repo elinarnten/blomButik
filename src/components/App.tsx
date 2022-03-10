@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage />} />
-          <Route path="/varukorg" element={<CheckOut />} />
+          <Route path="/kunduppgifter" element={<CheckOut />} />
         </Routes>
       </BrowserRouter>
       <Footer />
