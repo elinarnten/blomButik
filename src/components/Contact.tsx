@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Card, Typography, Paper } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -9,7 +9,6 @@ import FlowerBackground from "../assets/flowerBackground.png";
 function Contact() {
   return (
     <Box
-      // elevation={0}
       sx={{
         backgroundImage: `url(${FlowerBackground})`,
         backgroundSize: "cover",
@@ -27,10 +26,6 @@ function Contact() {
           justifyContent: "space-around",
           alignItems: "center",
           mb: "3rem",
-          // backgroundImage: `url(${FlowerBackground})`,
-          // backgroundSize: "cover",
-          // backgroundRepeat: "no-repeat",
-          // backgroundPosition: "center",
         }}
       >
         <Card
@@ -48,7 +43,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <LocationOnIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
+            <LocationOnIcon style={{ fontSize: "4rem" }} />
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
@@ -71,9 +66,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <AlternateEmailIcon
-              style={{ color: "#84A86F", fontSize: "4rem" }}
-            />
+            <AlternateEmailIcon style={{ fontSize: "4rem" }} />
           </div>
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
             info@bb.se
@@ -95,7 +88,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <PhoneIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
+            <PhoneIcon style={{ fontSize: "4rem" }} />
           </div>
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
             0712345678
@@ -117,7 +110,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <InstagramIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
+            <InstagramIcon style={{ fontSize: "4rem" }} />
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
