@@ -36,6 +36,8 @@ return (
               mb: "0.1%",
               justifyContent: "center",
               alignItems: "center",
+              alignContent:"center",
+              m:"10"
             }}
           >
             <CardView key={item.id} item={item} />
