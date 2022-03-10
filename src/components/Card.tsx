@@ -5,34 +5,60 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { ShopItem } from "../data/ShopContent";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import '../App.css'
 
+interface Props {
+  item: ShopItem;
+}
 
-
-
-export default function CardView(img:string,title:string,price:number) {
+export default function CardView(props: Props) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{ maxWidth: 355, minWidth: 225
+      
+      }}
+      style={{
+        textAlign:"center",
+        justifyContent:"center",
+        alignContent:"center",
+      }}
+      className="Quicksand"
+    >
       <CardMedia
         component="img"
         alt="shopItem"
-        height="140"
-        image={`${img}`}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-         {title}
+        height="270"
+        image={`${props.item.img}`}
+      ></CardMedia>
+      <CardContent sx={{height:40}}>
+        <Typography
+          variant="h5"
+          component="div"
+          className="Quicksand"
+        >
+          {props.item.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-         {price}
+        <Typography className="Quicksand" variant="body2" color="text.secondary">
+          {props.item.price} KR/st
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button
+          size="small"
+          variant="contained"
+          style={{
+            borderRadius: 15,
+            backgroundColor: "#ffcc80",
+            padding: "5px 55px",
+            fontSize: "10px",
+            alignSelf:"center"
+          }}
+        >
+          add to cart <ShoppingCartIcon></ShoppingCartIcon>
+        </Button>
       </CardActions>
     </Card>
   );
 }
-
-
-
