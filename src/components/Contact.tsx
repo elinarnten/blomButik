@@ -4,7 +4,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import FlowerBackground from "../assets/flowerBackground.png";
+import FlowerBackground from "../Assets/flowerBackground.png";
 
 function Contact() {
   return (
