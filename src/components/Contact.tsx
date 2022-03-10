@@ -11,11 +11,11 @@ function Contact() {
     <Box
       // elevation={0}
       sx={{
-        height: "100%",
         backgroundImage: `url(${FlowerBackground})`,
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        height: "100%",
+        m: "2rem",
       }}
     >
       <Typography variant="h4" component="div" sx={{ pt: 5, pl: 4, m: 3 }}>
@@ -31,7 +31,6 @@ function Contact() {
           // backgroundSize: "cover",
           // backgroundRepeat: "no-repeat",
           // backgroundPosition: "center",
-          height: "100%",
         }}
       >
         <Card
