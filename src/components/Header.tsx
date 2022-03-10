@@ -10,7 +10,7 @@ import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 
 function Header() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar
         position="static"
         style={{
