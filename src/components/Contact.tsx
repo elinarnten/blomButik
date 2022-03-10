@@ -8,10 +8,9 @@ import FlowerBackground from "../assets/flowerBackground.png";
 
 function Contact() {
   return (
-    <Paper
-      elevation={0}
-      style={{
-        width: "100%",
+    <Box
+      // elevation={0}
+      sx={{
         height: "100%",
         backgroundImage: `url(${FlowerBackground})`,
         backgroundSize: "cover",
@@ -127,7 +126,7 @@ function Contact() {
           </Typography>
         </Card>
       </Box>
-    </Paper>
+    </Box>
   );
 }
 export default Contact;
