@@ -18,3 +18,15 @@ body {
   height: 100vh;
 } */
 
+
+
+@font-face {
+  font-family: "Quicksand" ;
+  font-style: normal;
+  font-weight: normal;
+  src: local('Quicksand'), url(fonts/Quicksand\ Medium.woff2) format('woff2');
+}
+
+.Quicksand{
+    font-family:"Quickand";
+}
