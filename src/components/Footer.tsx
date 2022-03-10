@@ -18,6 +18,9 @@ function Footer() {
 
 const footStyle: CSSProperties = {
   display: "flex",
+
+  bottom: 0,
+  width: "100%",
 };
 
 const footContainer: CSSProperties = {
