@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Button,
   FormControl,
@@ -12,17 +11,22 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import VisaMasterCard from "../Assets/visa-mastercard.png";
+import { Context } from "../Context";
 
 function CheckOutStepTwo() {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  /*  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm")); */
 
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const { firstname, lastname, phoneNumber } = useContext(Context);
 
-  const handleFirstnameChange = (
+  console.log("betalning", firstname);
+
+  //const [firstname, setFirstname] = useState("");
+  //const [lastname, setLastname] = useState("");
+
+  /*  const handleFirstnameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFirstname(event.target.value);
@@ -32,15 +36,38 @@ function CheckOutStepTwo() {
     setLastname(event.target.value);
   };
 
-  console.log(firstname, lastname);
+  console.log(firstname, lastname); */
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
+    null
+  );
+  const openCard = Boolean(anchorCardEl);
+  const handleCardClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorCardEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCardClose = () => {
+    setAnchorCardEl(null);
+  };
+
+  const [anchorInvoiceEl, setAnchorInvoiceEl] =
+    React.useState<null | HTMLElement>(null);
+  const openInvoice = Boolean(anchorInvoiceEl);
+  const handleInvoiceClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorInvoiceEl(event.currentTarget);
+  };
+  const handleInvoiceClose = () => {
+    setAnchorInvoiceEl(null);
+  };
+
+  const [anchorSwishEl, setAnchorSwishEl] = React.useState<null | HTMLElement>(
+    null
+  );
+  const openSwish = Boolean(anchorSwishEl);
+  const handleSwishClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorSwishEl(event.currentTarget);
+  };
+  const handleSwishClose = () => {
+    setAnchorSwishEl(null);
   };
 
   return (
@@ -68,10 +95,10 @@ function CheckOutStepTwo() {
         <Button
           variant="outlined"
           id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
+          aria-controls={openCard ? "basic-menu" : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
+          aria-expanded={openCard ? "true" : undefined}
+          onClick={handleCardClick}
           /* endIcon={VisaMasterCard} */
           sx={{
             width: "100%",
@@ -85,9 +112,9 @@ function CheckOutStepTwo() {
         </Button>
         <Menu
           id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
+          anchorEl={anchorCardEl}
+          open={openCard}
+          onClose={handleCardClose}
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
@@ -96,7 +123,7 @@ function CheckOutStepTwo() {
           <div>
             <TextField
               required
-              onChange={handleFirstnameChange}
+              //onChange={handleFirstnameChange}
               id="outlined-required"
               label="Kortnummer"
               size="small"
@@ -106,7 +133,7 @@ function CheckOutStepTwo() {
           <div>
             <TextField
               required
-              onChange={handleFirstnameChange}
+              //onChange={handleFirstnameChange}
               id="outlined-required"
               label="Giltlighet"
               size="small"
@@ -114,7 +141,7 @@ function CheckOutStepTwo() {
             />
             <TextField
               required
-              onChange={handleFirstnameChange}
+              //onChange={handleFirstnameChange}
               id="outlined-required"
               label="CVC"
               size="small"
@@ -124,16 +151,17 @@ function CheckOutStepTwo() {
           <div>
             <TextField
               required
-              onChange={handleFirstnameChange}
+              //onChange={handleFirstnameChange}
               id="outlined-required"
               label="Namn"
               size="small"
+              value={firstname + " " + lastname}
               sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
             />
           </div>
           <div>
             <Button
-              onClick={handleClose}
+              onClick={handleCardClose}
               size="small"
               variant="outlined"
               sx={{
@@ -164,11 +192,11 @@ function CheckOutStepTwo() {
 
         <Button
           variant="outlined"
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
+          id="swish-button"
+          aria-controls={openSwish ? "swish-menu" : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
+          aria-expanded={openSwish ? "true" : undefined}
+          onClick={handleSwishClick}
           sx={{
             width: "100%",
             mt: 2,
@@ -181,29 +209,29 @@ function CheckOutStepTwo() {
           Swish
         </Button>
         <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
+          id="swish-menu"
+          anchorEl={anchorSwishEl}
+          open={openSwish}
+          onClose={handleSwishClose}
           MenuListProps={{
-            "aria-labelledby": "basic-button",
+            "aria-labelledby": "swish-button",
           }}
           sx={{ width: "60%" }}
         >
           <div>
             <TextField
               required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
+              id="outlined-swish"
               label="Telefonnummer"
               size="small"
+              value={phoneNumber}
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
 
           <div>
             <Button
-              onClick={handleClose}
+              onClick={handleSwishClose}
               size="small"
               variant="outlined"
               sx={{
@@ -235,10 +263,10 @@ function CheckOutStepTwo() {
         <Button
           variant="outlined"
           id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
+          aria-controls={openInvoice ? "basic-menu" : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
+          aria-expanded={openInvoice ? "true" : undefined}
+          onClick={handleInvoiceClick}
           sx={{
             width: "100%",
             mt: 2,
@@ -252,9 +280,9 @@ function CheckOutStepTwo() {
         </Button>
         <Menu
           id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
+          anchorEl={anchorInvoiceEl}
+          open={openInvoice}
+          onClose={handleInvoiceClose}
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
@@ -263,44 +291,17 @@ function CheckOutStepTwo() {
           <div>
             <TextField
               required
-              onChange={handleFirstnameChange}
+              //onChange={handleFirstnameChange}
               id="outlined-required"
-              label="Kortnummer"
+              label="Personnummer"
               size="small"
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
-          <div>
-            <TextField
-              required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
-              label="Giltlighet"
-              size="small"
-              sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
-            />
-            <TextField
-              required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
-              label="CVC"
-              size="small"
-              sx={{ mb: 2, mr: 2, width: "20%" }}
-            />
-          </div>
-          <div>
-            <TextField
-              required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
-              label="Namn"
-              size="small"
-              sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
-            />
-          </div>
+
           <div>
             <Button
-              onClick={handleClose}
+              onClick={handleInvoiceClose}
               size="small"
               variant="outlined"
               sx={{

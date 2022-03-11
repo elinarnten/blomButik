@@ -8,39 +8,43 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../Context";
 
 function CheckOutStepOne() {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  /* const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm")); */
 
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
+
+  //const [firstname, setFirstname] = useState("");
+  //const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  //const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [code, setCode] = useState("");
   const [city, setCity] = useState("");
 
-  const handleFirstnameChange = (
+  /*  const handleFirstnameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFirstname(event.target.value);
-  };
+  }; */
 
-  const handleLastnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  /*  const handleLastnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLastname(event.target.value);
-  };
+  }; */
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handlePhoneNumberChange = (
+  /*  const handlePhoneNumberChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPhoneNumber(event.target.value);
-  };
+  }; */
 
   const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(event.target.value);
@@ -53,8 +57,6 @@ function CheckOutStepOne() {
   const handleCityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCity(event.target.value);
   };
-
-  console.log(firstname, lastname, email, phoneNumber, address, code, city);
 
   return (
     <Box
@@ -81,8 +83,11 @@ function CheckOutStepOne() {
           <FormControl>
             <TextField
               required
-              value={firstname}
-              onChange={handleFirstnameChange}
+              //value={firstname}
+              //onChange={handleFirstnameChange}
+              onChange={(event) => {
+                setFirstname(event.target.value);
+              }}
               id="outlined-required"
               label="Förnamn"
               size="small"
@@ -93,8 +98,9 @@ function CheckOutStepOne() {
           <FormControl>
             <TextField
               required
-              value={lastname}
-              onChange={handleLastnameChange}
+              onChange={(event) => {
+                setLastname(event.target.value);
+              }}
               id="outlined-required"
               label="Efternamn"
               size="small"
@@ -117,8 +123,9 @@ function CheckOutStepOne() {
           <FormControl>
             <TextField
               required
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
+              onChange={(event) => {
+                setPhoneNumber(event.target.value);
+              }}
               id="outlined-number"
               type="number"
               label="Telefonnummer"
@@ -177,19 +184,21 @@ function CheckOutStepOne() {
         >
           Tillbaka
         </Button>
-        <Button
-          size="small"
-          variant="contained"
-          sx={{
-            backgroundColor: "#F4EAC6",
-            boxShadow: "none",
-            color: "black",
+        <Link to={"/betalning"}>
+          <Button
+            size="small"
+            variant="contained"
+            sx={{
+              backgroundColor: "#F4EAC6",
+              boxShadow: "none",
+              color: "black",
 
-            mt: 3,
-          }}
-        >
-          Gå vidare
-        </Button>
+              mt: 3,
+            }}
+          >
+            Gå vidare
+          </Button>
+        </Link>
       </Box>
       <Box
         sx={{
