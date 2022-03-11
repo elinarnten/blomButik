@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import StartPage from "./StartPage";
 import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+//import CardList from "./CardList";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/About" element={<About />} />
         </Routes>
       </BrowserRouter>
       <Footer />

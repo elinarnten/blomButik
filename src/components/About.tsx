@@ -11,6 +11,7 @@ function About() {
         backgroundSize: "cover",
         height: "100%",
         m: "2rem",
+        flex: 1,
       }}
     >
       <Typography
@@ -25,12 +26,16 @@ function About() {
         <Box
           sx={{
             width: "40rem",
-            height: "5rem",
+            height: "100%",
             mr: "2rem",
+            backgroundColor: "rgba(244, 234, 198, 0.4)",
+            borderRadius: 3,
           }}
         >
           <Typography
-            sx={{ backgroundColor: "rgba(244, 234, 198, 0.4)", p: "1rem" }}
+            sx={{
+              p: "1rem",
+            }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
             vel similique delectus suscipit animi eius sed cumque adipisci
@@ -47,7 +52,6 @@ function About() {
             width: "20rem",
             backgroundImage: `url(${Avatar})`,
             backgroundSize: "cover",
-            mb: "2rem",
           }}
         ></Box>
       </Box>
