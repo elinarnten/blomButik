@@ -1,9 +1,14 @@
 * {
   margin: 0;
 }
-/* html {
+
+html {
   height: 100%;
-} */
+}
+
+body {
+  height: 100%;
+}
 
 /* #root {
   height: 100vh;
@@ -12,3 +17,15 @@
 /* body {
   height: 100vh;
 } */
+
+@font-face {
+  font-family: "Quicksand" ;
+  font-style: normal;
+  font-weight: normal;
+  src: local('Quicksand'), url(fonts/Quicksand\ Medium.woff2) format('woff2');
+}
+
+.Quicksand{
+    font-family:"Quickand";
+}
+
