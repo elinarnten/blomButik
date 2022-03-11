@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   FormControl,
@@ -12,6 +13,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useState } from "react";
+import VisaMasterCard from "../Assets/visa-mastercard.png";
 
 function CheckOutStepTwo() {
   const theme = useTheme();
@@ -70,6 +72,7 @@ function CheckOutStepTwo() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
+          /* endIcon={VisaMasterCard} */
           sx={{
             width: "100%",
             color: "black",
@@ -78,7 +81,7 @@ function CheckOutStepTwo() {
             backgroundColor: "rgba(244, 234, 198, 0.4)",
           }}
         >
-          Kreditkort
+          VISA/MasterCard
         </Button>
         <Menu
           id="basic-menu"
@@ -192,39 +195,12 @@ function CheckOutStepTwo() {
               required
               onChange={handleFirstnameChange}
               id="outlined-required"
-              label="Kortnummer"
+              label="Telefonnummer"
               size="small"
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
-          <div>
-            <TextField
-              required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
-              label="Giltlighet"
-              size="small"
-              sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
-            />
-            <TextField
-              required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
-              label="CVC"
-              size="small"
-              sx={{ mb: 2, mr: 2, width: "20%" }}
-            />
-          </div>
-          <div>
-            <TextField
-              required
-              onChange={handleFirstnameChange}
-              id="outlined-required"
-              label="Namn"
-              size="small"
-              sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
-            />
-          </div>
+
           <div>
             <Button
               onClick={handleClose}
@@ -272,7 +248,7 @@ function CheckOutStepTwo() {
             backgroundColor: "rgba(244, 234, 198, 0.4)",
           }}
         >
-          Annat
+          Privatfaktura
         </Button>
         <Menu
           id="basic-menu"
