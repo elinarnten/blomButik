@@ -3,12 +3,10 @@
 }
 html {
   height: 100%;
-  
+}
 body {
   height: 100%;
 }
-
-
 
 /* #root {
   height: 100vh;
@@ -17,8 +15,6 @@ body {
 /* body {
   height: 100vh;
 } */
-
-
 
 @font-face {
   font-family: "Quicksand" ;
@@ -30,3 +26,4 @@ body {
 .Quicksand{
     font-family:"Quickand";
 }
+
