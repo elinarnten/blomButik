@@ -17,6 +17,7 @@ function Contact() {
         m: "2rem",
         flex: 1,
       }}
+      style={{ flex: 1 }}
     >
       <Typography variant="h4" component="div" sx={{ pt: 5, pl: 4, m: 3 }}>
         Kontakt
