@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  TextField,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -14,9 +6,6 @@ import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 
 function CheckOutStepOne() {
-  /* const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm")); */
-
   const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
 
   const [email, setEmail] = useState("");
@@ -170,7 +159,7 @@ function CheckOutStepOne() {
         >
           Tillbaka
         </Button>
-        <Link to={"/betalning"}>
+        <Link to={"/leverans"}>
           <Button
             size="small"
             variant="contained"

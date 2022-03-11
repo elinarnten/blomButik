@@ -12,6 +12,7 @@ import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutStepOne from "./CheckOutStepOne";
 import CheckOutStepTwo from "./CheckOutStepTwo";
+import CheckOutStepThree from "./CheckOutStepThree";
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
           <Routes>
             <Route path="/" element={<StartPage />} />
             <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
-            <Route path="/betalning" element={<CheckOutStepTwo />} />
-            <Route path="/about" element={<About />} />
-          <Route path="/sortiment" element={<CardList/>} />
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/betalning" element={<CheckOutStepThree />} />
+            <Route path="/leverans" element={<CheckOutStepTwo />} />
+            <Route path="/om" element={<About />} />
+            <Route path="/sortiment" element={<CardList />} />
+            <Route path="/kontakt" element={<Contact />} />
           </Routes>
         </BrowserRouter>
         <Footer />
