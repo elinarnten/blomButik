@@ -3,10 +3,11 @@ import React from "react";
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import Contact from "./Contact";
 import StartPage from "./StartPage";
 import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-//import CardList from "./CardList";
+import CardList from "./CardList";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/sortiment" element={<CardList/>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
       <Footer />
