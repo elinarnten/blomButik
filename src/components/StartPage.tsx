@@ -24,6 +24,7 @@ function StartPage() {
     >
       <Box
         sx={{
+          
           width: "50%",
           height: "20%",
           mt: "15%",

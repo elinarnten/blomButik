@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Contact from "./Contact";
 import StartPage from "./StartPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CardList from "./CardList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage />} />
+          <Route path="/sortiment" element={<CardList/>} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
