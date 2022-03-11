@@ -20,7 +20,7 @@ const footStyle: CSSProperties = {
   display: "flex",
   bottom: 0,
   width: "100%",
-  height: "5rem",
+  height: "4rem",
 };
 
 const footContainer: CSSProperties = {

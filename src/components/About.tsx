@@ -16,7 +16,7 @@ function About() {
     >
       <Typography
         variant="h4"
-        sx={{ pl: "6rem", pt: "1rem", display: "inline-flex" }}
+        sx={{ pl: "8rem", pt: "3rem", display: "inline-flex" }}
       >
         Om oss
       </Typography>
