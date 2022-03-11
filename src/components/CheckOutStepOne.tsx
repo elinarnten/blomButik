@@ -11,6 +11,7 @@ import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
+import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 
 function CheckOutStepOne() {
   /* const theme = useTheme();
@@ -18,33 +19,14 @@ function CheckOutStepOne() {
 
   const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
 
-  //const [firstname, setFirstname] = useState("");
-  //const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  //const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [code, setCode] = useState("");
   const [city, setCity] = useState("");
 
-  /*  const handleFirstnameChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFirstname(event.target.value);
-  }; */
-
-  /*  const handleLastnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLastname(event.target.value);
-  }; */
-
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
-
-  /*  const handlePhoneNumberChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setPhoneNumber(event.target.value);
-  }; */
 
   const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(event.target.value);
@@ -63,6 +45,7 @@ function CheckOutStepOne() {
       sx={{
         width: "100%",
         height: "100vh",
+        backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundColor: "lightGreen",
         backgroundRepeat: "no-repeat",
@@ -83,15 +66,17 @@ function CheckOutStepOne() {
           <FormControl>
             <TextField
               required
-              //value={firstname}
-              //onChange={handleFirstnameChange}
               onChange={(event) => {
                 setFirstname(event.target.value);
               }}
               id="outlined-required"
               label="Förnamn"
               size="small"
-              sx={{ mr: 2, mb: 2 }}
+              sx={{
+                mr: 2,
+                mb: 2,
+                bgcolor: "rgba(244, 234, 198, 0.4)",
+              }}
             />
           </FormControl>
 
@@ -104,7 +89,7 @@ function CheckOutStepOne() {
               id="outlined-required"
               label="Efternamn"
               size="small"
-              sx={{ mb: 2 }}
+              sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
         </div>
@@ -117,7 +102,7 @@ function CheckOutStepOne() {
               id="outlined-required"
               label="E-post"
               size="small"
-              sx={{ mr: 2, mb: 2 }}
+              sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
           <FormControl>
@@ -130,7 +115,7 @@ function CheckOutStepOne() {
               type="number"
               label="Telefonnummer"
               size="small"
-              sx={{ mb: 2 }}
+              sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
         </div>
@@ -143,7 +128,7 @@ function CheckOutStepOne() {
               id="outlined-required"
               label="Gatuadress"
               size="small"
-              sx={{ mb: 2 }}
+              sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
         </div>
@@ -157,7 +142,7 @@ function CheckOutStepOne() {
               type="number"
               label="Postnummer"
               size="small"
-              sx={{ mr: 2, mb: 2 }}
+              sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
           <FormControl>
@@ -168,6 +153,7 @@ function CheckOutStepOne() {
               id="outlined-required"
               label="Ort"
               size="small"
+              sx={{ bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
         </div>
@@ -205,7 +191,9 @@ function CheckOutStepOne() {
           ml: 2,
           mr: 3,
           mt: 8,
-          backgroundColor: "pink",
+          backgroundColor: "rgba(244, 234, 198, 0.4)",
+          borderRadius: 2,
+          padding: 2,
           width: "40%",
           height: 400,
         }}

@@ -12,31 +12,16 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import VisaMasterCard from "../Assets/visa-mastercard.png";
 import { Context } from "../Context";
+import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 
 function CheckOutStepTwo() {
   /*  const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm")); */
 
   const { firstname, lastname, phoneNumber } = useContext(Context);
-
-  console.log("betalning", firstname);
-
-  //const [firstname, setFirstname] = useState("");
-  //const [lastname, setLastname] = useState("");
-
-  /*  const handleFirstnameChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFirstname(event.target.value);
-  };
-
-  const handleLastnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLastname(event.target.value);
-  };
-
-  console.log(firstname, lastname); */
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
@@ -75,8 +60,8 @@ function CheckOutStepTwo() {
       sx={{
         width: "100%",
         height: "100vh",
+        backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
-        backgroundColor: "lightGreen",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         display: "flex",
@@ -105,7 +90,7 @@ function CheckOutStepTwo() {
             color: "black",
             border: "none",
 
-            backgroundColor: "rgba(244, 234, 198, 0.4)",
+            backgroundColor: "#F4EAC6",
           }}
         >
           VISA/MasterCard
@@ -203,7 +188,7 @@ function CheckOutStepTwo() {
             color: "black",
             border: "none",
 
-            backgroundColor: "rgba(244, 234, 198, 0.4)",
+            backgroundColor: "#F4EAC6",
           }}
         >
           Swish
@@ -273,7 +258,7 @@ function CheckOutStepTwo() {
             color: "black",
             border: "none",
 
-            backgroundColor: "rgba(244, 234, 198, 0.4)",
+            backgroundColor: "#F4EAC6",
           }}
         >
           Privatfaktura
@@ -331,19 +316,21 @@ function CheckOutStepTwo() {
         </Menu>
 
         <div>
-          <Button
-            size="small"
-            variant="outlined"
-            sx={{
-              borderColor: "#F4EAC6",
-              boxShadow: "none",
-              color: "black",
-              mr: 2,
-              mt: 3,
-            }}
-          >
-            Tillbaka
-          </Button>
+          <Link to={"/kunduppgifter"}>
+            <Button
+              size="small"
+              variant="outlined"
+              sx={{
+                borderColor: "#F4EAC6",
+                boxShadow: "none",
+                color: "black",
+                mr: 2,
+                mt: 3,
+              }}
+            >
+              Tillbaka
+            </Button>
+          </Link>
           <Button
             size="small"
             variant="contained"
@@ -364,7 +351,9 @@ function CheckOutStepTwo() {
           ml: 2,
           mr: 3,
           mt: 8,
-          backgroundColor: "pink",
+          backgroundColor: "rgba(244, 234, 198, 0.4)",
+          borderRadius: 2,
+          padding: 2,
           width: "40%",
           height: 400,
         }}
