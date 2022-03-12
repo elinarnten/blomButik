@@ -27,7 +27,7 @@ function Contact() {
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
-          mb: "3rem",
+          flexWrap: "wrap",
         }}
       >
         <Card
@@ -58,6 +58,7 @@ function Contact() {
             backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
+            m: 1,
           }}
         >
           <div
@@ -82,6 +83,7 @@ function Contact() {
             backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
+            m: 1,
           }}
         >
           <div
@@ -104,6 +106,7 @@ function Contact() {
             backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
+            m: 1,
           }}
         >
           <div
