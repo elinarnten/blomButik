@@ -9,6 +9,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import { Context } from "../Context";
+import CheckOutBagOverview from "./CheckOutBagOverview";
 
 function CheckOutDelivery() {
   const { selectedDelivery, setSelectedDelivery } = useContext(Context);
@@ -45,7 +46,7 @@ function CheckOutDelivery() {
         </Typography>
 
         <ToggleButtonGroup
-          //value={selectedDelivery}
+          value={selectedDelivery}
           exclusive
           onChange={handleSelectedDelivery}
           sx={{ display: "flex", flexDirection: "column" }}
@@ -143,7 +144,8 @@ function CheckOutDelivery() {
           </Link>
         </div>
       </Box>
-      <Box
+      <CheckOutBagOverview />
+      {/*  <Box
         sx={{
           ml: 2,
           mr: 3,
@@ -156,7 +158,7 @@ function CheckOutDelivery() {
         }}
       >
         Här visas innehållet i varukorgen, tänker jag.
-      </Box>
+      </Box> */}
     </Box>
   );
 }

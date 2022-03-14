@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import CheckOutBagOverview from "./CheckOutBagOverview";
 
 function CheckOutPayment() {
   const { firstname, lastname, phoneNumber } = useContext(Context);
@@ -132,7 +133,7 @@ function CheckOutPayment() {
             />
           </div>
           <div>
-            <Typography
+            {/*  <Typography
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -144,7 +145,7 @@ function CheckOutPayment() {
               <p>Frakt:</p>
               <p>Moms:</p>
               <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography>
+            </Typography> */}
             <Button
               onClick={handleCardClose}
               size="small"
@@ -216,7 +217,7 @@ function CheckOutPayment() {
           </div>
 
           <div>
-            <Typography
+            {/* <Typography
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -228,7 +229,7 @@ function CheckOutPayment() {
               <p>Frakt:</p>
               <p>Moms:</p>
               <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography>
+            </Typography> */}
             <Button
               onClick={handleSwishClose}
               size="small"
@@ -302,7 +303,7 @@ function CheckOutPayment() {
           </div>
 
           <div>
-            <Typography
+            {/* <Typography
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -314,7 +315,7 @@ function CheckOutPayment() {
               <p>Frakt:</p>
               <p>Moms:</p>
               <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography>
+            </Typography> */}
             <Button
               onClick={handleInvoiceClose}
               size="small"
@@ -363,20 +364,7 @@ function CheckOutPayment() {
           </Link>
         </div>
       </Box>
-      <Box
-        sx={{
-          ml: 2,
-          mr: 3,
-          mt: 8,
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
-          borderRadius: 2,
-          padding: 2,
-          width: "40%",
-          height: 400,
-        }}
-      >
-        Här visas innehållet i varukorgen, tänker jag.
-      </Box>
+      <CheckOutBagOverview />
     </Box>
   );
 }
