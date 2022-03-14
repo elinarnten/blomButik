@@ -132,6 +132,19 @@ function CheckOutStepThree() {
             />
           </div>
           <div>
+            <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "0.6rem",
+                ml: 3,
+              }}
+            >
+              <p>Pris:</p>
+              <p>Frakt:</p>
+              <p>Moms:</p>
+              <p style={{ fontSize: ".9rem" }}>Total:</p>
+            </Typography>
             <Button
               onClick={handleCardClose}
               size="small"
@@ -157,7 +170,7 @@ function CheckOutStepThree() {
                 mt: 2,
               }}
             >
-              Gå vidare
+              Slutför köp
             </Button>
           </div>
         </Menu>
@@ -203,6 +216,19 @@ function CheckOutStepThree() {
           </div>
 
           <div>
+            <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "0.6rem",
+                ml: 3,
+              }}
+            >
+              <p>Pris:</p>
+              <p>Frakt:</p>
+              <p>Moms:</p>
+              <p style={{ fontSize: ".9rem" }}>Total:</p>
+            </Typography>
             <Button
               onClick={handleSwishClose}
               size="small"
@@ -228,7 +254,7 @@ function CheckOutStepThree() {
                 mt: 2,
               }}
             >
-              Gå vidare
+              Slutför köp
             </Button>
           </div>
         </Menu>
@@ -276,6 +302,19 @@ function CheckOutStepThree() {
           </div>
 
           <div>
+            <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "0.6rem",
+                ml: 3,
+              }}
+            >
+              <p>Pris:</p>
+              <p>Frakt:</p>
+              <p>Moms:</p>
+              <p style={{ fontSize: ".9rem" }}>Total:</p>
+            </Typography>
             <Button
               onClick={handleInvoiceClose}
               size="small"
@@ -301,7 +340,7 @@ function CheckOutStepThree() {
                 mt: 2,
               }}
             >
-              Gå vidare
+              Slutför köp
             </Button>
           </div>
         </Menu>

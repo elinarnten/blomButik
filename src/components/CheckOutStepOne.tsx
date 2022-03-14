@@ -60,6 +60,8 @@ function CheckOutStepOne() {
               }}
               id="outlined-required"
               label="Förnamn"
+              name="name"
+              type="name"
               size="small"
               sx={{
                 mr: 2,
@@ -89,6 +91,8 @@ function CheckOutStepOne() {
               value={email}
               onChange={handleEmailChange}
               id="outlined-required"
+              name="email"
+              type="email"
               label="E-post"
               size="small"
               sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
