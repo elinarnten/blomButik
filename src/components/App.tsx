@@ -10,9 +10,9 @@ import CardList from "./CardList";
 import StartPage from "./StartPage";
 import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CheckOutStepOne from "./CheckOutStepOne";
-import CheckOutStepTwo from "./CheckOutStepTwo";
-import CheckOutStepThree from "./CheckOutStepThree";
+import CheckOutContact from "./CheckOutContact";
+import CheckOutDelivery from "./CheckOutDelivery";
+import CheckOutPayment from "./CheckOutPayment";
 
 function App() {
   return (
@@ -22,9 +22,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
-            <Route path="/betalning" element={<CheckOutStepThree />} />
-            <Route path="/leverans" element={<CheckOutStepTwo />} />
+            <Route path="/kunduppgifter" element={<CheckOutContact />} />
+            <Route path="/betalning" element={<CheckOutPayment />} />
+            <Route path="/leverans" element={<CheckOutDelivery />} />
             <Route path="/om" element={<About />} />
             <Route path="/sortiment" element={<CardList />} />
             <Route path="/kontakt" element={<Contact />} />

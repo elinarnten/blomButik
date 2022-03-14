@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 
-function CheckOutStepOne() {
+function CheckOutContact() {
   const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
 
   const [email, setEmail] = useState("");
@@ -197,4 +197,4 @@ function CheckOutStepOne() {
   );
 }
 
-export default CheckOutStepOne;
+export default CheckOutContact;

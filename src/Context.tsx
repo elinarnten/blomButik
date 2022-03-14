@@ -1,11 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
 export const Context = createContext<any>(null);
 
-const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
+const ContextProvider: React.FC<ReactNode> = ({ children }) => {
   const [firstname, setFirstname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [selectedDelivery, setSelectedDelivery] = useState<string>("");
 
   return (
     <Context.Provider
@@ -16,6 +17,8 @@ const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         setLastname,
         phoneNumber,
         setPhoneNumber,
+        selectedDelivery,
+        setSelectedDelivery,
       }}
     >
       {children}

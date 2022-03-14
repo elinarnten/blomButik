@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 
-function CheckOutStepThree() {
+function CheckOutPayment() {
   const { firstname, lastname, phoneNumber } = useContext(Context);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
@@ -381,4 +381,4 @@ function CheckOutStepThree() {
   );
 }
 
-export default CheckOutStepThree;
+export default CheckOutPayment;
