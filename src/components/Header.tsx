@@ -85,14 +85,19 @@ function Header() {
             >
               <Favorite />
             </IconButton>
-            <IconButton
-              size="large"
-              aria-label="Favoriter"
-              color="inherit"
-              sx={{ flexGrow: 1 }}
+            <a
+              href={"/slideIn"}
+              style={{ textDecoration: "none", color: "black" }}
             >
-              <ShoppingBasket />
-            </IconButton>
+              <IconButton
+                size="large"
+                aria-label="Favoriter"
+                color="inherit"
+                sx={{ flexGrow: 1 }}
+              >
+                <ShoppingBasket />
+              </IconButton>
+            </a>
           </div>
         </Toolbar>
       </AppBar>
