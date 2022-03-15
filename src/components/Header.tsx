@@ -56,10 +56,21 @@ function Header() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>Sortiment</MenuItem>
-            <MenuItem onClick={handleClose}>Om oss</MenuItem>
-            <MenuItem onClick={handleClose}>Kontakt</MenuItem>
-            <MenuItem onClick={handleClose}>Leverans</MenuItem>
+            <a
+              href={"/sortiment"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <MenuItem onClick={handleClose}>Sortiment</MenuItem>
+            </a>
+            <a href={"/om"} style={{ textDecoration: "none", color: "black" }}>
+              <MenuItem onClick={handleClose}>Om oss</MenuItem>
+            </a>
+            <a
+              href={"/kontakt"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <MenuItem onClick={handleClose}>Kontakt</MenuItem>
+            </a>
           </Menu>
 
           <Typography
@@ -73,7 +84,9 @@ function Header() {
               fontFamily: "Pacifico, cursive",
             }}
           >
-            Blombutiken
+            <a href={"/"} style={{ textDecoration: "none", color: "black" }}>
+              Blombutiken
+            </a>
           </Typography>
 
           <div>

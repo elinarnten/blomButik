@@ -10,9 +10,11 @@ import CardList from "./CardList";
 import StartPage from "./StartPage";
 import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CheckOutStepOne from "./CheckOutStepOne";
-import CheckOutStepTwo from "./CheckOutStepTwo";
+import CheckOutContact from "./CheckOutContact";
+import CheckOutDelivery from "./CheckOutDelivery";
+import CheckOutPayment from "./CheckOutPayment";
 import { shopItems } from "../data/ShopContent";
+
 
 function App() {
 const [item, setItem] = useState(shopItems);
@@ -24,11 +26,12 @@ const [item, setItem] = useState(shopItems);
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
-            <Route path="/betalning" element={<CheckOutStepTwo />} />
-            <Route path="/about" element={<About />} />
-          <Route path="/sortiment" element={<CardList/>} />
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/kunduppgifter" element={<CheckOutContact />} />
+            <Route path="/betalning" element={<CheckOutPayment />} />
+            <Route path="/leverans" element={<CheckOutDelivery />} />
+            <Route path="/om" element={<About />} />
+            <Route path="/sortiment" element={<CardList />} />
+            <Route path="/kontakt" element={<Contact />} />
           </Routes>
         </BrowserRouter>
         <Footer />

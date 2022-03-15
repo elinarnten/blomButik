@@ -4,6 +4,7 @@ import React from "react";
 //import startpageBackground from "../Assets/startPageBackground.jpg";
 import temporary from "../Assets/temporaryBackground.jpg";
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
+import { Link } from "react-router-dom";
 
 function StartPage() {
   return (
@@ -24,7 +25,6 @@ function StartPage() {
     >
       <Box
         sx={{
-          
           width: "50%",
           height: "20%",
           mt: "15%",
@@ -38,14 +38,20 @@ function StartPage() {
         }}
       >
         <Typography variant="h6">Välkommen till din blombutik!</Typography>
-        <Button
-          size="small"
-          variant="contained"
-          endIcon={<LocalFloristIcon />}
-          sx={{ backgroundColor: "#F4EAC6", boxShadow: "none", color: "black" }}
-        >
-          Till butiken
-        </Button>
+        <Link to={"/sortiment"}>
+          <Button
+            size="small"
+            variant="contained"
+            endIcon={<LocalFloristIcon />}
+            sx={{
+              backgroundColor: "#F4EAC6",
+              boxShadow: "none",
+              color: "black",
+            }}
+          >
+            Till butiken
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
