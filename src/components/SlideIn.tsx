@@ -9,10 +9,17 @@ import {
   Switch,
   Card,
   Typography,
+  IconButton,
 } from "@mui/material";
 import { ShopItem } from "../data/ShopContent";
+import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
 
-interface Props {}
+interface Props {
+  // item: ShopItem;
+}
 
 export default function SlideIn(props: Props) {
   const [checked, setChecked] = React.useState(false);
@@ -22,31 +29,50 @@ export default function SlideIn(props: Props) {
   };
 
   const slideFrame = (
-    <Paper sx={{ m: 1, position: "fixed", top: 0, bottom: 0 }} elevation={4}>
-      <Box sx={{ width: "auto", p: "2rem" }}>
+    <Paper
+      sx={{ m: 1, position: "fixed", top: 0, bottom: 0, right: 0 }}
+      elevation={2}
+    >
+      <IconButton>
+        <CloseIcon sx={{ color: "black" }} />
+      </IconButton>
+
+      <Box sx={{ width: "auto", p: "1rem" }}>
         <Typography variant="h5">Varukorg</Typography>
-        <Box>
+
+        <Box sx={{ display: "flex" }}>
           Här ska produkterna synas
           <Card>
-            {/* {props.item.img},{props.item.title},{props.item.id} */}
+            {/* {props.item.img},{props.item.title},{props.item.id}  */}
           </Card>
+          <IconButton>
+            <AddIcon />
+          </IconButton>
+          <IconButton>
+            <RemoveIcon />
+          </IconButton>
+          <IconButton>
+            <DeleteIcon />
+          </IconButton>
         </Box>
 
-        <Link
-          to="/kunduppgifter"
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <Button
-            sx={{
-              height: "2rem",
-              width: "auto",
-              backgroundColor: "pink",
-              display: "flex",
-            }}
-          >
-            Go to Checkout
-          </Button>
-        </Link>
+        <Box sx={{ position: "absolute", bottom: 0 }}>
+          Totalt pris: räkna ut pris här
+          <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
+            <Button
+              sx={{
+                height: "2rem",
+                width: "auto",
+                backgroundColor: "pink",
+                color: "black",
+                mb: "1rem",
+                mt: "0.5rem",
+              }}
+            >
+              Go to Checkout
+            </Button>
+          </Link>
+        </Box>
       </Box>
     </Paper>
   );
