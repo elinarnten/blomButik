@@ -20,6 +20,7 @@ function App() {
       <div>
         <Header />
         <BrowserRouter>
+          <SlideIn />
           <Routes>
             {/* <Route path="/slideIn" element={<SlideIn />} /> */}
             <Route path="/" element={<StartPage />} />
