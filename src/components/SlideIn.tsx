@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   Paper,
@@ -8,6 +8,7 @@ import {
   FormControlLabel,
   Switch,
   Card,
+  Typography,
 } from "@mui/material";
 import { ShopItem } from "../data/ShopContent";
 
@@ -21,8 +22,9 @@ export default function SlideIn(props: Props) {
   };
 
   const slideFrame = (
-    <Paper sx={{ m: 1 }} elevation={4}>
-      <Box component="svg" sx={{ height: "200", width: "400" }}>
+    <Paper sx={{ m: 1, position: "fixed", top: 0, bottom: 0 }} elevation={4}>
+      <Box sx={{ width: "auto", p: "2rem" }}>
+        <Typography variant="h5">Varukorg</Typography>
         <Box>
           Här ska produkterna synas
           <Card>
@@ -30,8 +32,20 @@ export default function SlideIn(props: Props) {
           </Card>
         </Box>
 
-        <Link to="/kunduppgifter">
-          <Button>Go to Checkout</Button>
+        <Link
+          to="/kunduppgifter"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <Button
+            sx={{
+              height: "2rem",
+              width: "auto",
+              backgroundColor: "pink",
+              display: "flex",
+            }}
+          >
+            Go to Checkout
+          </Button>
         </Link>
       </Box>
     </Paper>
