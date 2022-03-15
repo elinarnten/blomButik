@@ -29,7 +29,7 @@ export const shopItems: ShopItem[] = [
       img: require("../images/pink-tulips.avif"),
       title: "Pink Tulips",
       price: 120,
-      tag: "tulip",
+      tag: "bouqette",
       liked: false
     },
     {
@@ -53,7 +53,7 @@ export const shopItems: ShopItem[] = [
       img: require("../images/colorful-tulips.avif"),
       title: "Colorful Tulpis",
       price: 90,
-      tag:"tulips",
+      tag:"bouqette",
       liked: false
     },
     {
@@ -69,7 +69,7 @@ export const shopItems: ShopItem[] = [
       img: require("../images/redRoses.jpg"),
       title: "Red Roses",
       price: 345,
-      tag:"rose",
+      tag:"bouqette",
       liked: false
     },
     {
@@ -117,7 +117,7 @@ export const shopItems: ShopItem[] = [
       img: require("../images/orange-yellow-lillies.jpg"),
       title: "Yellow and Orange Lilly Bouqette",
       price: 90,
-      tag:"bouqette",
+      tag:"lilly",
       liked: false
     },
     {
@@ -137,19 +137,11 @@ export const shopItems: ShopItem[] = [
       liked: false
     },
     {
-      id: 16,
-      img: require("../images/sunflower-bukett.jpg"),
-      title: "Small Sunflower Bouqette",
-      price: 100,
-      tag:"bouqette",
-      liked: false
-    },
-    {
       id: 17,
       img: require("../images/White-Lilly.jpg"),
-      title: "Small Sunflower Bouqette",
+      title: "White Lilly",
       price: 100,
-      tag:"bouqette",
+      tag:"lilly",
       liked: false
     },
     {

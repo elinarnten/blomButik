@@ -1,8 +1,8 @@
-
+import { ShopItem, shopItems } from "../data/ShopContent";
 import { ThemeProvider } from "@emotion/react";
-import { Box, Button, createTheme} from "@mui/material";
-
-
+import { Box, Button, createTheme } from "@mui/material";
+import { SortButton, sortButtonsData } from "../data/SortButtonsData";
+import React, { useEffect, useState } from "react";
 
 let themeButtonSort = createTheme({
   components: {
@@ -36,8 +36,42 @@ themeButtonSort = createTheme(themeButtonSort, {
   },
 });
 
+interface Props {
+  buttonItem: SortButton;
+}
 
-export default function Sortbuttons() {
+//  function Filtering(props: Props) {
+//    const filtered = shopItems.filter(item => {
+//      return item.tag === props.buttonItem.value
+//     })
+//      console.log(filtered)
+//  }
+
+ const handleClick = (props:Props) => {
+   const filtered = shopItems.filter((item) => {
+     return item.tag === props.buttonItem.value;
+   });
+   console.log(filtered);
+ };
+
+
+
+export default function SortbuttonsDOM() {
+  const [filter, setFilter] = useState("");
+
+  function handleFilterChange(props: Props) {
+    const filtered = shopItems.filter((item) => {
+      return item.tag == props.buttonItem.value;
+      
+    });
+    console.log(filtered);
+  }
+
+  // onClick={()=>{shopItems.filter(item => {
+  //   let Filtered = item.tag === buttonItem.value;
+  // });
+  // }}
+
   return (
     <>
       <Box
@@ -54,37 +88,16 @@ export default function Sortbuttons() {
         }}
       >
         <ThemeProvider theme={themeButtonSort}>
-          <Button
-            variant="contained" >
-            Roses
-            
-          </Button>
-
-          <Button
-            variant="contained"
-          >
-            Lillies
-          </Button>
-          <Button
-            variant="contained"
-          >
-            Sunflowers
-          </Button>
-          <Button
-            variant="contained"
-          >
-            Orchids
-          </Button>
-          <Button
-            variant="contained"
-          >
-            Bouqets
-          </Button>
-          <Button
-            variant="contained"
-          >
-            Tulips
-          </Button>
+          {sortButtonsData.map((buttonItem) => (
+            <Button
+              onClick={() => (handleClick)}
+              variant="contained"
+              value={buttonItem.value}
+              key={buttonItem.name}
+            >
+              {buttonItem.name}
+            </Button>
+          ))}
         </ThemeProvider>
       </Box>
     </>
