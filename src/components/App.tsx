@@ -12,6 +12,7 @@ import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutStepOne from "./CheckOutStepOne";
 import CheckOutStepTwo from "./CheckOutStepTwo";
+import SlideIn from "./SlideIn";
 
 function App() {
   return (
@@ -20,12 +21,13 @@ function App() {
         <Header />
         <BrowserRouter>
           <Routes>
+            {/* <Route path="/slideIn" element={<SlideIn />} /> */}
             <Route path="/" element={<StartPage />} />
             <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
             <Route path="/betalning" element={<CheckOutStepTwo />} />
             <Route path="/about" element={<About />} />
-          <Route path="/sortiment" element={<CardList/>} />
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/sortiment" element={<CardList />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </BrowserRouter>
         <Footer />
