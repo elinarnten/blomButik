@@ -16,6 +16,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 
 interface Props {
   // item: ShopItem;
@@ -33,7 +34,11 @@ export default function SlideIn(props: Props) {
       sx={{ m: 1, position: "fixed", top: 0, bottom: 0, right: 0 }}
       elevation={2}
     >
-      <IconButton>
+      <IconButton
+        onClick={() => {
+          handleChange();
+        }}
+      >
         <CloseIcon sx={{ color: "black" }} />
       </IconButton>
 
@@ -79,11 +84,18 @@ export default function SlideIn(props: Props) {
 
   return (
     <Box>
-      <Box sx={{ width: `calc(100px + 16px)` }}>
-        <FormControlLabel
+      <Box>
+        {/* <FormControlLabel
           control={<Switch checked={checked} onChange={handleChange} />}
           label="Show"
-        />
+        /> */}
+        {/* <IconButton
+          onClick={() => {
+            handleChange();
+          }}
+        >
+          <ShoppingBasket></ShoppingBasket>
+        </IconButton> */}
         <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
           {slideFrame}
         </Slide>
