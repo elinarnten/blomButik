@@ -10,18 +10,24 @@ import { Link } from "react-router-dom";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import { Context } from "../Context";
 import CheckOutBagOverview from "./CheckOutBagOverview";
+import { deliveryAlternatives, DeliveryOption } from "../mockedDelivery";
 
 function CheckOutDelivery() {
-  const { selectedDelivery, setSelectedDelivery } = useContext(Context);
+  const { deliveryOption, setDeliveryOption } = useContext(Context);
 
-  const handleSelectedDelivery = (
+  const handleDeliveryCost = (
     event: React.MouseEvent<HTMLElement>,
     newSelected: string
   ) => {
-    setSelectedDelivery(newSelected);
+    setDeliveryOption(newSelected);
   };
 
-  console.log(selectedDelivery);
+  const date = new Date();
+  const deliveryDate = new Date(date);
+
+  deliveryDate.setDate(deliveryDate.getDate() + deliveryOption.deliveryTime);
+
+  console.log(deliveryDate.toDateString());
 
   return (
     <Box
@@ -46,13 +52,42 @@ function CheckOutDelivery() {
         </Typography>
 
         <ToggleButtonGroup
-          value={selectedDelivery}
+          //value={deliveryCost}
           exclusive
-          onChange={handleSelectedDelivery}
+          onChange={handleDeliveryCost}
           sx={{ display: "flex", flexDirection: "column" }}
         >
-          <ToggleButton
-            value="40"
+          {deliveryAlternatives.map((item, idx) => (
+            <ToggleButton
+              key={item.label}
+              value={deliveryAlternatives[idx]}
+              sx={{
+                width: "100%",
+                color: "black",
+                border: "none",
+                backgroundColor: "#F4EAC6",
+                mb: 1,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: 12,
+                  ml: 1,
+                  textTransform: "capitalize",
+                }}
+              >
+                {item.company}
+              </Typography>
+              <Typography
+                sx={{ fontSize: 10, ml: 1, textTransform: "capitalize" }}
+              >
+                {item.label}
+              </Typography>
+            </ToggleButton>
+          ))}
+          {/*  <ToggleButton
+            value={deliveryAlternatives[0]}
             sx={{
               width: "100%",
               color: "black",
@@ -108,7 +143,7 @@ function CheckOutDelivery() {
             >
               Idag 17-21. (60,00 SEK)
             </Typography>
-          </ToggleButton>
+          </ToggleButton> */}
         </ToggleButtonGroup>
 
         <div>
@@ -145,20 +180,6 @@ function CheckOutDelivery() {
         </div>
       </Box>
       <CheckOutBagOverview />
-      {/*  <Box
-        sx={{
-          ml: 2,
-          mr: 3,
-          mt: 8,
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
-          borderRadius: 2,
-          padding: 2,
-          width: "40%",
-          height: 400,
-        }}
-      >
-        Här visas innehållet i varukorgen, tänker jag.
-      </Box> */}
     </Box>
   );
 }

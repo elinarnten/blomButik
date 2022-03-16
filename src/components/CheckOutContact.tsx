@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import CheckOutBagOverview from "./CheckOutBagOverview";
 
 function CheckOutContact() {
   const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
@@ -179,20 +180,7 @@ function CheckOutContact() {
           </Button>
         </Link>
       </Box>
-      <Box
-        sx={{
-          ml: 2,
-          mr: 3,
-          mt: 8,
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
-          borderRadius: 2,
-          padding: 2,
-          width: "40%",
-          height: 400,
-        }}
-      >
-        Här visas innehållet i varukorgen, tänker jag.
-      </Box>
+      <CheckOutBagOverview />
     </Box>
   );
 }

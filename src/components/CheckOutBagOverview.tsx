@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Context } from "../Context";
 
 function CheckOutBagOverview() {
-  const { selectedDelivery } = useContext(Context);
+  const { deliveryOption } = useContext(Context);
 
   return (
     <Box
@@ -15,7 +15,7 @@ function CheckOutBagOverview() {
         borderRadius: 2,
         //padding: 2,
         width: "40%",
-        height: 400,
+        height: 420,
       }}
     >
       <Typography
@@ -31,7 +31,6 @@ function CheckOutBagOverview() {
 
       <Box
         sx={{
-          width: "83%",
           height: 250,
           border: ".2rem solid #F4EAC6",
           borderRadius: 2,
@@ -44,20 +43,26 @@ function CheckOutBagOverview() {
         Här listas produkterna i varukorgen, har lagt till scroll.
       </Box>
 
-      <Typography
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          fontSize: "0.6rem",
-          m: 1.5,
+          ml: 1.5,
         }}
       >
-        <p>Pris: SEK</p>
-        <p>Frakt: {selectedDelivery} SEK</p>
-        <p>Moms: SEK</p>
-        <p style={{ fontSize: ".9rem", fontWeight: "bold" }}>Total: SEK</p>
-      </Typography>
+        <Typography sx={{ fontSize: 11 }}>Pris: SEK</Typography>
+        <Typography sx={{ fontSize: 11 }}>
+          Frakt: {deliveryOption.price} SEK
+        </Typography>
+        <Typography sx={{ fontSize: 9, fontWeight: "bold" }}>
+          Levereras
+        </Typography>
+        <Typography sx={{ fontSize: 11 }}>Moms: SEK</Typography>
+        <Typography sx={{ fontSize: 14, fontWeight: "bold" }}>
+          Total: SEK
+        </Typography>
+      </Box>
     </Box>
   );
 }
