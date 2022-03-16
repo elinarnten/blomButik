@@ -91,6 +91,9 @@ function Header() {
               aria-label="Favoriter"
               color="inherit"
               sx={{ flexGrow: 1 }}
+              // onClick={() => {
+              //  { slideFrame };
+              // }}
             >
               <ShoppingBasket />
             </IconButton>
