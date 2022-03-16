@@ -1,28 +1,31 @@
-import * as React from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { ShopItem } from "../data/ShopContent";
+import { ShopItem, shopItems } from "../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import '../App.css'
+import { useState } from "react";
 
 interface Props {
   item: ShopItem;
 }
 
+
+
 export default function CardView(props: Props) {
   return (
     <Card
-      sx={{ maxWidth: 355, minWidth: 225 }}
+      sx={{ maxWidth: 350, minWidth: 220 }}
       style={{
         textAlign: "center",
         justifyContent: "center",
         alignContent: "center",
-        alignSelf:"center"
+        alignSelf: "center",
       }}
       className="Quicksand"
     >
@@ -32,16 +35,17 @@ export default function CardView(props: Props) {
         height="270"
         image={`${props.item.img}`}
       ></CardMedia>
-      <CardContent sx={{ height: 40 }}>
+      <CardContent sx={{ height: 45 }}>
         <Typography
           variant="h5"
           component="div"
           className="Quicksand"
-          fontFamily="rouge script"
+          fontFamily="Quicksand"
           style={{
             display: "flex",
             justifyContent: "center",
             fontFamily: "Quicksand, cursive",
+            color: "rgb(250, 218, 112)",
           }}
         >
           {props.item.title}
@@ -54,19 +58,18 @@ export default function CardView(props: Props) {
           {props.item.price} KR/ st
         </Typography>
       </CardContent>
-      <CardActions style={{ justifyContent: "center" }}>
+      <CardActions style={{ justifyContent: "center", paddingTop:"15px", marginTop:"10px" }}>
         <Button
           sx={{
-            width: 300,
             color: "pink",
           }}
           size="small"
           color="secondary"
           variant="text"
           style={{
-            borderRadius: 10,
-            padding: "5px 30px",
-            fontSize: "10px",
+            borderRadius: 5,
+            padding: "5px 15px",
+            fontSize: "5px",
             alignSelf: "center",
           }}
         >
@@ -76,12 +79,13 @@ export default function CardView(props: Props) {
           size="small"
           variant="contained"
           style={{
-            borderRadius: 10,
+            borderRadius: 5,
             backgroundColor: "#ffcc80",
-            padding: "5px 55px",
-            fontSize: "10px",
+            padding: "5px 35px",
+            fontSize: "8px",
             alignSelf: "center",
           }}
+          onClick={() => console.log(props.item)}
         >
           <ShoppingCartIcon></ShoppingCartIcon>
         </Button>

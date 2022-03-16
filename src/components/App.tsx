@@ -13,8 +13,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
+import { shopItems } from "../data/ShopContent";
+
 
 function App() {
+const [item, setItem] = useState(shopItems);
+
   return (
     <ContextProvider>
       <div>
