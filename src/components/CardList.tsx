@@ -11,10 +11,22 @@ import  { useEffect, useState } from "react";
 interface Props {
   buttonItem: SortButton;
   item: ShopItem;
+  
+  
 }
-
 export default function CardList() {
-  const [filter, setFilter] = useState('')
+  
+  let [filterShopItems, setFilterShopItems] = useState(shopItems);
+  let [selectedTag, setSelectedTag] = useState<string>("");
+
+ useEffect(()=>{
+  //  console.log(selectedTag);
+   //  filterShopItems = shopItems.filter((shopItems) => );
+   //  console.log(test);
+  
+
+
+ })
 
 
 
@@ -37,11 +49,11 @@ export default function CardList() {
           alignItems: "center",
         }}
       >
-        <SortbuttonsDOM></SortbuttonsDOM>
+        <SortbuttonsDOM settag={setSelectedTag}></SortbuttonsDOM>
         <Typography
           variant="h5"
           component="div"
-          className="Quicksand"
+          className="Quicksand"       
           fontFamily="Quicksand"
           style={{
             width: "100%",
@@ -65,7 +77,7 @@ export default function CardList() {
         </Typography>
 
        
-        {shopItems.map((item) => (
+        {filterShopItems.map((item) => (
           
           <>
             <Grid
@@ -84,7 +96,7 @@ export default function CardList() {
               }}
             >
 
-              <CardView key={item.id} item={item}/>
+              <CardView key={item.tag} item={item}/>
             </Grid>
           </>
         ))}
@@ -92,3 +104,4 @@ export default function CardList() {
     </>
   );
 }
+

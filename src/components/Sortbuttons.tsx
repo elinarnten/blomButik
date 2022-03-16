@@ -2,7 +2,9 @@ import { ShopItem, shopItems } from "../data/ShopContent";
 import { ThemeProvider } from "@emotion/react";
 import { Box, Button, createTheme } from "@mui/material";
 import { SortButton, sortButtonsData } from "../data/SortButtonsData";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { PropsFor } from "@mui/system";
+
 
 let themeButtonSort = createTheme({
   components: {
@@ -36,9 +38,11 @@ themeButtonSort = createTheme(themeButtonSort, {
   },
 });
 
-interface Props {
-  buttonItem: SortButton;
-}
+// interface Props {
+//   buttonItem: SortButton;
+//   item: ShopItem;
+
+// }
 
 //  function Filtering(props: Props) {
 //    const filtered = shopItems.filter(item => {
@@ -47,30 +51,32 @@ interface Props {
 //      console.log(filtered)
 //  }
 
- const handleClick = (props:Props) => {
-   const filtered = shopItems.filter((item) => {
-     return item.tag === props.buttonItem.value;
-   });
-   console.log(filtered);
- };
+//  const handleClick = (props:Props) => {
+//    const filtered = shopItems.filter((item) => {
+//      return item.tag === props.buttonItem.value;
+//    });
+//    console.log(filtered);
+//  };
 
-
-
-export default function SortbuttonsDOM() {
-  const [filter, setFilter] = useState("");
-
-  function handleFilterChange(props: Props) {
-    const filtered = shopItems.filter((item) => {
-      return item.tag == props.buttonItem.value;
+//   function handleFilterChange(props: Props) {
+//     const filtered = shopItems.filter((item) => {
+//       return item.tag == props.buttonItem.value;
       
-    });
-    console.log(filtered);
-  }
+//     });
+//     console.log(filtered);
+//   }
 
   // onClick={()=>{shopItems.filter(item => {
   //   let Filtered = item.tag === buttonItem.value;
   // });
   // }}
+interface Props {
+  settag: Dispatch<SetStateAction<string>>
+}
+export default function SortbuttonsDOM(props:Props) {
+
+
+
 
   return (
     <>
@@ -90,7 +96,7 @@ export default function SortbuttonsDOM() {
         <ThemeProvider theme={themeButtonSort}>
           {sortButtonsData.map((buttonItem) => (
             <Button
-              onClick={() => (handleClick)}
+              onClick={() => {props.settag(buttonItem.value)}}
               variant="contained"
               value={buttonItem.value}
               key={buttonItem.name}
