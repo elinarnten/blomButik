@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,9 +8,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Favorite from "@mui/icons-material/Favorite";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 import { Menu, MenuItem } from "@mui/material";
-import { Link } from "react-router-dom";
 
-function Header() {
+interface Props {
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+function Header(props: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

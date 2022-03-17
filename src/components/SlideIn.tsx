@@ -5,8 +5,6 @@ import {
   Box,
   Button,
   Slide,
-  FormControlLabel,
-  Switch,
   Card,
   Typography,
   IconButton,
@@ -18,8 +16,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 
-interface Props {
-  // item: ShopItem;
+export interface Props {
+  menuOpen: boolean;
 }
 
 export default function SlideIn(props: Props) {

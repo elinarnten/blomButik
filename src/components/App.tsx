@@ -15,12 +15,13 @@ import CheckOutStepTwo from "./CheckOutStepTwo";
 import SlideIn from "./SlideIn";
 
 function App() {
+  let [menuOpen, setMenuOpen] = useState<boolean>(false);
   return (
     <ContextProvider>
       <div>
-        <Header />
+        <Header setMenuOpen={setMenuOpen} />
         <BrowserRouter>
-          <SlideIn />
+          <SlideIn menuOpen />
           <Routes>
             {/* <Route path="/slideIn" element={<SlideIn />} /> */}
             <Route path="/" element={<StartPage />} />
