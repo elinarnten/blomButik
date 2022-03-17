@@ -2,9 +2,16 @@ import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import { Context } from "../Context";
 
-function CheckOutBagOverview() {
-  const { deliveryOption } = useContext(Context);
+/* interface CheckOutBagOverviewProps {
+  deliveryDate?: string;
+} */
 
+/* const CheckOutBagOverview: React.FC<CheckOutBagOverviewProps> = ({
+  deliveryDate,
+}) => { */
+function CheckOutBagOverview() {
+  const { deliveryOption, deliveryDate } = useContext(Context);
+  console.log(deliveryDate);
   return (
     <Box
       sx={{
@@ -56,7 +63,7 @@ function CheckOutBagOverview() {
           Frakt: {deliveryOption.price} SEK
         </Typography>
         <Typography sx={{ fontSize: 9, fontWeight: "bold" }}>
-          Levereras
+          Levereras {deliveryDate}
         </Typography>
         <Typography sx={{ fontSize: 11 }}>Moms: SEK</Typography>
         <Typography sx={{ fontSize: 14, fontWeight: "bold" }}>

@@ -7,6 +7,7 @@ const ContextProvider: React.FC<ReactNode> = ({ children }) => {
   const [lastname, setLastname] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [deliveryOption, setDeliveryOption] = useState([{}]);
+  const [deliveryDate, setDeliveryDate] = useState<string>("");
 
   return (
     <Context.Provider
@@ -19,6 +20,8 @@ const ContextProvider: React.FC<ReactNode> = ({ children }) => {
         setPhoneNumber,
         deliveryOption,
         setDeliveryOption,
+        deliveryDate,
+        setDeliveryDate,
       }}
     >
       {children}

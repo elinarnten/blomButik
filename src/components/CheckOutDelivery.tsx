@@ -13,7 +13,19 @@ import CheckOutBagOverview from "./CheckOutBagOverview";
 import { deliveryAlternatives, DeliveryOption } from "../mockedDelivery";
 
 function CheckOutDelivery() {
-  const { deliveryOption, setDeliveryOption } = useContext(Context);
+  const { deliveryOption, setDeliveryOption, deliveryDate, setDeliveryDate } =
+    useContext(Context);
+
+  const date = new Date();
+  const result = new Date(date);
+  result.setDate(result.getDate() + deliveryOption.deliveryTime);
+  setDeliveryDate(result.toLocaleDateString());
+
+  /* const deliveryDate = new Date();
+
+  deliveryDate.setDate(deliveryDate.getDate() + deliveryOption.deliveryTime);
+
+  const showDate = deliveryDate.toIsoString(); */
 
   const handleDeliveryCost = (
     event: React.MouseEvent<HTMLElement>,
@@ -22,12 +34,7 @@ function CheckOutDelivery() {
     setDeliveryOption(newSelected);
   };
 
-  const date = new Date();
-  const deliveryDate = new Date(date);
-
-  deliveryDate.setDate(deliveryDate.getDate() + deliveryOption.deliveryTime);
-
-  console.log(deliveryDate.toDateString());
+  //console.log(getDeliveryDate());
 
   return (
     <Box
@@ -86,64 +93,6 @@ function CheckOutDelivery() {
               </Typography>
             </ToggleButton>
           ))}
-          {/*  <ToggleButton
-            value={deliveryAlternatives[0]}
-            sx={{
-              width: "100%",
-              color: "black",
-              border: "none",
-              fontSize: 12,
-              fontWeight: "bold",
-              backgroundColor: "#F4EAC6",
-            }}
-          >
-            Schenker utlämningsställe.
-            <Typography
-              sx={{ fontSize: 10, ml: 1, textTransform: "capitalize" }}
-            >
-              1-2 arbetsdagar. (40,00 SEK)
-            </Typography>
-          </ToggleButton>
-
-          <ToggleButton
-            value="19"
-            sx={{
-              width: "100%",
-              mt: 2,
-              color: "black",
-              border: "none",
-              fontSize: 12,
-              fontWeight: "bold",
-              backgroundColor: "#F4EAC6",
-            }}
-          >
-            Postens utlämningsställe.
-            <Typography
-              sx={{ fontSize: 10, ml: 1, textTransform: "capitalize" }}
-            >
-              2-5 arbetsdagar. (19,00 SEK)
-            </Typography>
-          </ToggleButton>
-
-          <ToggleButton
-            value="60"
-            sx={{
-              width: "100%",
-              mt: 2,
-              color: "black",
-              border: "none",
-              fontSize: 12,
-              fontWeight: "bold",
-              backgroundColor: "#F4EAC6",
-            }}
-          >
-            BudBee Hemleverans.
-            <Typography
-              sx={{ fontSize: 10, ml: 1, textTransform: "capitalize" }}
-            >
-              Idag 17-21. (60,00 SEK)
-            </Typography>
-          </ToggleButton> */}
         </ToggleButtonGroup>
 
         <div>
