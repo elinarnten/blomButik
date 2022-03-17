@@ -2,13 +2,6 @@ import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import { Context } from "../Context";
 
-/* interface CheckOutBagOverviewProps {
-  deliveryDate?: string;
-} */
-
-/* const CheckOutBagOverview: React.FC<CheckOutBagOverviewProps> = ({
-  deliveryDate,
-}) => { */
 function CheckOutBagOverview() {
   const { deliveryOption, deliveryDate } = useContext(Context);
   console.log(deliveryDate);
@@ -20,16 +13,14 @@ function CheckOutBagOverview() {
         mt: 7,
         backgroundColor: "rgba(244, 234, 198, 0.4)",
         borderRadius: 2,
-        //padding: 2,
         width: "40%",
-        height: 420,
+        height: "70%",
       }}
     >
       <Typography
         sx={{
           display: "flex",
           flexDirection: "column",
-
           m: 1.5,
         }}
       >
@@ -38,7 +29,7 @@ function CheckOutBagOverview() {
 
       <Box
         sx={{
-          height: 250,
+          height: "50%",
           border: ".2rem solid #F4EAC6",
           borderRadius: 2,
           m: 1,

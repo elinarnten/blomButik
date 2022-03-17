@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, InputAdornment, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -61,7 +61,7 @@ function CheckOutContact() {
               }}
               id="outlined-required"
               label="Förnamn"
-              name="name"
+              name="firstName"
               type="name"
               size="small"
               sx={{
@@ -80,7 +80,9 @@ function CheckOutContact() {
               }}
               id="outlined-required"
               label="Efternamn"
+              name="lastName"
               size="small"
+              inputProps={{maxLength: 4}}
               sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
@@ -107,8 +109,11 @@ function CheckOutContact() {
               }}
               id="outlined-number"
               type="number"
+              name="number"
               label="Telefonnummer"
               size="small"
+              
+              inputProps={{maxLength: 10}}
               sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
           </FormControl>
@@ -121,6 +126,7 @@ function CheckOutContact() {
               onChange={handleAddressChange}
               id="outlined-required"
               label="Gatuadress"
+              name="address"
               size="small"
               sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
@@ -175,6 +181,7 @@ function CheckOutContact() {
 
               mt: 3,
             }}
+            type="submit"
           >
             Gå vidare
           </Button>

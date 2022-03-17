@@ -1,13 +1,18 @@
 import { Box, Button, Menu, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import CheckOutBagOverview from "./CheckOutBagOverview";
+import { useForm } from "react-hook-form";
 
 function CheckOutPayment() {
   const { firstname, lastname, phoneNumber } = useContext(Context);
+  const [inputValue, setInputValue] = useState("");
+  const { register } = useForm();
+  const onInputChange = (e: any) => setInputValue(e.target.value);
+  const handleSubmit = () => console.log(inputValue);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
@@ -62,7 +67,6 @@ function CheckOutPayment() {
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
           Hur vill du betala?
         </Typography>
-
         <Button
           variant="outlined"
           id="basic-button"
@@ -74,7 +78,6 @@ function CheckOutPayment() {
             width: "100%",
             color: "black",
             border: "none",
-
             backgroundColor: "#F4EAC6",
           }}
         >
@@ -96,10 +99,14 @@ function CheckOutPayment() {
           <div>
             <TextField
               required
-              //onChange={handleFirstnameChange}
+              autoComplete="on"
+              type="number"
               id="outlined-required"
               label="Kortnummer"
               size="small"
+              inputProps={{ maxLength: 4 }}
+              onChange={onInputChange}
+              value={inputValue}
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
@@ -110,6 +117,7 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Giltlighet"
               size="small"
+              inputProps={{ maxLength: 4 }}
               sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
             />
             <TextField
@@ -118,6 +126,7 @@ function CheckOutPayment() {
               id="outlined-required"
               label="CVC"
               size="small"
+              inputProps={{ maxLength: 3 }}
               sx={{ mb: 2, mr: 2, width: "20%" }}
             />
           </div>
@@ -133,19 +142,6 @@ function CheckOutPayment() {
             />
           </div>
           <div>
-            {/*  <Typography
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "0.6rem",
-                ml: 3,
-              }}
-            >
-              <p>Pris:</p>
-              <p>Frakt:</p>
-              <p>Moms:</p>
-              <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography> */}
             <Button
               onClick={handleCardClose}
               size="small"
@@ -170,12 +166,12 @@ function CheckOutPayment() {
                 color: "black",
                 mt: 2,
               }}
+              onClick={handleSubmit}
             >
               Slutför köp
             </Button>
           </div>
         </Menu>
-
         <Button
           variant="outlined"
           id="swish-button"
@@ -188,7 +184,6 @@ function CheckOutPayment() {
             mt: 2,
             color: "black",
             border: "none",
-
             backgroundColor: "#F4EAC6",
           }}
         >
@@ -212,24 +207,11 @@ function CheckOutPayment() {
               label="Telefonnummer"
               size="small"
               value={phoneNumber}
+              inputProps={{ maxLength: 10 }}
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
-
           <div>
-            {/* <Typography
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "0.6rem",
-                ml: 3,
-              }}
-            >
-              <p>Pris:</p>
-              <p>Frakt:</p>
-              <p>Moms:</p>
-              <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography> */}
             <Button
               onClick={handleSwishClose}
               size="small"
@@ -259,7 +241,6 @@ function CheckOutPayment() {
             </Button>
           </div>
         </Menu>
-
         <Button
           variant="outlined"
           id="basic-button"
@@ -272,7 +253,6 @@ function CheckOutPayment() {
             mt: 2,
             color: "black",
             border: "none",
-
             backgroundColor: "#F4EAC6",
           }}
         >
@@ -298,24 +278,11 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Personnummer"
               size="small"
+              inputProps={{ maxLength: 12 }}
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
-
           <div>
-            {/* <Typography
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "0.6rem",
-                ml: 3,
-              }}
-            >
-              <p>Pris:</p>
-              <p>Frakt:</p>
-              <p>Moms:</p>
-              <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography> */}
             <Button
               onClick={handleInvoiceClose}
               size="small"
@@ -345,7 +312,6 @@ function CheckOutPayment() {
             </Button>
           </div>
         </Menu>
-
         <div>
           <Link to={"/leverans"}>
             <Button

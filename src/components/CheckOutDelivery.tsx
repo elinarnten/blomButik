@@ -16,25 +16,20 @@ function CheckOutDelivery() {
   const { deliveryOption, setDeliveryOption, deliveryDate, setDeliveryDate } =
     useContext(Context);
 
-  const date = new Date();
-  const result = new Date(date);
-  result.setDate(result.getDate() + deliveryOption.deliveryTime);
-  setDeliveryDate(result.toLocaleDateString());
-
-  /* const deliveryDate = new Date();
-
-  deliveryDate.setDate(deliveryDate.getDate() + deliveryOption.deliveryTime);
-
-  const showDate = deliveryDate.toIsoString(); */
-
-  const handleDeliveryCost = (
+  const handleOnChange = (
     event: React.MouseEvent<HTMLElement>,
-    newSelected: string
+    newSelected: DeliveryOption
   ) => {
     setDeliveryOption(newSelected);
+    calcDeliveryDate(newSelected.deliveryTime);
   };
 
-  //console.log(getDeliveryDate());
+  const calcDeliveryDate = (newDeliveryVal: number) => {
+    const date = new Date();
+    const result = new Date(date);
+    result.setDate(result.getDate() + newDeliveryVal);
+    setDeliveryDate(result.toLocaleDateString());
+  };
 
   return (
     <Box
@@ -57,11 +52,9 @@ function CheckOutDelivery() {
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
           Hur vill du få dina varor levererade?
         </Typography>
-
         <ToggleButtonGroup
-          //value={deliveryCost}
           exclusive
-          onChange={handleDeliveryCost}
+          onChange={handleOnChange}
           sx={{ display: "flex", flexDirection: "column" }}
         >
           {deliveryAlternatives.map((item, idx) => (
@@ -94,7 +87,6 @@ function CheckOutDelivery() {
             </ToggleButton>
           ))}
         </ToggleButtonGroup>
-
         <div>
           <Link to={"/kunduppgifter"}>
             <Button
@@ -119,7 +111,6 @@ function CheckOutDelivery() {
                 backgroundColor: "#F4EAC6",
                 boxShadow: "none",
                 color: "black",
-
                 mt: 3,
               }}
             >
