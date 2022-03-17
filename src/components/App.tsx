@@ -10,11 +10,14 @@ import CardList from "./CardList";
 import StartPage from "./StartPage";
 import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CheckOutStepOne from "./CheckOutStepOne";
-import CheckOutStepTwo from "./CheckOutStepTwo";
+import CheckOutContact from "./CheckOutContact";
+import CheckOutDelivery from "./CheckOutDelivery";
+import CheckOutPayment from "./CheckOutPayment";
+import { shopItems } from "../data/ShopContent";
 import SlideIn from "./SlideIn";
 
 function App() {
+  const [item, setItem] = useState(shopItems);
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
   return (
     <ContextProvider>
@@ -24,11 +27,12 @@ function App() {
           <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
-            <Route path="/betalning" element={<CheckOutStepTwo />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/kunduppgifter" element={<CheckOutContact />} />
+            <Route path="/betalning" element={<CheckOutPayment />} />
+            <Route path="/leverans" element={<CheckOutDelivery />} />
+            <Route path="/om" element={<About />} />
             <Route path="/sortiment" element={<CardList />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/kontakt" element={<Contact />} />
           </Routes>
         </BrowserRouter>
         <Footer />

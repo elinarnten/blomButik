@@ -1,22 +1,12 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  TextField,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import CheckOutBagOverview from "./CheckOutBagOverview";
 
-function CheckOutStepOne() {
-  /* const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm")); */
-
+function CheckOutContact() {
   const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
 
   const [email, setEmail] = useState("");
@@ -71,6 +61,8 @@ function CheckOutStepOne() {
               }}
               id="outlined-required"
               label="Förnamn"
+              name="name"
+              type="name"
               size="small"
               sx={{
                 mr: 2,
@@ -100,6 +92,8 @@ function CheckOutStepOne() {
               value={email}
               onChange={handleEmailChange}
               id="outlined-required"
+              name="email"
+              type="email"
               label="E-post"
               size="small"
               sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
@@ -170,7 +164,7 @@ function CheckOutStepOne() {
         >
           Tillbaka
         </Button>
-        <Link to={"/betalning"}>
+        <Link to={"/leverans"}>
           <Button
             size="small"
             variant="contained"
@@ -186,22 +180,9 @@ function CheckOutStepOne() {
           </Button>
         </Link>
       </Box>
-      <Box
-        sx={{
-          ml: 2,
-          mr: 3,
-          mt: 8,
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
-          borderRadius: 2,
-          padding: 2,
-          width: "40%",
-          height: 400,
-        }}
-      >
-        Här visas innehållet i varukorgen, tänker jag.
-      </Box>
+      <CheckOutBagOverview />
     </Box>
   );
 }
 
-export default CheckOutStepOne;
+export default CheckOutContact;

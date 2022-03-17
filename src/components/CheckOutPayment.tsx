@@ -1,26 +1,12 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Menu,
-  MenuItem,
-  Popper,
-  TextField,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Menu, TextField, Typography } from "@mui/material";
 import React from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import VisaMasterCard from "../Assets/visa-mastercard.png";
 import { Context } from "../Context";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import CheckOutBagOverview from "./CheckOutBagOverview";
 
-function CheckOutStepTwo() {
-  /*  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm")); */
-
+function CheckOutPayment() {
   const { firstname, lastname, phoneNumber } = useContext(Context);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
@@ -84,7 +70,6 @@ function CheckOutStepTwo() {
           aria-haspopup="true"
           aria-expanded={openCard ? "true" : undefined}
           onClick={handleCardClick}
-          /* endIcon={VisaMasterCard} */
           sx={{
             width: "100%",
             color: "black",
@@ -105,6 +90,9 @@ function CheckOutStepTwo() {
           }}
           sx={{ width: "60%" }}
         >
+          <Typography sx={{ m: 2 }}>
+            Vänligen fyll i dina kortuppgifter.
+          </Typography>
           <div>
             <TextField
               required
@@ -145,6 +133,19 @@ function CheckOutStepTwo() {
             />
           </div>
           <div>
+            {/*  <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "0.6rem",
+                ml: 3,
+              }}
+            >
+              <p>Pris:</p>
+              <p>Frakt:</p>
+              <p>Moms:</p>
+              <p style={{ fontSize: ".9rem" }}>Total:</p>
+            </Typography> */}
             <Button
               onClick={handleCardClose}
               size="small"
@@ -170,7 +171,7 @@ function CheckOutStepTwo() {
                 mt: 2,
               }}
             >
-              Gå vidare
+              Slutför köp
             </Button>
           </div>
         </Menu>
@@ -203,6 +204,7 @@ function CheckOutStepTwo() {
           }}
           sx={{ width: "60%" }}
         >
+          <Typography sx={{ m: 2 }}>Telefonnummer för Swish.</Typography>
           <div>
             <TextField
               required
@@ -215,6 +217,19 @@ function CheckOutStepTwo() {
           </div>
 
           <div>
+            {/* <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "0.6rem",
+                ml: 3,
+              }}
+            >
+              <p>Pris:</p>
+              <p>Frakt:</p>
+              <p>Moms:</p>
+              <p style={{ fontSize: ".9rem" }}>Total:</p>
+            </Typography> */}
             <Button
               onClick={handleSwishClose}
               size="small"
@@ -240,7 +255,7 @@ function CheckOutStepTwo() {
                 mt: 2,
               }}
             >
-              Gå vidare
+              Slutför köp
             </Button>
           </div>
         </Menu>
@@ -273,6 +288,9 @@ function CheckOutStepTwo() {
           }}
           sx={{ width: "60%" }}
         >
+          <Typography sx={{ m: 2 }}>
+            Ange ditt personnummer så skickar vi fakturan per post.
+          </Typography>
           <div>
             <TextField
               required
@@ -285,6 +303,19 @@ function CheckOutStepTwo() {
           </div>
 
           <div>
+            {/* <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "0.6rem",
+                ml: 3,
+              }}
+            >
+              <p>Pris:</p>
+              <p>Frakt:</p>
+              <p>Moms:</p>
+              <p style={{ fontSize: ".9rem" }}>Total:</p>
+            </Typography> */}
             <Button
               onClick={handleInvoiceClose}
               size="small"
@@ -310,13 +341,13 @@ function CheckOutStepTwo() {
                 mt: 2,
               }}
             >
-              Gå vidare
+              Slutför köp
             </Button>
           </div>
         </Menu>
 
         <div>
-          <Link to={"/kunduppgifter"}>
+          <Link to={"/leverans"}>
             <Button
               size="small"
               variant="outlined"
@@ -331,37 +362,11 @@ function CheckOutStepTwo() {
               Tillbaka
             </Button>
           </Link>
-          <Button
-            size="small"
-            variant="contained"
-            sx={{
-              backgroundColor: "#F4EAC6",
-              boxShadow: "none",
-              color: "black",
-
-              mt: 3,
-            }}
-          >
-            Gå vidare
-          </Button>
         </div>
       </Box>
-      <Box
-        sx={{
-          ml: 2,
-          mr: 3,
-          mt: 8,
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
-          borderRadius: 2,
-          padding: 2,
-          width: "40%",
-          height: 400,
-        }}
-      >
-        Här visas innehållet i varukorgen, tänker jag.
-      </Box>
+      <CheckOutBagOverview />
     </Box>
   );
 }
 
-export default CheckOutStepTwo;
+export default CheckOutPayment;
