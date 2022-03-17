@@ -10,7 +10,9 @@ function About() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         height: "100%",
-        m: "2rem",
+        // mr: "2rem",
+        // ml: "2rem",
+        // mb: "2rem",
         flex: 1,
       }}
     >
@@ -21,7 +23,13 @@ function About() {
         Om oss
       </Typography>
       <Box
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          flex: 1,
+        }}
       >
         <Box
           sx={{

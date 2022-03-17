@@ -14,12 +14,16 @@ function Contact() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100%",
-        m: "2rem",
+        width: "100%",
         flex: 1,
       }}
       style={{ flex: 1 }}
     >
-      <Typography variant="h4" component="div" sx={{ pt: 5, pl: 4, m: 3 }}>
+      <Typography
+        variant="h4"
+        component="div"
+        sx={{ pt: 5, pl: 4, m: 3, height: "100%" }}
+      >
         Kontakt
       </Typography>
       <Box
@@ -28,6 +32,8 @@ function Contact() {
           justifyContent: "space-around",
           alignItems: "center",
           flexWrap: "wrap",
+          height: "100%",
+          flex: 1,
         }}
       >
         <Card

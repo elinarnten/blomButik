@@ -17,8 +17,9 @@ function Footer() {
 }
 
 const footStyle: CSSProperties = {
+  position: "relative",
   display: "flex",
-  bottom: 0,
+  bottom: "0px",
   width: "100%",
   height: "4rem",
   marginTop: "1rem",
