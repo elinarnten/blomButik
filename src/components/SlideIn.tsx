@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import {
   Paper,
@@ -14,29 +14,19 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 
-export interface Props {
+interface Props {
   menuOpen: boolean;
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function SlideIn(props: Props) {
-  const [checked, setChecked] = React.useState(false);
-
-  const handleChange = () => {
-    setChecked((prev) => !prev);
-  };
-
   const slideFrame = (
     <Paper
       sx={{ m: 1, position: "fixed", top: 0, bottom: 0, right: 0 }}
       elevation={2}
     >
-      <IconButton
-        onClick={() => {
-          handleChange();
-        }}
-      >
+      <IconButton onClick={() => props.setMenuOpen(false)}>
         <CloseIcon sx={{ color: "black" }} />
       </IconButton>
 
@@ -63,6 +53,7 @@ export default function SlideIn(props: Props) {
           Totalt pris: räkna ut pris här
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
             <Button
+              onClick={() => props.setMenuOpen(false)}
               sx={{
                 height: "2rem",
                 width: "auto",
@@ -83,18 +74,7 @@ export default function SlideIn(props: Props) {
   return (
     <Box>
       <Box>
-        {/* <FormControlLabel
-          control={<Switch checked={checked} onChange={handleChange} />}
-          label="Show"
-        /> */}
-        {/* <IconButton
-          onClick={() => {
-            handleChange();
-          }}
-        >
-          <ShoppingBasket></ShoppingBasket>
-        </IconButton> */}
-        <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
+        <Slide direction="left" in={props.menuOpen} mountOnEnter unmountOnExit>
           {slideFrame}
         </Slide>
       </Box>

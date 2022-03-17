@@ -23,6 +23,7 @@ function Header(props: Props) {
     setAnchorEl(null);
   };
 
+  console.log(props.setMenuOpen);
   return (
     <Box>
       <AppBar
@@ -94,9 +95,7 @@ function Header(props: Props) {
               aria-label="Favoriter"
               color="inherit"
               sx={{ flexGrow: 1 }}
-              // onClick={() => {
-              //  { slideFrame };
-              // }}
+              onClick={() => props.setMenuOpen(true)}
             >
               <ShoppingBasket />
             </IconButton>

@@ -21,9 +21,8 @@ function App() {
       <div>
         <Header setMenuOpen={setMenuOpen} />
         <BrowserRouter>
-          <SlideIn menuOpen />
+          <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <Routes>
-            {/* <Route path="/slideIn" element={<SlideIn />} /> */}
             <Route path="/" element={<StartPage />} />
             <Route path="/kunduppgifter" element={<CheckOutStepOne />} />
             <Route path="/betalning" element={<CheckOutStepTwo />} />
