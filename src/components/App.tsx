@@ -15,9 +15,8 @@ import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
 import { shopItems } from "../data/ShopContent";
 
-
 function App() {
-const [item, setItem] = useState(shopItems);
+  const [item, setItem] = useState(shopItems);
 
   return (
     <ContextProvider>
