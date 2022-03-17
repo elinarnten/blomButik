@@ -21,6 +21,7 @@ const footStyle: CSSProperties = {
   bottom: 0,
   width: "100%",
   height: "4rem",
+  marginTop: "1rem",
 };
 
 const footContainer: CSSProperties = {
