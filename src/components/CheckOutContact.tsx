@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -52,8 +52,8 @@ function CheckOutContact() {
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
           Vänligen fyll i dina uppgifter:
         </Typography>
-        <div>
           <FormControl>
+        <div>
             <TextField
               required
               onChange={(event) => {
@@ -61,8 +61,7 @@ function CheckOutContact() {
               }}
               id="outlined-required"
               label="Förnamn"
-              name="firstName"
-              type="name"
+              name="name"
               size="small"
               sx={{
                 mr: 2,
@@ -70,9 +69,6 @@ function CheckOutContact() {
                 bgcolor: "rgba(244, 234, 198, 0.4)",
               }}
             />
-          </FormControl>
-
-          <FormControl>
             <TextField
               required
               onChange={(event) => {
@@ -80,28 +76,21 @@ function CheckOutContact() {
               }}
               id="outlined-required"
               label="Efternamn"
-              name="lastName"
+              name="name"
               size="small"
-              inputProps={{maxLength: 4}}
               sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
-          </FormControl>
         </div>
         <div>
-          <FormControl>
             <TextField
               required
-              value={email}
               onChange={handleEmailChange}
               id="outlined-required"
               name="email"
-              type="email"
               label="E-post"
               size="small"
               sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
-          </FormControl>
-          <FormControl>
             <TextField
               required
               onChange={(event) => {
@@ -112,14 +101,11 @@ function CheckOutContact() {
               name="number"
               label="Telefonnummer"
               size="small"
-              
-              inputProps={{maxLength: 10}}
+              inputProps={{maxLength: 13}}
               sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
-          </FormControl>
         </div>
         <div>
-          <FormControl>
             <TextField
               required
               value={address}
@@ -130,33 +116,29 @@ function CheckOutContact() {
               size="small"
               sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
-          </FormControl>
         </div>
         <div>
-          <FormControl>
             <TextField
               required
-              value={code}
               onChange={handleCodeChange}
               id="outlined-required"
               type="number"
+              name="zipcode"
               label="Postnummer"
               size="small"
               sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
-          </FormControl>
-          <FormControl>
             <TextField
               required
-              value={city}
               onChange={handleCityChange}
               id="outlined-required"
               label="Ort"
+              name="city"
               size="small"
               sx={{ bgcolor: "rgba(244, 234, 198, 0.4)" }}
             />
-          </FormControl>
         </div>
+          </FormControl>
         <Button
           size="small"
           variant="outlined"

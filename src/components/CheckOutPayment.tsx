@@ -1,4 +1,4 @@
-import { Box, Button, Menu, TextField, Typography } from "@mui/material";
+import { Box, Button, Menu, TextField, Typography, Input } from "@mui/material";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -96,11 +96,26 @@ function CheckOutPayment() {
           <Typography sx={{ m: 2 }}>
             Vänligen fyll i dina kortuppgifter.
           </Typography>
-          <div>
+
+          
+
+          {/* <Input
+          required
+          autoComplete="on"
+          type="number"
+          id="outlined-required"
+          //label="Kortnummer"
+          size="small"
+          onChange={onInputChange}
+          value={inputValue}
+          sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}/> */}
+
+         <div>
             <TextField
               required
               autoComplete="on"
               type="number"
+              
               id="outlined-required"
               label="Kortnummer"
               size="small"
