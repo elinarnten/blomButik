@@ -14,6 +14,8 @@ import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
 import { shopItems } from "../data/ShopContent";
+import Admin from "./Admin";
+import DeleteButton from "./buttonDeleteItem";
 
 
 function App() {
@@ -27,10 +29,11 @@ const [item, setItem] = useState(shopItems);
           <Routes>
             <Route path="/" element={<StartPage />} />
             <Route path="/kunduppgifter" element={<CheckOutContact />} />
+            <Route path="/Admin" element={<Admin hideShow={true}/>} />
             <Route path="/betalning" element={<CheckOutPayment />} />
             <Route path="/leverans" element={<CheckOutDelivery />} />
             <Route path="/om" element={<About />} />
-            <Route path="/sortiment" element={<CardList />} />
+            <Route path="/sortiment" element={<CardList hideShow={false}/>} />
             <Route path="/kontakt" element={<Contact />} />
           </Routes>
         </BrowserRouter>
