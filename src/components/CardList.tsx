@@ -4,10 +4,14 @@ import { Grid, Typography } from "@mui/material";
 import bg from "../images/bg.jpg";
 import { Box } from "@mui/system";
 import SortbuttonsDOM from "./Sortbuttons";
+import { SortButton, sortButtonsData, } from "../data/SortButtonsData";
+import  { useContext, useEffect, useState } from "react";
+//import { Context } from "../Context";
 import { SortButton } from "../data/SortButtonsData";
 import { useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
+
 
 interface Props {
   buttonItem: SortButton;
@@ -28,6 +32,7 @@ useEffect(()=> {
     setFilterShopItems(
       shopItems.filter((product) => deleteItem !== product.id) 
     );
+
   
   console.log(deleteItem)
 },[deleteItem])
