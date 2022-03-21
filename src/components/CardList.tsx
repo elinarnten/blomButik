@@ -7,33 +7,47 @@ import SortbuttonsDOM from "./Sortbuttons";
 import { SortButton, sortButtonsData, } from "../data/SortButtonsData";
 import  { useContext, useEffect, useState } from "react";
 //import { Context } from "../Context";
-
+import { SortButton } from "../data/SortButtonsData";
+import { useEffect, useState } from "react";
+import AddProduct from "./AddProduct";
+import DeleteButton from "./buttonDeleteItem";
 
 
 interface Props {
   buttonItem: SortButton;
   item: ShopItem;
   
-  
 }
-export default function CardList() {
-  
+
+interface Adminprops{
+hideShow: Boolean
+
+}
+export default function CardList(props:Adminprops) {
   let [filterShopItems, setFilterShopItems] = useState(shopItems);
   let [selectedTag, setSelectedTag] = useState<string>("");
+  let [deleteItem, setDeleteItem] = useState<number>(0)
+
+useEffect(()=> {
+    setFilterShopItems(
+      shopItems.filter((product) => deleteItem !== product.id) 
+    );
 
   
+  console.log(deleteItem)
+},[deleteItem])
 
- useEffect(()=>{
-  //  console.log(selectedTag);
-   //  filterShopItems = shopItems.filter((shopItems) => );
-   //  console.log(test);
-  
+  useEffect(() => {
+    if (selectedTag === "") {
+      setFilterShopItems(shopItems);
+    } else {
+      setFilterShopItems(
+        shopItems.filter((product) => selectedTag === product.tag)
+      );
+    }
+  }, [selectedTag]);
 
-
- })
-
-
-
+ 
   return (
     <>
       <Grid
@@ -55,40 +69,39 @@ export default function CardList() {
       >
         <SortbuttonsDOM settag={setSelectedTag}></SortbuttonsDOM>
         <Typography
-          variant="h5"
+          variant="h4"
           component="div"
-          className="Quicksand"       
-          fontFamily="Quicksand"
+          fontFamily="rouge script"
           style={{
             width: "100%",
             justifyContent: "center",
-            fontFamily: "Quicksand, cursive",
+            fontFamily: "Pacifio, cursive",
             textAlign: "center",
           }}
         >
           <Box
             sx={{
-              borderRadius: "20px",
+              borderRadius: "2px",
               backgroundColor: "rgba(255, 226, 162, 0.852)",
               ml: "20%",
               mr: "20%",
             }}
           >
-            <h2 style={{ color: "White" }}>
+            <h3 style={{ color: "White", fontFamily: "Pacifico, cursive" }}>
               Plocka och välj utav vårt stora utbud av blommor!
-            </h2>
+            </h3>
           </Box>
         </Typography>
 
-       
+        <AddProduct hideShow={props.hideShow}></AddProduct>
+
         {filterShopItems.map((item) => (
-          
           <>
             <Grid
               container
               spacing={1}
               item
-              md={3}
+              md={4}
               sm={4}
               xs={10}
               sx={{
@@ -99,8 +112,17 @@ export default function CardList() {
                 alignContent: "center",
               }}
             >
-
-              <CardView key={item.tag} item={item}/>
+              <Box
+              style={{
+                display:"flex",
+                flexDirection:"column",
+                flexWrap:"nowrap"
+              }}>
+                <DeleteButton
+                  hideShow={props.hideShow}
+                  item={item} deleteThisItem={setDeleteItem} ></DeleteButton>
+                <CardView key={item.tag} item={item} />
+              </Box>
             </Grid>
           </>
         ))}
@@ -108,4 +130,3 @@ export default function CardList() {
     </>
   );
 }
-

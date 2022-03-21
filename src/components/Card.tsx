@@ -1,3 +1,4 @@
+
 import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -5,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { ShopItem, shopItems } from "../data/ShopContent";
+import { ShopItem } from "../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import '../App.css'
@@ -16,6 +17,7 @@ import { CartContext } from "../CartContext";
 
 interface Props {
   item: ShopItem;
+  
 }
 
 export default function CardView(props: Props) {
@@ -24,20 +26,7 @@ export default function CardView(props: Props) {
 
   const handleOnClick = () => {
     setItemInCart([...itemInCart, props.item]) 
-    //setItemInCart([props.item]) 
-    
-    //console.log(itemInCart)
-  
   };
-
-
-
-
-  //console.log(itemInCart)
- //console.log(setItemInCart)
-
-
-  
 
   return (
     <Card
@@ -50,6 +39,7 @@ export default function CardView(props: Props) {
       }}
       className="Quicksand"
     >
+      
       <CardMedia
         component="img"
         alt="shopItem"
@@ -75,11 +65,16 @@ export default function CardView(props: Props) {
           className="Quicksand"
           variant="body2"
           color="text.secondary"
-        >
-          {props.item.price} KR/ st
+        > {props.item.price} KR/ st
         </Typography>
       </CardContent>
-      <CardActions style={{ justifyContent: "center", paddingTop:"15px", marginTop:"10px" }}>
+      <CardActions
+        style={{
+          justifyContent: "center",
+          paddingTop: "15px",
+          marginTop: "10px",
+        }}
+      >
         <Button
           sx={{
             color: "pink",

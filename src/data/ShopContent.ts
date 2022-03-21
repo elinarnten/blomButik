@@ -1,5 +1,6 @@
+
 export interface ShopItem {
-  id:number,
+  id: number,
   img:string, 
   title:string,
   price: number, 
