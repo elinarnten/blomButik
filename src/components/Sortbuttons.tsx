@@ -38,38 +38,6 @@ themeButtonSort = createTheme(themeButtonSort, {
   },
 });
 
-// interface Props {
-//   buttonItem: SortButton;
-//   item: ShopItem;
-
-// }
-
-//  function Filtering(props: Props) {
-//    const filtered = shopItems.filter(item => {
-//      return item.tag === props.buttonItem.value
-//     })
-//      console.log(filtered)
-//  }
-
-//  const handleClick = (props:Props) => {
-//    const filtered = shopItems.filter((item) => {
-//      return item.tag === props.buttonItem.value;
-//    });
-//    console.log(filtered);
-//  };
-
-//   function handleFilterChange(props: Props) {
-//     const filtered = shopItems.filter((item) => {
-//       return item.tag == props.buttonItem.value;
-      
-//     });
-//     console.log(filtered);
-//   }
-
-  // onClick={()=>{shopItems.filter(item => {
-  //   let Filtered = item.tag === buttonItem.value;
-  // });
-  // }}
 interface Props {
   settag: Dispatch<SetStateAction<string>>
 }
