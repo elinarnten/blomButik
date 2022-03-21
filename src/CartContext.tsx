@@ -1,20 +1,19 @@
 import { createContext, ReactNode, useState } from "react";
 import { ShopItem } from "./data/ShopContent";
 
-/* export interface ContextInterface {
-  firstname: string,
-  lastname: string,
-  phoneNumber: string,
-  deliveryOption: object,
-  deliveryDate: string, 
-  itemInCart: ShopItem{[]},  
-} */
+export interface ContextInterface {
+  itemInCart: ShopItem[], 
+  setItemInCart: React.Dispatch<React.SetStateAction<ShopItem[]>> 
+}
 
-export const CartContext = createContext<any>(null);
+export const CartContext = createContext<ContextInterface>({
+  itemInCart: [],
+  setItemInCart: () => undefined
+});
 
 
 const CartContextProvider: React.FC<ReactNode> = ({ children }) => {
-    const [itemInCart, setItemInCart] = useState([{}])
+    const [itemInCart, setItemInCart] = useState<ShopItem[]>([])
   
     return (
       <CartContext.Provider
