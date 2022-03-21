@@ -16,16 +16,18 @@ import CheckOutPayment from "./CheckOutPayment";
 import { shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import DeleteButton from "./buttonDeleteItem";
+import SlideIn from "./SlideIn";
 
 
 function App() {
-const [item, setItem] = useState(shopItems);
-
+  const [item, setItem] = useState(shopItems);
+  let [menuOpen, setMenuOpen] = useState<boolean>(false);
   return (
     <ContextProvider>
       <div>
-        <Header />
+        <Header setMenuOpen={setMenuOpen} />
         <BrowserRouter>
+          <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <Routes>
             <Route path="/" element={<StartPage />} />
             <Route path="/kunduppgifter" element={<CheckOutContact />} />
