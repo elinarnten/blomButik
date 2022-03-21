@@ -15,12 +15,14 @@ import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
 import { shopItems } from "../data/ShopContent";
 import SlideIn from "./SlideIn";
+import CartContextProvider from "../CartContext";
 
 function App() {
   const [item, setItem] = useState(shopItems);
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
   return (
     <ContextProvider>
+      <CartContextProvider>
       <div>
         <Header setMenuOpen={setMenuOpen} />
         <BrowserRouter>
@@ -37,6 +39,7 @@ function App() {
         </BrowserRouter>
         <Footer />
       </div>
+      </CartContextProvider>
     </ContextProvider>
   );
 }

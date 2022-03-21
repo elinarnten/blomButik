@@ -5,7 +5,9 @@ import bg from "../images/bg.jpg";
 import { Box } from "@mui/system";
 import SortbuttonsDOM from "./Sortbuttons";
 import { SortButton, sortButtonsData, } from "../data/SortButtonsData";
-import  { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
+//import { Context } from "../Context";
+
 
 
 interface Props {
@@ -18,6 +20,8 @@ export default function CardList() {
   
   let [filterShopItems, setFilterShopItems] = useState(shopItems);
   let [selectedTag, setSelectedTag] = useState<string>("");
+
+  
 
  useEffect(()=>{
   //  console.log(selectedTag);
