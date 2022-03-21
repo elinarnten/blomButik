@@ -1,5 +1,4 @@
 import React from "react";
-import { Context } from "../Context";
 import { useState } from "react";
 import ContextProvider from "../Context";
 import "../App.css";
@@ -18,13 +17,31 @@ import SlideIn from "./SlideIn";
 
 function App() {
   const [item, setItem] = useState(shopItems);
+
+  //SlideIn checker
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  //To remove item
+  // const onRemove = (item) => {
+  //   const exist = item.find;
+  // };
+
+  //To add item
+  // const onAdd = (item) => {
+  //   const exist = item.find;
+  // };
   return (
     <ContextProvider>
       <div>
         <Header setMenuOpen={setMenuOpen} />
         <BrowserRouter>
-          <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <SlideIn
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+            // shopItems={shopItems}
+            item={item}
+            setItem={setItem}
+          />
           <Routes>
             <Route path="/" element={<StartPage />} />
             <Route path="/kunduppgifter" element={<CheckOutContact />} />

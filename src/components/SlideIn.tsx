@@ -9,13 +9,14 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import { ShopItem } from "../data/ShopContent";
+import { ShopItem, shopItems } from "../data/ShopContent";
 import CloseIcon from "@mui/icons-material/Close";
-import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 interface Props {
+  shopItems: ShopItem;
+  setItem: ShopItem;
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -35,18 +36,16 @@ export default function SlideIn(props: Props) {
 
         <Box sx={{ display: "flex" }}>
           Här ska produkterna synas
+          <div>{props.shopItems.id === 0 && <div>Varukorgen är tom </div>}</div>
           <Card>
-            {/* {props.item.img},{props.item.title},{props.item.id}  */}
+            {/* {props.item.img},{props.item.title},{props.item.id} */}
           </Card>
           <IconButton>
             <AddIcon />
           </IconButton>
-          <IconButton>
+          {/* <IconButton onClick={() => onRemove(props.item,id)}>
             <RemoveIcon />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
+          </IconButton> */}
         </Box>
 
         <Box sx={{ position: "absolute", bottom: 0 }}>
@@ -74,7 +73,7 @@ export default function SlideIn(props: Props) {
   return (
     <Box>
       <Box>
-        <Slide direction="left" in={props.menuOpen} mountOnEnter unmountOnExit>
+        <Slide direction="left" in={props.menuOpen}>
           {slideFrame}
         </Slide>
       </Box>
