@@ -6,9 +6,6 @@ import { Box } from "@mui/system";
 import SortbuttonsDOM from "./Sortbuttons";
 import { SortButton, sortButtonsData, } from "../data/SortButtonsData";
 import  { useContext, useEffect, useState } from "react";
-//import { Context } from "../Context";
-import { SortButton } from "../data/SortButtonsData";
-import { useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
 

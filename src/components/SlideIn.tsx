@@ -67,7 +67,7 @@ export default function SlideIn(props: Props) {
         </Box>
 
         <Box sx={{ position: "absolute", bottom: 0 }}>
-          Totalt pris: {itemInCart.price} kr
+          Totalt pris: ?? kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
             <Button
               onClick={() => props.setMenuOpen(false)}
