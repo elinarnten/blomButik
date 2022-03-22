@@ -5,7 +5,6 @@ import { SortButton, sortButtonsData } from "../data/SortButtonsData";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { PropsFor } from "@mui/system";
 
-
 let themeButtonSort = createTheme({
   components: {
     MuiButton: {
@@ -39,18 +38,14 @@ themeButtonSort = createTheme(themeButtonSort, {
 });
 
 interface Props {
-  settag: Dispatch<SetStateAction<string>>
+  settag: Dispatch<SetStateAction<string>>;
 }
-export default function SortbuttonsDOM(props:Props) {
-
-
-
-
+export default function SortbuttonsDOM(props: Props) {
   return (
     <>
       <Box
         sx={{
-          mt: "0.1%",
+          mt: "4rem",
           mb: "0.1%",
           justifyContent: "center",
           alignContent: "center",
@@ -64,10 +59,13 @@ export default function SortbuttonsDOM(props:Props) {
         <ThemeProvider theme={themeButtonSort}>
           {sortButtonsData.map((buttonItem) => (
             <Button
-              onClick={() => {props.settag(buttonItem.value)}}
+              onClick={() => {
+                props.settag(buttonItem.value);
+              }}
               variant="contained"
               value={buttonItem.value}
               key={buttonItem.name}
+              sx={{ position: "static" }}
             >
               {buttonItem.name}
             </Button>
