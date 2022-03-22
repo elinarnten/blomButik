@@ -4,10 +4,11 @@ import { Grid, Typography } from "@mui/material";
 import bg from "../images/bg.jpg";
 import { Box } from "@mui/system";
 import SortbuttonsDOM from "./Sortbuttons";
-import { SortButton, sortButtonsData, } from "../data/SortButtonsData";
-import  { useContext, useEffect, useState } from "react";
+import { SortButton } from "../data/SortButtonsData";
+import { useContext, useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
+import { ProductContext } from '../productContext'
 
 
 interface Props {
@@ -21,29 +22,8 @@ hideShow: Boolean
 
 }
 export default function CardList(props:Adminprops) {
-  let [filterShopItems, setFilterShopItems] = useState(shopItems);
-  let [selectedTag, setSelectedTag] = useState<string>("");
-  let [deleteItem, setDeleteItem] = useState<number>(0)
 
-useEffect(()=> {
-    setFilterShopItems(
-      shopItems.filter((product) => deleteItem !== product.id) 
-    );
-
-  
-  console.log(deleteItem)
-},[deleteItem])
-
-  useEffect(() => {
-    if (selectedTag === "") {
-      setFilterShopItems(shopItems);
-    } else {
-      setFilterShopItems(
-        shopItems.filter((product) => selectedTag === product.tag)
-      );
-    }
-  }, [selectedTag]);
-
+  const {removeProduct,addProduct,updateProduct,filterProduct,products} = useContext(ProductContext)
  
   return (
     <>
@@ -64,7 +44,7 @@ useEffect(()=> {
           alignItems: "center",
         }}
       >
-        <SortbuttonsDOM settag={setSelectedTag}></SortbuttonsDOM>
+        {/* <SortbuttonsDOM settag={filterProduct}></SortbuttonsDOM> */}
         <Typography
           variant="h4"
           component="div"
@@ -92,7 +72,7 @@ useEffect(()=> {
 
         <AddProduct hideShow={props.hideShow}></AddProduct>
 
-        {filterShopItems.map((item) => (
+        {products.map((item) => (
           <>
             <Grid
               container
@@ -117,7 +97,7 @@ useEffect(()=> {
               }}>
                 <DeleteButton
                   hideShow={props.hideShow}
-                  item={item} deleteThisItem={setDeleteItem} ></DeleteButton>
+                  item={item} deleteThisItem={removeProduct} ></DeleteButton>
                 <CardView key={item.tag} item={item} />
               </Box>
             </Grid>
@@ -127,3 +107,17 @@ useEffect(()=> {
     </>
   );
 }
+// setFilterShopItems(
+// shopItems.filter((product) => deleteItem !== product.id) 
+//     [deleteItem])
+
+// useEffect(() => {
+//   if (selectedTag === "") {
+//       setFilterShopItems(shopItems);
+//     } else {
+//       setFilterShopItems(
+//         shopItems.filter((product) => selectedTag === product.tag)
+//       );
+//     }
+    
+//   }, [selectedTag]);

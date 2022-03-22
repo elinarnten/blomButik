@@ -17,7 +17,9 @@ import { shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import DeleteButton from "./buttonDeleteItem";
 import SlideIn from "./SlideIn";
+import ProductContextProvider from "../productContext";
 import CartContextProvider from "../CartContext";
+
 
 function App() {
   const [item, setItem] = useState(shopItems);
@@ -26,8 +28,9 @@ function App() {
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
-    <ContextProvider>
+    <ProductContextProvider>
       <CartContextProvider>
+      <ContextProvider>
         <div>
           <Header setMenuOpen={setMenuOpen} />
           <BrowserRouter>
@@ -48,9 +51,9 @@ function App() {
           </BrowserRouter>
           <Footer />
         </div>
-      </CartContextProvider>
-    </ContextProvider>
-  );
+      </ContextProvider>
+        </CartContextProvider>
+    </ProductContextProvider>
+    )
 }
-
 export default App;
