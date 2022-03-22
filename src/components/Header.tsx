@@ -116,6 +116,7 @@ function Header(props: Props) {
               aria-label="Favoriter"
               color="inherit"
               sx={{ flexGrow: 1 }}
+              //Open slideIn cart menu
               onClick={() => props.setMenuOpen(true)}
             >
               <Badge badgeContent={4} color="primary">
