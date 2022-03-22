@@ -10,6 +10,7 @@ import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
 import { ProductContext } from '../productContext'
 
+
 interface Props {
   buttonItem: SortButton;
   item: ShopItem;
@@ -21,8 +22,8 @@ hideShow: Boolean
 
 }
 export default function CardList(props:Adminprops) {
-  const {removeProduct,addProduct,updateProduct,filterProduct,products} = useContext(ProductContext)
 
+  const {removeProduct,addProduct,updateProduct,filterProduct,products} = useContext(ProductContext)
  
   return (
     <>

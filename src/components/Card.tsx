@@ -1,3 +1,5 @@
+
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -8,15 +10,23 @@ import { ShopItem } from "../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import '../App.css'
+import { useState } from "react";
+import { IconButton } from "@mui/material";
+import { Context } from "../Context";
+import { CartContext } from "../CartContext";
 
 interface Props {
   item: ShopItem;
   
 }
 
-
-
 export default function CardView(props: Props) {
+
+  const {itemInCart, setItemInCart} = useContext(CartContext)
+
+  const handleOnClick = () => {
+    setItemInCart([...itemInCart, props.item]) 
+  };
 
   return (
     <Card
@@ -81,6 +91,8 @@ export default function CardView(props: Props) {
         >
           <FavoriteIcon />
         </Button>
+
+        
         <Button
           size="small"
           variant="contained"
@@ -91,10 +103,13 @@ export default function CardView(props: Props) {
             fontSize: "8px",
             alignSelf: "center",
           }}
-          onClick={() => console.log(props.item)}
-        >
-          <ShoppingCartIcon></ShoppingCartIcon>
+          //onClick={ (e) => handleOnClick(e, setItemInCart)}
+         onClick={handleOnClick} 
+          >
+        
+          <ShoppingCartIcon />
         </Button>
+    
       </CardActions>
     </Card>
   );

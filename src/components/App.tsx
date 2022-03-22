@@ -18,6 +18,8 @@ import Admin from "./Admin";
 import DeleteButton from "./buttonDeleteItem";
 import SlideIn from "./SlideIn";
 import ProductContextProvider from "../productContext";
+import CartContextProvider from "../CartContext";
+
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
   return (
     <ProductContextProvider>
+      <CartContextProvider>
       <ContextProvider>
         <div>
           <Header setMenuOpen={setMenuOpen} />
@@ -47,8 +50,8 @@ function App() {
           <Footer />
         </div>
       </ContextProvider>
+        </CartContextProvider>
     </ProductContextProvider>
-  );
+    )
 }
-
 export default App;
