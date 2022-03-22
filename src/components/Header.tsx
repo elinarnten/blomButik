@@ -7,7 +7,9 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Favorite from "@mui/icons-material/Favorite";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
+import Badge from "@mui/material/Badge";
 import { Menu, MenuItem } from "@mui/material";
+import { pink } from "@mui/material/colors";
 
 interface Props {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,9 +25,15 @@ function Header(props: Props) {
     setAnchorEl(null);
   };
 
-  console.log(props.setMenuOpen);
   return (
-    <Box>
+    <Box
+      style={{
+        overflow: "hidden",
+        position: "fixed",
+        top: 0,
+        width: "100%",
+      }}
+    >
       <AppBar
         position="static"
         style={{
@@ -110,7 +118,9 @@ function Header(props: Props) {
               sx={{ flexGrow: 1 }}
               onClick={() => props.setMenuOpen(true)}
             >
-              <ShoppingBasket />
+              <Badge badgeContent={4} color="primary">
+                <ShoppingBasket />
+              </Badge>
             </IconButton>
           </div>
         </Toolbar>
