@@ -1,11 +1,13 @@
 
 export interface ShopItem {
+  [x: string]: any;
   id: number,
   img:string, 
   title:string,
   price: number, 
   tag: string,
   liked: Boolean, 
+  quantity: number
 }
 
 export const shopItems: ShopItem[] = [
@@ -16,6 +18,7 @@ export const shopItems: ShopItem[] = [
     price: 45,
     tag: "rose",
     liked: false,
+    quantity: 0
   },
   {
     id: 2,
@@ -23,7 +26,8 @@ export const shopItems: ShopItem[] = [
     title: "Pink Rose",
     price: 50,
     tag: "rose",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 3,
@@ -31,7 +35,8 @@ export const shopItems: ShopItem[] = [
     title: "Pink Tulips",
     price: 120,
     tag: "bouqette",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 4,
@@ -39,7 +44,8 @@ export const shopItems: ShopItem[] = [
     title: "Blue Orchid",
     price: 100,
     tag: "orchid",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 5,
@@ -47,7 +53,8 @@ export const shopItems: ShopItem[] = [
     title: "Sunflowers",
     price: 50,
     tag: "sunflower",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 6,
@@ -55,7 +62,8 @@ export const shopItems: ShopItem[] = [
     title: "Colorful Tulpis",
     price: 90,
     tag: "bouqette",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 7,
@@ -63,7 +71,8 @@ export const shopItems: ShopItem[] = [
     title: "Orange Tulips",
     price: 90,
     tag: "tulip",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 8,
@@ -72,6 +81,7 @@ export const shopItems: ShopItem[] = [
     price: 345,
     tag: "bouqette",
     liked: false,
+    quantity: 0
   },
   {
     id: 9,
@@ -80,6 +90,7 @@ export const shopItems: ShopItem[] = [
     price: 250,
     tag: "bouqette",
     liked: false,
+    quantity: 0
   },
   {
     id: 10,
@@ -88,6 +99,7 @@ export const shopItems: ShopItem[] = [
     price: 120,
     tag: "sunflower",
     liked: false,
+    quantity: 0
   },
   {
     id: 11,
@@ -96,6 +108,7 @@ export const shopItems: ShopItem[] = [
     price: 100,
     tag: "bouqette",
     liked: false,
+    quantity: 0
   },
   {
     id: 12,
@@ -103,7 +116,8 @@ export const shopItems: ShopItem[] = [
     title: "Colorful Bouqette",
     price: 130,
     tag: "bouqette",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 13,
@@ -111,7 +125,8 @@ export const shopItems: ShopItem[] = [
     title: "Colorful Tulpis",
     price: 90,
     tag: "tulip",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 14,
@@ -119,7 +134,8 @@ export const shopItems: ShopItem[] = [
     title: "Yellow and Orange Lilly",
     price: 90,
     tag: "lilly",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 15,
@@ -127,7 +143,8 @@ export const shopItems: ShopItem[] = [
     title: "Pink Orchid",
     price: 70,
     tag: "orchid",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 16,
@@ -135,7 +152,8 @@ export const shopItems: ShopItem[] = [
     title: "Small Sunflower Bouqette",
     price: 100,
     tag: "bouqette",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 17,
@@ -143,7 +161,8 @@ export const shopItems: ShopItem[] = [
     title: "White Lilly",
     price: 100,
     tag: "lilly",
-    liked: false
+    liked: false,
+    quantity: 0
   },
   {
     id: 18,
@@ -151,6 +170,7 @@ export const shopItems: ShopItem[] = [
     title: "White Roses Big Bouqette",
     price: 450,
     tag: "bouqette",
-    liked: false
+    liked: false,
+    quantity: 0
   },
 ];

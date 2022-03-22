@@ -19,15 +19,23 @@ import { Context } from "../Context";
 import { CartContext } from "../CartContext";
 
 interface Props {
+  item: ShopItem
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function SlideIn(props: Props) {
-  const { itemInCart, setItemInCart } = useContext(CartContext);
+  const { itemInCart, setItemInCart, addItem, removeItem } = useContext(CartContext);
 
-  console.log(itemInCart);
-  console.log();
+  const handleAddItem = () => {
+    addItem(props.item)
+   }
+
+   const handleRemoveItem = () => {
+    removeItem(props.item)
+   }
+
+  
 
   const slideFrame = (
     <Paper
@@ -55,10 +63,12 @@ export default function SlideIn(props: Props) {
                 sx={{ m: 1, display: "flex", flexDirection: "column" }}
               >
                 {item.title}
-                <p>{item.price} kr</p>
+                {item.price} kr
 
-                <IconButton>
+                <IconButton onClick={handleAddItem}>
                   <AddIcon />
+                  </IconButton>
+                  <IconButton onClick={handleRemoveItem}>
                   <RemoveIcon />
                 </IconButton>
               </Typography>

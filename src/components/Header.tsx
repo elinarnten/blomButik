@@ -23,7 +23,6 @@ function Header(props: Props) {
     setAnchorEl(null);
   };
 
-  console.log(props.setMenuOpen);
   return (
     <Box>
       <AppBar
