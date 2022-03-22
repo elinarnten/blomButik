@@ -17,6 +17,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { Context } from "../Context";
 import { CartContext } from "../CartContext";
+import { createWriteStream } from "fs";
 
 interface Props {
   menuOpen: boolean;
@@ -26,8 +27,12 @@ interface Props {
 export default function SlideIn(props: Props) {
   const { itemInCart, setItemInCart } = useContext(CartContext);
 
-  console.log(itemInCart);
-  console.log();
+  const addItem = () => {
+  
+    console.log(addItem)
+  };
+
+
 
   const slideFrame = (
     <Paper
@@ -42,25 +47,36 @@ export default function SlideIn(props: Props) {
         <Typography variant="h5">Varukorg</Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", mt: 1 }}>
-          {itemInCart.map((item: any) => (
-            <Card key={item} sx={{ display: "flex" }}>
+          {itemInCart.map((cartItem) => (
+            <Card key={cartItem.id} sx={{ display: "flex" }}>
               <CardMedia
                 sx={{ width: "50%" }}
                 component="img"
                 height="100"
-                image={item.img}
+                image={cartItem.img}
               ></CardMedia>
 
               <Typography
                 sx={{ m: 1, display: "flex", flexDirection: "column" }}
               >
-                {item.title}
-                <p>{item.price} kr</p>
+                {cartItem.title}
+                <p>{cartItem.price} kr</p>
+                
+                
 
-                <IconButton>
+                <Box>
+                  <IconButton
+                  //onClick = {() => {addItem(), cartItem.quantity}}
+                  //onClick={addProductToCart}
+                  >
                   <AddIcon />
+                  </IconButton>
+                  {cartItem.quantity}
+                  <IconButton
+                  >
                   <RemoveIcon />
                 </IconButton>
+                </Box>
               </Typography>
             </Card>
           ))}

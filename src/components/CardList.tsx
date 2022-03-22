@@ -95,6 +95,7 @@ useEffect(()=> {
         {filterShopItems.map((item) => (
           <>
             <Grid
+            //key={item.id}
               container
               spacing={1}
               item
