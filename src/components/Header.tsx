@@ -7,12 +7,22 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Favorite from "@mui/icons-material/Favorite";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
+import Badge from "@mui/material/Badge";
 import { Menu, MenuItem } from "@mui/material";
+import { pink } from "@mui/material/colors";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 interface Props {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: pink[100],
+    },
+  },
+});
 function Header(props: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -23,9 +33,15 @@ function Header(props: Props) {
     setAnchorEl(null);
   };
 
-  console.log(props.setMenuOpen);
   return (
-    <Box>
+    <Box
+      style={{
+        overflow: "hidden",
+        position: "fixed",
+        top: 0,
+        width: "100%",
+      }}
+    >
       <AppBar
         position="static"
         style={{
@@ -103,15 +119,19 @@ function Header(props: Props) {
               <Favorite />
             </IconButton>
 
-            <IconButton
-              size="large"
-              aria-label="Favoriter"
-              color="inherit"
-              sx={{ flexGrow: 1 }}
-              onClick={() => props.setMenuOpen(true)}
-            >
-              <ShoppingBasket />
-            </IconButton>
+            <ThemeProvider theme={theme}>
+              <IconButton
+                size="large"
+                aria-label="Favoriter"
+                color="inherit"
+                sx={{ flexGrow: 1 }}
+                onClick={() => props.setMenuOpen(true)}
+              >
+                <Badge badgeContent={4} color="primary">
+                  <ShoppingBasket />
+                </Badge>
+              </IconButton>
+            </ThemeProvider>
           </div>
         </Toolbar>
       </AppBar>

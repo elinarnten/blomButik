@@ -21,10 +21,12 @@ import ProductContextProvider from "../productContext";
 import CartContextProvider from "../CartContext";
 
 
-
 function App() {
   const [item, setItem] = useState(shopItems);
+
+  //Menuopen checker (cart menu slideIn)
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
+
   return (
     <ProductContextProvider>
       <CartContextProvider>

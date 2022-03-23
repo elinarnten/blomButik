@@ -19,13 +19,23 @@ body {
 } */
 
 @font-face {
-  font-family: "Quicksand" ;
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: normal;
-  src: local('Quicksand'), url(fonts/Quicksand\ Medium.woff2) format('woff2');
+  src: local("Quicksand"), url(fonts/Quicksand\ Medium.woff2) format("woff2");
 }
 
-.Quicksand{
-    font-family:"Quickand";
+.Quicksand {
+  font-family: "Quickand";
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
