@@ -5,6 +5,7 @@ import SortbuttonsDOM from "./components/Sortbuttons";
 import { ShopItem, shopItems } from "./data/ShopContent";
 import { SortButton, sortButtonsData } from './data/SortButtonsData'
 interface ProductContextValue {
+  add: ShopItem[];
   products: ShopItem[];
   removeProduct: (shopItem: ShopItem) => void;
   addProduct: (shopItem: ShopItem) => void;
@@ -14,6 +15,7 @@ interface ProductContextValue {
 
 export const ProductContext = createContext<ProductContextValue>({
   products: [],
+  add: shopItems,
   removeProduct: () => undefined,
   addProduct: () => undefined,
   updateProduct: () => undefined,
@@ -23,9 +25,13 @@ export const ProductContext = createContext<ProductContextValue>({
   
 });
 
-const ProductContextProvider: React.FC<ReactNode> = (props) => {
+const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
+   const [add, setAdd] = useState<ShopItem[]>(shopItems);
   let [products, setProducts] = useState(
+
+
       shopItems /* Antingen LS eller ShopItems */
+      
   );
 
   const removeProduct = (shopItem: ShopItem) => {
@@ -35,6 +41,17 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
    
   };
   const addProduct = (shopItem: ShopItem) => {
+    console.log(shopItem)
+    
+
+    let copyProducts = [...products]
+    let matchingIndex = copyProducts.findIndex(
+      (item) => item.id == shopItem.id
+      );
+      if (matchingIndex == -1){
+        copyProducts.push(shopItem)
+      }
+   setProducts(copyProducts)
     
   };
   const updateProduct = (shopItem: ShopItem) => {
@@ -56,6 +73,7 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
   return (
     <ProductContext.Provider
       value={{
+        add,
         products,
         removeProduct,
         addProduct,
@@ -63,7 +81,7 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
         filterProduct,
       }}
     >
-      {props.children}
+      {children}
     </ProductContext.Provider>
   );
 };
