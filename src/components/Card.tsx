@@ -13,20 +13,32 @@ import '../App.css'
 import { useState } from "react";
 import { IconButton } from "@mui/material";
 import { Context } from "../Context";
-import { CartContext } from "../CartContext";
+import { CartContext, CartItem } from "../CartContext";
+import { CloseOutlined } from "@mui/icons-material";
+
 
 interface Props {
   item: ShopItem;
-  
-}
+  //shopItem: ShopItem 
+} 
 
-export default function CardView(props: Props) {
+ 
 
-  const {itemInCart, setItemInCart} = useContext(CartContext)
+export default function CardView( props: Props) {
 
-  const handleOnClick = () => {
-    setItemInCart([...itemInCart, props.item]) 
-  };
+  const {itemInCart, setItemInCart, addItem} = useContext(CartContext)
+
+ const handleOnClick = () => {
+addItem(props.item);
+};
+//console.log(itemInCart)
+/* 
+  const handleOnClick = (product: ShopItem, cartArray: CartItem[]) => {
+    //addItem(product, cartArray)
+   setItemInCart([...cartArray, product])
+   
+    console.log(cartArray)
+  }; */
 
   return (
     <Card

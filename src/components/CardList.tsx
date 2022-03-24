@@ -73,8 +73,8 @@ export default function CardList(props:Adminprops) {
         <AddProduct hideShow={props.hideShow}></AddProduct>
 
         {products.map((item) => (
-          <>
             <Grid
+            key={item.id}
               container
               spacing={1}
               item
@@ -101,7 +101,6 @@ export default function CardList(props:Adminprops) {
                 <CardView key={item.tag} item={item} />
               </Box>
             </Grid>
-          </>
         ))}
       </Grid>
     </>

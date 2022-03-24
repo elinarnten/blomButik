@@ -1,9 +1,15 @@
-import { createContext, ReactNode, useState } from "react";
+import { createWriteStream } from "fs";
+import { createContext, Key, ReactNode, useState } from "react";
+import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
 import { ShopItem, shopItems } from "./data/ShopContent";
 
+export interface CartItem {
+  shopItem: ShopItem,
+  quantity: number
+}
 export interface ContextInterface {
-  itemInCart: ShopItem[], 
-  setItemInCart: React.Dispatch<React.SetStateAction<ShopItem[]>> 
+  itemInCart: CartItem[], 
+  setItemInCart: React.Dispatch<React.SetStateAction<any[]>> 
   addItem: (shopItem: ShopItem) => void,
   removeItem: (shopItem: ShopItem) => void,
 }
@@ -17,36 +23,30 @@ export const CartContext = createContext<ContextInterface>({
 
 
 const CartContextProvider: React.FC<ReactNode> = ( props ) => {
-    const [itemInCart, setItemInCart] = useState(shopItems)
-   
-  const addItem = (shopItem: ShopItem) => {
-    const clonedItems: ShopItem[] = Object.assign([], itemInCart);
-    for (const item of clonedItems) {
-      if (item.id == shopItem.id) {
-        item.quantity += 1;
-        setItemInCart(clonedItems)
-        return;
-      }
-    }
-    clonedItems.push({quantity: 1})
-    setItemInCart(clonedItems) 
+    const [itemInCart, setItemInCart] = useState<CartItem[]>([])
+
+
+const addItem = (shopItem: ShopItem) => {
+
+  let cartListCopy = [...itemInCart]
+
+  let foundIndex = cartListCopy.findIndex((cartItem) => cartItem.shopItem.id == shopItem.id)
+  if (foundIndex == -1) {
+    cartListCopy.push({shopItem, quantity: 1})
+  } else {
+    cartListCopy[foundIndex].quantity++
   }
+  
+    setItemInCart(cartListCopy)
+  }
+
+
 
 
   const removeItem = (shopItem: ShopItem) => {
-    const clonedItems: ShopItem[] = Object.assign([], itemInCart)
-    for (const item of clonedItems){
-      if (item.id === shopItem.id) {
-        item.quantity -= 1;
-        if (item.quantity <= 0) {
-          clonedItems.splice(clonedItems.indexOf(item), 1);
-        }
-        setItemInCart(clonedItems)
-        return;
-      }
+  
     }
-    setItemInCart(clonedItems)
-  }
+  
 
 
     return (

@@ -19,28 +19,28 @@ import { Context } from "../Context";
 import { CartContext } from "../CartContext";
 
 interface Props {
-  item: ShopItem
+  //item: ShopItem
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function SlideIn(props: Props) {
-  const { itemInCart, setItemInCart, addItem, removeItem } = useContext(CartContext);
+  const { itemInCart, setItemInCart, addItem, removeItem } =
+    useContext(CartContext);
+
+  //console.log(itemInCart.id)
 
   const handleAddItem = () => {
-    addItem(props.item)
-   }
+    //addItem()
+  };
 
-   const handleRemoveItem = () => {
-    removeItem(props.item)
-   }
-
-  
+  const handleRemoveItem = () => {
+    //removeItem()
+  };
 
   const slideFrame = (
-    <Paper
+    <Box
       sx={{ m: 1, position: "fixed", top: 0, bottom: 0, right: 0, zIndex: 1 }}
-      elevation={2}
     >
       <IconButton onClick={() => props.setMenuOpen(false)}>
         <CloseIcon sx={{ color: "black" }} />
@@ -50,33 +50,42 @@ export default function SlideIn(props: Props) {
         <Typography variant="h5">Varukorg</Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", mt: 1 }}>
-          {itemInCart.map((item: any) => (
-            <Card key={item} sx={{ display: "flex" }}>
+          {itemInCart.map((cartItem) => (
+            <Card
+              key={cartItem.shopItem.id}
+              sx={{ display: "flex", m: 1, height: "100%", width: "100%" }}
+            >
               <CardMedia
-                sx={{ width: "50%" }}
+                sx={{ width: "40%", height: "100%" }}
                 component="img"
-                height="100"
-                image={item.img}
+                image={cartItem.shopItem.img}
               ></CardMedia>
 
               <Typography
-                sx={{ m: 1, display: "flex", flexDirection: "column" }}
+                sx={{ display: "flex", flexDirection: "column", m: 1 }}
               >
-                {item.title}
-                {item.price} kr
+                <p style={{ fontSize: "80%", fontWeight: "bold" }}>
+                  {cartItem.shopItem.title}
+                </p>
 
-                <IconButton onClick={handleAddItem}>
-                  <AddIcon />
+                <p style={{ fontSize: "60%" }}>{cartItem.shopItem.price} kr</p>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <IconButton onClick={handleAddItem}>
+                    <AddIcon sx={{ fontSize: "50%" }} />
                   </IconButton>
+
+                  <p style={{ fontSize: "50%" }}>{cartItem.quantity}</p>
+
                   <IconButton onClick={handleRemoveItem}>
-                  <RemoveIcon />
-                </IconButton>
+                    <RemoveIcon sx={{ fontSize: "50%" }} />
+                  </IconButton>
+                </Box>
               </Typography>
             </Card>
           ))}
         </Box>
 
-        <Box sx={{ position: "absolute", bottom: 0 }}>
+        <Box>
           Totalt pris: ?? kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
             <Button
@@ -86,8 +95,9 @@ export default function SlideIn(props: Props) {
                 width: "auto",
                 backgroundColor: "pink",
                 color: "black",
-                mb: "1rem",
-                mt: "0.5rem",
+                mb: 1,
+                mt: 1,
+                ml: 2,
               }}
             >
               Till kassan
@@ -95,16 +105,26 @@ export default function SlideIn(props: Props) {
           </Link>
         </Box>
       </Box>
-    </Paper>
+    </Box>
   );
 
   return (
     <Box>
-      <Box>
-        <Slide direction="left" in={props.menuOpen} mountOnEnter unmountOnExit>
-          {slideFrame}
-        </Slide>
-      </Box>
+      <Slide
+        style={{
+          width: "30%",
+          height: "80%",
+          backgroundColor: "rgba(244, 234, 198, 0.4)",
+          overflow: "hidden",
+          overflowY: "scroll",
+        }}
+        direction="left"
+        in={props.menuOpen}
+        mountOnEnter
+        unmountOnExit
+      >
+        {slideFrame}
+      </Slide>
     </Box>
   );
 }
