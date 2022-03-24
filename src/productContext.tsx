@@ -52,7 +52,7 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
       ];
     }
 
-    return listCopy.splice(0, 4);
+    return listCopy.splice(0, 3);
   };
 
   let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
