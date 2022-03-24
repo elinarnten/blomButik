@@ -25,18 +25,20 @@ interface Props {
 }
 
 export default function SlideIn(props: Props) {
-  const { itemInCart, setItemInCart, addItem, removeItem } =
+  const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
     useContext(CartContext);
 
   //console.log(itemInCart.id)
 
-  const handleAddItem = () => {
-    //addItem()
-  };
+ /*  const handleAddItem = () => {
+    addItem()
+  }; */
 
-  const handleRemoveItem = () => {
+  /* const handleRemoveItem = () => {
     //removeItem()
-  };
+  }; */
+
+  let totalPrice = getTotalPrice()
 
   const slideFrame = (
     <Box
@@ -64,29 +66,30 @@ export default function SlideIn(props: Props) {
               <Typography
                 sx={{ display: "flex", flexDirection: "column", m: 1 }}
               >
-                <p style={{ fontSize: "80%", fontWeight: "bold" }}>
+                
                   {cartItem.shopItem.title}
-                </p>
-
-                <p style={{ fontSize: "60%" }}>{cartItem.shopItem.price} kr</p>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <IconButton onClick={handleAddItem}>
+                {cartItem.shopItem.price} kr
+              
+                
+                  <IconButton onClick={() => addItem(cartItem.shopItem)}>
                     <AddIcon sx={{ fontSize: "50%" }} />
                   </IconButton>
 
-                  <p style={{ fontSize: "50%" }}>{cartItem.quantity}</p>
+                  {cartItem.quantity}
+              
 
-                  <IconButton onClick={handleRemoveItem}>
+                  <IconButton onClick={() => removeItem(cartItem.shopItem)}>
                     <RemoveIcon sx={{ fontSize: "50%" }} />
                   </IconButton>
-                </Box>
+      
               </Typography>
             </Card>
           ))}
         </Box>
 
+        
         <Box>
-          Totalt pris: ?? kr
+          Totalt pris:  {totalPrice}  kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
             <Button
               onClick={() => props.setMenuOpen(false)}
@@ -104,6 +107,7 @@ export default function SlideIn(props: Props) {
             </Button>
           </Link>
         </Box>
+      
       </Box>
     </Box>
   );
