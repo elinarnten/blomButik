@@ -13,13 +13,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
-import { shopItems } from "../data/ShopContent";
+import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import DeleteButton from "./buttonDeleteItem";
 import SlideIn from "./SlideIn";
 import ProductContextProvider from "../productContext";
 import CartContextProvider from "../CartContext";
-
+import CardRandomContextProvider from "../CardRandomContext";
 
 function App() {
   const [item, setItem] = useState(shopItems);
@@ -30,30 +30,32 @@ function App() {
   return (
     <ProductContextProvider>
       <CartContextProvider>
-      <ContextProvider>
-        <div>
-          <Header setMenuOpen={setMenuOpen} />
-          <BrowserRouter>
-            <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-            <Routes>
-              <Route path="/" element={<StartPage />} />
-              <Route path="/kunduppgifter" element={<CheckOutContact />} />
-              <Route path="/Admin" element={<Admin hideShow={true} />} />
-              <Route path="/betalning" element={<CheckOutPayment />} />
-              <Route path="/leverans" element={<CheckOutDelivery />} />
-              <Route path="/om" element={<About />} />
-              <Route
-                path="/sortiment"
-                element={<CardList hideShow={false} />}
-              />
-              <Route path="/kontakt" element={<Contact />} />
-            </Routes>
-          </BrowserRouter>
-          <Footer />
-        </div>
-      </ContextProvider>
-        </CartContextProvider>
+        <CardRandomContextProvider>
+          <ContextProvider>
+            <div>
+              <Header setMenuOpen={setMenuOpen} />
+              <BrowserRouter>
+                <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+                <Routes>
+                  <Route path="/" element={<StartPage />} />
+                  <Route path="/kunduppgifter" element={<CheckOutContact />} />
+                  <Route path="/Admin" element={<Admin hideShow={true} />} />
+                  <Route path="/betalning" element={<CheckOutPayment />} />
+                  <Route path="/leverans" element={<CheckOutDelivery />} />
+                  <Route path="/om" element={<About />} />
+                  <Route
+                    path="/sortiment"
+                    element={<CardList hideShow={false} />}
+                  />
+                  <Route path="/kontakt" element={<Contact />} />
+                </Routes>
+              </BrowserRouter>
+              <Footer />
+            </div>
+          </ContextProvider>
+        </CardRandomContextProvider>
+      </CartContextProvider>
     </ProductContextProvider>
-    )
+  );
 }
 export default App;

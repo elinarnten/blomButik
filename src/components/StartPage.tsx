@@ -5,8 +5,15 @@ import React from "react";
 import temporary from "../Assets/temporaryBackground.jpg";
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 import { Link } from "react-router-dom";
+import StartPageContent from "./StartPageContent";
+import CardView from "./Card";
+import { ShopItem, shopItems } from "../data/ShopContent";
 
-function StartPage() {
+interface Props {
+  item: ShopItem;
+}
+
+function StartPage(props: Props) {
   return (
     <Box
       sx={{
@@ -52,6 +59,14 @@ function StartPage() {
             Till butiken
           </Button>
         </Link>
+      </Box>
+      {/* <StartPageContent item={props.item} /> */}
+      <Box sx={{ display: "flex" }}>
+        <Box>
+          {/* {cardList.map((item) => ( */}
+          <CardView item={props.item} />
+          {/* ))} */};
+        </Box>
       </Box>
     </Box>
   );
