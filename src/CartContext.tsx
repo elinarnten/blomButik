@@ -31,40 +31,39 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
   const addItem = (shopItem: ShopItem) => {
     let cartListCopy = [...itemInCart];
 
-    let foundIndex = cartListCopy.findIndex(
-      (cartItem) => cartItem.shopItem.id == shopItem.id
+    const foundIndex = cartListCopy.findIndex(
+      (cartItem) => cartItem.shopItem.id === shopItem.id
     );
-    if (foundIndex == -1) {
+    if (foundIndex === -1) {
       cartListCopy.push({ shopItem, quantity: 1 });
     } else {
       cartListCopy[foundIndex].quantity++;
     }
     setItemInCart(cartListCopy);
-  /*   getTotalPrice();
-    getTotalQuantity(); */
   };
 
   const removeItem = (shopItem: ShopItem) => {
     let cartListCopy = [...itemInCart];
 
-    let foundIndex = cartListCopy.findIndex(
-      (cartItem) => cartItem.shopItem.id == shopItem.id
+    const foundIndex = cartListCopy.findIndex(
+      (cartItem) => cartItem.shopItem.id === shopItem.id
     );
-    if (foundIndex == 1) {
+    if (cartListCopy[foundIndex].quantity === 1) {
       cartListCopy.splice(foundIndex, 1);
-     
-      //console.log(foundIndex) */
-    }  else {
+      setItemInCart(cartListCopy) 
+  }
+     else {
       cartListCopy[foundIndex].quantity--;
+      setItemInCart(cartListCopy);
     } 
-    setItemInCart(cartListCopy);
+    setItemInCart(cartListCopy)
+    console.log(foundIndex)
   };
 
   const getTotalPrice = (): number => {
     let sum = 0;
     for (const item of itemInCart) {
       sum += item.shopItem.price * item.quantity;
-      console.log(sum);
     }
     return sum;
   };
