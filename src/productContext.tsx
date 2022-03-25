@@ -4,6 +4,7 @@ import Sortbuttons from "./components/Sortbuttons";
 import SortbuttonsDOM from "./components/Sortbuttons";
 import { ShopItem, shopItems } from "./data/ShopContent";
 import { SortButton, sortButtonsData } from './data/SortButtonsData'
+import { useLocalStorageState } from "./LocalStorage";
 interface ProductContextValue {
   add: ShopItem[];
   products: ShopItem[];
@@ -27,12 +28,7 @@ export const ProductContext = createContext<ProductContextValue>({
 
 const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
    const [add, setAdd] = useState<ShopItem[]>(shopItems);
-  let [products, setProducts] = useState(
-
-
-      shopItems /* Antingen LS eller ShopItems */
-      
-  );
+  let [products, setProducts] = useLocalStorageState<ShopItem[]>(shopItems,"items");
 
   const removeProduct = (shopItem: ShopItem) => {
     console.log(shopItem)
