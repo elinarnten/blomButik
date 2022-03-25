@@ -15,7 +15,6 @@ import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
 import { shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
-import DeleteButton from "./buttonDeleteItem";
 import SlideIn from "./SlideIn";
 import ProductContextProvider from "../productContext";
 import CartContextProvider from "../CartContext";
