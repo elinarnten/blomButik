@@ -1,7 +1,7 @@
 import React from "react";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import { useState } from "react";
-import ContextProvider from "../Context";
+import ConsumerContextProvider from "../ConsumerContext";
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -15,7 +15,6 @@ import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
 import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
-import DeleteButton from "./buttonDeleteItem";
 import SlideIn from "./SlideIn";
 import ProductContextProvider from "../productContext";
 import CartContextProvider from "../CartContext";
@@ -29,13 +28,14 @@ function App() {
   return (
     <ProductContextProvider>
       <CartContextProvider>
-        <ContextProvider>
+        <ConsumerContextProvider>
           <div>
             <Header setMenuOpen={setMenuOpen} />
             <BrowserRouter>
               <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
               <Routes>
                 <Route path="/" element={<StartPage />} />
+                <Route path="/kontakt" element={<Contact />} />
                 <Route path="/kunduppgifter" element={<CheckOutContact />} />
                 <Route path="/Admin" element={<Admin hideShow={true} />} />
                 <Route path="/betalning" element={<CheckOutPayment />} />
@@ -45,12 +45,11 @@ function App() {
                   path="/sortiment"
                   element={<CardList hideShow={false} />}
                 />
-                <Route path="/kontakt" element={<Contact />} />
               </Routes>
-            </BrowserRouter>
-            <Footer />
+              <Footer /> 
+              </BrowserRouter>
           </div>
-        </ContextProvider>
+        </ConsumerContextProvider>
       </CartContextProvider>
     </ProductContextProvider>
   );

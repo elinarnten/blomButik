@@ -9,9 +9,11 @@ import AddProduct from "./components/AddProduct";
 import Sortbuttons from "./components/Sortbuttons";
 import SortbuttonsDOM from "./components/Sortbuttons";
 import { ShopItem, shopItems } from "./data/ShopContent";
-import { SortButton, sortButtonsData } from "./data/SortButtonsData";
+import { SortButton, sortButtonsData } from './data/SortButtonsData'
+import { useLocalStorageState } from "./LocalStorage";
 
 interface ProductContextValue {
+  add: ShopItem[];
   products: ShopItem[];
   startPageProducts: ShopItem[];
   removeProduct: (shopItem: ShopItem) => void;
@@ -23,11 +25,13 @@ interface ProductContextValue {
 export const ProductContext = createContext<ProductContextValue>({
   products: [],
   startPageProducts: [],
+  add: shopItems,
   removeProduct: () => undefined,
   addProduct: () => undefined,
   updateProduct: () => undefined,
   filterProduct: () => undefined,
 });
+
 
 const ProductContextProvider: React.FC<ReactNode> = (props) => {
   let [products, setProducts] = useState(
@@ -53,15 +57,40 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
     }
 
     return listCopy.splice(0, 3);
-  };
-
-  let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
+    
+    let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
     generateRandomProductList(products)
   );
 
   console.log(startPageProducts);
-  // const randomProduct = ShopItem[Math.floor(Math.random() * ShopItem.length)];
-  // shopItems.filter(shopItem => shopItem.id).map(filteredProducts =>));
+
+    
+const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
+   const [add, setAdd] = useState<ShopItem[]>(shopItems);
+  let [products, setProducts] = useLocalStorageState<ShopItem[]>(shopItems,"items");
+
+  const removeProduct = (shopItem: ShopItem) => {
+    console.log(shopItem)
+   let updatedlist = products.filter(deletingshopItem => shopItem.id !== deletingshopItem.id)
+   setProducts(updatedlist)
+   
+  };
+  const addProduct = (shopItem: ShopItem) => {
+    console.log(shopItem)
+    
+
+    let copyProducts = [...products]
+    let matchingIndex = copyProducts.findIndex(
+      (item) => item.id == shopItem.id
+      );
+      if (matchingIndex == -1){
+        copyProducts.push(shopItem)
+      }
+   setProducts(copyProducts)
+    
+
+  };
+
 
   const removeProduct = (shopItem: ShopItem) => {
     console.log(shopItem);
@@ -86,6 +115,7 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
   return (
     <ProductContext.Provider
       value={{
+        add,
         products,
         startPageProducts,
         removeProduct,
@@ -94,7 +124,7 @@ const ProductContextProvider: React.FC<ReactNode> = (props) => {
         filterProduct,
       }}
     >
-      {props.children}
+      {children}
     </ProductContext.Provider>
   );
 };

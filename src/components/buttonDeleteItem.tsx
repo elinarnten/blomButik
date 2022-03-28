@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
-import React, { useContext } from "react";
-import { Dispatch, SetStateAction, useCallback } from "react";
+import { useContext } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
 
@@ -16,14 +16,15 @@ interface Props {
 
 export default function DeleteButton(Props: Props) {
 
-const { removeProduct, addProduct, updateProduct, filterProduct, products } =
+const { removeProduct } =
   useContext(ProductContext);
 
 const handleDeleteItem = () => {
  removeProduct(Props.item)
     
 
-}
+};
+
   if (Props.hideShow === true) {
     {
       return (

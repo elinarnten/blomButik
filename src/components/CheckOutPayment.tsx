@@ -2,12 +2,12 @@ import { Box, Button, Menu, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import CheckOutBagOverview from "./CheckOutBagOverview";
 
 function CheckOutPayment() {
-  const { firstname, lastname, phoneNumber } = useContext(Context);
+  const { firstname, lastname, phoneNumber } = useContext(ConsumerContext);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
@@ -45,7 +45,7 @@ function CheckOutPayment() {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -57,7 +57,13 @@ function CheckOutPayment() {
         component="form"
         noValidate
         autoComplete="off"
-        sx={{ ml: 3, width: "60%" }}
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
       >
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
           Hur vill du betala?
@@ -71,7 +77,7 @@ function CheckOutPayment() {
           aria-expanded={openCard ? "true" : undefined}
           onClick={handleCardClick}
           sx={{
-            width: "100%",
+            width: "50%",
             color: "black",
             border: "none",
 
@@ -88,7 +94,12 @@ function CheckOutPayment() {
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
-          sx={{ width: "60%" }}
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            flexWrap: "wrap",
+          }}
         >
           <Typography sx={{ m: 2 }}>
             Vänligen fyll i dina kortuppgifter.
@@ -110,7 +121,7 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Giltlighet"
               size="small"
-              sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
+              sx={{ ml: 2, mb: 2, width: "50%" }}
             />
             <TextField
               required
@@ -118,7 +129,7 @@ function CheckOutPayment() {
               id="outlined-required"
               label="CVC"
               size="small"
-              sx={{ mb: 2, mr: 2, width: "20%" }}
+              sx={{ ml: 2, mb: 2, mr: 2, width: "35%" }}
             />
           </div>
           <div>
@@ -132,20 +143,8 @@ function CheckOutPayment() {
               sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
             />
           </div>
+          <CheckOutBagOverview />
           <div>
-            {/*  <Typography
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "0.6rem",
-                ml: 3,
-              }}
-            >
-              <p>Pris:</p>
-              <p>Frakt:</p>
-              <p>Moms:</p>
-              <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography> */}
             <Button
               onClick={handleCardClose}
               size="small"
@@ -184,7 +183,7 @@ function CheckOutPayment() {
           aria-expanded={openSwish ? "true" : undefined}
           onClick={handleSwishClick}
           sx={{
-            width: "100%",
+            width: "50%",
             mt: 2,
             color: "black",
             border: "none",
@@ -202,7 +201,7 @@ function CheckOutPayment() {
           MenuListProps={{
             "aria-labelledby": "swish-button",
           }}
-          sx={{ width: "60%" }}
+          sx={{ width: "100%" }}
         >
           <Typography sx={{ m: 2 }}>Telefonnummer för Swish.</Typography>
           <div>
@@ -215,21 +214,8 @@ function CheckOutPayment() {
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
-
+          <CheckOutBagOverview />
           <div>
-            {/* <Typography
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "0.6rem",
-                ml: 3,
-              }}
-            >
-              <p>Pris:</p>
-              <p>Frakt:</p>
-              <p>Moms:</p>
-              <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography> */}
             <Button
               onClick={handleSwishClose}
               size="small"
@@ -268,7 +254,7 @@ function CheckOutPayment() {
           aria-expanded={openInvoice ? "true" : undefined}
           onClick={handleInvoiceClick}
           sx={{
-            width: "100%",
+            width: "50%",
             mt: 2,
             color: "black",
             border: "none",
@@ -286,7 +272,7 @@ function CheckOutPayment() {
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
-          sx={{ width: "60%" }}
+          sx={{ width: "100%" }}
         >
           <Typography sx={{ m: 2 }}>
             Ange ditt personnummer så skickar vi fakturan per post.
@@ -301,21 +287,8 @@ function CheckOutPayment() {
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
-
+          <CheckOutBagOverview />
           <div>
-            {/* <Typography
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "0.6rem",
-                ml: 3,
-              }}
-            >
-              <p>Pris:</p>
-              <p>Frakt:</p>
-              <p>Moms:</p>
-              <p style={{ fontSize: ".9rem" }}>Total:</p>
-            </Typography> */}
             <Button
               onClick={handleInvoiceClose}
               size="small"
@@ -346,25 +319,22 @@ function CheckOutPayment() {
           </div>
         </Menu>
 
-        <div>
-          <Link to={"/leverans"}>
-            <Button
-              size="small"
-              variant="outlined"
-              sx={{
-                borderColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-                mr: 2,
-                mt: 3,
-              }}
-            >
-              Tillbaka
-            </Button>
-          </Link>
-        </div>
+        <Link to={"/leverans"}>
+          <Button
+            size="small"
+            variant="outlined"
+            sx={{
+              borderColor: "#F4EAC6",
+              boxShadow: "none",
+              color: "black",
+              mr: 2,
+              mt: 3,
+            }}
+          >
+            Tillbaka
+          </Button>
+        </Link>
       </Box>
-      <CheckOutBagOverview />
     </Box>
   );
 }
