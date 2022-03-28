@@ -13,7 +13,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
-import { shopItems } from "../data/ShopContent";
+import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import SlideIn from "./SlideIn";
 import ProductContextProvider from "../productContext";
