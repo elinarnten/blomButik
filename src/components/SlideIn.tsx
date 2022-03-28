@@ -15,7 +15,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import { CartContext } from "../CartContext";
 
 interface Props {
@@ -23,16 +23,15 @@ interface Props {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function SlideIn(props: Props) {
-  const { itemInCart, setItemInCart } = useContext(CartContext);
+function SlideIn(props: Props) {
+  const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
+    useContext(CartContext);
 
-  console.log(itemInCart);
-  console.log();
+  let totalPrice = getTotalPrice();
 
   const slideFrame = (
-    <Paper
+    <Box
       sx={{ m: 1, position: "fixed", top: 0, bottom: 0, right: 0, zIndex: 1 }}
-      elevation={2}
     >
       {/* Close the slidein cart */}
       <IconButton onClick={() => props.setMenuOpen(false)}>
@@ -43,32 +42,36 @@ export default function SlideIn(props: Props) {
         <Typography variant="h5">Varukorg</Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", mt: 1 }}>
-          {itemInCart.map((item: any) => (
-            <Card key={item} sx={{ display: "flex" }}>
+          {itemInCart.map((cartItem) => (
+            <Card
+              key={cartItem.shopItem.id}
+              sx={{ display: "flex", m: 1, height: "100%", width: "100%" }}
+            >
               <CardMedia
-                sx={{ width: "50%" }}
+                sx={{ width: "40%", height: "100%" }}
                 component="img"
-                height="100"
-                image={item.img}
+                image={cartItem.shopItem.img}
               ></CardMedia>
 
               <Typography
-                sx={{ m: 1, display: "flex", flexDirection: "column" }}
+                sx={{ display: "flex", flexDirection: "column", m: 1 }}
               >
-                {item.title}
-                <p>{item.price} kr</p>
-
-                <IconButton>
-                  <AddIcon />
-                  <RemoveIcon />
+                {cartItem.shopItem.title}
+                {cartItem.shopItem.price} kr
+                <IconButton onClick={() => addItem(cartItem.shopItem)}>
+                  <AddIcon sx={{ fontSize: "50%" }} />
+                </IconButton>
+                {cartItem.quantity}
+                <IconButton onClick={() => removeItem(cartItem.shopItem)}>
+                  <RemoveIcon sx={{ fontSize: "50%" }} />
                 </IconButton>
               </Typography>
             </Card>
           ))}
         </Box>
 
-        <Box sx={{ position: "absolute", bottom: 0 }}>
-          Totalt pris: ?? kr
+        <Box>
+          Totalt pris: {totalPrice} kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
             <Button
               onClick={() => props.setMenuOpen(false)}
@@ -77,8 +80,9 @@ export default function SlideIn(props: Props) {
                 width: "auto",
                 backgroundColor: "pink",
                 color: "black",
-                mb: "1rem",
-                mt: "0.5rem",
+                mb: 1,
+                mt: 1,
+                ml: 2,
               }}
             >
               Till kassan
@@ -86,16 +90,28 @@ export default function SlideIn(props: Props) {
           </Link>
         </Box>
       </Box>
-    </Paper>
+    </Box>
   );
 
   return (
     <Box>
-      <Box>
-        <Slide direction="left" in={props.menuOpen} mountOnEnter unmountOnExit>
-          {slideFrame}
-        </Slide>
-      </Box>
+      <Slide
+        style={{
+          width: "30%",
+          height: "80%",
+          backgroundColor: "rgba(244, 234, 198, 0.4)",
+          overflow: "hidden",
+          overflowY: "scroll",
+        }}
+        direction="left"
+        in={props.menuOpen}
+        mountOnEnter
+        unmountOnExit
+      >
+        {slideFrame}
+      </Slide>
     </Box>
   );
 }
+
+export default SlideIn;
