@@ -93,9 +93,9 @@ const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
   };
 
     
-  const addProduct = (shopItem: ShopItem) => {};
+  /* const addProduct = (shopItem: ShopItem) => {};
 
-  const updateProduct = (shopItem: ShopItem) => {};
+  const updateProduct = (shopItem: ShopItem) => {}; */
 
   const filterProduct = (shopItem: ShopItem) => {
     // if (sortButton.value === "") {
