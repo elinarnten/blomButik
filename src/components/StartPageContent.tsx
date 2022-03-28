@@ -24,7 +24,7 @@ export default function StartPageContent() {
         justifyContent: "center",
         mt: "1rem",
         mx: "5rem",
-        backgroundColor: "rgba(132, 168, 111, 0.6)",
+        // backgroundColor: "rgba(132, 168, 111, 0.6)",
         borderRadius: 3,
       }}
     >
@@ -123,21 +123,18 @@ export default function StartPageContent() {
               </Button>
 
               <Button
-                // size="small"
                 variant="contained"
                 style={{
                   position: "static",
-
                   borderRadius: 5,
+                  padding: "3px 25px",
                   backgroundColor: "#ffcc80",
-                  padding: "5px 35px",
-                  fontSize: "8px",
                   alignSelf: "center",
                 }}
                 //onClick={ (e) => handleOnClick(e, setItemInCart)}
                 // onClick={handleOnClick}
               >
-                <ShoppingCartIcon />
+                <ShoppingCartIcon sx={{ fontSize: "1.5rem" }} />
               </Button>
             </CardActions>
           </Card>
