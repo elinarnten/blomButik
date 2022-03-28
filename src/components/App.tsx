@@ -19,7 +19,6 @@ import SlideIn from "./SlideIn";
 import ProductContextProvider from "../productContext";
 import CartContextProvider from "../CartContext";
 
-
 function App() {
   const [item, setItem] = useState(shopItems);
 
@@ -29,30 +28,30 @@ function App() {
   return (
     <ProductContextProvider>
       <CartContextProvider>
-      <ContextProvider>
-        <div>
-          <Header setMenuOpen={setMenuOpen} />
-          <BrowserRouter>
-            <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-            <Routes>
-              <Route path="/" element={<StartPage />} />
-              <Route path="/kunduppgifter" element={<CheckOutContact />} />
-              <Route path="/Admin" element={<Admin hideShow={true} />} />
-              <Route path="/betalning" element={<CheckOutPayment />} />
-              <Route path="/leverans" element={<CheckOutDelivery />} />
-              <Route path="/om" element={<About />} />
-              <Route
-                path="/sortiment"
-                element={<CardList hideShow={false} />}
-              />
-              <Route path="/kontakt" element={<Contact />} />
-            </Routes>
-          </BrowserRouter>
-          <Footer />
-        </div>
-      </ContextProvider>
-        </CartContextProvider>
+        <ContextProvider>
+          <div>
+            <Header setMenuOpen={setMenuOpen} />
+            <BrowserRouter>
+              <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+              <Routes>
+                <Route path="/" element={<StartPage />} />
+                <Route path="/kontakt" element={<Contact />} />
+                <Route path="/kunduppgifter" element={<CheckOutContact />} />
+                <Route path="/Admin" element={<Admin hideShow={true} />} />
+                <Route path="/betalning" element={<CheckOutPayment />} />
+                <Route path="/leverans" element={<CheckOutDelivery />} />
+                <Route path="/om" element={<About />} />
+                <Route
+                  path="/sortiment"
+                  element={<CardList hideShow={false} />}
+                />
+              </Routes>
+              <Footer />
+            </BrowserRouter>
+          </div>
+        </ContextProvider>
+      </CartContextProvider>
     </ProductContextProvider>
-    )
+  );
 }
 export default App;
