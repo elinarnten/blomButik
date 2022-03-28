@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -9,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { ShopItem } from "../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import '../App.css'
+import "../App.css";
 import { useState } from "react";
 import { IconButton } from "@mui/material";
 import { ConsumerContext } from "../ConsumerContext";
@@ -19,6 +18,7 @@ import { CloseOutlined } from "@mui/icons-material";
 
 interface Props {
   item: ShopItem;
+
   //shopItem: ShopItem 
 } 
 
@@ -40,6 +40,7 @@ addItem(props.item);
     console.log(cartArray)
   }; */
 
+
   return (
     <Card
       sx={{ maxWidth: 350, minWidth: 220 }}
@@ -51,7 +52,6 @@ addItem(props.item);
       }}
       className="Quicksand"
     >
-      
       <CardMedia
         component="img"
         alt="shopItem"
@@ -77,7 +77,9 @@ addItem(props.item);
           className="Quicksand"
           variant="body2"
           color="text.secondary"
-        > {props.item.price} KR/ st
+        >
+          {" "}
+          {props.item.price} KR/ st
         </Typography>
       </CardContent>
       <CardActions
@@ -95,6 +97,7 @@ addItem(props.item);
           color="secondary"
           variant="text"
           style={{
+            position: "static",
             borderRadius: 5,
             padding: "5px 15px",
             fontSize: "5px",
@@ -104,11 +107,11 @@ addItem(props.item);
           <FavoriteIcon />
         </Button>
 
-        
         <Button
           size="small"
           variant="contained"
           style={{
+            position: "static",
             borderRadius: 5,
             backgroundColor: "#ffcc80",
             padding: "5px 35px",
@@ -116,12 +119,10 @@ addItem(props.item);
             alignSelf: "center",
           }}
           //onClick={ (e) => handleOnClick(e, setItemInCart)}
-         onClick={handleOnClick} 
-          >
-        
+          onClick={handleOnClick}
+        >
           <ShoppingCartIcon />
         </Button>
-    
       </CardActions>
     </Card>
   );

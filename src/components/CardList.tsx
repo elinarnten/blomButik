@@ -1,11 +1,10 @@
 import CardView from "./Card";
-import { ShopItem, shopItems } from "../data/ShopContent";
+import { ShopItem,} from "../data/ShopContent";
 import { Grid, Typography } from "@mui/material";
 import bg from "../images/bg.jpg";
 import { Box } from "@mui/system";
-import SortbuttonsDOM from "./Sortbuttons";
 import { SortButton } from "../data/SortButtonsData";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState, } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
 import { ProductContext } from '../productContext'
@@ -70,7 +69,7 @@ export default function CardList(props:Adminprops) {
           </Box>
         </Typography>
 
-        <AddProduct hideShow={props.hideShow}></AddProduct>
+         <AddProduct hideShow={props.hideShow} HandleSubmitProducts={addProduct}></AddProduct>  
 
         {products.map((item) => (
             <Grid
@@ -90,14 +89,17 @@ export default function CardList(props:Adminprops) {
               }}
             >
               <Box
-              style={{
-                display:"flex",
-                flexDirection:"column",
-                flexWrap:"nowrap"
-              }}>
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexWrap: "nowrap",
+                }}
+              >
                 <DeleteButton
                   hideShow={props.hideShow}
-                  item={item} deleteThisItem={removeProduct} ></DeleteButton>
+                  item={item}
+                  deleteThisItem={removeProduct}
+                ></DeleteButton>
                 <CardView key={item.tag} item={item} />
               </Box>
             </Grid>
