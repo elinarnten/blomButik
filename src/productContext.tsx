@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   Dispatch,
   ReactNode,
@@ -12,10 +12,11 @@ import { ShopItem, shopItems } from "./data/ShopContent";
 import { SortButton, sortButtonsData } from './data/SortButtonsData'
 import { useLocalStorageState } from "./LocalStorage";
 
-interface ProductContextValue {
+export interface ProductContextValue {
   add: ShopItem[];
   products: ShopItem[];
   startPageProducts: ShopItem[];
+  //setStartPageProducts: React.Dispatch<React.SetStateAction<any[]>>;
   removeProduct: (shopItem: ShopItem) => void;
   addProduct: (shopItem: ShopItem) => void;
   updateProduct: (shopItem: ShopItem) => void;
@@ -25,6 +26,7 @@ interface ProductContextValue {
 export const ProductContext = createContext<ProductContextValue>({
   products: [],
   startPageProducts: [],
+  //setStartPageProducts: () => undefined,
   add: shopItems,
   removeProduct: () => undefined,
   addProduct: () => undefined,
@@ -33,52 +35,27 @@ export const ProductContext = createContext<ProductContextValue>({
 });
 
 
-const ProductContextProvider: React.FC<ReactNode> = (props) => {
+/* const ProductContextProvider: React.FC<ReactNode> = (props) => {
   let [products, setProducts] = useState(
     shopItems /* Antingen LS eller ShopItems */
-  );
+ /*  );  */ 
 
-  const generateRandomProductList = (fullList: ShopItem[]) => {
-    let listCopy = [...fullList];
-    let currentIndex = listCopy.length,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      [listCopy[currentIndex], listCopy[randomIndex]] = [
-        listCopy[randomIndex],
-        listCopy[currentIndex],
-      ];
-    }
-
-    return listCopy.splice(0, 3);
-    
-    let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
-    generateRandomProductList(products)
-  );
-
-  console.log(startPageProducts);
-
-    
+ 
 const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
    const [add, setAdd] = useState<ShopItem[]>(shopItems);
   let [products, setProducts] = useLocalStorageState<ShopItem[]>(shopItems,"items");
+ 
+
 
   const removeProduct = (shopItem: ShopItem) => {
     console.log(shopItem)
    let updatedlist = products.filter(deletingshopItem => shopItem.id !== deletingshopItem.id)
    setProducts(updatedlist)
-   
   };
+
+
   const addProduct = (shopItem: ShopItem) => {
     console.log(shopItem)
-    
-
     let copyProducts = [...products]
     let matchingIndex = copyProducts.findIndex(
       (item) => item.id == shopItem.id
@@ -87,19 +64,45 @@ const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
         copyProducts.push(shopItem)
       }
    setProducts(copyProducts)
+    };
+
+
+    const generateRandomProductList = (fullList: ShopItem[]) => {
+      let listCopy = [...fullList];
+      let currentIndex = listCopy.length,
+        randomIndex;
+  
+      // While there remain elements to shuffle...
+      while (currentIndex !== 0) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+  
+        // And swap it with the current element.
+        [listCopy[currentIndex], listCopy[randomIndex]] = [
+          listCopy[randomIndex],
+          listCopy[currentIndex],
+        ];
+      }
+  
+      return listCopy.splice(0, 3);
+    }
+  
+      let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
+      generateRandomProductList(products)
+    );
     
 
-  };
 
 
-  const removeProduct = (shopItem: ShopItem) => {
+  /* const removeProduct = (shopItem: ShopItem) => {
     console.log(shopItem);
     let updatedlist = products.filter(
       (deletingshopItem) => shopItem.id !== deletingshopItem.id
     );
     setProducts(updatedlist);
   };
-  const addProduct = (shopItem: ShopItem) => {};
+  const addProduct = (shopItem: ShopItem) => {}; */
   const updateProduct = (shopItem: ShopItem) => {};
 
   const filterProduct = (shopItem: ShopItem) => {
