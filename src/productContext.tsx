@@ -1,4 +1,5 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { EndOfLineState, updateInterfaceDeclaration } from "typescript";
 import AddProduct from "./components/AddProduct";
 import Sortbuttons from "./components/Sortbuttons";
 import SortbuttonsDOM from "./components/Sortbuttons";
@@ -26,6 +27,7 @@ export const ProductContext = createContext<ProductContextValue>({
   
 });
 
+
 const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
    const [add, setAdd] = useState<ShopItem[]>(shopItems);
   let [products, setProducts] = useLocalStorageState<ShopItem[]>(shopItems,"items");
@@ -51,8 +53,17 @@ const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
     
   };
   const updateProduct = (shopItem: ShopItem) => {
+    console.log(shopItem)
+    
 
-
+    let update = [...products];
+    let matchingIndex = update.findIndex(
+      (item) => item == shopItem
+    );
+    if (matchingIndex == -1) {
+     update.fill({...shopItem})
+    }
+   setProducts([...update,shopItem])
   };
 
   const filterProduct = (shopItem: ShopItem) => {

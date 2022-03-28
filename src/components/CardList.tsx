@@ -8,6 +8,7 @@ import { useContext, useState, } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
 import { ProductContext } from '../productContext'
+import EditButton from "./EditButton";
 
 
 interface Props {
@@ -69,7 +70,10 @@ export default function CardList(props:Adminprops) {
           </Box>
         </Typography>
 
-         <AddProduct hideShow={props.hideShow} HandleSubmitProducts={addProduct}></AddProduct>  
+        <AddProduct
+          hideShow={props.hideShow}
+          HandleSubmitProducts={addProduct}
+        ></AddProduct>
 
         {products.map((item) => (
           <>
@@ -95,11 +99,17 @@ export default function CardList(props:Adminprops) {
                   flexWrap: "nowrap",
                 }}
               >
-                <DeleteButton
-                  hideShow={props.hideShow}
-                  item={item}
-                  deleteThisItem={removeProduct}
-                ></DeleteButton>
+                <Box>
+                  <DeleteButton
+                    hideShow={props.hideShow}
+                    item={item}
+                    deleteThisItem={removeProduct}
+                  ></DeleteButton>
+                  <EditButton
+                    hideShow={props.hideShow}
+                    item={item} handleUpdateProduct={updateProduct}                    
+                  ></EditButton>
+                </Box>
                 <CardView key={item.tag} item={item} />
               </Box>
             </Grid>
