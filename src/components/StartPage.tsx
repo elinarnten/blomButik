@@ -9,17 +9,20 @@ import StartPageContent from "./StartPageContent";
 
 function StartPage() {
   return (
-    <Box>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        //backgroundImage: `url(${startpageBackground})`,
+        backgroundImage: `url(${temporary})`,
+        backgroundSize: "cover",
+        //backgroundColor: "lightGreen",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
       <Box
         sx={{
-          width: "100%",
-          height: "15rem",
-          //backgroundImage: `url(${startpageBackground})`,
-          backgroundImage: `url(${temporary})`,
-          backgroundSize: "cover",
-          //backgroundColor: "lightGreen",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
           display: "flex",
           justifyContent: "center",
         }}
@@ -28,14 +31,16 @@ function StartPage() {
           sx={{
             width: "50%",
             height: "35%",
-            mt: "8%",
-            backgroundColor: "rgba(244, 234, 198, 0.4)",
+            mt: "15%",
+            // backgroundColor: "rgba(244, 234, 198, 0.4)",
+            backgroundColor: "rgba(214, 186, 227, 0.4)",
             borderRadius: 3,
             display: "flex",
             flexDirection: "column",
             gap: 1.5,
             justifyContent: "center",
             alignItems: "center",
+            py: "1rem",
           }}
         >
           <Typography variant="h5">Välkommen till din blombutik!</Typography>
@@ -45,7 +50,7 @@ function StartPage() {
               variant="contained"
               endIcon={<LocalFloristIcon />}
               sx={{
-                backgroundColor: "#F4EAC6",
+                backgroundColor: "rgba(214, 186, 227)",
                 boxShadow: "none",
                 color: "black",
                 position: "static",
@@ -56,12 +61,6 @@ function StartPage() {
           </Link>
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      ></Box>
       <StartPageContent />
     </Box>
   );
