@@ -46,8 +46,8 @@ function App() {
                   element={<CardList hideShow={false} />}
                 />
               </Routes>
-              </BrowserRouter>
               <Footer /> 
+              </BrowserRouter>
           </div>
         </ConsumerContextProvider>
       </CartContextProvider>
