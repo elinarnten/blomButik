@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import{ useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -16,11 +16,14 @@ import { CartContext, CartItem } from "../CartContext";
 import { CloseOutlined } from "@mui/icons-material";
 
 
+
+
 interface Props {
   item: ShopItem;
 
-  //shopItem: ShopItem 
-} 
+  
+}
+
 
  
 
@@ -39,6 +42,10 @@ addItem(props.item);
    
     console.log(cartArray)
   }; */
+
+
+  const [toggle, setToggle] = useState(true);
+  const [name, setName] = useState("test");
 
 
   return (
@@ -78,8 +85,7 @@ addItem(props.item);
           variant="body2"
           color="text.secondary"
         >
-          {" "}
-          {props.item.price} KR/ st
+            {props.item.price} KR/ st
         </Typography>
       </CardContent>
       <CardActions
@@ -103,6 +109,7 @@ addItem(props.item);
             fontSize: "5px",
             alignSelf: "center",
           }}
+          
         >
           <FavoriteIcon />
         </Button>

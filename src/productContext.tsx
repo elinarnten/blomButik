@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useState,
-} from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { EndOfLineState, updateInterfaceDeclaration } from "typescript";
 import AddProduct from "./components/AddProduct";
 import Sortbuttons from "./components/Sortbuttons";
 import SortbuttonsDOM from "./components/Sortbuttons";
@@ -16,7 +11,6 @@ export interface ProductContextValue {
   add: ShopItem[];
   products: ShopItem[];
   startPageProducts: ShopItem[];
-  //setStartPageProducts: React.Dispatch<React.SetStateAction<any[]>>;
   removeProduct: (shopItem: ShopItem) => void;
   addProduct: (shopItem: ShopItem) => void;
   updateProduct: (shopItem: ShopItem) => void;
@@ -26,7 +20,6 @@ export interface ProductContextValue {
 export const ProductContext = createContext<ProductContextValue>({
   products: [],
   startPageProducts: [],
-  //setStartPageProducts: () => undefined,
   add: shopItems,
   removeProduct: () => undefined,
   addProduct: () => undefined,
@@ -34,13 +27,6 @@ export const ProductContext = createContext<ProductContextValue>({
   filterProduct: () => undefined,
 });
 
-
-/* const ProductContextProvider: React.FC<ReactNode> = (props) => {
-  let [products, setProducts] = useState(
-    shopItems /* Antingen LS eller ShopItems */
- /*  );  */ 
-
- 
 const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
    const [add, setAdd] = useState<ShopItem[]>(shopItems);
   let [products, setProducts] = useLocalStorageState<ShopItem[]>(shopItems,"items");
@@ -93,16 +79,22 @@ const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
     );
     
 
-
-
-  /* const removeProduct = (shopItem: ShopItem) => {
-    console.log(shopItem);
-    let updatedlist = products.filter(
-      (deletingshopItem) => shopItem.id !== deletingshopItem.id
+  const updateProduct = (shopItem: ShopItem) => {
+    console.log(shopItem)
+    
+    let update = [...products];
+    let matchingIndex = update.findIndex(
+      (item) => item == shopItem
     );
-    setProducts(updatedlist);
+    if (matchingIndex == -1) {
+     update.fill({...shopItem})
+    }
+   setProducts([...update,shopItem])
   };
-  const addProduct = (shopItem: ShopItem) => {}; */
+
+    
+  const addProduct = (shopItem: ShopItem) => {};
+
   const updateProduct = (shopItem: ShopItem) => {};
 
   const filterProduct = (shopItem: ShopItem) => {

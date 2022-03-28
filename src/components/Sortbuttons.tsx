@@ -1,9 +1,9 @@
-import { ShopItem, shopItems } from "../data/ShopContent";
+import {  ShopItem } from "../data/ShopContent";
 import { ThemeProvider } from "@emotion/react";
 import { Box, Button, createTheme } from "@mui/material";
-import { SortButton, sortButtonsData } from "../data/SortButtonsData";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { PropsFor } from "@mui/system";
+import {  sortButtonsData } from "../data/SortButtonsData";
+import{ Dispatch, SetStateAction, useContext} from "react"
+import { ProductContext } from "../productContext";
 
 let themeButtonSort = createTheme({
   components: {
@@ -41,7 +41,17 @@ interface Props {
   settag: Dispatch<SetStateAction<string>>;
 }
 export default function SortbuttonsDOM(props: Props) {
+
+  const { filterProduct } =
+  useContext(ProductContext);
+
+const handleFilter = (items:ShopItem) => {
+
+}
+   
   return (
+
+    
     <>
       <Box
         sx={{
@@ -59,8 +69,8 @@ export default function SortbuttonsDOM(props: Props) {
         <ThemeProvider theme={themeButtonSort}>
           {sortButtonsData.map((buttonItem) => (
             <Button
-              onClick={() => {
-                props.settag(buttonItem.value);
+               onClick={() => {
+               props.settag(buttonItem.value);
               }}
               variant="contained"
               value={buttonItem.value}

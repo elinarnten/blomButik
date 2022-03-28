@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useContext } from "react";
+import { createElement, useContext } from "react";
 import { Dispatch, SetStateAction } from "react";
 import { ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
@@ -33,14 +33,15 @@ const handleDeleteItem = () => {
           style={{
             backgroundColor: "#fdab90",
             alignSelf: "center",
-            width:"100%"
+            width:"50%"
           }}
         //   onClick={() => console.log(Props.item)}
     //   onClick={() => {Props.deleteThisItem(Props.item.id)}}
-    onClick={handleDeleteItem}
+    
+    onClick={handleDeleteItem} 
         >
           
-          delete item
+          delete
         </Button>
       );
     }
