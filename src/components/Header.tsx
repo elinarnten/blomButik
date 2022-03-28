@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,6 +11,7 @@ import Badge from "@mui/material/Badge";
 import { Menu, MenuItem } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {CartContext} from "../CartContext"
 
 interface Props {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -32,6 +33,9 @@ function Header(props: Props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const { getTotalQuantity } = useContext(CartContext);
+  let totalQuantity = getTotalQuantity();
 
   return (
     <Box
@@ -127,7 +131,7 @@ function Header(props: Props) {
                 sx={{ flexGrow: 1 }}
                 onClick={() => props.setMenuOpen(true)}
               >
-                <Badge badgeContent={4} color="primary">
+                <Badge badgeContent={totalQuantity} color="primary">
                   <ShoppingBasket />
                 </Badge>
               </IconButton>

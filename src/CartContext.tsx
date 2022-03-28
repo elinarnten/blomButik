@@ -12,7 +12,7 @@ export interface ContextInterface {
   setItemInCart: React.Dispatch<React.SetStateAction<any[]>>;
   addItem: (shopItem: ShopItem) => void;
   getTotalPrice: () => number;
-  getTotalQuantity: (shopItem: ShopItem) => void;
+  getTotalQuantity: () => number;
   removeItem: (shopItem: ShopItem) => void;
 }
 
@@ -20,7 +20,7 @@ export const CartContext = createContext<ContextInterface>({
   itemInCart: [],
   addItem: () => undefined,
   getTotalPrice: () => 0,
-  getTotalQuantity: () => undefined,
+  getTotalQuantity: () => 0,
   removeItem: () => undefined,
   setItemInCart: () => undefined,
 });
@@ -72,7 +72,6 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
     let totalQuantity = 0;
     for (const item of itemInCart) {
       totalQuantity += item.quantity;
-      console.log(totalQuantity);
     }
     return totalQuantity;
   };
