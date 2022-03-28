@@ -5,16 +5,15 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
-import { Context } from "../Context";
-import CheckOutBagOverview from "./CheckOutBagOverview";
+import { ConsumerContext } from "../ConsumerContext";
 import { deliveryAlternatives, DeliveryOption } from "../mockedDelivery";
 
 function CheckOutDelivery() {
   const { deliveryOption, setDeliveryOption, deliveryDate, setDeliveryDate } =
-    useContext(Context);
+    useContext(ConsumerContext);
 
   const handleOnChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -35,7 +34,7 @@ function CheckOutDelivery() {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -47,7 +46,12 @@ function CheckOutDelivery() {
         component="form"
         noValidate
         autoComplete="off"
-        sx={{ ml: 3, width: "60%" }}
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
           Hur vill du få dina varor levererade?
@@ -119,7 +123,6 @@ function CheckOutDelivery() {
           </Link>
         </div>
       </Box>
-      <CheckOutBagOverview />
     </Box>
   );
 }

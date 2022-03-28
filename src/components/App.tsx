@@ -1,7 +1,7 @@
 import React from "react";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import { useState } from "react";
-import ContextProvider from "../Context";
+import ConsumerContextProvider from "../ConsumerContext";
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -28,7 +28,7 @@ function App() {
   return (
     <ProductContextProvider>
       <CartContextProvider>
-      <ContextProvider>
+      <ConsumerContextProvider>
         <div>
           <Header setMenuOpen={setMenuOpen} />
           <BrowserRouter>
@@ -49,7 +49,7 @@ function App() {
           </BrowserRouter>
           <Footer />
         </div>
-      </ContextProvider>
+      </ConsumerContextProvider>
         </CartContextProvider>
     </ProductContextProvider>
     )

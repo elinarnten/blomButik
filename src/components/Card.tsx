@@ -12,7 +12,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import '../App.css'
 import { useState } from "react";
 import { IconButton } from "@mui/material";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import { CartContext, CartItem } from "../CartContext";
 import { CloseOutlined } from "@mui/icons-material";
 

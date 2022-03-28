@@ -1,27 +1,32 @@
 import { createContext, ReactNode, useState } from "react";
 import { ShopItem } from "./data/ShopContent";
 
-/* export interface ContextInterface {
+/* export interface ConsumerInterface {
   firstname: string,
   lastname: string,
   phoneNumber: string,
   deliveryOption: object,
   deliveryDate: string, 
-  itemInCart: ShopItem[],  
+    
 } */
 
-export const Context = createContext<any>(null);
+export const ConsumerContext = createContext<any>(null);
 
-const ContextProvider: React.FC<ReactNode> = ({ children }) => {
+const ConsumerContextProvider: React.FC<ReactNode> = ({ children }) => {
   const [firstname, setFirstname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [code, setCode] = useState<string>("");
+  const [city, setCity] = useState<string>("");
   const [deliveryOption, setDeliveryOption] = useState([{}]);
   const [deliveryDate, setDeliveryDate] = useState<string>("");
-  const [itemInCart, setItemInCart] = useState<ShopItem[]>()
+
+  console.log(firstname, lastname, phoneNumber, email, address, code, city, deliveryDate, deliveryOption)
 
   return (
-    <Context.Provider
+    <ConsumerContext.Provider
       value={{
         firstname,
         setFirstname,
@@ -29,17 +34,23 @@ const ContextProvider: React.FC<ReactNode> = ({ children }) => {
         setLastname,
         phoneNumber,
         setPhoneNumber,
+        email,
+        setEmail,
+        address,
+        setAddress,
+        code,
+        setCode,
+        city,
+        setCity,
         deliveryOption,
         setDeliveryOption,
         deliveryDate,
         setDeliveryDate,
-        itemInCart,
-        setItemInCart
       }}
     >
       {children}
-    </Context.Provider>
+    </ConsumerContext.Provider>
   );
 };
 
-export default ContextProvider;
+export default ConsumerContextProvider;

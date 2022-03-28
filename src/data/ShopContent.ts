@@ -1,6 +1,5 @@
 
 export interface ShopItem {
-  //[x: string]: any;
   id: number,
   img:string, 
   title:string,

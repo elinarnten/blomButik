@@ -15,30 +15,19 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import { CartContext } from "../CartContext";
 
 interface Props {
-  //item: ShopItem
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function SlideIn(props: Props) {
+function SlideIn(props: Props) {
   const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
     useContext(CartContext);
 
-  //console.log(itemInCart.id)
-
- /*  const handleAddItem = () => {
-    addItem()
-  }; */
-
-  /* const handleRemoveItem = () => {
-    //removeItem()
-  }; */
-
-  let totalPrice = getTotalPrice()
+  let totalPrice = getTotalPrice();
 
   const slideFrame = (
     <Box
@@ -66,30 +55,22 @@ export default function SlideIn(props: Props) {
               <Typography
                 sx={{ display: "flex", flexDirection: "column", m: 1 }}
               >
-                
-                  {cartItem.shopItem.title}
+                {cartItem.shopItem.title}
                 {cartItem.shopItem.price} kr
-              
-                
-                  <IconButton onClick={() => addItem(cartItem.shopItem)}>
-                    <AddIcon sx={{ fontSize: "50%" }} />
-                  </IconButton>
-
-                  {cartItem.quantity}
-              
-
-                  <IconButton onClick={() => removeItem(cartItem.shopItem)}>
-                    <RemoveIcon sx={{ fontSize: "50%" }} />
-                  </IconButton>
-      
+                <IconButton onClick={() => addItem(cartItem.shopItem)}>
+                  <AddIcon sx={{ fontSize: "50%" }} />
+                </IconButton>
+                {cartItem.quantity}
+                <IconButton onClick={() => removeItem(cartItem.shopItem)}>
+                  <RemoveIcon sx={{ fontSize: "50%" }} />
+                </IconButton>
               </Typography>
             </Card>
           ))}
         </Box>
 
-        
         <Box>
-          Totalt pris:  {totalPrice}  kr
+          Totalt pris: {totalPrice} kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
             <Button
               onClick={() => props.setMenuOpen(false)}
@@ -107,7 +88,6 @@ export default function SlideIn(props: Props) {
             </Button>
           </Link>
         </Box>
-      
       </Box>
     </Box>
   );
@@ -132,3 +112,5 @@ export default function SlideIn(props: Props) {
     </Box>
   );
 }
+
+export default SlideIn;
