@@ -23,7 +23,7 @@ const ConsumerContextProvider: React.FC<ReactNode> = ({ children }) => {
   const [deliveryOption, setDeliveryOption] = useState([{}]);
   const [deliveryDate, setDeliveryDate] = useState<string>("");
 
-  console.log(firstname, lastname, phoneNumber, email, address, code, city, deliveryDate, deliveryOption)
+  console.log("consumer and delivery:", firstname, lastname, phoneNumber, email, address, code, city, deliveryDate, deliveryOption)
 
   return (
     <ConsumerContext.Provider
