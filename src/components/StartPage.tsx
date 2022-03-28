@@ -9,30 +9,26 @@ import StartPageContent from "./StartPageContent";
 
 function StartPage() {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "15rem",
-        //backgroundImage: `url(${startpageBackground})`,
-        backgroundImage: `url(${temporary})`,
-        backgroundSize: "cover",
-        //backgroundColor: "lightGreen",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
+    <Box>
       <Box
         sx={{
+          width: "100%",
+          height: "15rem",
+          //backgroundImage: `url(${startpageBackground})`,
+          backgroundImage: `url(${temporary})`,
+          backgroundSize: "cover",
+          //backgroundColor: "lightGreen",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
           display: "flex",
           justifyContent: "center",
-          position: "relative",
         }}
       >
         <Box
           sx={{
             width: "50%",
-            height: "20%",
-            mt: "10%",
+            height: "35%",
+            mt: "8%",
             backgroundColor: "rgba(244, 234, 198, 0.4)",
             borderRadius: 3,
             display: "flex",
@@ -42,7 +38,7 @@ function StartPage() {
             alignItems: "center",
           }}
         >
-          <Typography variant="h6">Välkommen till din blombutik!</Typography>
+          <Typography variant="h5">Välkommen till din blombutik!</Typography>
           <Link to={"/sortiment"} style={{ textDecoration: "none" }}>
             <Button
               size="small"
@@ -52,6 +48,7 @@ function StartPage() {
                 backgroundColor: "#F4EAC6",
                 boxShadow: "none",
                 color: "black",
+                position: "static",
               }}
             >
               Till butiken
@@ -59,6 +56,12 @@ function StartPage() {
           </Link>
         </Box>
       </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      ></Box>
       <StartPageContent />
     </Box>
   );

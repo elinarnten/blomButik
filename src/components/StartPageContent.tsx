@@ -38,7 +38,7 @@ export default function StartPageContent() {
           justifyContent: "center",
         }}
       >
-        Överraska någon du tycker om
+        Överraska någon du tycker om!
       </Typography>
 
       <Box
