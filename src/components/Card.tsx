@@ -10,21 +10,39 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "../App.css";
 import { useState } from "react";
-import { CartContext } from "../CartContext";
+import { IconButton } from "@mui/material";
+import { ConsumerContext } from "../ConsumerContext";
+import { CartContext, CartItem } from "../CartContext";
+import { CloseOutlined } from "@mui/icons-material";
+
 
 
 
 interface Props {
   item: ShopItem;
+
   
 }
 
-export default function CardView(props: Props) {
-  const { itemInCart, setItemInCart } = useContext(CartContext);
 
-  const handleOnClick = () => {
-    setItemInCart([...itemInCart, props.item]);
-  };
+ 
+
+export default function CardView( props: Props) {
+
+  const {itemInCart, setItemInCart, addItem} = useContext(CartContext)
+
+ const handleOnClick = () => {
+addItem(props.item);
+};
+//console.log(itemInCart)
+/* 
+  const handleOnClick = (product: ShopItem, cartArray: CartItem[]) => {
+    //addItem(product, cartArray)
+   setItemInCart([...cartArray, product])
+   
+    console.log(cartArray)
+  }; */
+
 
   const [toggle, setToggle] = useState(true);
   const [name, setName] = useState("test");

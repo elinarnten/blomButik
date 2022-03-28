@@ -1,75 +1,40 @@
 import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
-import { Context } from "../Context";
+import { CartContext } from "../CartContext";
+import { ConsumerContext } from "../ConsumerContext";
 
-/* interface CheckOutBagOverviewProps {
-  deliveryDate?: string;
-} */
-
-/* const CheckOutBagOverview: React.FC<CheckOutBagOverviewProps> = ({
-  deliveryDate,
-}) => { */
 function CheckOutBagOverview() {
-  const { deliveryOption, deliveryDate } = useContext(Context);
-  console.log(deliveryDate);
+  const { deliveryOption, deliveryDate } = useContext(ConsumerContext);
+  const { getTotalPrice } = useContext(CartContext);
+
+  let totalPrice = getTotalPrice();
+  console.log(deliveryDate, deliveryOption)
+
   return (
     <Box
       sx={{
-        ml: 2,
-        mr: 3,
-        mt: 7,
-        backgroundColor: "rgba(244, 234, 198, 0.4)",
+        m: 1,
+        p: 3,
+        backgroundColor: "pink",
         borderRadius: 2,
-        //padding: 2,
-        width: "40%",
-        height: 420,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
-      <Typography
-        sx={{
-          display: "flex",
-          flexDirection: "column",
+      <Typography sx={{ fontSize: "100%", mb: 1 }}>Specifikation</Typography>
 
-          m: 1.5,
-        }}
-      >
-        Din varukorg
+      <Typography sx={{ fontSize: 15 }}>Pris: {totalPrice} SEK</Typography>
+      <Typography sx={{ fontSize: 15 }}>
+        Frakt: {deliveryOption.price} SEK
       </Typography>
-
-      <Box
-        sx={{
-          height: 250,
-          border: ".2rem solid #F4EAC6",
-          borderRadius: 2,
-          m: 1,
-          overflow: "hidden",
-          overflowY: "scroll",
-          p: 1,
-        }}
-      >
-        Här listas produkterna i varukorgen, har lagt till scroll.
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          ml: 1.5,
-        }}
-      >
-        <Typography sx={{ fontSize: 11 }}>Pris: SEK</Typography>
-        <Typography sx={{ fontSize: 11 }}>
-          Frakt: {deliveryOption.price} SEK
-        </Typography>
-        <Typography sx={{ fontSize: 9, fontWeight: "bold" }}>
-          Levereras {deliveryDate}
-        </Typography>
-        <Typography sx={{ fontSize: 11 }}>Moms: SEK</Typography>
-        <Typography sx={{ fontSize: 14, fontWeight: "bold" }}>
-          Total: SEK
-        </Typography>
-      </Box>
+      <Typography sx={{ fontSize: 15 }}>Levereras {deliveryDate}</Typography>
+      <Typography sx={{ fontSize: 15 }}>
+        Moms: {totalPrice * 0.25} SEK
+      </Typography>
+      <Typography sx={{ fontSize: 20, fontWeight: "bold", mt: 2 }}>
+        Total: {totalPrice + deliveryOption.price} SEK
+      </Typography>
     </Box>
   );
 }

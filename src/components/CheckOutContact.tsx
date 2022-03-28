@@ -2,52 +2,67 @@ import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../Context";
+import { ConsumerContext } from "../ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
-import CheckOutBagOverview from "./CheckOutBagOverview";
 
 function CheckOutContact() {
-  const { setFirstname, setLastname, setPhoneNumber } = useContext(Context);
+  const { firstname, setFirstname, lastname, setLastname, phoneNumber, setPhoneNumber, email, setEmail, address, setAddress, code, setCode, city, setCity } = useContext(ConsumerContext);
 
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [code, setCode] = useState("");
-  const [city, setCity] = useState("");
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
+  function SubmitButton() {
+    if (firstname && lastname && phoneNumber && email && address && code && city) {
+      return <Button
+      size="small"
+      variant="contained"
+      sx={{
+        backgroundColor: "#F4EAC6",
+        boxShadow: "none",
+        color: "black",
 
-  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAddress(event.target.value);
-  };
+        mt: 3,
+      }}
+    >
+      Gå vidare
+    </Button>
+    } else {
+      return <Button disabled
+              size="small"
+              variant="contained"
+              sx={{
+                backgroundColor: "#F4EAC6",
+                boxShadow: "none",
+                color: "black",
+                mt: 3,
+              }}
+            >
+              Gå vidare
+            </Button>
+    }
+  }
 
-  const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCode(event.target.value);
-  };
-
-  const handleCityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(event.target.value);
-  };
 
   return (
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
-        backgroundColor: "lightGreen",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        display: "flex",
       }}
     >
       <Box
         component="form"
         noValidate
         autoComplete="off"
-        sx={{ ml: 3, width: "60%" }}
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
           Vänligen fyll i dina uppgifter:
@@ -59,15 +74,17 @@ function CheckOutContact() {
               onChange={(event) => {
                 setFirstname(event.target.value);
               }}
-              id="outlined-required"
+              id="filled"
               label="Förnamn"
-              name="name"
+              name="givenName"
               type="name"
               size="small"
+              
               sx={{
                 mr: 2,
                 mb: 2,
-                bgcolor: "rgba(244, 234, 198, 0.4)",
+                color: "black",
+                backgroundColor: "#F4EAC6",
               }}
             />
           </FormControl>
@@ -81,7 +98,9 @@ function CheckOutContact() {
               id="outlined-required"
               label="Efternamn"
               size="small"
-              sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
+              name="familyName"
+              sx={{ mb: 2, color: "black",
+              backgroundColor: "#F4EAC6", }}
             />
           </FormControl>
         </div>
@@ -89,14 +108,17 @@ function CheckOutContact() {
           <FormControl>
             <TextField
               required
-              value={email}
-              onChange={handleEmailChange}
+              //value={email}
+             onChange={(event) => {
+                setEmail(event.target.value);
+              }}
               id="outlined-required"
               name="email"
               type="email"
               label="E-post"
               size="small"
-              sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
+              sx={{ mr: 2, mb: 2, color: "black",
+              backgroundColor: "#F4EAC6", }}
             />
           </FormControl>
           <FormControl>
@@ -105,11 +127,14 @@ function CheckOutContact() {
               onChange={(event) => {
                 setPhoneNumber(event.target.value);
               }}
+              //value={number}
               id="outlined-number"
               type="number"
               label="Telefonnummer"
               size="small"
-              sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
+              name="tel"
+              sx={{ mb: 2, color: "black",
+              backgroundColor: "#F4EAC6",}}
             />
           </FormControl>
         </div>
@@ -117,12 +142,16 @@ function CheckOutContact() {
           <FormControl>
             <TextField
               required
-              value={address}
-              onChange={handleAddressChange}
+              //value={address}
+              name="streetAddress"
+              onChange={(event) => {
+                setAddress(event.target.value);
+              }}
               id="outlined-required"
               label="Gatuadress"
               size="small"
-              sx={{ mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
+              sx={{ mb: 2, color: "black",
+              backgroundColor: "#F4EAC6", }}
             />
           </FormControl>
         </div>
@@ -130,57 +159,65 @@ function CheckOutContact() {
           <FormControl>
             <TextField
               required
-              value={code}
-              onChange={handleCodeChange}
+              onChange={(event) => {
+                setCode(event.target.value);
+              }}
               id="outlined-required"
               type="number"
+              name="postalCode"
               label="Postnummer"
               size="small"
-              sx={{ mr: 2, mb: 2, bgcolor: "rgba(244, 234, 198, 0.4)" }}
+              sx={{ mr: 2, mb: 2, color: "black",
+              backgroundColor: "#F4EAC6",}}
             />
           </FormControl>
           <FormControl>
             <TextField
               required
-              value={city}
-              onChange={handleCityChange}
+              onChange={(event) => {
+                setCity(event.target.value);
+              }}
               id="outlined-required"
               label="Ort"
+              name="city"
               size="small"
-              sx={{ bgcolor: "rgba(244, 234, 198, 0.4)" }}
+              sx={{ color: "black",
+              backgroundColor: "#F4EAC6",}}
             />
           </FormControl>
         </div>
-        <Button
-          size="small"
-          variant="outlined"
-          sx={{
-            borderColor: "#F4EAC6",
-            boxShadow: "none",
-            color: "black",
-            mr: 2,
-            mt: 3,
-          }}
-        >
-          Tillbaka
-        </Button>
-        <Link to={"/leverans"}>
+        <Box>
           <Button
             size="small"
-            variant="contained"
+            variant="outlined"
             sx={{
-              backgroundColor: "#F4EAC6",
+              borderColor: "#F4EAC6",
               boxShadow: "none",
               color: "black",
-
+              mr: 2,
               mt: 3,
             }}
           >
-            Gå vidare
+            Tillbaka
           </Button>
-        </Link>
+          <Link to={"/leverans"}>
+            <SubmitButton/>
+            {/* <Button
+              size="small"
+              variant="contained"
+              sx={{
+                backgroundColor: "#F4EAC6",
+                boxShadow: "none",
+                color: "black",
+
+                mt: 3,
+              }}
+            >
+              Gå vidare
+            </Button> */}
+          </Link>
+        </Box>
       </Box>
-      <CheckOutBagOverview />
     </Box>
   );
 }
