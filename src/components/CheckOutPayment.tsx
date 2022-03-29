@@ -5,8 +5,24 @@ import { Link } from "react-router-dom";
 import { ConsumerContext } from "../ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import CheckOutBagOverview from "./CheckOutBagOverview";
+import { createOrder } from "../mockedOrderApi";
+import OrderConfirmation from "./OrderConfirmation";
+import { Navigation, Router } from "@mui/icons-material";
+
+
 
 function CheckOutPayment() {
+
+  async function proceedOrder () {
+    await createOrder()
+    //history.go("/orderbekräftelse")
+    console.log('hej')
+  /* router.navigate
+    return (
+      window.location = "/orderbekräftelse"
+    ) */
+  }
+
   const { firstname, lastname, phoneNumber } = useContext(ConsumerContext);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
@@ -41,6 +57,8 @@ function CheckOutPayment() {
     setAnchorSwishEl(null);
   };
 
+ 
+
   return (
     <Box
       sx={{
@@ -53,6 +71,7 @@ function CheckOutPayment() {
         display: "flex",
       }}
     >
+     
       <Box
         component="form"
         noValidate
@@ -169,6 +188,7 @@ function CheckOutPayment() {
                 color: "black",
                 mt: 2,
               }}
+              onClick={proceedOrder}
             >
               Slutför köp
             </Button>
