@@ -27,7 +27,7 @@ function App() {
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
-    <div className="app">
+    
     <ProductContextProvider>
       <CartContextProvider>
         <ConsumerContextProvider>
@@ -55,7 +55,7 @@ function App() {
         </ConsumerContextProvider>
       </CartContextProvider>
     </ProductContextProvider>
-    </div>
+  
   );
 }
 export default App;

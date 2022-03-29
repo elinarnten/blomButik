@@ -8,19 +8,22 @@ import FlowerBackground from "../Assets/flowerBackground.png";
 
 function Contact() {
   return (
-   <Box /* sx={{height: "100%"}} */>
+  // <Box  sx={{height: "100%"}} >
     <Box
       sx={{
-        backgroundImage: `url(${FlowerBackground})`,
+       backgroundImage: `url(${FlowerBackground})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100%",
+        
+        minHeight: "100vh" ,
         width: "100%",
+        /* height: "100%",
+        width: "100%", */
         //m: "2rem",
         //flex: 1,
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        //alignItems: "center",
         flexDirection: "column"
       }}
       
@@ -134,7 +137,7 @@ function Contact() {
         </Card>
       </Box>
     </Box>
-    </Box>
+    //</Box>
   
   );
 }
