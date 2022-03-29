@@ -11,9 +11,13 @@ import { useContext } from "react";
 import { ProductContext } from "../productContext";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { CartContext } from "../CartContext";
 
 export default function StartPageContent() {
   const { startPageProducts } = useContext(ProductContext);
+  const { addItem } = useContext(CartContext)
+
+ 
 
   return (
     <Box
@@ -117,8 +121,8 @@ export default function StartPageContent() {
                   backgroundColor: "#ffcc80",
                   alignSelf: "center",
                 }}
-                //onClick={ (e) => handleOnClick(e, setItemInCart)}
-                // onClick={handleOnClick}
+                
+              onClick={ () => addItem(item)}
               >
                 <ShoppingCartIcon sx={{ fontSize: "1rem" }} />
               </Button>
