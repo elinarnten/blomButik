@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
+import OrderConfirmation from "./OrderConfirmation";
 import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import SlideIn from "./SlideIn";
@@ -29,7 +30,7 @@ function App() {
     <ProductContextProvider>
       <CartContextProvider>
         <ConsumerContextProvider>
-          <div>
+          <div style={{height: '100%'}}>
             <Header setMenuOpen={setMenuOpen} />
             <BrowserRouter>
               <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/betalning" element={<CheckOutPayment />} />
                 <Route path="/leverans" element={<CheckOutDelivery />} />
                 <Route path="/om" element={<About />} />
+                <Route path="/orderbekraftelse" element={<OrderConfirmation />} />
                 <Route
                   path="/sortiment"
                   element={<CardList hideShow={false} />}
