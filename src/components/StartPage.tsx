@@ -40,6 +40,7 @@ function StartPage() {
             gap: 1.5,
             justifyContent: "center",
             alignItems: "center",
+            textAlign: "center",
             py: "1rem",
           }}
         >

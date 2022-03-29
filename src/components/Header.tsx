@@ -114,14 +114,7 @@ function Header(props: Props) {
           </Typography>
 
           <div>
-            <IconButton
-              size="large"
-              aria-label="Favoriter"
-              color="inherit"
-              sx={{ flexGrow: 1 }}
-            >
-              <Favorite />
-            </IconButton>
+           
 
             <ThemeProvider theme={theme}>
               <IconButton
