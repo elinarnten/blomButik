@@ -2,21 +2,11 @@
   margin: 0;
 }
 
-/*  html {
-  height: 100vh;
-}  */
 
-/* body {
-  height: 100%;
-}  */
-/* 
- #root {
-  height: 100%;
-}  */ 
+ .App {
+  min-height: 100%;
+} 
 
-/* body {
-  height: 100vh;
-} */
 
 @font-face {
   font-family: "Quicksand";

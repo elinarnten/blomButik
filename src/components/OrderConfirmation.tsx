@@ -8,7 +8,7 @@ function OrderConfirmation()  {
     return (
       <Box sx={{
         width: "100%",
-        height: "100%",
+        height: "100vh",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

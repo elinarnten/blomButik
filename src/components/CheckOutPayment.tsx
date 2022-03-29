@@ -8,14 +8,25 @@ import CheckOutBagOverview from "./CheckOutBagOverview";
 import { createOrder } from "../mockedOrderApi";
 import OrderConfirmation from "./OrderConfirmation";
 import { Navigation, Router } from "@mui/icons-material";
+import { CartContext } from "../CartContext";
 
 
 
 function CheckOutPayment() {
+
+  const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
+    useContext(CartContext);
+
+    const clearState = () => {
+      setItemInCart([]);
+    };
+    console.log(itemInCart)
+
   let navigate = useNavigate();
 
   async function proceedOrder () {
     await createOrder()
+    clearState()
     navigate("/orderbekraftelse")
   }
 

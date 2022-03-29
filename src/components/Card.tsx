@@ -95,24 +95,7 @@ addItem(props.item);
           marginTop: "10px",
         }}
       >
-        <Button
-          sx={{
-            color: "pink",
-          }}
-          size="small"
-          color="secondary"
-          variant="text"
-          style={{
-            position: "static",
-            borderRadius: 5,
-            padding: "5px 15px",
-            fontSize: "5px",
-            alignSelf: "center",
-          }}
-          
-        >
-          <FavoriteIcon />
-        </Button>
+       
 
         <Button
           size="small"

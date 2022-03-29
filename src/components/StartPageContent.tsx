@@ -22,29 +22,47 @@ export default function StartPageContent() {
   return (
     <Box
       sx={{
-        width: "auto",
-        heigth: "3rem",
+        //width: "auto",
+        //heigth: "100%",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
+        <Typography
+          variant="h6"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            //alignItems: "center",
+            fontFamily: "Pacifico, cursive",
+            marginTop: 40,
+            marginBottom: 15
+          
+          }}
+        >
+        Överraska någon du tycker om
+        </Typography>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          mt: "3rem",
+          flexWrap: "wrap",
+          width: "100%"
+          //mt: "1rem",
         }}
       >
+       
         {startPageProducts.map((item) => (
           <Card
             key={item.id}
             sx={{
-              maxWidth: 200,
-              minWidth: 150,
+              width: "8rem",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              m: "2rem",
+              m: 1,
+              mb: 3
             }}
             style={{
               textAlign: "center",
@@ -57,10 +75,11 @@ export default function StartPageContent() {
             <CardMedia
               component="img"
               alt="shopItem"
-              height="130"
+              //height= "120rem"
               image={item.img}
+              sx={{height: 120}}
             ></CardMedia>
-            <CardContent sx={{ height: 5 }}>
+            <CardContent sx={{ height: 12 }}>
               <Typography
                 variant="h5"
                 component="div"
@@ -83,7 +102,7 @@ export default function StartPageContent() {
                 sx={{ fontSize: "small" }}
               >
                 {" "}
-                {item.price} KR/ st
+                {item.price} kr/st
               </Typography>
             </CardContent>
             <CardActions
@@ -93,23 +112,7 @@ export default function StartPageContent() {
                 marginTop: "10px",
               }}
             >
-              <Button
-                sx={{
-                  color: "pink",
-                }}
-                size="small"
-                color="secondary"
-                variant="text"
-                style={{
-                  position: "static",
-                  borderRadius: 5,
-                  padding: "5px 15px",
-                  fontSize: "5px",
-                  alignSelf: "center",
-                }}
-              >
-                <FavoriteIcon />
-              </Button>
+             
 
               <Button
                 variant="contained"
@@ -117,7 +120,7 @@ export default function StartPageContent() {
                 style={{
                   position: "static",
                   borderRadius: 5,
-                  padding: "6px 5px ",
+                  padding: "4px 3px ",
                   backgroundColor: "#ffcc80",
                   alignSelf: "center",
                 }}
@@ -129,17 +132,9 @@ export default function StartPageContent() {
             </CardActions>
           </Card>
         ))}
-        <Typography
-          variant="h6"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            fontFamily: "Pacifico, cursive",
-          }}
-        >
-          Överraska någon <br></br>du tycker om
-        </Typography>
+      
       </Box>
+     
     </Box>
   );
 }
