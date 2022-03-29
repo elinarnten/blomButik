@@ -22,8 +22,8 @@ export default function StartPageContent() {
   return (
     <Box
       sx={{
-        width: "auto",
-        heigth: "100%",
+        //width: "auto",
+        //heigth: "100%",
         alignItems: "center",
         justifyContent: "center",
       }}
@@ -35,18 +35,20 @@ export default function StartPageContent() {
             justifyContent: "center",
             //alignItems: "center",
             fontFamily: "Pacifico, cursive",
-            marginTop: 20
+            marginTop: 40,
+            marginBottom: 15
           
           }}
         >
-          Överraska någon <br></br>du tycker om
+        Överraska någon du tycker om
         </Typography>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
+          width: "100%"
           //mt: "1rem",
         }}
       >
@@ -55,13 +57,12 @@ export default function StartPageContent() {
           <Card
             key={item.id}
             sx={{
-              width: "10rem",
+              width: "8rem",
               height: "100%",
-              /* maxWidth: 200,
-              minWidth: 150, */
               display: "flex",
               flexDirection: "column",
               m: 1,
+              mb: 3
             }}
             style={{
               textAlign: "center",
@@ -76,9 +77,9 @@ export default function StartPageContent() {
               alt="shopItem"
               //height= "120rem"
               image={item.img}
-              sx={{height: 140}}
+              sx={{height: 120}}
             ></CardMedia>
-            <CardContent sx={{ height: 14 }}>
+            <CardContent sx={{ height: 12 }}>
               <Typography
                 variant="h5"
                 component="div"

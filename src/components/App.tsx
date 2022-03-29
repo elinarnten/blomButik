@@ -27,13 +27,14 @@ function App() {
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
+    <div className="app">
     <ProductContextProvider>
       <CartContextProvider>
         <ConsumerContextProvider>
-          <div style={{height: '100%'}}>
             <Header setMenuOpen={setMenuOpen} />
             <BrowserRouter>
               <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <div className="App">
               <Routes>
                 <Route path="/" element={<StartPage />} />
                 <Route path="/kontakt" element={<Contact />} />
@@ -48,12 +49,13 @@ function App() {
                   element={<CardList hideShow={false} />}
                 />
               </Routes>
+          </div>
               <Footer /> 
               </BrowserRouter>
-          </div>
         </ConsumerContextProvider>
       </CartContextProvider>
     </ProductContextProvider>
+    </div>
   );
 }
 export default App;

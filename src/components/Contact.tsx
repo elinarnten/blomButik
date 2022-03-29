@@ -8,24 +8,31 @@ import FlowerBackground from "../Assets/flowerBackground.png";
 
 function Contact() {
   return (
+   <Box /* sx={{height: "100%"}} */>
     <Box
       sx={{
         backgroundImage: `url(${FlowerBackground})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100%",
-        m: "2rem",
-        flex: 1,
+        width: "100%",
+        //m: "2rem",
+        //flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column"
       }}
-      style={{ flex: 1 }}
+      
     >
-      <Typography variant="h4" component="div" sx={{ pt: 5, pl: 4, m: 3 }}>
+      <Typography variant="h4" component="div" sx={{ m: 3 }}>
         Kontakt
       </Typography>
       <Box
         sx={{
+          height: "100%",
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "center",
           alignItems: "center",
           flexWrap: "wrap",
         }}
@@ -127,6 +134,8 @@ function Contact() {
         </Card>
       </Box>
     </Box>
+    </Box>
+  
   );
 }
 export default Contact;
