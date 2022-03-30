@@ -1,30 +1,27 @@
 import CardView from "./Card";
-import { ShopItem,} from "../data/ShopContent";
+import { ShopItem } from "../data/ShopContent";
 import { Grid, Typography } from "@mui/material";
 import bg from "../images/bg.jpg";
 import { Box } from "@mui/system";
 import { SortButton } from "../data/SortButtonsData";
-import { useContext, useState, } from "react";
+import { useContext, useState } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
-import { ProductContext } from '../productContext'
+import { ProductContext } from "../productContext";
 import EditButton from "./EditButton";
-
 
 interface Props {
   buttonItem: SortButton;
   item: ShopItem;
-  
 }
 
-interface Adminprops{
-hideShow: Boolean
-
+interface Adminprops {
+  hideShow: Boolean;
 }
-export default function CardList(props:Adminprops) {
+export default function CardList(props: Adminprops) {
+  const { removeProduct, addProduct, updateProduct, filterProduct, products } =
+    useContext(ProductContext);
 
-  const {removeProduct,addProduct,updateProduct,filterProduct,products} = useContext(ProductContext)
- 
   return (
     <>
       <Grid
@@ -62,6 +59,7 @@ export default function CardList(props:Adminprops) {
               backgroundColor: "rgba(255, 226, 162, 0.852)",
               ml: "20%",
               mr: "20%",
+              my: "1rem",
             }}
           >
             <h3 style={{ color: "White", fontFamily: "Pacifico, cursive" }}>
@@ -76,50 +74,51 @@ export default function CardList(props:Adminprops) {
         ></AddProduct>
 
         {products.map((item) => (
-            <Grid
+          <Grid
             key={item.id}
-              container
-              spacing={1}
-              item
-              md={4}
-              sm={4}
-              xs={10}
-              sx={{
-                mt: "0.1%",
-                mb: "0.1%",
-                justifyContent: "center",
-                alignItems: "center",
-                alignContent: "center",
+            container
+            spacing={1}
+            item
+            md={4}
+            sm={4}
+            xs={10}
+            sx={{
+              mt: "0.1%",
+              mb: "0.1%",
+              justifyContent: "center",
+              alignItems: "center",
+              alignContent: "center",
+            }}
+          >
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                flexWrap: "nowrap",
               }}
             >
-              <Box
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  flexWrap: "nowrap",
-                }}
-              >
-                <Box>
-                  <DeleteButton
-                    hideShow={props.hideShow}
-                    item={item}
-                    deleteThisItem={removeProduct}
-                  ></DeleteButton>
-                  <EditButton
-                    hideShow={props.hideShow}
-                    item={item} handleUpdateProduct={updateProduct}                    
-                  ></EditButton>
-                </Box>
-                <CardView key={item.tag} item={item} />
+              <Box>
+                <DeleteButton
+                  hideShow={props.hideShow}
+                  item={item}
+                  deleteThisItem={removeProduct}
+                ></DeleteButton>
+                <EditButton
+                  hideShow={props.hideShow}
+                  item={item}
+                  handleUpdateProduct={updateProduct}
+                ></EditButton>
               </Box>
-            </Grid>
+              <CardView key={item.tag} item={item} />
+            </Box>
+          </Grid>
         ))}
       </Grid>
     </>
   );
 }
 // setFilterShopItems(
-// shopItems.filter((product) => deleteItem !== product.id) 
+// shopItems.filter((product) => deleteItem !== product.id)
 //     [deleteItem])
 
 // useEffect(() => {
@@ -130,5 +129,5 @@ export default function CardList(props:Adminprops) {
 //         shopItems.filter((product) => selectedTag === product.tag)
 //       );
 //     }
-    
+
 //   }, [selectedTag]);

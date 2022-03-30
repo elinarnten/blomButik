@@ -5,6 +5,7 @@ export interface ShopItem {
   price: number;
   tag: string;
   liked: Boolean;
+  description: string;
 }
 
 export const generateId = () => {
@@ -26,6 +27,7 @@ export const shopItems: ShopItem[] = [
     price: 45,
     tag: "rose",
     liked: false,
+    description: "En vacker enkel röd ros.",
   },
   {
     id: generateId(),
@@ -34,6 +36,8 @@ export const shopItems: ShopItem[] = [
     price: 50,
     tag: "rose",
     liked: false,
+    description:
+      "En vacker enkel rosa ros. Att ge bort rosa rosor betyder att du visar tacksamhet till någon.",
   },
   {
     id: generateId(),
@@ -42,6 +46,8 @@ export const shopItems: ShopItem[] = [
     price: 120,
     tag: "bouqette",
     liked: false,
+    description:
+      "En bukett som är populär i många svenska hem på våren, men går lika bra i andra årstider",
   },
   {
     id: generateId(),
@@ -50,6 +56,8 @@ export const shopItems: ShopItem[] = [
     price: 100,
     tag: "orchid",
     liked: false,
+    description:
+      "Låt detta coola färg piffa upp dit hem! Med sina blå blommor och långa hållbarhet är detta en växt du kan njuta av länge. Samtidigt ger denna orkidé en modern och elegant stil för inredningen.",
   },
   {
     id: generateId(),
@@ -58,6 +66,8 @@ export const shopItems: ShopItem[] = [
     price: 50,
     tag: "sunflower",
     liked: false,
+    description:
+      "Den har upp till 3 meter höga stänglar med gula blommor. Växten har sitt ursprung i södra och sydöstra USA.",
   },
   {
     id: generateId(),
@@ -66,6 +76,7 @@ export const shopItems: ShopItem[] = [
     price: 90,
     tag: "bouqette",
     liked: false,
+    description: "Vår florist ordnar en färgglad bukett med tulpaner.",
   },
   {
     id: generateId(),
@@ -74,6 +85,8 @@ export const shopItems: ShopItem[] = [
     price: 90,
     tag: "tulip",
     liked: false,
+    description:
+      "Låt fantasin få sitt flöde genom att skapa ett eget bukett med vårt utbud.",
   },
   {
     id: generateId(),
@@ -82,6 +95,8 @@ export const shopItems: ShopItem[] = [
     price: 345,
     tag: "bouqette",
     liked: false,
+    description:
+      "En röd ros är känd som kärlekens blomma och att ge röda rosor brukar betyda att man älskar den man ger blommorna till.",
   },
   {
     id: generateId(),
@@ -90,6 +105,8 @@ export const shopItems: ShopItem[] = [
     price: 250,
     tag: "bouqette",
     liked: false,
+    description:
+      "En vacker rosbukett som vår florist omsorgsfullt har satt ihop.",
   },
   {
     id: generateId(),
@@ -98,6 +115,8 @@ export const shopItems: ShopItem[] = [
     price: 120,
     tag: "sunflower",
     liked: false,
+    description:
+      "Den har upp till 3 meter höga stänglar med gula blommor. Växten har sitt ursprung i södra och sydöstra USA.",
   },
   {
     id: generateId(),
@@ -106,6 +125,8 @@ export const shopItems: ShopItem[] = [
     price: 100,
     tag: "bouqette",
     liked: false,
+    description:
+      "Pröva att bryta den klassiska buketten med den här coola blåa.",
   },
   {
     id: generateId(),
@@ -114,6 +135,8 @@ export const shopItems: ShopItem[] = [
     price: 130,
     tag: "bouqette",
     liked: false,
+    description:
+      "Vår florist ordnar en färgglad bukett med blandning av olika sortes blommor.",
   },
   {
     id: generateId(),
@@ -122,6 +145,7 @@ export const shopItems: ShopItem[] = [
     price: 90,
     tag: "tulip",
     liked: false,
+    description: "Vår florist ordnar en färgglad bukett med tulpaner.",
   },
   {
     id: generateId(),
@@ -130,6 +154,8 @@ export const shopItems: ShopItem[] = [
     price: 90,
     tag: "lilly",
     liked: false,
+    description:
+      "Lilja är både ett uttryck för sympati och en symbol för renhet.",
   },
   {
     id: generateId(),
@@ -138,6 +164,8 @@ export const shopItems: ShopItem[] = [
     price: 70,
     tag: "orchid",
     liked: false,
+    description:
+      "Lättskött orkidé som blommar länge och som dessutom kan blomma när som helst på året.",
   },
   {
     id: generateId(),
@@ -146,6 +174,8 @@ export const shopItems: ShopItem[] = [
     price: 100,
     tag: "bouqette",
     liked: false,
+    description:
+      "Lys upp din eller någon annans dag med denna fantastiska bukett",
   },
   {
     id: generateId(),
@@ -154,6 +184,8 @@ export const shopItems: ShopItem[] = [
     price: 100,
     tag: "lilly",
     liked: false,
+    description:
+      "Lilja är både ett uttryck för sympati och en symbol för renhet.",
   },
   {
     id: generateId(),
@@ -162,5 +194,7 @@ export const shopItems: ShopItem[] = [
     price: 450,
     tag: "bouqette",
     liked: false,
+    description:
+      "En vacker rosbukett som vår florist omsorgsfullt har satt ihop.",
   },
 ];
