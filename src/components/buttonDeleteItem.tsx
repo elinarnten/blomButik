@@ -31,7 +31,7 @@ const handleDeleteItem = () => {
         <Button
           variant="contained"
           style={{
-            backgroundColor: "#fdab90",
+            backgroundColor: "red",
             alignSelf: "center",
             width:"50%"
           }}
@@ -41,7 +41,7 @@ const handleDeleteItem = () => {
     onClick={handleDeleteItem} 
         >
           
-          delete
+          Ta bort
         </Button>
       );
     }

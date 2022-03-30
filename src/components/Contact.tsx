@@ -23,12 +23,12 @@ function Contact() {
         //flex: 1,
         display: "flex",
         justifyContent: "center",
-        //alignItems: "center",
+        alignItems: "center",
         flexDirection: "column"
       }}
       
     >
-      <Typography variant="h4" component="div" sx={{ m: 3 }}>
+      <Typography variant="h4" component="div" sx={{ m: 3, mt:10 }}>
         Kontakt
       </Typography>
       <Box

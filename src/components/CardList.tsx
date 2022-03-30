@@ -36,7 +36,7 @@ export default function CardList(props:Adminprops) {
           mb: "0.1%",
           justifyContent: "center",
           alignContent: "center",
-          backgroundImage: `url(${bg})`,
+          //backgroundImage: `url(${bg})`,
           backgroundSize: "cover",
           //backgroundColor: "lightGreen",
           backgroundRepeat: "no-repeat",
@@ -45,7 +45,7 @@ export default function CardList(props:Adminprops) {
         }}
       >
         {/* <SortbuttonsDOM settag={filterProduct}></SortbuttonsDOM> */}
-        <Typography
+       {/*  <Typography
           variant="h4"
           component="div"
           fontFamily="rouge script"
@@ -68,7 +68,7 @@ export default function CardList(props:Adminprops) {
               Plocka och välj utav vårt stora utbud av blommor!
             </h3>
           </Box>
-        </Typography>
+        </Typography> */}
 
         <AddProduct
           hideShow={props.hideShow}

@@ -9,7 +9,7 @@ function About() {
         backgroundImage: `url(${FlowerBackground})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
-        height: "100%",
+        minHeight: "100vh",
         //flex: 1,
         display: "flex",
         flexDirection: "column",
@@ -18,7 +18,7 @@ function About() {
     >
       <Typography
         variant="h4"
-        sx={{ display: "flex", justifyContent: "center", m: 2}}
+        sx={{ display: "flex", justifyContent: "center", m: 2, mt: 10}}
       >
         Om oss
       </Typography>

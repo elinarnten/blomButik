@@ -34,7 +34,7 @@ function CheckOutDelivery() {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
+        minHeight: "100vh",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -51,6 +51,7 @@ function CheckOutDelivery() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center"
         }}
       >
         <Typography sx={{ mb: 3, mt: 8 }} variant="h6">

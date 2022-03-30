@@ -14,6 +14,7 @@ export interface ContextInterface {
   getTotalPrice: () => number;
   getTotalQuantity: () => number;
   removeItem: (shopItem: ShopItem) => void;
+  getOrderNumber: () => number;
 }
 
 export const CartContext = createContext<ContextInterface>({
@@ -23,6 +24,7 @@ export const CartContext = createContext<ContextInterface>({
   getTotalQuantity: () => 0,
   removeItem: () => undefined,
   setItemInCart: () => undefined,
+  getOrderNumber: () => 0
 });
 
 const CartContextProvider: React.FC<ReactNode> = (props) => {
@@ -76,6 +78,12 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
     return totalQuantity;
   };
 
+  const getOrderNumber = (): number => {
+    let orderNumber = Math.floor(Math.random() * 100000) + 600000;
+    return orderNumber
+    console.log(orderNumber)
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -85,6 +93,7 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
         getTotalQuantity,
         removeItem,
         setItemInCart,
+        getOrderNumber
       }}
     >
       {props.children}

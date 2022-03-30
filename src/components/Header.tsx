@@ -53,6 +53,7 @@ function Header(props: Props) {
           backgroundColor: "white",
           //color: "#F4EAC6",
           color: "black",
+          height: "4rem",
           boxShadow: "none",
         }}
       >
