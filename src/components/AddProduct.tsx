@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { Dispatch, SetStateAction, useContext, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
 import { generateId } from "../data/ShopContent";
@@ -44,9 +44,7 @@ export default function AddProduct(Props: Props) {
       liked: false,
       description,
     };
-
     addProduct(newItem);
-    console.log(newItem);
   };
 
   function handleSubmit(e: any) {
@@ -88,7 +86,7 @@ export default function AddProduct(Props: Props) {
             display: "flex",
             flexDirection: "column",
             padding: "20px",
-            margin: "10px",
+            marginTop: "4rem",
             justifyContent: "center",
             alignContent: "center",
             width: "100%",
@@ -107,20 +105,21 @@ export default function AddProduct(Props: Props) {
             sx={{
               ml: 4,
               mr: 5,
-              mt: 9,
-              backgroundColor: "rgba(252, 215, 155, 0.9)",
+              //mt: 4,
+              //backgroundColor: "rgba(252, 215, 155, 0.9)",
               borderRadius: 2,
               padding: 12,
             }}
           >
             <Typography
-              fontFamily="Quicksand"
+              //fontFamily="Quicksand"
               style={{
-                fontFamily: "Quicksand, cursive",
-                color: "white",
+                //fontFamily: "Quicksand, cursive",
+                color: "black",
               }}
             >
-              <h3>Title</h3>
+              <h4 style={{ marginBottom: 10 }}>Lägg till en ny produkt:</h4>
+              <h5>Titel</h5>
 
               <input
                 style={{
@@ -129,16 +128,16 @@ export default function AddProduct(Props: Props) {
                   justifyContent: "center",
                   alignContent: "center",
                   borderRadius: "5px",
-                  border: "solid gold",
+                  border: "solid black",
                 }}
-                placeholder="Title"
+                //placeholder="Title"
                 name="title-name"
                 value={title}
                 onChange={handleaddTitle}
                 type="text"
               ></input>
 
-              <h3>Image URL</h3>
+              <h5>Bild URL</h5>
               <input
                 style={{
                   width: "90%",
@@ -146,16 +145,16 @@ export default function AddProduct(Props: Props) {
                   justifyContent: "center",
                   alignContent: "center",
                   borderRadius: "5px",
-                  border: "solid gold",
+                  border: "solid black",
                 }}
-                placeholder="image"
+                //placeholder="image"
                 name="image-name"
                 value={image}
                 onChange={handleaddImage}
                 type="text"
               ></input>
 
-              <h3>Price</h3>
+              <h5>Pris</h5>
               <input
                 style={{
                   width: "90%",
@@ -163,16 +162,16 @@ export default function AddProduct(Props: Props) {
                   justifyContent: "center",
                   alignContent: "center",
                   borderRadius: "5px",
-                  border: "solid gold",
+                  border: "solid black",
                 }}
-                placeholder="price"
+                //placeholder="price"
                 name="price-name"
                 value={price}
                 onChange={handleaddPrice}
                 type="number"
               ></input>
 
-              <h3>Tag</h3>
+              <h5>Tag</h5>
               <div>
                 <input
                   style={{
@@ -181,15 +180,15 @@ export default function AddProduct(Props: Props) {
                     justifyContent: "center",
                     alignContent: "center",
                     borderRadius: "5px",
-                    border: "solid gold",
+                    border: "solid black",
                   }}
-                  placeholder="tag"
+                  //placeholder="tag"
                   name="image-tag"
                   value={tag}
                   onChange={handleaddTag}
                   type="text"
                 ></input>
-                <h3>Description</h3>
+                <h5>Beskrivning</h5>
                 <input
                   style={{
                     width: "90%",
@@ -197,11 +196,11 @@ export default function AddProduct(Props: Props) {
                     justifyContent: "center",
                     alignContent: "center",
                     borderRadius: "5px",
-                    border: "solid gold",
+                    border: "solid black",
                   }}
-                  placeholder="description"
-                  name="image-tag"
-                  value={tag}
+                  //placeholder="Beskrivning"
+                  name="description-box"
+                  value={description}
                   onChange={handleAddDescription}
                   type="text"
                 ></input>
@@ -210,17 +209,18 @@ export default function AddProduct(Props: Props) {
                   type="submit"
                   style={{
                     marginTop: "10px",
+                    marginRight: "10%",
                     border: "none",
                     color: "white",
                     borderRadius: 5,
-                    backgroundColor: "#ffcc80",
+                    backgroundColor: "green",
                     padding: "5px 35px",
                     fontSize: "12px",
                     alignSelf: "center",
                     float: "right",
                   }}
                 >
-                  <h3>add product</h3>
+                  <h3>Lägg till</h3>
                 </button>
               </div>
             </Typography>
