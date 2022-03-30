@@ -20,7 +20,6 @@ function CheckOutPayment() {
     const clearState = () => {
       setItemInCart([]);
     };
-    console.log(itemInCart)
 
   let navigate = useNavigate();
 
@@ -92,7 +91,7 @@ function CheckOutPayment() {
           flexWrap: "wrap",
         }}
       >
-        <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
+        <Typography sx={{ mb: 3 }} variant="h6">
           Hur vill du betala?
         </Typography>
 

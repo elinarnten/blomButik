@@ -65,7 +65,7 @@ function CheckOutContact() {
           alignItems: "center",
         }}
       >
-        <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
+        <Typography sx={{ mb: 3, }} variant="h6">
           Vänligen fyll i dina uppgifter:
         </Typography>
         <div>

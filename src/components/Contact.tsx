@@ -28,7 +28,7 @@ function Contact() {
       }}
       
     >
-      <Typography variant="h4" component="div" sx={{ m: 3, mt:10 }}>
+      <Typography variant="h4" component="div" sx={{ m: 3 }}>
         Kontakt
       </Typography>
       <Box

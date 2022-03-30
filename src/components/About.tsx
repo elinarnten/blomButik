@@ -18,7 +18,7 @@ function About() {
     >
       <Typography
         variant="h4"
-        sx={{ display: "flex", justifyContent: "center", m: 2, mt: 10}}
+        sx={{ display: "flex", justifyContent: "center", m: 2}}
       >
         Om oss
       </Typography>

@@ -7,6 +7,10 @@
   min-height: 100%;
 } 
 
+body {
+  padding-top: 4rem;
+}
+
 
 @font-face {
   font-family: "Quicksand";

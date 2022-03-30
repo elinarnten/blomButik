@@ -50,12 +50,15 @@ addItem(props.item);
 
   return (
     <Card
-      sx={{ maxWidth: 350, minWidth: 220 }}
+      sx={{ width: 220,/*  minWidth: 220 */ }}
       style={{
         textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignContent: "center",
-        alignSelf: "center",
+        flexWrap: "wrap"
+        //alignSelf: "center",
       }}
       className="Quicksand"
     >

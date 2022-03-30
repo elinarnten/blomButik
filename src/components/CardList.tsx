@@ -2,7 +2,7 @@ import CardView from "./Card";
 import { ShopItem,} from "../data/ShopContent";
 import { Grid, Typography } from "@mui/material";
 import bg from "../images/bg.jpg";
-import { Box } from "@mui/system";
+import { Box, display, width } from "@mui/system";
 import { SortButton } from "../data/SortButtonsData";
 import { useContext, useState, } from "react";
 import AddProduct from "./AddProduct";
@@ -34,11 +34,13 @@ export default function CardList(props:Adminprops) {
         sx={{
           mt: "0.1%",
           mb: "0.1%",
+          display: "flex",
           justifyContent: "center",
           alignContent: "center",
           //backgroundImage: `url(${bg})`,
+
           backgroundSize: "cover",
-          //backgroundColor: "lightGreen",
+          backgroundColor: "beige",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           alignItems: "center",
@@ -69,7 +71,23 @@ export default function CardList(props:Adminprops) {
             </h3>
           </Box>
         </Typography> */}
+         <Box
+            sx={{
+              /* borderRadius: "2px",
+              backgroundColor: "rgba(255, 226, 162, 0.852)", */
+             /*  ml: "20%",
+              mr: "20%", */
+              m: "5%",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
 
+            }}
+          >
+        <Typography>Plocka och välj ur vårt stora utbud av blommor!</Typography>
+
+        </Box>
         <AddProduct
           hideShow={props.hideShow}
           HandleSubmitProducts={addProduct}
@@ -81,12 +99,13 @@ export default function CardList(props:Adminprops) {
               container
               spacing={1}
               item
-              md={4}
+              md={3}
               sm={4}
               xs={10}
               sx={{
                 mt: "0.1%",
                 mb: "0.1%",
+                display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 alignContent: "center",

@@ -4,11 +4,19 @@ import { Link } from "react-router-dom";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import { CartContext } from "../CartContext";
 
+
+
 function OrderConfirmation()  {
+  
   const { getOrderNumber } =
     useContext(CartContext);
 
     let orderNumber = getOrderNumber()
+
+    window.addEventListener("popstate", e => {
+      window.location.assign('/')
+    });
+
   
     return (
       <Box sx={{

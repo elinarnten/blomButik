@@ -54,7 +54,7 @@ function CheckOutDelivery() {
           justifyContent: "center"
         }}
       >
-        <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
+        <Typography sx={{ mb: 3 }} variant="h6">
           Hur vill du få dina varor levererade?
         </Typography>
         <ToggleButtonGroup
