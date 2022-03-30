@@ -1,7 +1,7 @@
 import React from "react";
-import { ConsumerContext } from "../ConsumerContext";
+import { ConsumerContext } from "../contexts/ConsumerContext";
 import { useState } from "react";
-import ConsumerContextProvider from "../ConsumerContext";
+import ConsumerContextProvider from "../contexts/ConsumerContext";
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -17,8 +17,8 @@ import OrderConfirmation from "./OrderConfirmation";
 import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import SlideIn from "./SlideIn";
-import ProductContextProvider from "../productContext";
-import CartContextProvider from "../CartContext";
+import ProductContextProvider from "../contexts/productContext";
+import CartContextProvider from "../contexts/CartContext";
 
 function App() {
   const [item, setItem] = useState(shopItems);
@@ -27,14 +27,13 @@ function App() {
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
-    
     <ProductContextProvider>
       <CartContextProvider>
         <ConsumerContextProvider>
-            <Header setMenuOpen={setMenuOpen} />
-            <BrowserRouter>
-              <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-          <div className="App">
+          <Header setMenuOpen={setMenuOpen} />
+          <BrowserRouter>
+            <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+            <div className="App">
               <Routes>
                 <Route path="/" element={<StartPage />} />
                 <Route path="/kontakt" element={<Contact />} />
@@ -43,19 +42,21 @@ function App() {
                 <Route path="/betalning" element={<CheckOutPayment />} />
                 <Route path="/leverans" element={<CheckOutDelivery />} />
                 <Route path="/om" element={<About />} />
-                <Route path="/orderbekraftelse" element={<OrderConfirmation />} />
+                <Route
+                  path="/orderbekraftelse"
+                  element={<OrderConfirmation />}
+                />
                 <Route
                   path="/sortiment"
                   element={<CardList hideShow={false} />}
                 />
               </Routes>
-          </div>
-              <Footer /> 
-              </BrowserRouter>
+            </div>
+            <Footer />
+          </BrowserRouter>
         </ConsumerContextProvider>
       </CartContextProvider>
     </ProductContextProvider>
-  
   );
 }
 export default App;

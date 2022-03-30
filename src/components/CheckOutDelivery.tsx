@@ -8,7 +8,7 @@ import {
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
-import { ConsumerContext } from "../ConsumerContext";
+import { ConsumerContext } from "../contexts/ConsumerContext";
 import { deliveryAlternatives, DeliveryOption } from "../mockedDelivery";
 
 function CheckOutDelivery() {
@@ -51,7 +51,7 @@ function CheckOutDelivery() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <Typography sx={{ mb: 3 }} variant="h6">

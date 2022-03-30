@@ -10,7 +10,7 @@ import React from "react";
 import { createElement, useContext, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 import { generateId, ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../productContext";
+import { ProductContext } from "../contexts/productContext";
 
 interface Props {
   hideShow: Boolean;

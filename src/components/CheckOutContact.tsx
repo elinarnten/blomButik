@@ -2,44 +2,70 @@ import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { ConsumerContext } from "../ConsumerContext";
+import { ConsumerContext } from "../contexts/ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 
 function CheckOutContact() {
-  const { firstname, setFirstname, lastname, setLastname, phoneNumber, setPhoneNumber, email, setEmail, address, setAddress, code, setCode, city, setCity } = useContext(ConsumerContext);
-
+  const {
+    firstname,
+    setFirstname,
+    lastname,
+    setLastname,
+    phoneNumber,
+    setPhoneNumber,
+    email,
+    setEmail,
+    address,
+    setAddress,
+    code,
+    setCode,
+    city,
+    setCity,
+  } = useContext(ConsumerContext);
 
   function SubmitButton() {
-    if (firstname && lastname && phoneNumber && email && address && code && city) {
-      return <Button
-      size="small"
-      variant="contained"
-      sx={{
-        backgroundColor: "#F4EAC6",
-        boxShadow: "none",
-        color: "black",
+    if (
+      firstname &&
+      lastname &&
+      phoneNumber &&
+      email &&
+      address &&
+      code &&
+      city
+    ) {
+      return (
+        <Button
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "#F4EAC6",
+            boxShadow: "none",
+            color: "black",
 
-        mt: 3,
-      }}
-    >
-      Gå vidare
-    </Button>
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
+      );
     } else {
-      return <Button disabled
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button>
+      return (
+        <Button
+          disabled
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "#F4EAC6",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
+      );
     }
   }
-
 
   return (
     <Box
@@ -65,7 +91,7 @@ function CheckOutContact() {
           alignItems: "center",
         }}
       >
-        <Typography sx={{ mb: 3, }} variant="h6">
+        <Typography sx={{ mb: 3 }} variant="h6">
           Vänligen fyll i dina uppgifter:
         </Typography>
         <div>
@@ -84,7 +110,7 @@ function CheckOutContact() {
               value={firstname}
               error={firstname === ""}
               //helperText={firstname === "" ? 'Empty field!' : ' '}
-              
+
               sx={{
                 mr: 2,
                 mb: 2,
@@ -105,8 +131,7 @@ function CheckOutContact() {
               size="small"
               name="family-name"
               autoComplete="family-name"
-              sx={{ mb: 2, color: "black",
-              backgroundColor: "#F4EAC6", }}
+              sx={{ mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
             />
           </FormControl>
         </div>
@@ -115,7 +140,7 @@ function CheckOutContact() {
             <TextField
               required
               //value={email}
-             onChange={(event) => {
+              onChange={(event) => {
                 setEmail(event.target.value);
               }}
               id="outlined-required"
@@ -123,8 +148,7 @@ function CheckOutContact() {
               type="email"
               label="E-post"
               size="small"
-              sx={{ mr: 2, mb: 2, color: "black",
-              backgroundColor: "#F4EAC6", }}
+              sx={{ mr: 2, mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
             />
           </FormControl>
           <FormControl>
@@ -140,8 +164,7 @@ function CheckOutContact() {
               size="small"
               name="tel"
               autoComplete="tel"
-              sx={{ mb: 2, color: "black",
-              backgroundColor: "#F4EAC6",}}
+              sx={{ mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
             />
           </FormControl>
         </div>
@@ -158,8 +181,7 @@ function CheckOutContact() {
               id="outlined-required"
               label="Gatuadress"
               size="small"
-              sx={{ mb: 2, color: "black",
-              backgroundColor: "#F4EAC6", }}
+              sx={{ mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
             />
           </FormControl>
         </div>
@@ -176,8 +198,7 @@ function CheckOutContact() {
               autoComplete="postal-code"
               label="Postnummer"
               size="small"
-              sx={{ mr: 2, mb: 2, color: "black",
-              backgroundColor: "#F4EAC6",}}
+              sx={{ mr: 2, mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
             />
           </FormControl>
           <FormControl>
@@ -190,8 +211,7 @@ function CheckOutContact() {
               label="Ort"
               name="address-level2"
               size="small"
-              sx={{ color: "black",
-              backgroundColor: "#F4EAC6",}}
+              sx={{ color: "black", backgroundColor: "#F4EAC6" }}
             />
           </FormControl>
         </div>
@@ -210,7 +230,7 @@ function CheckOutContact() {
             Tillbaka
           </Button>
           <Link to={"/leverans"}>
-            <SubmitButton/>
+            <SubmitButton />
             {/* <Button
               size="small"
               variant="contained"

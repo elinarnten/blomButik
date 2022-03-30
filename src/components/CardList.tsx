@@ -7,7 +7,7 @@ import { SortButton } from "../data/SortButtonsData";
 import { useContext, useState } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
-import { ProductContext } from "../productContext";
+import { ProductContext } from "../contexts/productContext";
 import EditButton from "./EditButton";
 
 interface Props {
@@ -45,7 +45,6 @@ export default function CardList(props: Adminprops) {
             alignItems: "center",
           }}
         >
-
           <Typography
             variant="h5"
             component="div"
@@ -109,5 +108,3 @@ export default function CardList(props: Adminprops) {
     </>
   );
 }
-
-
