@@ -35,7 +35,7 @@ export default function ProductDescription(props: Props) {
     setAnchorEl(null);
   };
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}}>
       <IconButton onClick={handleClose}>
         <CloseIcon />
       </IconButton>
@@ -44,7 +44,7 @@ export default function ProductDescription(props: Props) {
       </Card>
       <Box>
         <Typography> {props.item.title}</Typography>
-        <Typography> {props.item.price} KR/ st</Typography>
+        <Typography> {props.item.price} kr/st</Typography>
         <Typography> {props.item.description} </Typography>
         <Button
           size="small"
@@ -52,13 +52,12 @@ export default function ProductDescription(props: Props) {
           style={{
             position: "static",
             borderRadius: 5,
-            backgroundColor: "#ffcc80",
+            backgroundColor: "black",
             padding: "5px 35px",
             fontSize: "8px",
             alignSelf: "center",
           }}
           onClick={handleOnClick}
-          //   onClick={() => addItem(props.item)}
         >
           <ShoppingCartIcon />
         </Button>

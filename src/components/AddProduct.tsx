@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, height } from "@mui/system";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
@@ -199,10 +199,10 @@ export default function AddProduct(Props: Props) {
                     color:"white",
                     borderRadius: 5,
                     backgroundColor: "green",
-                    padding: "5px 35px",
-                    fontSize: "12px",
                     alignSelf: "center",
-                      float: "right"
+                      float: "right",
+                      height: "2rem",
+                      width: "6rem",
                   }}>
                      <h3>Lägg till</h3>
                    </button>
