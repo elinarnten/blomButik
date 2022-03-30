@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,15 +10,24 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "../App.css";
 import { useState } from "react";
-import { CartContext } from "../CartContext";
+import { IconButton } from "@mui/material";
+import { ConsumerContext } from "../ConsumerContext";
+import { CartContext, CartItem } from "../CartContext";
+import { CloseOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Menu, Modal, Popover } from "@mui/material";
+import React from "react";
+
 
 interface Props {
   item: ShopItem;
 }
 
 export default function CardView(props: Props) {
+
+  //const { itemInCart, setItemInCart, addItem } = useContext(CartContext);
+
+
   const { addItem } = useContext(CartContext);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
@@ -32,9 +41,11 @@ export default function CardView(props: Props) {
     setAnchorCardEl(null);
   };
 
+
   const handleOnClick = () => {
     addItem(props.item);
   };
+
 
   //console.log(itemInCart)
   /* 
@@ -45,17 +56,21 @@ export default function CardView(props: Props) {
     console.log(cartArray)
   }; */
 
+
   const [toggle, setToggle] = useState(true);
   const [name, setName] = useState("test");
 
   return (
     <Card
-      sx={{ maxWidth: 350, minWidth: 220 }}
+      sx={{ width: 220 }}
       style={{
         textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignContent: "center",
-        alignSelf: "center",
+        flexWrap: "wrap",
+        border: "solid black 2px",
       }}
       className="Quicksand"
     >
@@ -145,7 +160,7 @@ export default function CardView(props: Props) {
             display: "flex",
             justifyContent: "center",
             fontFamily: "Quicksand, cursive",
-            color: "rgb(250, 218, 112)",
+            color: "black",
           }}
         >
           {props.item.title}
@@ -155,7 +170,9 @@ export default function CardView(props: Props) {
           variant="body2"
           color="text.secondary"
         >
-          {props.item.price} KR/ st
+
+          {props.item.price} kr/st
+
         </Typography>
       </CardContent>
       <CardActions
@@ -166,24 +183,6 @@ export default function CardView(props: Props) {
         }}
       >
 
-        <Button
-          sx={{
-            color: "pink",
-          }}
-          size="small"
-          color="secondary"
-          variant="text"
-          style={{
-            position: "static",
-            borderRadius: 5,
-            padding: "5px 15px",
-            fontSize: "5px",
-            alignSelf: "center",
-          }}
-        >
-          <FavoriteIcon />
-        </Button>
-
 
         <Button
           size="small"
@@ -191,12 +190,11 @@ export default function CardView(props: Props) {
           style={{
             position: "static",
             borderRadius: 5,
-            backgroundColor: "#ffcc80",
+            backgroundColor: "black",
             padding: "5px 35px",
             fontSize: "8px",
             alignSelf: "center",
           }}
-          //onClick={ (e) => handleOnClick(e, setItemInCart)}
           onClick={handleOnClick}
         >
           <ShoppingCartIcon />

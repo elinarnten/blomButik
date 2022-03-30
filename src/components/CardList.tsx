@@ -2,7 +2,7 @@ import CardView from "./Card";
 import { ShopItem } from "../data/ShopContent";
 import { Grid, Typography } from "@mui/material";
 import bg from "../images/bg.jpg";
-import { Box } from "@mui/system";
+import { Box, display, width } from "@mui/system";
 import { SortButton } from "../data/SortButtonsData";
 import { useContext, useState } from "react";
 import AddProduct from "./AddProduct";
@@ -26,48 +26,41 @@ export default function CardList(props: Adminprops) {
     <>
       <Grid
         container
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{
-          mt: "0.1%",
-          mb: "0.1%",
+          display: "flex",
           justifyContent: "center",
           alignContent: "center",
-          backgroundImage: `url(${bg})`,
           backgroundSize: "cover",
-          //backgroundColor: "lightGreen",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           alignItems: "center",
         }}
       >
-        {/* <SortbuttonsDOM settag={filterProduct}></SortbuttonsDOM> */}
-        <Typography
-          variant="h4"
-          component="div"
-          fontFamily="rouge script"
-          style={{
+        <Box
+          sx={{
+            m: 6,
             width: "100%",
+            display: "flex",
             justifyContent: "center",
-            fontFamily: "Pacifio, cursive",
-            textAlign: "center",
+            alignItems: "center",
           }}
         >
-          <Box
-            sx={{
-              borderRadius: "2px",
-              backgroundColor: "rgba(255, 226, 162, 0.852)",
-              ml: "20%",
-              mr: "20%",
-              my: "1rem",
+
+          <Typography
+            variant="h5"
+            component="div"
+            className="Quicksand"
+            fontFamily="Quicksand"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontFamily: "Quicksand, cursive",
+              color: "black",
             }}
           >
-            <h3 style={{ color: "White", fontFamily: "Pacifico, cursive" }}>
-              Plocka och välj utav vårt stora utbud av blommor!
-            </h3>
-          </Box>
-        </Typography>
-
+            Plocka och välj ur vårt stora utbud av blommor!
+          </Typography>
+        </Box>
         <AddProduct
           hideShow={props.hideShow}
           HandleSubmitProducts={addProduct}
@@ -77,14 +70,13 @@ export default function CardList(props: Adminprops) {
           <Grid
             key={item.id}
             container
-            spacing={1}
             item
             md={4}
-            sm={4}
-            xs={10}
+            sm={5}
             sx={{
               mt: "0.1%",
-              mb: "0.1%",
+              mb: "3%",
+              display: "flex",
               justifyContent: "center",
               alignItems: "center",
               alignContent: "center",
@@ -117,17 +109,5 @@ export default function CardList(props: Adminprops) {
     </>
   );
 }
-// setFilterShopItems(
-// shopItems.filter((product) => deleteItem !== product.id)
-//     [deleteItem])
 
-// useEffect(() => {
-//   if (selectedTag === "") {
-//       setFilterShopItems(shopItems);
-//     } else {
-//       setFilterShopItems(
-//         shopItems.filter((product) => selectedTag === product.tag)
-//       );
-//     }
 
-//   }, [selectedTag]);

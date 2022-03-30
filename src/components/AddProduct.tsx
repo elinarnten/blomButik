@@ -50,145 +50,151 @@ export default function AddProduct(Props: Props) {
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("You clicked submit.");
+
   }
+ const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setTitle(event.target.value);
+      event.preventDefault();
+      
 
-  const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-    event.preventDefault();
-  };
+    }; 
 
-  const handleaddTag = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTag(event.target.value as any);
-    event.preventDefault();
-  };
+     const handleaddTag = (event: React.ChangeEvent<HTMLInputElement>) => {
+       setTag(event.target.value as any);
+      event.preventDefault();
 
-  const handleaddPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value as any);
-    event.preventDefault();
-  };
+     }; 
 
-  const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setImage(event.target.value);
-    event.preventDefault();
-  };
+      const handleaddPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPrice(event.target.value as any);
+         event.preventDefault();
+      }; 
 
+       const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+         setImage(event.target.value);
+          event.preventDefault();
+       }; 
+  
   const handleAddDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
     event.preventDefault();
   };
+  
+  
+     if (Props.hideShow === true) {
+       {
+         return (
+           <form
+             onSubmit={handleSubmit}
+             style={{
+               display: "flex",
+               flexDirection: "column",
+               padding: "20px",
+               marginTop: "4rem",
+               justifyContent: "center",
+               alignContent: "center",
+               width: "100%",
+               alignItems: "center",
+             }}
+           >
+             
+             <Box
+               style={{
+                 display: "flex",
+                 flexDirection: "column",
+                 padding: "20px",
+                 margin: "10px",
+                 justifyContent: "center",
+                 alignContent: "center",
+               }}
+               sx={{
+                 ml: 4,
+                 mr: 5,
+                 //mt: 4,
+                 //backgroundColor: "rgba(252, 215, 155, 0.9)",
+                 borderRadius: 2,
+                 padding: 12,
+               }}
+             >
+          
+               <Typography
+                 //fontFamily="Quicksand"
+                 style={{
+                   //fontFamily: "Quicksand, cursive",
+                   color: "black",
+                 }}
+               >
+                 <h4 style={{marginBottom: 10}}>Lägg till en ny produkt:</h4>
+                 <h5>Titel</h5>
 
-  if (Props.hideShow === true) {
-    {
-      return (
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "20px",
-            marginTop: "4rem",
-            justifyContent: "center",
-            alignContent: "center",
-            width: "100%",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "20px",
-              margin: "10px",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-            sx={{
-              ml: 4,
-              mr: 5,
-              //mt: 4,
-              //backgroundColor: "rgba(252, 215, 155, 0.9)",
-              borderRadius: 2,
-              padding: 12,
-            }}
-          >
-            <Typography
-              //fontFamily="Quicksand"
-              style={{
-                //fontFamily: "Quicksand, cursive",
-                color: "black",
-              }}
-            >
-              <h4 style={{ marginBottom: 10 }}>Lägg till en ny produkt:</h4>
-              <h5>Titel</h5>
+                 <input
+                   style={{
+                     width: "90%",
+                     padding: "5px",
+                     justifyContent: "center",
+                     alignContent: "center",
+                     borderRadius: "5px",
+                     border: "solid black",
+                   }}
+                   //placeholder="Title"
+                   name="title-name"
+                   value={title}
+                   onChange={handleaddTitle}
+                   type="text"
+                 ></input>
 
-              <input
-                style={{
-                  width: "90%",
-                  padding: "5px",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  borderRadius: "5px",
-                  border: "solid black",
-                }}
-                //placeholder="Title"
-                name="title-name"
-                value={title}
-                onChange={handleaddTitle}
-                type="text"
-              ></input>
+                 <h5>Bild URL</h5>
+                 <input
+                   style={{
+                     width: "90%",
+                     padding: "5px",
+                     justifyContent: "center",
+                     alignContent: "center",
+                     borderRadius: "5px",
+                     border: "solid black",
+                   }}
+                   //placeholder="image"
+                   name="image-name"
+                   value={image}
+                   onChange={handleaddImage}
+                   type="text"
+                 ></input>
 
-              <h5>Bild URL</h5>
-              <input
-                style={{
-                  width: "90%",
-                  padding: "5px",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  borderRadius: "5px",
-                  border: "solid black",
-                }}
-                //placeholder="image"
-                name="image-name"
-                value={image}
-                onChange={handleaddImage}
-                type="text"
-              ></input>
+                 <h5>Pris</h5>
+                 <input
+                   style={{
+                     width: "90%",
+                     padding: "5px",
+                     justifyContent: "center",
+                     alignContent: "center",
+                     borderRadius: "5px",
+                     border: "solid black",
+                   }}
+                   //placeholder="price"
+                   name="price-name"
+                   value={price}
+                   onChange={handleaddPrice}
+                   type="number"
+                 ></input>
 
-              <h5>Pris</h5>
-              <input
-                style={{
-                  width: "90%",
-                  padding: "5px",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  borderRadius: "5px",
-                  border: "solid black",
-                }}
-                //placeholder="price"
-                name="price-name"
-                value={price}
-                onChange={handleaddPrice}
-                type="number"
-              ></input>
-
-              <h5>Tag</h5>
-              <div>
-                <input
-                  style={{
-                    width: "90%",
-                    padding: "5px",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    borderRadius: "5px",
-                    border: "solid black",
-                  }}
-                  //placeholder="tag"
-                  name="image-tag"
-                  value={tag}
-                  onChange={handleaddTag}
-                  type="text"
-                ></input>
-                <h5>Beskrivning</h5>
+                 <h5>Tag</h5>
+                 <div>
+                   <input
+                     style={{
+                       width: "90%",
+                       padding: "5px",
+                       justifyContent: "center",
+                       alignContent: "center",
+                       borderRadius: "5px",
+                       border: "solid black",
+                     }}
+                     //placeholder="tag"
+                     name="image-tag"
+                     value={tag}
+                     onChange={handleaddTag}
+                     type="text"
+                   ></input>
+                    <h5>Beskrivning</h5>
                 <input
                   style={{
                     width: "90%",
@@ -204,30 +210,30 @@ export default function AddProduct(Props: Props) {
                   onChange={handleAddDescription}
                   type="text"
                 ></input>
-                <button
-                  onClick={HandleSubmitProducts}
-                  type="submit"
-                  style={{
+                   <button onClick={HandleSubmitProducts} type="submit"
+                    style={{
                     marginTop: "10px",
                     marginRight: "10%",
-                    border: "none",
-                    color: "white",
+                    border:"none",
+                    color:"white",
                     borderRadius: 5,
                     backgroundColor: "green",
                     padding: "5px 35px",
                     fontSize: "12px",
                     alignSelf: "center",
-                    float: "right",
-                  }}
-                >
-                  <h3>Lägg till</h3>
-                </button>
-              </div>
-            </Typography>
-          </Box>
-        </form>
+                    float: "right"
+                  }}>
+                     <h3>Lägg till</h3>
+                   </button>
+                 </div>
+               </Typography>
+             </Box>
+           </form>
+        );
+       }
+      }
+      return (
+        <>
+        </>
       );
-    }
   }
-  return <></>;
-}

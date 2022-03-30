@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <Box>
+    <Box sx={{borderTop: "solid black 2px"}}>
       <BottomNavigation showLabels>
         <BottomNavigationAction
           component={Link}

@@ -20,7 +20,6 @@ function CheckOutPayment() {
     const clearState = () => {
       setItemInCart([]);
     };
-    console.log(itemInCart)
 
   let navigate = useNavigate();
 
@@ -70,7 +69,7 @@ function CheckOutPayment() {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
+        minHeight: "100vh",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -88,10 +87,11 @@ function CheckOutPayment() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
           flexWrap: "wrap",
         }}
       >
-        <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
+        <Typography sx={{ mb: 3 }} variant="h6">
           Hur vill du betala?
         </Typography>
 
@@ -137,6 +137,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Kortnummer"
               size="small"
+              name="cardnumber"
+              autoComplete="cc-number"
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
@@ -147,6 +149,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Giltlighet"
               size="small"
+              name="ccyear"
+              autoComplete="cc-exp-year"
               sx={{ ml: 2, mb: 2, width: "50%" }}
             />
             <TextField
@@ -155,6 +159,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="CVC"
               size="small"
+              name="cvc"
+              autoComplete="cc-csc"
               sx={{ ml: 2, mb: 2, mr: 2, width: "35%" }}
             />
           </div>
@@ -165,6 +171,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Namn"
               size="small"
+              name="ccname"
+              autoComplete="cc-name"
               value={firstname + " " + lastname}
               sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
             />

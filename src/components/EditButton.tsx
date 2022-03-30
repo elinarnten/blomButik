@@ -124,14 +124,14 @@ export default function EditButton(props: Props) {
                   border: "none",
                 }}
               >
-                <p>title:</p>
+                <p>Titel:</p>
                 <Input
                   type="text"
                   defaultValue={props.item.title}
                   onChange={handleChangeTitle}
                   value={title}
                 />
-                <p>image:</p>
+                <p>Bild:</p>
                 <Input
                   type="text"
                   defaultValue={props.item.img}
@@ -139,14 +139,14 @@ export default function EditButton(props: Props) {
                   value={img}
                 />
 
-                <p>tag: </p>
+                <p>Tag: </p>
                 <Input
                   type="text"
                   defaultValue={props.item.tag}
                   onChange={handleChangeTag}
                   value={tag}
                 />
-                <p>price: </p>
+                <p>Pris: </p>
                 <Input
                   type="number"
                   defaultValue={props.item.price}
@@ -163,7 +163,7 @@ export default function EditButton(props: Props) {
                   onClick={handleUpdateProduct}
                   type="submit"
                 >
-                  finish
+                  Klar
                 </Button>
                 <Button
                   variant="contained"
@@ -176,14 +176,14 @@ export default function EditButton(props: Props) {
                     setIsEditing(false);
                   }}
                 >
-                  close
+                  Stäng
                 </Button>
               </form>
             ) : (
               <Button
                 variant="contained"
                 style={{
-                  backgroundColor: "#c4e6c1",
+                  backgroundColor: "green",
                   alignSelf: "center",
                   width: "50%",
                 }}
@@ -191,7 +191,7 @@ export default function EditButton(props: Props) {
                   setIsEditing(true);
                 }}
               >
-                edit Item
+                Ändra
               </Button>
             )}
           </ThemeProvider>

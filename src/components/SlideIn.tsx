@@ -29,13 +29,37 @@ function SlideIn(props: Props) {
 
   let totalPrice = getTotalPrice();
 
+function CheckOutButton() {
+  if (itemInCart.length >= 1){
+    return <Button
+    onClick={() => props.setMenuOpen(false)}
+    sx={{
+      height: "2rem",
+      width: "auto",
+      backgroundColor: "pink",
+      color: "black",
+      mb: 1,
+      mt: 1,
+      ml: 2,
+    }}
+  >
+    Till kassan
+  </Button>
+  }
+   else {
+    return <></> 
+  } 
+}
+  
+
+
   const slideFrame = (
     <Box
       sx={{ m: 1, position: "fixed", top: 0, bottom: 0, right: 0, zIndex: 1 }}
     >
       {/* Close the slidein cart */}
       <IconButton onClick={() => props.setMenuOpen(false)}>
-        <CloseIcon sx={{ color: "black" }} />
+        <CloseIcon sx={{ color: "white", backgroundColor: "black", borderRadius: "100%" }} />
       </IconButton>
 
       <Box sx={{ width: "auto", p: "1rem" }}>
@@ -45,7 +69,7 @@ function SlideIn(props: Props) {
           {itemInCart.map((cartItem) => (
             <Card
               key={cartItem.shopItem.id}
-              sx={{ display: "flex", m: 1, height: "100%", width: "100%" }}
+              sx={{ display: "flex", m: 1, height: 180, width: "100%"}}
             >
               <CardMedia
                 sx={{ width: "40%", height: "100%" }}
@@ -53,19 +77,29 @@ function SlideIn(props: Props) {
                 image={cartItem.shopItem.img}
               ></CardMedia>
 
-              <Typography
-                sx={{ display: "flex", flexDirection: "column", m: 1 }}
+              <Box sx={{display: "flex", flexDirection: "column"}}>
+                <Typography
+                sx={{ m: 1, fontSize: "80%"}}
               >
                 {cartItem.shopItem.title}
+                </Typography>
+                {/* <br></br> */}
+                <Typography
+                sx={{ m: 1, fontSize: "80%"}}
+              >
                 {cartItem.shopItem.price} kr
+              </Typography>
+              
+                <Box sx={{display: "flex", mt: 2, alignItems: "center", }}>
                 <IconButton onClick={() => addItem(cartItem.shopItem)}>
-                  <AddIcon sx={{ fontSize: "50%" }} />
+                  <AddIcon sx={{ fontSize: "80%" }} />
                 </IconButton>
                 {cartItem.quantity}
                 <IconButton onClick={() => removeItem(cartItem.shopItem)}>
-                  <RemoveIcon sx={{ fontSize: "50%" }} />
+                  <RemoveIcon sx={{ fontSize: "80%" }} />
                 </IconButton>
-              </Typography>
+                </Box>
+                </Box>
             </Card>
           ))}
         </Box>
@@ -73,7 +107,8 @@ function SlideIn(props: Props) {
         <Box>
           Totalt pris: {totalPrice} kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
-            <Button
+           <CheckOutButton />
+            {/* <Button
               onClick={() => props.setMenuOpen(false)}
               sx={{
                 height: "2rem",
@@ -86,7 +121,7 @@ function SlideIn(props: Props) {
               }}
             >
               Till kassan
-            </Button>
+            </Button> */}
           </Link>
         </Box>
       </Box>
@@ -95,9 +130,9 @@ function SlideIn(props: Props) {
 
   return (
     <Box>
-      <Slide
+      <Slide className="cartSlide"
         style={{
-          width: "30%",
+          width: "50%",
           height: "80%",
           backgroundColor: "rgba(244, 234, 198, 0.4)",
           overflow: "hidden",

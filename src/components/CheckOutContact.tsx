@@ -45,11 +45,12 @@ function CheckOutContact() {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
+        minHeight: "100vh",
         backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        display: "flex",
       }}
     >
       <Box
@@ -64,7 +65,7 @@ function CheckOutContact() {
           alignItems: "center",
         }}
       >
-        <Typography sx={{ mb: 3, mt: 8 }} variant="h6">
+        <Typography sx={{ mb: 3, }} variant="h6">
           Vänligen fyll i dina uppgifter:
         </Typography>
         <div>
@@ -76,9 +77,13 @@ function CheckOutContact() {
               }}
               id="filled"
               label="Förnamn"
-              name="givenName"
+              name="given-name"
+              autoComplete="given-name"
               type="name"
               size="small"
+              value={firstname}
+              error={firstname === ""}
+              //helperText={firstname === "" ? 'Empty field!' : ' '}
               
               sx={{
                 mr: 2,
@@ -98,7 +103,8 @@ function CheckOutContact() {
               id="outlined-required"
               label="Efternamn"
               size="small"
-              name="familyName"
+              name="family-name"
+              autoComplete="family-name"
               sx={{ mb: 2, color: "black",
               backgroundColor: "#F4EAC6", }}
             />
@@ -133,6 +139,7 @@ function CheckOutContact() {
               label="Telefonnummer"
               size="small"
               name="tel"
+              autoComplete="tel"
               sx={{ mb: 2, color: "black",
               backgroundColor: "#F4EAC6",}}
             />
@@ -143,7 +150,8 @@ function CheckOutContact() {
             <TextField
               required
               //value={address}
-              name="streetAddress"
+              name="street-address"
+              autoComplete="street-address"
               onChange={(event) => {
                 setAddress(event.target.value);
               }}
@@ -164,7 +172,8 @@ function CheckOutContact() {
               }}
               id="outlined-required"
               type="number"
-              name="postalCode"
+              name="postal-code"
+              autoComplete="postal-code"
               label="Postnummer"
               size="small"
               sx={{ mr: 2, mb: 2, color: "black",
@@ -179,7 +188,7 @@ function CheckOutContact() {
               }}
               id="outlined-required"
               label="Ort"
-              name="city"
+              name="address-level2"
               size="small"
               sx={{ color: "black",
               backgroundColor: "#F4EAC6",}}

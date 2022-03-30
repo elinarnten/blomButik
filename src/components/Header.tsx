@@ -50,9 +50,12 @@ function Header(props: Props) {
         position="static"
         style={{
           //backgroundColor: "#84A86F",
-          backgroundColor: "white",
+          backgroundColor: "rgba(214, 186, 227, 0.4)",
           //color: "#F4EAC6",
           color: "black",
+          
+          borderBottom: "solid black 2px",
+          height: "4rem",
           boxShadow: "none",
         }}
       >
