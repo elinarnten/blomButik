@@ -13,7 +13,7 @@ function StartPage() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${temporary})`,
+        //backgroundImage: `url(${temporary})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

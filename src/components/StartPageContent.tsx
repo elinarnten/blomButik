@@ -69,6 +69,7 @@ export default function StartPageContent() {
               justifyContent: "center",
               alignContent: "center",
               alignSelf: "center",
+              border: "solid black 2px"
             }}
             className="Quicksand"
           >
@@ -89,7 +90,7 @@ export default function StartPageContent() {
                   display: "flex",
                   justifyContent: "center",
                   fontFamily: "Quicksand, cursive",
-                  color: "rgb(250, 218, 112)",
+                  color: "black",
                   fontSize: "small",
                 }}
               >
@@ -121,7 +122,7 @@ export default function StartPageContent() {
                   position: "static",
                   borderRadius: 5,
                   padding: "4px 3px ",
-                  backgroundColor: "#ffcc80",
+                  backgroundColor: "black",
                   alignSelf: "center",
                 }}
                 

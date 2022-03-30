@@ -1,4 +1,4 @@
-import{ useContext } from "react";
+import { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -15,42 +15,23 @@ import { ConsumerContext } from "../ConsumerContext";
 import { CartContext, CartItem } from "../CartContext";
 import { CloseOutlined } from "@mui/icons-material";
 
-
-
-
 interface Props {
   item: ShopItem;
-
-  
 }
 
+export default function CardView(props: Props) {
+  const { itemInCart, setItemInCart, addItem } = useContext(CartContext);
 
- 
-
-export default function CardView( props: Props) {
-
-  const {itemInCart, setItemInCart, addItem} = useContext(CartContext)
-
- const handleOnClick = () => {
-addItem(props.item);
-};
-//console.log(itemInCart)
-/* 
-  const handleOnClick = (product: ShopItem, cartArray: CartItem[]) => {
-    //addItem(product, cartArray)
-   setItemInCart([...cartArray, product])
-   
-    console.log(cartArray)
-  }; */
-
+  const handleOnClick = () => {
+    addItem(props.item);
+  };
 
   const [toggle, setToggle] = useState(true);
   const [name, setName] = useState("test");
 
-
   return (
     <Card
-      sx={{ width: 220,/*  minWidth: 220 */ }}
+      sx={{ width: 220 }}
       style={{
         textAlign: "center",
         display: "flex",
@@ -58,8 +39,7 @@ addItem(props.item);
         justifyContent: "center",
         alignContent: "center",
         flexWrap: "wrap",
-        border: "solid black 2px"
-        //alignSelf: "center",
+        border: "solid black 2px",
       }}
       className="Quicksand"
     >
@@ -79,8 +59,7 @@ addItem(props.item);
             display: "flex",
             justifyContent: "center",
             fontFamily: "Quicksand, cursive",
-            color: "black"
-            //color: "rgb(250, 218, 112)",
+            color: "black",
           }}
         >
           {props.item.title}
@@ -90,7 +69,7 @@ addItem(props.item);
           variant="body2"
           color="text.secondary"
         >
-            {props.item.price} kr/st
+          {props.item.price} kr/st
         </Typography>
       </CardContent>
       <CardActions
@@ -100,21 +79,17 @@ addItem(props.item);
           marginTop: "10px",
         }}
       >
-       
-
         <Button
           size="small"
           variant="contained"
           style={{
             position: "static",
             borderRadius: 5,
-            //backgroundColor: "#ffcc80",
             backgroundColor: "black",
             padding: "5px 35px",
             fontSize: "8px",
             alignSelf: "center",
           }}
-          //onClick={ (e) => handleOnClick(e, setItemInCart)}
           onClick={handleOnClick}
         >
           <ShoppingCartIcon />
