@@ -1,63 +1,50 @@
-
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
-import { ShopItem, } from "../data/ShopContent";
+import { ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
-import { generateId } from '../data/ShopContent'
+import { generateId } from "../data/ShopContent";
 
-interface Option{
-label: string,
-value:string
+interface Option {
+  label: string;
+  value: string;
 }
 
 interface Props {
   hideShow: Boolean;
   HandleSubmitProducts: Dispatch<SetStateAction<any>>;
-
 }
 
-export default function AddProduct(Props:Props) {
-const options: Option[] = [
-  { value: "lily", label: "liliy" },
-  { value: "rose", label: "rose" },
-  { value: "orchid", label: "orchid" },
-  { value: "tulip", label: "tulip" },
-  { value: "sunflower", label: "sunflower" },
-  { value: "tulip", label: "tulip" },
-  { value: "bouqette", label: "bouqette" },
-  
-];
+export default function AddProduct(Props: Props) {
+  const options: Option[] = [
+    { value: "lily", label: "liliy" },
+    { value: "rose", label: "rose" },
+    { value: "orchid", label: "orchid" },
+    { value: "tulip", label: "tulip" },
+    { value: "sunflower", label: "sunflower" },
+    { value: "tulip", label: "tulip" },
+    { value: "bouqette", label: "bouqette" },
+  ];
 
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState(0);
+  const [tag, setTag] = useState("");
+  const [description, setDescription] = useState("");
 
+  const { addProduct } = useContext(ProductContext);
 
-  const [title,setTitle] = useState("");
-  const [image,setImage] = useState("");
-  const[price,setPrice] = useState(0);
-  const [tag,setTag]=useState("");
-
-
-  const { addProduct } =
-    useContext(ProductContext);
-
-    const HandleSubmitProducts = () => {
-      
-
-      let newItem: ShopItem = {
-        id: generateId(),
-        title, 
-        img: image,
-        price,
-        tag,
-        liked: false
-      }
-      addProduct(newItem)
-      console.log(newItem)
-      
-
-      
-
+  const HandleSubmitProducts = () => {
+    let newItem: ShopItem = {
+      id: generateId(),
+      title,
+      img: image,
+      price,
+      tag,
+      liked: false,
+      description,
     };
+
 
      function handleSubmit(e:any) {
        e.preventDefault();
@@ -227,8 +214,4 @@ const options: Option[] = [
       return (
         <>
         </>
-      );
 }
-
-
-

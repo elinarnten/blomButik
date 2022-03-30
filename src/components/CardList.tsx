@@ -45,6 +45,7 @@ export default function CardList(props: Adminprops) {
             alignItems: "center",
           }}
         >
+
           <Typography
             variant="h5"
             component="div"
@@ -108,3 +109,5 @@ export default function CardList(props: Adminprops) {
     </>
   );
 }
+
+
