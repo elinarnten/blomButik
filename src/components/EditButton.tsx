@@ -1,4 +1,10 @@
-import { Button, createTheme, Input, ThemeProvider, Typography } from "@mui/material";
+import {
+  Button,
+  createTheme,
+  Input,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import { margin } from "@mui/system";
 import React from "react";
 import { createElement, useContext, useState } from "react";
@@ -45,69 +51,55 @@ themeEditItem = createTheme(themeEditItem, {
   },
 });
 
-
-
-
 export default function EditButton(props: Props) {
   let [isEditing, setIsEditing] = useState(false);
-   const [title, setTitle] = useState(props.item.title);
-   const [img, setImg] = useState(props.item.img);
-   const [price, setPrice] = useState(props.item.price);
-   const [tag, setTag] = useState(props.item.tag);
-   const [id, setId] = useState(props.item.id);
+  const [title, setTitle] = useState(props.item.title);
+  const [img, setImg] = useState(props.item.img);
+  const [price, setPrice] = useState(props.item.price);
+  const [tag, setTag] = useState(props.item.tag);
+  const [id, setId] = useState(props.item.id);
+  const [description, setDescription] = useState(props.item.description);
 
-
-     function handleSubmit(e: any) {
-       e.preventDefault();
-       console.log("You clicked submit.");
-     }
-
-     const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-       setTitle(event.target.value);
-       event.preventDefault();
-     };
-
-     const handleChangeTag = (event: React.ChangeEvent<HTMLInputElement>) => {
-       setTag(event.target.value as any);
-       event.preventDefault();
-     };
-
-     const handleChangePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
-       setPrice(event.target.value as any);
-       event.preventDefault();
-     };
-
-     const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-       setImg(event.target.value);
-       event.preventDefault();
-     }; 
-    
-  
-
-  
-const { updateProduct } =
-  useContext(ProductContext);
-
-const handleUpdateProduct = () => {
- 
-    let ChangedItem: ShopItem = {
-
-        id,
-        title, 
-        img,
-        price,
-        tag,
-        liked: false
-    
-
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    console.log("You clicked submit.");
   }
-  
- updateProduct(ChangedItem)
-    
 
-};
-  
-  
+  const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+    event.preventDefault();
+  };
+
+  const handleChangeTag = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTag(event.target.value as any);
+    event.preventDefault();
+  };
+
+  const handleChangePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value as any);
+    event.preventDefault();
+  };
+
+  const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setImg(event.target.value);
+    event.preventDefault();
+  };
+
+  const { updateProduct } = useContext(ProductContext);
+
+  const handleUpdateProduct = () => {
+    let ChangedItem: ShopItem = {
+      id,
+      title,
+      img,
+      price,
+      tag,
+      liked: false,
+      description,
+    };
+
+    updateProduct(ChangedItem);
+  };
 
   if (props.hideShow === true) {
     {
@@ -206,16 +198,11 @@ const handleUpdateProduct = () => {
         </>
       );
     }
-  } 
+  }
 
-      return (
-        <>
-        </>
-      );
-  
+  return <></>;
 }
 //deleteThisItem={Props.deleteThisItem}
-
 
 // import { Button } from "@mui/material";
 // import React from "react";
@@ -228,19 +215,12 @@ const handleUpdateProduct = () => {
 //   hideShow: Boolean;
 //   item: ShopItem
 //   updateItem: Dispatch<SetStateAction<any>>;
-  
+
 // }
-
-
-
-
 
 // export default function EditButton(props: Props) {
 //   let [isEditing, setIsEditing] = useState(false);
-  
 
-
-  
 // const { updateProduct } =
 //   useContext(ProductContext);
 
@@ -250,11 +230,8 @@ const handleUpdateProduct = () => {
 
 //   }
 //  updateProduct(props.item)
-    
 
 // };
-  
-  
 
 //   if (props.hideShow === true) {
 //     {
@@ -283,7 +260,7 @@ const handleUpdateProduct = () => {
 //         </>
 //       );
 //     }
-//   } 
+//   }
 
 //       return (
 //         <>
