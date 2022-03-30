@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ConsumerContext } from "../contexts/ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";

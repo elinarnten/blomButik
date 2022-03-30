@@ -1,5 +1,3 @@
-import React from "react";
-import { ConsumerContext } from "../contexts/ConsumerContext";
 import { useState } from "react";
 import ConsumerContextProvider from "../contexts/ConsumerContext";
 import "../App.css";
@@ -14,15 +12,12 @@ import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
 import OrderConfirmation from "./OrderConfirmation";
-import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import SlideIn from "./SlideIn";
 import ProductContextProvider from "../contexts/productContext";
 import CartContextProvider from "../contexts/CartContext";
 
 function App() {
-  const [item, setItem] = useState(shopItems);
-
   //Menuopen checker (cart menu slideIn)
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
 

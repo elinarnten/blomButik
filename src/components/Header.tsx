@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import Favorite from "@mui/icons-material/Favorite";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 import Badge from "@mui/material/Badge";
 import { Menu, MenuItem } from "@mui/material";

@@ -1,16 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useState,
-} from "react";
-import { EndOfLineState, updateInterfaceDeclaration } from "typescript";
-import AddProduct from "../components/AddProduct";
-import Sortbuttons from "../components/Sortbuttons";
-import SortbuttonsDOM from "../components/Sortbuttons";
+import { createContext, ReactNode, useState } from "react";
 import { ShopItem, shopItems } from "../data/ShopContent";
-import { SortButton, sortButtonsData } from "../data/SortButtonsData";
 import { useLocalStorageState } from "../LocalStorage";
 
 export interface ProductContextValue {
@@ -34,7 +23,7 @@ export const ProductContext = createContext<ProductContextValue>({
 });
 
 const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
-  const [add, setAdd] = useState<ShopItem[]>(shopItems);
+  const [add] = useState<ShopItem[]>(shopItems);
   let [products, setProducts] = useLocalStorageState<ShopItem[]>(
     shopItems,
     "items"
@@ -52,9 +41,9 @@ const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
     console.log(shopItem);
     let copyProducts = [...products];
     let matchingIndex = copyProducts.findIndex(
-      (item) => item.id == shopItem.id
+      (item) => item.id === shopItem.id
     );
-    if (matchingIndex == -1) {
+    if (matchingIndex === -1) {
       copyProducts.push(shopItem);
     }
     setProducts(copyProducts);
@@ -81,15 +70,15 @@ const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
     return listCopy.splice(0, 3);
   };
 
-  let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
+  let [startPageProducts] = useState<ShopItem[]>(
     generateRandomProductList(products)
   );
 
   const updateProduct = (shopItem: ShopItem) => {
     let update = [...products];
-    let matchingIndex = update.findIndex((item) => item.id == shopItem.id);
+    let matchingIndex = update.findIndex((item) => item.id === shopItem.id);
 
-    if (matchingIndex != -1) {
+    if (matchingIndex !== -1) {
       update.splice(matchingIndex, 1, shopItem);
     }
     console.log(update);

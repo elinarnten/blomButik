@@ -10,7 +10,6 @@ import {
 import { useContext } from "react";
 import { ProductContext } from "../contexts/productContext";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { CartContext } from "../contexts/CartContext";
 
 export default function StartPageContent() {

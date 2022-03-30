@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import { CartContext } from "../contexts/CartContext";
 

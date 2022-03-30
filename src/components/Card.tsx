@@ -7,15 +7,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { ShopItem } from "../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import "../App.css";
-import { useState } from "react";
-import { IconButton } from "@mui/material";
-import { ConsumerContext } from "../contexts/ConsumerContext";
-import { CartContext, CartItem } from "../contexts/CartContext";
-import { CloseOutlined } from "@mui/icons-material";
-import CloseIcon from "@mui/icons-material/Close";
-import { Box, Menu, Modal, Popover } from "@mui/material";
+import { CartContext } from "../contexts/CartContext";
+import { Box, Popover } from "@mui/material";
 import React from "react";
 
 interface Props {
@@ -51,8 +45,8 @@ export default function CardView(props: Props) {
     console.log(cartArray)
   }; */
 
-  const [toggle, setToggle] = useState(true);
-  const [name, setName] = useState("test");
+  // const [toggle, setToggle] = useState(true);
+  // const [name, setName] = useState("test");
 
   return (
     <Card

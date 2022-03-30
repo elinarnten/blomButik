@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
-  Paper,
   Box,
   Button,
   Slide,
@@ -10,12 +9,9 @@ import {
   IconButton,
   CardMedia,
 } from "@mui/material";
-import { ShopItem } from "../data/ShopContent";
 import CloseIcon from "@mui/icons-material/Close";
-import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { ConsumerContext } from "../contexts/ConsumerContext";
 import { CartContext } from "../contexts/CartContext";
 
 interface Props {
@@ -24,7 +20,7 @@ interface Props {
 }
 
 function SlideIn(props: Props) {
-  const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
+  const { itemInCart, addItem, removeItem, getTotalPrice } =
     useContext(CartContext);
 
   let totalPrice = getTotalPrice();

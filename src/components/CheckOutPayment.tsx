@@ -6,13 +6,10 @@ import { ConsumerContext } from "../contexts/ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import CheckOutBagOverview from "./CheckOutBagOverview";
 import { createOrder } from "../mockedOrderApi";
-import OrderConfirmation from "./OrderConfirmation";
-import { Navigation, Router } from "@mui/icons-material";
 import { CartContext } from "../contexts/CartContext";
 
 function CheckOutPayment() {
-  const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
-    useContext(CartContext);
+  const { setItemInCart } = useContext(CartContext);
 
   const clearState = () => {
     setItemInCart([]);
