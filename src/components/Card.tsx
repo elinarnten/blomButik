@@ -16,6 +16,7 @@ import { CartContext, CartItem } from "../CartContext";
 import { CloseOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Menu, Modal, Popover } from "@mui/material";
+import React from "react";
 
 
 interface Props {
@@ -24,7 +25,7 @@ interface Props {
 
 export default function CardView(props: Props) {
 
-  const { itemInCart, setItemInCart, addItem } = useContext(CartContext);
+  //const { itemInCart, setItemInCart, addItem } = useContext(CartContext);
 
 
   const { addItem } = useContext(CartContext);

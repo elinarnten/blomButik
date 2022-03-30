@@ -42,8 +42,10 @@ export default function AddProduct(Props: Props) {
       price,
       tag,
       liked: false,
-      description,
-    };
+      description
+    }
+    addProduct(newItem)
+  }
 
 
      function handleSubmit(e:any) {
@@ -208,10 +210,11 @@ export default function AddProduct(Props: Props) {
                </Typography>
              </Box>
            </form>
-         );
+        );
        }
-     } 
+      }
       return (
         <>
         </>
-}
+      );
+  }
