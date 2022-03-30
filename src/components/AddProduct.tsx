@@ -42,18 +42,17 @@ export default function AddProduct(Props: Props) {
       price,
       tag,
       liked: false,
-      description
-    }
-    addProduct(newItem)
+      description,
+    };
+    addProduct(newItem);
+  };
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    console.log("You clicked submit.");
+
   }
-
-
-     function handleSubmit(e:any) {
-       e.preventDefault();
-       console.log("You clicked submit.");
-     }
-
-    const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+ const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
       setTitle(event.target.value);
       event.preventDefault();
       
@@ -75,7 +74,11 @@ export default function AddProduct(Props: Props) {
          setImage(event.target.value);
           event.preventDefault();
        }; 
-    
+  
+  const handleAddDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(event.target.value);
+    event.preventDefault();
+  };
   
   
      if (Props.hideShow === true) {
@@ -191,6 +194,22 @@ export default function AddProduct(Props: Props) {
                      onChange={handleaddTag}
                      type="text"
                    ></input>
+                    <h5>Beskrivning</h5>
+                <input
+                  style={{
+                    width: "90%",
+                    padding: "5px",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    borderRadius: "5px",
+                    border: "solid black",
+                  }}
+                  //placeholder="Beskrivning"
+                  name="description-box"
+                  value={description}
+                  onChange={handleAddDescription}
+                  type="text"
+                ></input>
                    <button onClick={HandleSubmitProducts} type="submit"
                     style={{
                     marginTop: "10px",
@@ -202,7 +221,7 @@ export default function AddProduct(Props: Props) {
                     padding: "5px 35px",
                     fontSize: "12px",
                     alignSelf: "center",
-                      float: "right"
+                    float: "right"
                   }}>
                      <h3>Lägg till</h3>
                    </button>
