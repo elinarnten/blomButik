@@ -80,22 +80,20 @@ const ProductContextProvider: React.FC<ReactNode> = ({children}) => {
     
 
   const updateProduct = (shopItem: ShopItem) => {
-    console.log(shopItem)
-    
+
     let update = [...products];
     let matchingIndex = update.findIndex(
-      (item) => item == shopItem
+      (item) => item.id == shopItem.id
     );
-    if (matchingIndex == -1) {
-     update.fill({...shopItem})
-    }
-   setProducts([...update,shopItem])
+    
+     if (matchingIndex != -1) {
+     update.splice(matchingIndex, 1, shopItem)
+    } 
+    console.log(update)
+    setProducts(update)
+
   };
 
-    
-  /* const addProduct = (shopItem: ShopItem) => {};
-
-  const updateProduct = (shopItem: ShopItem) => {}; */
 
   const filterProduct = (shopItem: ShopItem) => {
     // if (sortButton.value === "") {

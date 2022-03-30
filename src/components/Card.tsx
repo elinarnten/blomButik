@@ -165,6 +165,7 @@ export default function CardView(props: Props) {
           marginTop: "10px",
         }}
       >
+
         <Button
           sx={{
             color: "pink",
@@ -182,6 +183,7 @@ export default function CardView(props: Props) {
         >
           <FavoriteIcon />
         </Button>
+
 
         <Button
           size="small"

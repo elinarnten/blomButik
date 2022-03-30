@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CheckOutContact from "./CheckOutContact";
 import CheckOutDelivery from "./CheckOutDelivery";
 import CheckOutPayment from "./CheckOutPayment";
+import OrderConfirmation from "./OrderConfirmation";
 import { ShopItem, shopItems } from "../data/ShopContent";
 import Admin from "./Admin";
 import SlideIn from "./SlideIn";
@@ -26,13 +27,14 @@ function App() {
   let [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
+    
     <ProductContextProvider>
       <CartContextProvider>
         <ConsumerContextProvider>
-          <div>
             <Header setMenuOpen={setMenuOpen} />
             <BrowserRouter>
               <SlideIn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <div className="App">
               <Routes>
                 <Route path="/" element={<StartPage />} />
                 <Route path="/kontakt" element={<Contact />} />
@@ -41,17 +43,19 @@ function App() {
                 <Route path="/betalning" element={<CheckOutPayment />} />
                 <Route path="/leverans" element={<CheckOutDelivery />} />
                 <Route path="/om" element={<About />} />
+                <Route path="/orderbekraftelse" element={<OrderConfirmation />} />
                 <Route
                   path="/sortiment"
                   element={<CardList hideShow={false} />}
                 />
               </Routes>
+          </div>
               <Footer /> 
               </BrowserRouter>
-          </div>
         </ConsumerContextProvider>
       </CartContextProvider>
     </ProductContextProvider>
+  
   );
 }
 export default App;

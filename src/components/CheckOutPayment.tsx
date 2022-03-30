@@ -1,12 +1,35 @@
 import { Box, Button, Menu, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ConsumerContext } from "../ConsumerContext";
 import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import CheckOutBagOverview from "./CheckOutBagOverview";
+import { createOrder } from "../mockedOrderApi";
+import OrderConfirmation from "./OrderConfirmation";
+import { Navigation, Router } from "@mui/icons-material";
+import { CartContext } from "../CartContext";
+
+
 
 function CheckOutPayment() {
+
+  const { itemInCart, setItemInCart, addItem, removeItem, getTotalPrice } =
+    useContext(CartContext);
+
+    const clearState = () => {
+      setItemInCart([]);
+    };
+    console.log(itemInCart)
+
+  let navigate = useNavigate();
+
+  async function proceedOrder () {
+    await createOrder()
+    clearState()
+    navigate("/orderbekraftelse")
+  }
+
   const { firstname, lastname, phoneNumber } = useContext(ConsumerContext);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
@@ -41,6 +64,8 @@ function CheckOutPayment() {
     setAnchorSwishEl(null);
   };
 
+ 
+
   return (
     <Box
       sx={{
@@ -53,6 +78,7 @@ function CheckOutPayment() {
         display: "flex",
       }}
     >
+     
       <Box
         component="form"
         noValidate
@@ -169,6 +195,7 @@ function CheckOutPayment() {
                 color: "black",
                 mt: 2,
               }}
+              onClick={proceedOrder}
             >
               Slutför köp
             </Button>
@@ -240,6 +267,7 @@ function CheckOutPayment() {
                 color: "black",
                 mt: 2,
               }}
+              onClick={proceedOrder}
             >
               Slutför köp
             </Button>
@@ -313,6 +341,7 @@ function CheckOutPayment() {
                 color: "black",
                 mt: 2,
               }}
+              onClick={proceedOrder}
             >
               Slutför köp
             </Button>

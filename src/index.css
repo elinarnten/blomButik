@@ -1,7 +1,20 @@
-#root {
+/* #root {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+  /* display: flex;
+  flex-direction: column; */
+/* } */ 
+
+html {
+  height: 100%;
+}  
+
+body {
+  height: 100%;
+}  
+ #root {
+  height: 100%;
+}   
+
+
 
 
