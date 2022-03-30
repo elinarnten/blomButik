@@ -89,7 +89,7 @@ export default function CardView(props: Props) {
           horizontal: "center",
         }}
       >
-        <Card sx={{ display: "flex", m: 1, height: "100%", width: "40rem" }}>
+        <Card sx={{ display: "flex", height: "100%", width: "40rem" }}>
           <CardMedia
             component="img"
             image={props.item.img}
@@ -97,7 +97,8 @@ export default function CardView(props: Props) {
           ></CardMedia>
           <Box
             sx={{
-              p: "1rem",
+              px: "1rem",
+              pt: "1rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
