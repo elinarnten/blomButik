@@ -57,7 +57,8 @@ addItem(props.item);
         flexDirection: "column",
         justifyContent: "center",
         alignContent: "center",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        border: "solid black 2px"
         //alignSelf: "center",
       }}
       className="Quicksand"
@@ -78,7 +79,8 @@ addItem(props.item);
             display: "flex",
             justifyContent: "center",
             fontFamily: "Quicksand, cursive",
-            color: "rgb(250, 218, 112)",
+            color: "black"
+            //color: "rgb(250, 218, 112)",
           }}
         >
           {props.item.title}
@@ -88,7 +90,7 @@ addItem(props.item);
           variant="body2"
           color="text.secondary"
         >
-            {props.item.price} KR/ st
+            {props.item.price} kr/st
         </Typography>
       </CardContent>
       <CardActions
@@ -106,7 +108,8 @@ addItem(props.item);
           style={{
             position: "static",
             borderRadius: 5,
-            backgroundColor: "#ffcc80",
+            //backgroundColor: "#ffcc80",
+            backgroundColor: "black",
             padding: "5px 35px",
             fontSize: "8px",
             alignSelf: "center",

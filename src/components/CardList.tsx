@@ -29,18 +29,21 @@ export default function CardList(props:Adminprops) {
     <>
       <Grid
         container
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        //rowSpacing={1}
+        //columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{
-          mt: "0.1%",
-          mb: "0.1%",
+          /* mt: "0.1%",
+          mb: "0.1%", */
           display: "flex",
           justifyContent: "center",
           alignContent: "center",
           //backgroundImage: `url(${bg})`,
 
           backgroundSize: "cover",
-          backgroundColor: "beige",
+          //backgroundColor: "rgba(214, 186, 227, 0.4)",
+          //border: "solid black 2px",
+          borderTop: "solid black 2px",
+          borderBottom: "solid black 2px",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           alignItems: "center",
@@ -77,7 +80,7 @@ export default function CardList(props:Adminprops) {
               backgroundColor: "rgba(255, 226, 162, 0.852)", */
              /*  ml: "20%",
               mr: "20%", */
-              m: "5%",
+              m: 6,
               width: "100%",
               display: "flex",
               justifyContent: "center",
@@ -85,7 +88,17 @@ export default function CardList(props:Adminprops) {
 
             }}
           >
-        <Typography>Plocka och välj ur vårt stora utbud av blommor!</Typography>
+        <Typography  variant="h5"
+          component="div"
+          className="Quicksand"
+          fontFamily="Quicksand"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            fontFamily: "Quicksand, cursive",
+            color: "black"
+            //color: "rgb(250, 218, 112)",
+          }}>Plocka och välj ur vårt stora utbud av blommor!</Typography>
 
         </Box>
         <AddProduct
@@ -97,14 +110,14 @@ export default function CardList(props:Adminprops) {
             <Grid
             key={item.id}
               container
-              spacing={1}
+              //spacing={1}
               item
-              md={3}
-              sm={4}
-              xs={10}
+              md={4}
+              sm={5}
+              //xs={15}
               sx={{
                 mt: "0.1%",
-                mb: "0.1%",
+                mb: "3%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

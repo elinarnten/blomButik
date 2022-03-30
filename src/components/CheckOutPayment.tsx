@@ -137,6 +137,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Kortnummer"
               size="small"
+              name="cardnumber"
+              autoComplete="cc-number"
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
           </div>
@@ -147,6 +149,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Giltlighet"
               size="small"
+              name="ccyear"
+              autoComplete="cc-exp-year"
               sx={{ ml: 2, mb: 2, width: "50%" }}
             />
             <TextField
@@ -155,6 +159,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="CVC"
               size="small"
+              name="cvc"
+              autoComplete="cc-csc"
               sx={{ ml: 2, mb: 2, mr: 2, width: "35%" }}
             />
           </div>
@@ -165,6 +171,8 @@ function CheckOutPayment() {
               id="outlined-required"
               label="Namn"
               size="small"
+              name="ccname"
+              autoComplete="cc-name"
               value={firstname + " " + lastname}
               sx={{ ml: 2, mb: 2, mr: 2, width: "50%" }}
             />
