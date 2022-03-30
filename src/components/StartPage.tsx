@@ -31,7 +31,7 @@ function StartPage() {
             height: "35%",
             mt: "10%",
             // backgroundColor: "rgba(244, 234, 198, 0.4)",
-            backgroundColor: "rgba(214, 186, 227, 0.4)",
+            //backgroundColor: "rgba(214, 186, 227, 0.4)",
             borderRadius: 3,
             display: "flex",
             flexDirection: "column",

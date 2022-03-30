@@ -15,7 +15,7 @@ function CheckOutContact() {
       size="small"
       variant="contained"
       sx={{
-        backgroundColor: "#F4EAC6",
+        backgroundColor: "pink",
         boxShadow: "none",
         color: "black",
 
@@ -46,7 +46,8 @@ function CheckOutContact() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
+        //backgroundImage: `url(${BgCheckOut})`,
+        backgroundColor: "white",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -82,14 +83,17 @@ function CheckOutContact() {
               type="name"
               size="small"
               value={firstname}
-              error={firstname === ""}
+              //error={firstname === ""}
               //helperText={firstname === "" ? 'Empty field!' : ' '}
               
               sx={{
                 mr: 2,
                 mb: 2,
                 color: "black",
-                backgroundColor: "#F4EAC6",
+                border: "solid black 2px",
+                borderRadius: 1
+                //border: 
+                //backgroundColor: "white",
               }}
             />
           </FormControl>
@@ -106,7 +110,8 @@ function CheckOutContact() {
               name="family-name"
               autoComplete="family-name"
               sx={{ mb: 2, color: "black",
-              backgroundColor: "#F4EAC6", }}
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
         </div>
@@ -124,7 +129,8 @@ function CheckOutContact() {
               label="E-post"
               size="small"
               sx={{ mr: 2, mb: 2, color: "black",
-              backgroundColor: "#F4EAC6", }}
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
           <FormControl>
@@ -141,7 +147,8 @@ function CheckOutContact() {
               name="tel"
               autoComplete="tel"
               sx={{ mb: 2, color: "black",
-              backgroundColor: "#F4EAC6",}}
+              border: "solid black 2px",
+                borderRadius: 1}}
             />
           </FormControl>
         </div>
@@ -159,7 +166,8 @@ function CheckOutContact() {
               label="Gatuadress"
               size="small"
               sx={{ mb: 2, color: "black",
-              backgroundColor: "#F4EAC6", }}
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
         </div>
@@ -177,7 +185,8 @@ function CheckOutContact() {
               label="Postnummer"
               size="small"
               sx={{ mr: 2, mb: 2, color: "black",
-              backgroundColor: "#F4EAC6",}}
+              border: "solid black 2px",
+                borderRadius: 1,}}
             />
           </FormControl>
           <FormControl>
@@ -191,7 +200,8 @@ function CheckOutContact() {
               name="address-level2"
               size="small"
               sx={{ color: "black",
-              backgroundColor: "#F4EAC6",}}
+              border: "solid black 2px",
+              borderRadius: 1}}
             />
           </FormControl>
         </div>
@@ -210,20 +220,7 @@ function CheckOutContact() {
             Tillbaka
           </Button>
           <Link to={"/leverans"}>
-            <SubmitButton/>
-            {/* <Button
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button> */}
+            <SubmitButton/>           
           </Link>
         </Box>
       </Box>

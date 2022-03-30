@@ -70,7 +70,7 @@ function CheckOutPayment() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
+        //backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -105,9 +105,10 @@ function CheckOutPayment() {
           sx={{
             width: "50%",
             color: "black",
-            border: "none",
+            border: "solid black 2px",
+                borderRadius: 1,
 
-            backgroundColor: "#F4EAC6",
+            backgroundColor: "white",
           }}
         >
           VISA/MasterCard
@@ -221,9 +222,10 @@ function CheckOutPayment() {
             width: "50%",
             mt: 2,
             color: "black",
-            border: "none",
+            border: "solid black 2px",
+                borderRadius: 1,
 
-            backgroundColor: "#F4EAC6",
+            backgroundColor: "white",
           }}
         >
           Swish
@@ -293,9 +295,10 @@ function CheckOutPayment() {
             width: "50%",
             mt: 2,
             color: "black",
-            border: "none",
+            border: "solid black 2px",
+            borderRadius: 1,
 
-            backgroundColor: "#F4EAC6",
+        backgroundColor: "white",
           }}
         >
           Privatfaktura

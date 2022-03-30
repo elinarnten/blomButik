@@ -35,7 +35,7 @@ function CheckOutDelivery() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
+        //backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -69,8 +69,10 @@ function CheckOutDelivery() {
               sx={{
                 width: "100%",
                 color: "black",
-                border: "none",
-                backgroundColor: "#F4EAC6",
+                
+                border: "solid black 2px",
+                borderRadius: 1,
+                backgroundColor: "white",
                 mb: 1,
               }}
             >
@@ -113,7 +115,7 @@ function CheckOutDelivery() {
               size="small"
               variant="contained"
               sx={{
-                backgroundColor: "#F4EAC6",
+                backgroundColor: "pink",
                 boxShadow: "none",
                 color: "black",
                 mt: 3,

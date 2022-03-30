@@ -69,7 +69,7 @@ function CheckOutButton() {
           {itemInCart.map((cartItem) => (
             <Card
               key={cartItem.shopItem.id}
-              sx={{ display: "flex", m: 1, height: 180, width: "100%"}}
+              sx={{ display: "flex", m: 1, height: 180, width: "100%", border: "solid black 2px"}}
             >
               <CardMedia
                 sx={{ width: "40%", height: "100%" }}
@@ -108,20 +108,6 @@ function CheckOutButton() {
           Totalt pris: {totalPrice} kr
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
            <CheckOutButton />
-            {/* <Button
-              onClick={() => props.setMenuOpen(false)}
-              sx={{
-                height: "2rem",
-                width: "auto",
-                backgroundColor: "pink",
-                color: "black",
-                mb: 1,
-                mt: 1,
-                ml: 2,
-              }}
-            >
-              Till kassan
-            </Button> */}
           </Link>
         </Box>
       </Box>
@@ -134,7 +120,9 @@ function CheckOutButton() {
         style={{
           width: "50%",
           height: "80%",
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
+          backgroundColor: "white",
+          border: "solid black 2px",
+          borderRadius: 5,
           overflow: "hidden",
           overflowY: "scroll",
         }}
