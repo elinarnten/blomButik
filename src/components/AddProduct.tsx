@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { Dispatch, SetStateAction, useContext, useState } from "react";
+import React, { Dispatch, SetStateAction, useContext, useState } from "react";
 import { ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
 import { generateId } from "../data/ShopContent";
@@ -71,6 +71,11 @@ export default function AddProduct(Props: Props) {
 
   const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setImage(event.target.value);
+    event.preventDefault();
+  };
+
+  const handleAddDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(event.target.value);
     event.preventDefault();
   };
 
@@ -182,6 +187,22 @@ export default function AddProduct(Props: Props) {
                   name="image-tag"
                   value={tag}
                   onChange={handleaddTag}
+                  type="text"
+                ></input>
+                <h3>Description</h3>
+                <input
+                  style={{
+                    width: "90%",
+                    padding: "5px",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    borderRadius: "5px",
+                    border: "solid gold",
+                  }}
+                  placeholder="description"
+                  name="image-tag"
+                  value={tag}
+                  onChange={handleAddDescription}
                   type="text"
                 ></input>
                 <button
