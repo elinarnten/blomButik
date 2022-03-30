@@ -45,168 +45,173 @@ export default function AddProduct(Props: Props) {
       description,
     };
 
-    addProduct(newItem);
-    console.log(newItem);
-  };
 
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    console.log("You clicked submit.");
-  }
+     function handleSubmit(e:any) {
+       e.preventDefault();
+       console.log("You clicked submit.");
+     }
 
-  const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-    event.preventDefault();
-  };
+    const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setTitle(event.target.value);
+      event.preventDefault();
+      
 
-  const handleaddTag = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTag(event.target.value as any);
-    event.preventDefault();
-  };
+    }; 
 
-  const handleaddPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value as any);
-    event.preventDefault();
-  };
+     const handleaddTag = (event: React.ChangeEvent<HTMLInputElement>) => {
+       setTag(event.target.value as any);
+      event.preventDefault();
 
-  const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setImage(event.target.value);
-    event.preventDefault();
-  };
+     }; 
 
-  if (Props.hideShow === true) {
-    {
-      return (
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "20px",
-            margin: "10px",
-            justifyContent: "center",
-            alignContent: "center",
-            width: "100%",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "20px",
-              margin: "10px",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-            sx={{
-              ml: 4,
-              mr: 5,
-              mt: 9,
-              backgroundColor: "rgba(252, 215, 155, 0.9)",
-              borderRadius: 2,
-              padding: 12,
-            }}
-          >
-            <Typography
-              fontFamily="Quicksand"
-              style={{
-                fontFamily: "Quicksand, cursive",
-                color: "white",
-              }}
-            >
-              <h3>Title</h3>
+      const handleaddPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPrice(event.target.value as any);
+         event.preventDefault();
+      }; 
 
-              <input
-                style={{
-                  width: "90%",
-                  padding: "5px",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  borderRadius: "5px",
-                  border: "solid gold",
-                }}
-                placeholder="Title"
-                name="title-name"
-                value={title}
-                onChange={handleaddTitle}
-                type="text"
-              ></input>
+       const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+         setImage(event.target.value);
+          event.preventDefault();
+       }; 
+    
+  
+  
+     if (Props.hideShow === true) {
+       {
+         return (
+           <form
+             onSubmit={handleSubmit}
+             style={{
+               display: "flex",
+               flexDirection: "column",
+               padding: "20px",
+               marginTop: "4rem",
+               justifyContent: "center",
+               alignContent: "center",
+               width: "100%",
+               alignItems: "center",
+             }}
+           >
+             
+             <Box
+               style={{
+                 display: "flex",
+                 flexDirection: "column",
+                 padding: "20px",
+                 margin: "10px",
+                 justifyContent: "center",
+                 alignContent: "center",
+               }}
+               sx={{
+                 ml: 4,
+                 mr: 5,
+                 //mt: 4,
+                 //backgroundColor: "rgba(252, 215, 155, 0.9)",
+                 borderRadius: 2,
+                 padding: 12,
+               }}
+             >
+          
+               <Typography
+                 //fontFamily="Quicksand"
+                 style={{
+                   //fontFamily: "Quicksand, cursive",
+                   color: "black",
+                 }}
+               >
+                 <h4 style={{marginBottom: 10}}>Lägg till en ny produkt:</h4>
+                 <h5>Titel</h5>
 
-              <h3>Image URL</h3>
-              <input
-                style={{
-                  width: "90%",
-                  padding: "5px",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  borderRadius: "5px",
-                  border: "solid gold",
-                }}
-                placeholder="image"
-                name="image-name"
-                value={image}
-                onChange={handleaddImage}
-                type="text"
-              ></input>
+                 <input
+                   style={{
+                     width: "90%",
+                     padding: "5px",
+                     justifyContent: "center",
+                     alignContent: "center",
+                     borderRadius: "5px",
+                     border: "solid black",
+                   }}
+                   //placeholder="Title"
+                   name="title-name"
+                   value={title}
+                   onChange={handleaddTitle}
+                   type="text"
+                 ></input>
 
-              <h3>Price</h3>
-              <input
-                style={{
-                  width: "90%",
-                  padding: "5px",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  borderRadius: "5px",
-                  border: "solid gold",
-                }}
-                placeholder="price"
-                name="price-name"
-                value={price}
-                onChange={handleaddPrice}
-                type="number"
-              ></input>
+                 <h5>Bild URL</h5>
+                 <input
+                   style={{
+                     width: "90%",
+                     padding: "5px",
+                     justifyContent: "center",
+                     alignContent: "center",
+                     borderRadius: "5px",
+                     border: "solid black",
+                   }}
+                   //placeholder="image"
+                   name="image-name"
+                   value={image}
+                   onChange={handleaddImage}
+                   type="text"
+                 ></input>
 
-              <h3>Tag</h3>
-              <div>
-                <input
-                  style={{
-                    width: "90%",
-                    padding: "5px",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    borderRadius: "5px",
-                    border: "solid gold",
-                  }}
-                  placeholder="tag"
-                  name="image-tag"
-                  value={tag}
-                  onChange={handleaddTag}
-                  type="text"
-                ></input>
-                <button
-                  onClick={HandleSubmitProducts}
-                  type="submit"
-                  style={{
+                 <h5>Pris</h5>
+                 <input
+                   style={{
+                     width: "90%",
+                     padding: "5px",
+                     justifyContent: "center",
+                     alignContent: "center",
+                     borderRadius: "5px",
+                     border: "solid black",
+                   }}
+                   //placeholder="price"
+                   name="price-name"
+                   value={price}
+                   onChange={handleaddPrice}
+                   type="number"
+                 ></input>
+
+                 <h5>Tag</h5>
+                 <div>
+                   <input
+                     style={{
+                       width: "90%",
+                       padding: "5px",
+                       justifyContent: "center",
+                       alignContent: "center",
+                       borderRadius: "5px",
+                       border: "solid black",
+                     }}
+                     //placeholder="tag"
+                     name="image-tag"
+                     value={tag}
+                     onChange={handleaddTag}
+                     type="text"
+                   ></input>
+                   <button onClick={HandleSubmitProducts} type="submit"
+                    style={{
                     marginTop: "10px",
-                    border: "none",
-                    color: "white",
+                    marginRight: "10%",
+                    border:"none",
+                    color:"white",
                     borderRadius: 5,
-                    backgroundColor: "#ffcc80",
+                    backgroundColor: "green",
                     padding: "5px 35px",
                     fontSize: "12px",
                     alignSelf: "center",
-                    float: "right",
-                  }}
-                >
-                  <h3>add product</h3>
-                </button>
-              </div>
-            </Typography>
-          </Box>
-        </form>
-      );
-    }
-  }
-  return <></>;
+                      float: "right"
+                  }}>
+                     <h3>Lägg till</h3>
+                   </button>
+                 </div>
+               </Typography>
+             </Box>
+           </form>
+         );
+       }
+     } 
+      return (
+        <>
+        </>
 }

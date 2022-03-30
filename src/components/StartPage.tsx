@@ -12,11 +12,9 @@ function StartPage() {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
-        //backgroundImage: `url(${startpageBackground})`,
-        backgroundImage: `url(${temporary})`,
+        minHeight: "100vh",
+        //backgroundImage: `url(${temporary})`,
         backgroundSize: "cover",
-        //backgroundColor: "lightGreen",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
@@ -31,7 +29,7 @@ function StartPage() {
           sx={{
             width: "50%",
             height: "35%",
-            mt: "15%",
+            mt: "10%",
             // backgroundColor: "rgba(244, 234, 198, 0.4)",
             backgroundColor: "rgba(214, 186, 227, 0.4)",
             borderRadius: 3,
