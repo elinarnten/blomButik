@@ -8,7 +8,6 @@ import { ProductContext } from "../contexts/productContext";
 interface Props {
   hideShow: Boolean;
   item: ShopItem;
-  // updateItem: Dispatch<SetStateAction<any>>;
   handleUpdateProduct: Dispatch<SetStateAction<any>>;
 }
 
@@ -97,7 +96,6 @@ export default function EditButton(props: Props) {
       liked: false,
       description,
     };
-
     updateProduct(ChangedItem);
   };
 
@@ -113,7 +111,8 @@ export default function EditButton(props: Props) {
                   maxWidth: "70%",
                   display: "flex",
                   flexDirection: "column",
-                  backgroundColor: "#c5d9bf",
+                  backgroundColor: "white",
+
                   padding: "5px",
                   borderRadius: "5px",
                   justifySelf: "center",
@@ -121,7 +120,7 @@ export default function EditButton(props: Props) {
                   margin: "auto",
                   color: "white",
                   fontFamily: "quicksand",
-                  border: "none",
+                  border: "solid black 2px",
                 }}
               >
                 <p>Titel:</p>
@@ -163,9 +162,10 @@ export default function EditButton(props: Props) {
                 <Button
                   variant="contained"
                   style={{
-                    backgroundColor: "white",
+                    backgroundColor: "black",
                     alignSelf: "center",
-                    color: "#c4e6c1",
+                    color: "white",
+                    margin: 4,
                   }}
                   onClick={handleUpdateProduct}
                   type="submit"
@@ -177,7 +177,9 @@ export default function EditButton(props: Props) {
                   style={{
                     backgroundColor: "white",
                     alignSelf: "center",
-                    color: "#c4e6c1",
+                    color: "black",
+                    border: "solid black 2px",
+                    margin: 4,
                   }}
                   onClick={() => {
                     setIsEditing(false);
@@ -192,8 +194,9 @@ export default function EditButton(props: Props) {
                 style={{
                   backgroundColor: "green",
                   alignSelf: "center",
-                  width: "50%",
-                  position: "static",
+                  width: "6rem",
+                  height: "2rem",
+                  margin: 5,
                 }}
                 onClick={() => {
                   setIsEditing(true);

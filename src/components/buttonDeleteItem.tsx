@@ -25,9 +25,9 @@ export default function DeleteButton(Props: Props) {
           style={{
             backgroundColor: "red",
             alignSelf: "center",
-            width: "50%",
-            position: "static",
-
+            width:"6rem",
+            height: "2rem",
+            margin: 5
           }}
           //   onClick={() => console.log(Props.item)}
           //   onClick={() => {Props.deleteThisItem(Props.item.id)}}

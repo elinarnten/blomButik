@@ -44,9 +44,11 @@ function SlideIn(props: Props) {
         </Button>
       );
     } else {
-      return <></>;
-    }
-  }
+    return <Typography sx={{ mt: 2, color: "red"}}>Oups! <br></br>Varukorgen är tom.</Typography>
+  } 
+}
+  
+
 
   const slideFrame = (
     <Box
@@ -66,11 +68,11 @@ function SlideIn(props: Props) {
       <Box sx={{ width: "auto", p: "1rem" }}>
         <Typography variant="h5">Varukorg</Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", mt: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", mt: 1, alignItems: "center" }}>
           {itemInCart.map((cartItem) => (
             <Card
               key={cartItem.shopItem.id}
-              sx={{ display: "flex", m: 1, height: 180, width: "100%" }}
+              sx={{ display: "flex", m: 1, height: 180, width: "100%", border: "solid black 2px"}}
             >
               <CardMedia
                 sx={{ width: "40%", height: "100%" }}
@@ -101,24 +103,17 @@ function SlideIn(props: Props) {
           ))}
         </Box>
 
-        <Box>
-          Totalt pris: {totalPrice} kr
+        <Box sx={{display: "flex", flexDirection: "column"}}>
+          <Box>
+          <Typography>
+          Totalpris: {totalPrice} kr
+          </Typography>
+          <Typography sx={{fontSize: 12}}>
+          Frakt tillkommer
+          </Typography>
+          </Box>
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
-            <CheckOutButton />
-            {/* <Button
-              onClick={() => props.setMenuOpen(false)}
-              sx={{
-                height: "2rem",
-                width: "auto",
-                backgroundColor: "pink",
-                color: "black",
-                mb: 1,
-                mt: 1,
-                ml: 2,
-              }}
-            >
-              Till kassan
-            </Button> */}
+           <CheckOutButton />
           </Link>
         </Box>
       </Box>
@@ -132,7 +127,9 @@ function SlideIn(props: Props) {
         style={{
           width: "50%",
           height: "80%",
-          backgroundColor: "rgba(244, 234, 198, 0.4)",
+          backgroundColor: "white",
+          border: "solid black 2px",
+          borderRadius: 5,
           overflow: "hidden",
           overflowY: "scroll",
         }}

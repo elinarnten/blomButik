@@ -11,7 +11,7 @@ function Contact() {
   // <Box  sx={{height: "100%"}} >
     <Box
       sx={{
-       backgroundImage: `url(${FlowerBackground})`,
+       //backgroundImage: `url(${FlowerBackground})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         
@@ -22,13 +22,14 @@ function Contact() {
         //m: "2rem",
         //flex: 1,
         display: "flex",
-        justifyContent: "center",
+        //justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column"
+        flexDirection: "column",
+        mt: 10
       }}
       
     >
-      <Typography variant="h4" component="div" sx={{ m: 3 }}>
+      <Typography variant="h4" component="div" sx={{ mb: 1 }}>
         Kontakt
       </Typography>
       <Box
@@ -42,10 +43,11 @@ function Contact() {
       >
         <Card
           sx={{
-            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            //backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
             m: 1,
+            border: "solid black 2px"
           }}
         >
           <div
@@ -56,7 +58,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <LocationOnIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
+            <LocationOnIcon style={{ color: "black", fontSize: "4rem" }} />
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
@@ -66,10 +68,11 @@ function Contact() {
 
         <Card
           sx={{
-            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            //backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
             m: 1,
+            border: "solid black 2px"
           }}
         >
           <div
@@ -81,7 +84,7 @@ function Contact() {
             }}
           >
             <AlternateEmailIcon
-              style={{ color: "#84A86F", fontSize: "4rem" }}
+              style={{ color: "black", fontSize: "4rem" }}
             />
           </div>
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
@@ -91,10 +94,11 @@ function Contact() {
 
         <Card
           sx={{
-            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            //backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
             m: 1,
+            border: "solid black 2px"
           }}
         >
           <div
@@ -105,7 +109,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <PhoneIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
+            <PhoneIcon style={{ color: "black", fontSize: "4rem" }} />
           </div>
           <Typography sx={{ mx: "auto", textAlign: "center" }}>
             0712345678
@@ -114,10 +118,11 @@ function Contact() {
 
         <Card
           sx={{
-            backgroundColor: "rgba(244, 234, 198, 0.7 )",
+            //backgroundColor: "rgba(244, 234, 198, 0.7 )",
             height: 180,
             width: 180,
             m: 1,
+            border: "solid black 2px"
           }}
         >
           <div
@@ -128,7 +133,7 @@ function Contact() {
               padding: 15,
             }}
           >
-            <InstagramIcon style={{ color: "#84A86F", fontSize: "4rem" }} />
+            <InstagramIcon style={{ color: "black", fontSize: "4rem" }} />
           </div>
 
           <Typography sx={{ mx: "auto", textAlign: "center" }}>

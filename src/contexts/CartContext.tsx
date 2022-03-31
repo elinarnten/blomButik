@@ -1,8 +1,5 @@
-import { createWriteStream } from "fs";
-import { createContext, Key, ReactNode, useState } from "react";
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
+import { createContext, ReactNode, useState } from "react";
 import { ShopItem, shopItems } from "../data/ShopContent";
-
 export interface CartItem {
   shopItem: ShopItem;
   quantity: number;
@@ -30,6 +27,8 @@ export const CartContext = createContext<ContextInterface>({
 const CartContextProvider: React.FC<ReactNode> = (props) => {
   const [itemInCart, setItemInCart] = useState<CartItem[]>([]);
 
+  //looks for matching index, if found the
+  //quantity changes while added to cart
   const addItem = (shopItem: ShopItem) => {
     let cartListCopy = [...itemInCart];
 
@@ -58,7 +57,6 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
       setItemInCart(cartListCopy);
     }
     setItemInCart(cartListCopy);
-    console.log(foundIndex);
   };
 
   const getTotalPrice = (): number => {
@@ -77,11 +75,14 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
     return totalQuantity;
   };
 
+  //gets random ordernumber
   const getOrderNumber = (): number => {
     let orderNumber = Math.floor(Math.random() * 100000) + 600000;
     return orderNumber;
-    console.log(orderNumber);
   };
+
+  //logs the products in cart
+  console.log("orderspecifikation:", itemInCart);
 
   return (
     <CartContext.Provider

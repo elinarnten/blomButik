@@ -23,30 +23,21 @@ function CheckOutContact() {
   } = useContext(ConsumerContext);
 
   function SubmitButton() {
-    if (
-      firstname &&
-      lastname &&
-      phoneNumber &&
-      email &&
-      address &&
-      code &&
-      city
-    ) {
-      return (
-        <Button
-          size="small"
-          variant="contained"
-          sx={{
-            backgroundColor: "#F4EAC6",
-            boxShadow: "none",
-            color: "black",
+    if (firstname && lastname && phoneNumber && email && address && code && city) {
+      return <Button
+      size="small"
+      variant="contained"
+      sx={{
+        backgroundColor: "pink",
+        boxShadow: "none",
+        color: "black",
 
             mt: 3,
           }}
         >
           Gå vidare
         </Button>
-      );
+      
     } else {
       return (
         <Button
@@ -106,14 +97,17 @@ function CheckOutContact() {
               type="name"
               size="small"
               value={firstname}
-              error={firstname === ""}
+              //error={firstname === ""}
               //helperText={firstname === "" ? 'Empty field!' : ' '}
 
               sx={{
                 mr: 2,
                 mb: 2,
                 color: "black",
-                backgroundColor: "#F4EAC6",
+                border: "solid black 2px",
+                borderRadius: 1
+                //border: 
+                //backgroundColor: "white",
               }}
             />
           </FormControl>
@@ -129,7 +123,9 @@ function CheckOutContact() {
               size="small"
               name="family-name"
               autoComplete="family-name"
-              sx={{ mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
+              sx={{ mb: 2, color: "black",
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
         </div>
@@ -146,7 +142,9 @@ function CheckOutContact() {
               type="email"
               label="E-post"
               size="small"
-              sx={{ mr: 2, mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
+              sx={{ mr: 2, mb: 2, color: "black",
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
           <FormControl>
@@ -162,7 +160,9 @@ function CheckOutContact() {
               size="small"
               name="tel"
               autoComplete="tel"
-              sx={{ mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
+              sx={{ mb: 2, color: "black",
+              border: "solid black 2px",
+                borderRadius: 1}}
             />
           </FormControl>
         </div>
@@ -179,7 +179,9 @@ function CheckOutContact() {
               id="outlined-required"
               label="Gatuadress"
               size="small"
-              sx={{ mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
+              sx={{ mb: 2, color: "black",
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
         </div>
@@ -196,7 +198,9 @@ function CheckOutContact() {
               autoComplete="postal-code"
               label="Postnummer"
               size="small"
-              sx={{ mr: 2, mb: 2, color: "black", backgroundColor: "#F4EAC6" }}
+              sx={{ mr: 2, mb: 2, color: "black",
+              border: "solid black 2px",
+                borderRadius: 1,}}
             />
           </FormControl>
           <FormControl>
@@ -209,7 +213,9 @@ function CheckOutContact() {
               label="Ort"
               name="address-level2"
               size="small"
-              sx={{ color: "black", backgroundColor: "#F4EAC6" }}
+              sx={{ color: "black",
+              border: "solid black 2px",
+              borderRadius: 1}}
             />
           </FormControl>
         </div>
@@ -228,20 +234,7 @@ function CheckOutContact() {
             Tillbaka
           </Button>
           <Link to={"/leverans"}>
-            <SubmitButton />
-            {/* <Button
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button> */}
+            <SubmitButton/>           
           </Link>
         </Box>
       </Box>

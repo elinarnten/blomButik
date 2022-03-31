@@ -1,22 +1,30 @@
 import {
+  bottomNavigationActionClasses,
   Box,
   Button,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import React, { useContext } from "react";
+import { style } from "@mui/system";
+import "./CheckOutDelivery.css"
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 import { deliveryAlternatives, DeliveryOption } from "../../mockedDelivery";
 
 function CheckOutDelivery() {
-  const { setDeliveryOption, setDeliveryDate } = useContext(ConsumerContext);
+  const { deliveryOption, setDeliveryOption, deliveryDate, setDeliveryDate } =
+    useContext(ConsumerContext);
+   
+  
+   
 
   const handleOnChange = (
     event: React.MouseEvent<HTMLElement>,
     newSelected: DeliveryOption
   ) => {
+    
     setDeliveryOption(newSelected);
     calcDeliveryDate(newSelected.deliveryTime);
   };
@@ -55,19 +63,23 @@ function CheckOutDelivery() {
           Hur vill du få dina varor levererade?
         </Typography>
         <ToggleButtonGroup
+        value={deliveryOption}
           exclusive
           onChange={handleOnChange}
           sx={{ display: "flex", flexDirection: "column" }}
         >
           {deliveryAlternatives.map((item, idx) => (
             <ToggleButton
+            className={'buttonStyle'}
               key={item.label}
               value={deliveryAlternatives[idx]}
+              //color="primary"
               sx={{
                 width: "100%",
                 color: "black",
-                border: "none",
-                backgroundColor: "#F4EAC6",
+                border: "solid black 2px",
+                borderRadius: 1,
+                //backgroundColor: "pink",
                 mb: 1,
               }}
             >
@@ -106,18 +118,18 @@ function CheckOutDelivery() {
             </Button>
           </Link>
           <Link to={"/betalning"}>
-            <Button
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button>
+          <Button
+      size="small"
+      variant="contained"
+      sx={{
+        backgroundColor: "pink",
+        boxShadow: "none",
+        color: "black",
+        mt: 3,
+      }}
+    >
+      Gå vidare
+    </Button>
           </Link>
         </div>
       </Box>
