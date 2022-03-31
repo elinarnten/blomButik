@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
-import { Box, Typography } from "@mui/material";
+import { useContext } from "react";
+import { Box, Button, Typography } from "@mui/material";
 import { CartContext } from "../../contexts/CartContext";
+import { Link } from "react-router-dom";
+import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 
 function OrderConfirmation() {
   const { getOrderNumber } = useContext(CartContext);
@@ -32,9 +34,26 @@ function OrderConfirmation() {
           alignItems: "center",
         }}
       >
-        <Typography>Orderbekräftelse</Typography>
-        <Typography>Ditt ordernummer är: {orderNumber}</Typography>
-        <Typography>Tack för ditt köp!</Typography>
+        <Typography sx={{m: 3, fontSize: 20}}>Tack för ditt köp!</Typography>
+        <Typography>Ditt ordernummer är: <strong>{orderNumber}</strong></Typography>
+        <Typography sx={{m: 1}}><strong>Frågor?</strong> Tveka inte att höra av dig.</Typography>
+        <Typography>Vi på Blombutiken hoppas att du blir nöjd med ditt köp!</Typography>
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          <Button
+            size="small"
+            variant="contained"
+            endIcon={<LocalFloristIcon />}
+            sx={{
+              backgroundColor: "rgba(214, 186, 227)",
+              boxShadow: "none",
+              color: "black",
+              position: "static",
+              mt: 3,
+            }}
+          >
+            Till startsidan
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
