@@ -97,18 +97,12 @@ function CheckOutContact() {
               type="name"
               size="small"
               value={firstname}
-              //error={firstname === ""}
-              //helperText={firstname === "" ? 'Empty field!' : ' '}
-
+              error={firstname === ""}
+              helperText={firstname === "" ? 'Vänligen fyll i ditt förnamn' : ' '}
               sx={{
                 mr: 2,
                 mb: 2,
-                color: "black",
-                border: "solid black 2px",
-                borderRadius: 1
-                //border: 
-                //backgroundColor: "white",
-              }}
+                color: "black"}}
             />
           </FormControl>
 
@@ -123,9 +117,10 @@ function CheckOutContact() {
               size="small"
               name="family-name"
               autoComplete="family-name"
-              sx={{ mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1 }}
+              value={lastname}
+              error={lastname === ""}
+              helperText={lastname === "" ? 'Vänligen fyll i ditt efternamn' : ' '}
+              sx={{ mb: 2, color: "black"}}
             />
           </FormControl>
         </div>
@@ -142,9 +137,10 @@ function CheckOutContact() {
               type="email"
               label="E-post"
               size="small"
-              sx={{ mr: 2, mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1 }}
+              value={email}
+              error={email === ""}
+              helperText={email === "" ? 'Vänligen fyll i din e-post' : ' '}
+              sx={{ mr: 2, mb: 2, color: "black"}}
             />
           </FormControl>
           <FormControl>
@@ -160,9 +156,10 @@ function CheckOutContact() {
               size="small"
               name="tel"
               autoComplete="tel"
-              sx={{ mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1}}
+              value={phoneNumber}
+              error={phoneNumber === ""}
+              helperText={phoneNumber === "" ? 'Vänligen fyll i ditt telefonnummer' : ' '}
+              sx={{ mb: 2, color: "black"}}
             />
           </FormControl>
         </div>
@@ -173,15 +170,16 @@ function CheckOutContact() {
               //value={address}
               name="street-address"
               autoComplete="street-address"
+              value={address}
+              error={address === ""}
+              helperText={address === "" ? 'Vänligen fyll i din adress' : ' '}
               onChange={(event) => {
                 setAddress(event.target.value);
               }}
               id="outlined-required"
               label="Gatuadress"
               size="small"
-              sx={{ mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1 }}
+              sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
         </div>
@@ -198,9 +196,10 @@ function CheckOutContact() {
               autoComplete="postal-code"
               label="Postnummer"
               size="small"
-              sx={{ mr: 2, mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1,}}
+              value={code}
+              error={code === ""}
+              helperText={code === "" ? 'Vänligen fyll i ditt postnummer' : ' '}
+              sx={{ mr: 2, mb: 2, color: "black"}}
             />
           </FormControl>
           <FormControl>
@@ -213,9 +212,10 @@ function CheckOutContact() {
               label="Ort"
               name="address-level2"
               size="small"
-              sx={{ color: "black",
-              border: "solid black 2px",
-              borderRadius: 1}}
+              value={city}
+              error={city === ""}
+              helperText={city === "" ? 'Vänligen fyll i din stad' : ' '}
+              sx={{ color: "black"}}
             />
           </FormControl>
         </div>

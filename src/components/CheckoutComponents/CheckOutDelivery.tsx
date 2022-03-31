@@ -6,8 +6,6 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { style } from "@mui/system";
-import "./CheckOutDelivery.css"
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
