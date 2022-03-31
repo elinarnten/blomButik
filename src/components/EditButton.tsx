@@ -51,7 +51,7 @@ export default function EditButton(props: Props) {
   const [price, setPrice] = useState(props.item.price);
   const [tag, setTag] = useState(props.item.tag);
   const [id] = useState(props.item.id);
-  const [description] = useState(props.item.description);
+  const [description, setDescription] = useState(props.item.description);
 
   function handleSubmit(e: any) {
     e.preventDefault();
