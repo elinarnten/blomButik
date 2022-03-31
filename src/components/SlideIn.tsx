@@ -47,7 +47,7 @@ function CheckOutButton() {
   </Button>
   }
    else {
-    return <></> 
+    return <Typography sx={{ml: 4, color: "red"}}>Oups! <br></br>Varukorgen är tom.</Typography>
   } 
 }
   
@@ -65,7 +65,7 @@ function CheckOutButton() {
       <Box sx={{ width: "auto", p: "1rem" }}>
         <Typography variant="h5">Varukorg</Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", mt: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", mt: 1, alignItems: "center" }}>
           {itemInCart.map((cartItem) => (
             <Card
               key={cartItem.shopItem.id}
@@ -104,8 +104,15 @@ function CheckOutButton() {
           ))}
         </Box>
 
-        <Box>
-          Totalt pris: {totalPrice} kr
+        <Box sx={{display: "flex"}}>
+          <Box>
+          <Typography>
+          Totalpris: {totalPrice} kr
+          </Typography>
+          <Typography sx={{fontSize: 12}}>
+          Frakt tillkommer
+          </Typography>
+          </Box>
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
            <CheckOutButton />
           </Link>

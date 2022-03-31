@@ -199,9 +199,9 @@ function CheckOutPayment() {
               size="small"
               variant="contained"
               sx={{
-                backgroundColor: "#F4EAC6",
+                backgroundColor: "black",
                 boxShadow: "none",
-                color: "black",
+                color: "white",
                 mt: 2,
               }}
               onClick={proceedOrder}
@@ -272,9 +272,9 @@ function CheckOutPayment() {
               size="small"
               variant="contained"
               sx={{
-                backgroundColor: "#F4EAC6",
+                backgroundColor: "black",
                 boxShadow: "none",
-                color: "black",
+                color: "white",
                 mt: 2,
               }}
               onClick={proceedOrder}
@@ -347,9 +347,9 @@ function CheckOutPayment() {
               size="small"
               variant="contained"
               sx={{
-                backgroundColor: "#F4EAC6",
+                backgroundColor: "black",
                 boxShadow: "none",
-                color: "black",
+                color: "white",
                 mt: 2,
               }}
               onClick={proceedOrder}

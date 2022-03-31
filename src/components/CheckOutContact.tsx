@@ -83,14 +83,14 @@ function CheckOutContact() {
               type="name"
               size="small"
               value={firstname}
-              //error={firstname === ""}
-              //helperText={firstname === "" ? 'Empty field!' : ' '}
+              error={firstname === ""}
+              helperText={firstname === "" ? 'Vänligen fyll i ditt förnamn' : ' '}
               
               sx={{
                 mr: 2,
                 mb: 2,
                 color: "black",
-                border: "solid black 2px",
+                //border: "solid black 2px",
                 borderRadius: 1
                 //border: 
                 //backgroundColor: "white",

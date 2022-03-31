@@ -6,19 +6,20 @@ function About() {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${FlowerBackground})`,
+        //backgroundImage: `url(${FlowerBackground})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         minHeight: "100vh",
         //flex: 1,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center"
+        //justifyContent: "center",
+        mt: 10
       }}
     >
       <Typography
         variant="h4"
-        sx={{ display: "flex", justifyContent: "center", m: 2}}
+        sx={{ display: "flex", justifyContent: "center", mb: 2}}
       >
         Om oss
       </Typography>
@@ -27,11 +28,12 @@ function About() {
       >
         <Box
           sx={{
-            width: "70%",
+            width: "50%",
             height: "100%",
-            m: 1,
-            backgroundColor: "rgba(244, 234, 198, 0.4)",
+            //m: 1,
+            //backgroundColor: "rgba(244, 234, 198, 0.4)",
             borderRadius: 3,
+            border: "solid black 2px"
           }}
         >
           <Typography
@@ -51,8 +53,8 @@ function About() {
         </Box>
         <Box
           sx={{
-            height: "15rem",
-            width: "15rem",
+            height: "20rem",
+            width: "20rem",
             backgroundImage: `url(${Avatar})`,
             backgroundSize: "contain",
           }}

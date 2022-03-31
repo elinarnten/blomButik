@@ -104,7 +104,7 @@ export default function CardView(props: Props) {
           horizontal: "center",
         }}
       >
-        <Card sx={{ display: "flex", height: "100%", width: "40rem" }}>
+        <Card sx={{ display: "flex", height: "100%", width: "40rem", border:"solid black 2px" }}>
           <CardMedia
             component="img"
             image={props.item.img}
@@ -118,26 +118,28 @@ export default function CardView(props: Props) {
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
+              m: 2
             }}
           >
             <Typography
               variant="h5"
               sx={{
                 fontFamily: "Quicksand, cursive",
-                color: "rgb(250, 218, 112)",
+                color: "black",
+                mb: 1
               }}
             >
               {props.item.title}
             </Typography>
-            <Typography> {props.item.price} KR/ st</Typography>
-            <Typography> {props.item.description} </Typography>
+            <Typography sx={{mb: 1}}> {props.item.price} KR/ st</Typography>
+            <Typography sx={{mb: 1}}> {props.item.description} </Typography>
             <Button
               size="small"
               variant="contained"
               style={{
                 position: "static",
                 borderRadius: 5,
-                backgroundColor: "#ffcc80",
+                backgroundColor: "black",
                 padding: "5px 35px",
                 fontSize: "8px",
                 alignSelf: "center",
