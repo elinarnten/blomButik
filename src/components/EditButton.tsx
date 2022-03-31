@@ -78,6 +78,13 @@ export default function EditButton(props: Props) {
     event.preventDefault();
   };
 
+  const handleChangeDescription = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDescription(event.target.value);
+    event.preventDefault();
+  };
+
   const { updateProduct } = useContext(ProductContext);
 
   const handleUpdateProduct = () => {
@@ -146,6 +153,13 @@ export default function EditButton(props: Props) {
                   onChange={handleChangePrice}
                   value={price}
                 />
+                <p>Beskrivning: </p>
+                <Input
+                  type="text"
+                  defaultValue={props.item.description}
+                  onChange={handleChangeDescription}
+                  value={description}
+                />
                 <Button
                   variant="contained"
                   style={{
@@ -179,6 +193,7 @@ export default function EditButton(props: Props) {
                   backgroundColor: "green",
                   alignSelf: "center",
                   width: "50%",
+                  position: "static",
                 }}
                 onClick={() => {
                   setIsEditing(true);
