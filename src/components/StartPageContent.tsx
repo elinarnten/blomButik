@@ -8,16 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import { ProductContext } from "../productContext";
+import { ProductContext } from "../contexts/productContext";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 export default function StartPageContent() {
   const { startPageProducts } = useContext(ProductContext);
-  const { addItem } = useContext(CartContext)
-
- 
+  const { addItem } = useContext(CartContext);
 
   return (
     <Box
@@ -28,31 +25,29 @@ export default function StartPageContent() {
         justifyContent: "center",
       }}
     >
-        <Typography
-          variant="h6"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            //alignItems: "center",
-            fontFamily: "Pacifico, cursive",
-            marginTop: 40,
-            marginBottom: 15
-          
-          }}
-        >
+      <Typography
+        variant="h6"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          //alignItems: "center",
+          fontFamily: "Pacifico, cursive",
+          marginTop: 40,
+          marginBottom: 15,
+        }}
+      >
         Överraska någon du tycker om
-        </Typography>
+      </Typography>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           flexWrap: "wrap",
-          width: "100%"
+          width: "100%",
           //mt: "1rem",
         }}
       >
-       
         {startPageProducts.map((item) => (
           <Card
             key={item.id}
@@ -62,14 +57,14 @@ export default function StartPageContent() {
               display: "flex",
               flexDirection: "column",
               m: 1,
-              mb: 3
+              mb: 3,
             }}
             style={{
               textAlign: "center",
               justifyContent: "center",
               alignContent: "center",
               alignSelf: "center",
-              border: "solid black 2px"
+              border: "solid black 2px",
             }}
             className="Quicksand"
           >
@@ -78,7 +73,7 @@ export default function StartPageContent() {
               alt="shopItem"
               //height= "120rem"
               image={item.img}
-              sx={{height: 120}}
+              sx={{ height: 120 }}
             ></CardMedia>
             <CardContent sx={{ height: 12 }}>
               <Typography
@@ -113,8 +108,6 @@ export default function StartPageContent() {
                 marginTop: "10px",
               }}
             >
-             
-
               <Button
                 variant="contained"
                 size="small"
@@ -125,17 +118,14 @@ export default function StartPageContent() {
                   backgroundColor: "black",
                   alignSelf: "center",
                 }}
-                
-              onClick={ () => addItem(item)}
+                onClick={() => addItem(item)}
               >
                 <ShoppingCartIcon sx={{ fontSize: "1rem" }} />
               </Button>
             </CardActions>
           </Card>
         ))}
-      
       </Box>
-     
     </Box>
   );
 }

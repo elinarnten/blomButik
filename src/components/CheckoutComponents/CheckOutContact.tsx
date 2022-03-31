@@ -1,13 +1,26 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ConsumerContext } from "../ConsumerContext";
-import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import { ConsumerContext } from "../../contexts/ConsumerContext";
 
 function CheckOutContact() {
-  const { firstname, setFirstname, lastname, setLastname, phoneNumber, setPhoneNumber, email, setEmail, address, setAddress, code, setCode, city, setCity } = useContext(ConsumerContext);
-
+  const {
+    firstname,
+    setFirstname,
+    lastname,
+    setLastname,
+    phoneNumber,
+    setPhoneNumber,
+    email,
+    setEmail,
+    address,
+    setAddress,
+    code,
+    setCode,
+    city,
+    setCity,
+  } = useContext(ConsumerContext);
 
   function SubmitButton() {
     if (firstname && lastname && phoneNumber && email && address && code && city) {
@@ -19,35 +32,36 @@ function CheckOutContact() {
         boxShadow: "none",
         color: "black",
 
-        mt: 3,
-      }}
-    >
-      Gå vidare
-    </Button>
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
+      
     } else {
-      return <Button disabled
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button>
+      return (
+        <Button
+          disabled
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "#F4EAC6",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
+      );
     }
   }
-
 
   return (
     <Box
       sx={{
         width: "100%",
         minHeight: "100vh",
-        //backgroundImage: `url(${BgCheckOut})`,
-        backgroundColor: "white",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -66,7 +80,7 @@ function CheckOutContact() {
           alignItems: "center",
         }}
       >
-        <Typography sx={{ mb: 3, }} variant="h6">
+        <Typography sx={{ mb: 3 }} variant="h6">
           Vänligen fyll i dina uppgifter:
         </Typography>
         <div>
@@ -83,14 +97,14 @@ function CheckOutContact() {
               type="name"
               size="small"
               value={firstname}
-              error={firstname === ""}
-              helperText={firstname === "" ? 'Vänligen fyll i ditt förnamn' : ' '}
-              
+              //error={firstname === ""}
+              //helperText={firstname === "" ? 'Empty field!' : ' '}
+
               sx={{
                 mr: 2,
                 mb: 2,
                 color: "black",
-                //border: "solid black 2px",
+                border: "solid black 2px",
                 borderRadius: 1
                 //border: 
                 //backgroundColor: "white",
@@ -109,11 +123,9 @@ function CheckOutContact() {
               size="small"
               name="family-name"
               autoComplete="family-name"
-              value={lastname}
-              error={lastname === ""}
-              helperText={lastname === "" ? 'Vänligen fyll i ditt efternamn' : ' '}
               sx={{ mb: 2, color: "black",
-               }}
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
         </div>
@@ -122,7 +134,7 @@ function CheckOutContact() {
             <TextField
               required
               //value={email}
-             onChange={(event) => {
+              onChange={(event) => {
                 setEmail(event.target.value);
               }}
               id="outlined-required"
@@ -130,11 +142,9 @@ function CheckOutContact() {
               type="email"
               label="E-post"
               size="small"
-              value={email}
-              error={email === ""}
-              helperText={email === "" ? 'Vänligen fyll i din e-post' : ' '}
               sx={{ mr: 2, mb: 2, color: "black",
-               }}
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
           <FormControl>
@@ -149,12 +159,10 @@ function CheckOutContact() {
               label="Telefonnummer"
               size="small"
               name="tel"
-              value={phoneNumber}
-              error={phoneNumber === ""}
-              helperText={phoneNumber === "" ? 'Vänligen fyll i ditt telefonnummer' : ' '}
               autoComplete="tel"
               sx={{ mb: 2, color: "black",
-              }}
+              border: "solid black 2px",
+                borderRadius: 1}}
             />
           </FormControl>
         </div>
@@ -171,11 +179,9 @@ function CheckOutContact() {
               id="outlined-required"
               label="Gatuadress"
               size="small"
-              value={address}
-              error={address === ""}
-              helperText={address === "" ? 'Vänligen fyll i din adress' : ' '}
               sx={{ mb: 2, color: "black",
-               }}
+              border: "solid black 2px",
+                borderRadius: 1 }}
             />
           </FormControl>
         </div>
@@ -192,11 +198,9 @@ function CheckOutContact() {
               autoComplete="postal-code"
               label="Postnummer"
               size="small"
-              value={code}
-              error={code === ""}
-              helperText={code === "" ? 'Vänligen fyll i ditt postnummer' : ' '}
               sx={{ mr: 2, mb: 2, color: "black",
-              }}
+              border: "solid black 2px",
+                borderRadius: 1,}}
             />
           </FormControl>
           <FormControl>
@@ -209,11 +213,9 @@ function CheckOutContact() {
               label="Ort"
               name="address-level2"
               size="small"
-              value={city}
-              error={city === ""}
-              helperText={city === "" ? 'Vänligen fyll i din stad' : ' '}
               sx={{ color: "black",
-              }}
+              border: "solid black 2px",
+              borderRadius: 1}}
             />
           </FormControl>
         </div>

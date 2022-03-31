@@ -5,13 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import Favorite from "@mui/icons-material/Favorite";
 import ShoppingBasket from "@mui/icons-material/ShoppingBasket";
 import Badge from "@mui/material/Badge";
 import { Menu, MenuItem } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {CartContext} from "../CartContext"
+import { CartContext } from "../contexts/CartContext";
 
 interface Props {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -53,7 +52,7 @@ function Header(props: Props) {
           backgroundColor: "rgba(214, 186, 227, 0.4)",
           //color: "#F4EAC6",
           color: "black",
-          
+
           borderBottom: "solid black 2px",
           height: "4rem",
           boxShadow: "none",
@@ -117,8 +116,6 @@ function Header(props: Props) {
           </Typography>
 
           <div>
-           
-
             <ThemeProvider theme={theme}>
               <IconButton
                 size="large"

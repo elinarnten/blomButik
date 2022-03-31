@@ -1,19 +1,11 @@
 import CardView from "./Card";
-import { ShopItem } from "../data/ShopContent";
 import { Grid, Typography } from "@mui/material";
-import bg from "../images/bg.jpg";
-import { Box, display, width } from "@mui/system";
-import { SortButton } from "../data/SortButtonsData";
-import { useContext, useState } from "react";
+import { Box } from "@mui/system";
+import { useContext } from "react";
 import AddProduct from "./AddProduct";
 import DeleteButton from "./buttonDeleteItem";
-import { ProductContext } from "../productContext";
+import { ProductContext } from "../contexts/productContext";
 import EditButton from "./EditButton";
-
-interface Props {
-  buttonItem: SortButton;
-  item: ShopItem;
-}
 
 interface Adminprops {
   hideShow: Boolean;
@@ -45,7 +37,6 @@ export default function CardList(props: Adminprops) {
             alignItems: "center",
           }}
         >
-
           <Typography
             variant="h5"
             component="div"
@@ -109,5 +100,3 @@ export default function CardList(props: Adminprops) {
     </>
   );
 }
-
-

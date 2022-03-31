@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { CartContext } from "../CartContext";
+
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
+import { CartContext } from "../contexts/CartContext";
 
 function OrderConfirmation() {
   const { getOrderNumber } = useContext(CartContext);

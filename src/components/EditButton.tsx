@@ -2,8 +2,9 @@ import { Button, createTheme, Input, ThemeProvider } from "@mui/material";
 import React from "react";
 import { useContext, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
-import { generateId, ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../productContext";
+import { ShopItem } from "../data/ShopContent";
+import { ProductContext } from "../contexts/productContext";
+
 interface Props {
   hideShow: Boolean;
   item: ShopItem;
@@ -48,7 +49,7 @@ export default function EditButton(props: Props) {
   const [img, setImg] = useState(props.item.img);
   const [price, setPrice] = useState(props.item.price);
   const [tag, setTag] = useState(props.item.tag);
-  const [id, setId] = useState(props.item.id);
+  const [id] = useState(props.item.id);
   const [description, setDescription] = useState(props.item.description);
 
   function handleSubmit(e: any) {
@@ -73,6 +74,13 @@ export default function EditButton(props: Props) {
 
   const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setImg(event.target.value);
+    event.preventDefault();
+  };
+
+  const handleChangeDescription = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDescription(event.target.value);
     event.preventDefault();
   };
 
@@ -143,6 +151,13 @@ export default function EditButton(props: Props) {
                   defaultValue={props.item.price}
                   onChange={handleChangePrice}
                   value={price}
+                />
+                <p>Beskrivning: </p>
+                <Input
+                  type="text"
+                  defaultValue={props.item.description}
+                  onChange={handleChangeDescription}
+                  value={description}
                 />
                 <Button
                   variant="contained"

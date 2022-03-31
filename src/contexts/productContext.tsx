@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
-import { ShopItem, shopItems } from "./data/ShopContent";
-import { useLocalStorageState } from "./LocalStorage";
+import { ShopItem, shopItems } from "../data/ShopContent";
+import { useLocalStorageState } from "../LocalStorage";
+
 export interface ProductContextValue {
   add: ShopItem[];
   products: ShopItem[];
@@ -8,6 +9,7 @@ export interface ProductContextValue {
   removeProduct: (shopItem: ShopItem) => void;
   addProduct: (shopItem: ShopItem) => void;
   updateProduct: (shopItem: ShopItem) => void;
+  filterProduct: (ShopItem: ShopItem) => void;
 }
 
 export const ProductContext = createContext<ProductContextValue>({
@@ -17,31 +19,31 @@ export const ProductContext = createContext<ProductContextValue>({
   removeProduct: () => undefined,
   addProduct: () => undefined,
   updateProduct: () => undefined,
+  filterProduct: () => undefined,
 });
 
 const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
-  const [add, setAdd] = useState<ShopItem[]>(shopItems);
+  const [add] = useState<ShopItem[]>(shopItems);
   let [products, setProducts] = useLocalStorageState<ShopItem[]>(
     shopItems,
     "items"
   );
 
-  //removes product from Admin UI
   const removeProduct = (shopItem: ShopItem) => {
+    console.log(shopItem);
     let updatedlist = products.filter(
       (deletingshopItem) => shopItem.id !== deletingshopItem.id
     );
     setProducts(updatedlist);
   };
 
-  //Adds product from Admin UI
   const addProduct = (shopItem: ShopItem) => {
     console.log(shopItem);
     let copyProducts = [...products];
     let matchingIndex = copyProducts.findIndex(
-      (item) => item.id == shopItem.id
+      (item) => item.id === shopItem.id
     );
-    if (matchingIndex == -1) {
+    if (matchingIndex === -1) {
       copyProducts.push(shopItem);
     }
     setProducts(copyProducts);
@@ -64,21 +66,33 @@ const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
         listCopy[currentIndex],
       ];
     }
+
     return listCopy.splice(0, 3);
   };
 
-  let [startPageProducts, setStartPageProducts] = useState<ShopItem[]>(
+  let [startPageProducts] = useState<ShopItem[]>(
     generateRandomProductList(products)
   );
 
   const updateProduct = (shopItem: ShopItem) => {
     let update = [...products];
-    let matchingIndex = update.findIndex((item) => item.id == shopItem.id);
-    if (matchingIndex != -1) {
+    let matchingIndex = update.findIndex((item) => item.id === shopItem.id);
+
+    if (matchingIndex !== -1) {
       update.splice(matchingIndex, 1, shopItem);
     }
     console.log(update);
     setProducts(update);
+  };
+
+  const filterProduct = (shopItem: ShopItem) => {
+    // if (sortButton.value === "") {
+    //   setProducts(products);
+    // } else {
+    //   setProducts(
+    //     shopItems.filter((product) => sortButton.value === product.tag)
+    //   ),[selectedTag];
+    // }
   };
 
   return (
@@ -90,6 +104,7 @@ const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
         removeProduct,
         addProduct,
         updateProduct,
+        filterProduct,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box, height } from "@mui/system";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../productContext";
+import { ProductContext } from "../contexts/productContext";
 import { generateId } from "../data/ShopContent";
 
 interface Option {
@@ -42,161 +42,175 @@ export default function AddProduct(Props: Props) {
       price,
       tag,
       liked: false,
-      description
-    }
-    addProduct(newItem)
+      description,
+    };
+    addProduct(newItem);
+  };
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    console.log("You clicked submit.");
   }
+  const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+    event.preventDefault();
+  };
 
+  const handleaddTag = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTag(event.target.value as any);
+    event.preventDefault();
+  };
 
-     function handleSubmit(e:any) {
-       e.preventDefault();
-       console.log("You clicked submit.");
-     }
+  const handleaddPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value as any);
+    event.preventDefault();
+  };
 
-    const handleaddTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setTitle(event.target.value);
-      event.preventDefault();
-      
+  const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setImage(event.target.value);
+    event.preventDefault();
+  };
 
-    }; 
+  const handleAddDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(event.target.value);
+    event.preventDefault();
+  };
 
-     const handleaddTag = (event: React.ChangeEvent<HTMLInputElement>) => {
-       setTag(event.target.value as any);
-      event.preventDefault();
+  if (Props.hideShow === true) {
+    {
+      return (
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "20px",
+            marginTop: "4rem",
+            justifyContent: "center",
+            alignContent: "center",
+            width: "100%",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "20px",
+              margin: "10px",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+            sx={{
+              ml: 4,
+              mr: 5,
+              //mt: 4,
+              //backgroundColor: "rgba(252, 215, 155, 0.9)",
+              borderRadius: 2,
+              padding: 12,
+            }}
+          >
+            <Typography
+              //fontFamily="Quicksand"
+              style={{
+                //fontFamily: "Quicksand, cursive",
+                color: "black",
+              }}
+            >
+              <h4 style={{ marginBottom: 10 }}>Lägg till en ny produkt:</h4>
+              <h5>Titel</h5>
 
-     }; 
+              <input
+                style={{
+                  width: "90%",
+                  padding: "5px",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  borderRadius: "5px",
+                  border: "solid black",
+                }}
+                //placeholder="Title"
+                name="title-name"
+                value={title}
+                onChange={handleaddTitle}
+                type="text"
+              ></input>
 
-      const handleaddPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPrice(event.target.value as any);
-         event.preventDefault();
-      }; 
+              <h5>Bild URL</h5>
+              <input
+                style={{
+                  width: "90%",
+                  padding: "5px",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  borderRadius: "5px",
+                  border: "solid black",
+                }}
+                //placeholder="image"
+                name="image-name"
+                value={image}
+                onChange={handleaddImage}
+                type="text"
+              ></input>
 
-       const handleaddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-         setImage(event.target.value);
-          event.preventDefault();
-       }; 
-    
-  
-  
-     if (Props.hideShow === true) {
-       {
-         return (
-           <form
-             onSubmit={handleSubmit}
-             style={{
-               display: "flex",
-               flexDirection: "column",
-               padding: "20px",
-               marginTop: "4rem",
-               justifyContent: "center",
-               alignContent: "center",
-               width: "100%",
-               alignItems: "center",
-             }}
-           >
-             
-             <Box
-               style={{
-                 display: "flex",
-                 flexDirection: "column",
-                 padding: "20px",
-                 margin: "10px",
-                 justifyContent: "center",
-                 alignContent: "center",
-               }}
-               sx={{
-                 ml: 4,
-                 mr: 5,
-                 //mt: 4,
-                 //backgroundColor: "rgba(252, 215, 155, 0.9)",
-                 borderRadius: 2,
-                 padding: 12,
-               }}
-             >
-          
-               <Typography
-                 //fontFamily="Quicksand"
-                 style={{
-                   //fontFamily: "Quicksand, cursive",
-                   color: "black",
-                 }}
-               >
-                 <h4 style={{marginBottom: 10}}>Lägg till en ny produkt:</h4>
-                 <h5>Titel</h5>
+              <h5>Pris</h5>
+              <input
+                style={{
+                  width: "90%",
+                  padding: "5px",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  borderRadius: "5px",
+                  border: "solid black",
+                }}
+                //placeholder="price"
+                name="price-name"
+                value={price}
+                onChange={handleaddPrice}
+                type="number"
+              ></input>
 
-                 <input
-                   style={{
-                     width: "90%",
-                     padding: "5px",
-                     justifyContent: "center",
-                     alignContent: "center",
-                     borderRadius: "5px",
-                     border: "solid black",
-                   }}
-                   //placeholder="Title"
-                   name="title-name"
-                   value={title}
-                   onChange={handleaddTitle}
-                   type="text"
-                 ></input>
-
-                 <h5>Bild URL</h5>
-                 <input
-                   style={{
-                     width: "90%",
-                     padding: "5px",
-                     justifyContent: "center",
-                     alignContent: "center",
-                     borderRadius: "5px",
-                     border: "solid black",
-                   }}
-                   //placeholder="image"
-                   name="image-name"
-                   value={image}
-                   onChange={handleaddImage}
-                   type="text"
-                 ></input>
-
-                 <h5>Pris</h5>
-                 <input
-                   style={{
-                     width: "90%",
-                     padding: "5px",
-                     justifyContent: "center",
-                     alignContent: "center",
-                     borderRadius: "5px",
-                     border: "solid black",
-                   }}
-                   //placeholder="price"
-                   name="price-name"
-                   value={price}
-                   onChange={handleaddPrice}
-                   type="number"
-                 ></input>
-
-                 <h5>Tag</h5>
-                 <div>
-                   <input
-                     style={{
-                       width: "90%",
-                       padding: "5px",
-                       justifyContent: "center",
-                       alignContent: "center",
-                       borderRadius: "5px",
-                       border: "solid black",
-                     }}
-                     //placeholder="tag"
-                     name="image-tag"
-                     value={tag}
-                     onChange={handleaddTag}
-                     type="text"
-                   ></input>
-                   <button onClick={HandleSubmitProducts} type="submit"
-                    style={{
+              <h5>Tag</h5>
+              <div>
+                <input
+                  style={{
+                    width: "90%",
+                    padding: "5px",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    borderRadius: "5px",
+                    border: "solid black",
+                  }}
+                  //placeholder="tag"
+                  name="image-tag"
+                  value={tag}
+                  onChange={handleaddTag}
+                  type="text"
+                ></input>
+                <h5>Beskrivning</h5>
+                <input
+                  style={{
+                    width: "90%",
+                    padding: "5px",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    borderRadius: "5px",
+                    border: "solid black",
+                  }}
+                  //placeholder="Beskrivning"
+                  name="description-box"
+                  value={description}
+                  onChange={handleAddDescription}
+                  type="text"
+                ></input>
+                <button
+                  onClick={HandleSubmitProducts}
+                  type="submit"
+                  style={{
                     marginTop: "10px",
                     marginRight: "10%",
-                    border:"none",
-                    color:"white",
+                    border: "none",
+                    color: "white",
                     borderRadius: 5,
                     backgroundColor: "green",
                     alignSelf: "center",
@@ -217,4 +231,4 @@ export default function AddProduct(Props: Props) {
         <>
         </>
       );
-  }
+    }
