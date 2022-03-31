@@ -1,21 +1,12 @@
-import {
-  Button,
-  createTheme,
-  Input,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
-import { margin } from "@mui/system";
+import { Button, createTheme, Input, ThemeProvider } from "@mui/material";
 import React from "react";
-import { createElement, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 import { generateId, ShopItem } from "../data/ShopContent";
 import { ProductContext } from "../productContext";
-
 interface Props {
   hideShow: Boolean;
   item: ShopItem;
-  // updateItem: Dispatch<SetStateAction<any>>;
   handleUpdateProduct: Dispatch<SetStateAction<any>>;
 }
 
@@ -97,7 +88,6 @@ export default function EditButton(props: Props) {
       liked: false,
       description,
     };
-
     updateProduct(ChangedItem);
   };
 
@@ -160,7 +150,7 @@ export default function EditButton(props: Props) {
                     backgroundColor: "black",
                     alignSelf: "center",
                     color: "white",
-                    margin: 4
+                    margin: 4,
                   }}
                   onClick={handleUpdateProduct}
                   type="submit"
@@ -174,7 +164,7 @@ export default function EditButton(props: Props) {
                     alignSelf: "center",
                     color: "black",
                     border: "solid black 2px",
-                    margin: 4
+                    margin: 4,
                   }}
                   onClick={() => {
                     setIsEditing(false);
@@ -191,7 +181,7 @@ export default function EditButton(props: Props) {
                   alignSelf: "center",
                   width: "6rem",
                   height: "2rem",
-                  margin: 5
+                  margin: 5,
                 }}
                 onClick={() => {
                   setIsEditing(true);

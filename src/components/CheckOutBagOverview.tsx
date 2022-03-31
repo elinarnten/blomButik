@@ -8,7 +8,6 @@ function CheckOutBagOverview() {
   const { getTotalPrice } = useContext(CartContext);
 
   let totalPrice = getTotalPrice();
-  console.log(deliveryDate, deliveryOption)
 
   return (
     <Box

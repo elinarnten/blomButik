@@ -1,14 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import { ShopItem } from "./data/ShopContent";
-
-/* export interface ConsumerInterface {
-  firstname: string,
-  lastname: string,
-  phoneNumber: string,
-  deliveryOption: object,
-  deliveryDate: string, 
-    
-} */
 
 export const ConsumerContext = createContext<any>(null);
 
@@ -27,16 +17,24 @@ const ConsumerContextProvider: React.FC<ReactNode> = ({ children }) => {
   const [cvc, setCvc] = useState<string>("");
   const [personalId, setPersonalId] = useState<string>("");
 
+  //logs all consumer info and chosen delivery
   console.log(
     "consumer and delivery:",
+    "förnamn:",
     firstname,
+    "efternamn:",
     lastname,
+    "telefon:",
     phoneNumber,
+    "e-post:",
     email,
+    "adress:",
     address,
     code,
     city,
+    "leveransdatum:",
     deliveryDate,
+    "leverantör:",
     deliveryOption
   );
 

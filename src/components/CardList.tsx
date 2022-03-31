@@ -19,7 +19,7 @@ interface Adminprops {
   hideShow: Boolean;
 }
 export default function CardList(props: Adminprops) {
-  const { removeProduct, addProduct, updateProduct, filterProduct, products } =
+  const { removeProduct, addProduct, updateProduct, products } =
     useContext(ProductContext);
 
   return (

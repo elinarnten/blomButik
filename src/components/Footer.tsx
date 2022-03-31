@@ -1,5 +1,4 @@
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
-
 import { Link } from "react-router-dom";
 
 function Footer() {

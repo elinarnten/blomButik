@@ -1,8 +1,5 @@
-import { createWriteStream } from "fs";
-import { createContext, Key, ReactNode, useState } from "react";
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
+import { createContext, ReactNode, useState } from "react";
 import { ShopItem, shopItems } from "./data/ShopContent";
-
 export interface CartItem {
   shopItem: ShopItem;
   quantity: number;
@@ -24,12 +21,14 @@ export const CartContext = createContext<ContextInterface>({
   getTotalQuantity: () => 0,
   removeItem: () => undefined,
   setItemInCart: () => undefined,
-  getOrderNumber: () => 0
+  getOrderNumber: () => 0,
 });
 
 const CartContextProvider: React.FC<ReactNode> = (props) => {
   const [itemInCart, setItemInCart] = useState<CartItem[]>([]);
 
+  //looks for matching index, if found the
+  //quantity changes while added to cart
   const addItem = (shopItem: ShopItem) => {
     let cartListCopy = [...itemInCart];
 
@@ -52,14 +51,12 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
     );
     if (cartListCopy[foundIndex].quantity === 1) {
       cartListCopy.splice(foundIndex, 1);
-      setItemInCart(cartListCopy) 
-  }
-     else {
+      setItemInCart(cartListCopy);
+    } else {
       cartListCopy[foundIndex].quantity--;
       setItemInCart(cartListCopy);
-    } 
-    setItemInCart(cartListCopy)
-    console.log(foundIndex)
+    }
+    setItemInCart(cartListCopy);
   };
 
   const getTotalPrice = (): number => {
@@ -78,11 +75,14 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
     return totalQuantity;
   };
 
+  //gets random ordernumber
   const getOrderNumber = (): number => {
     let orderNumber = Math.floor(Math.random() * 100000) + 600000;
-    return orderNumber
-    console.log(orderNumber)
-  }
+    return orderNumber;
+  };
+
+  //logs the products in cart
+  console.log("orderspecifikation:", itemInCart);
 
   return (
     <CartContext.Provider
@@ -93,7 +93,7 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
         getTotalQuantity,
         removeItem,
         setItemInCart,
-        getOrderNumber
+        getOrderNumber,
       }}
     >
       {props.children}

@@ -1,50 +1,69 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
 import { CartContext } from "../CartContext";
+import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 
+function OrderConfirmation() {
+  const { getOrderNumber } = useContext(CartContext);
 
+  let orderNumber = getOrderNumber();
 
-function OrderConfirmation()  {
-  
-  const { getOrderNumber } =
-    useContext(CartContext);
+  window.addEventListener("popstate", (e) => {
+    window.location.assign("/");
+  });
 
-    let orderNumber = getOrderNumber()
-
-    window.addEventListener("popstate", e => {
-      window.location.assign('/')
-    });
-
-  
-    return (
-      <Box sx={{
+  return (
+    <Box
+      sx={{
         width: "100%",
         minHeight: "100vh",
-        //backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        display: "flex"
+        display: "flex",
       }}
-      >
-        <Box sx={{
+    >
+      <Box
+        sx={{
           width: "100%",
-          //height: "100%",
           display: "flex",
           flexDirection: "column",
-          //justifyContent: "center",
           alignItems: "center",
-        }}>
-          <Typography variant="h4" sx={{mt: 10}}>Tack för ditt köp!</Typography>
-          <Typography sx={{m:2}}>Ditt ordernummer är: <strong> {orderNumber} </strong></Typography>
-          <Typography>Frågor? Tveka inte att höra av dig.</Typography>
-          <Typography sx={{m:2, textAlign: "center"}}>
-             Vi på Blombutiken hoppas du blir nöjd med <br></br>dina varor och att vi ses snart igen. 
-          </Typography>
+        }}
+      >
+        <Typography variant="h4" sx={{ mt: 10 }}>
+          Tack för ditt köp!
+        </Typography>
+        <Typography sx={{ m: 2 }}>
+          Ditt ordernummer är: <strong> {orderNumber} </strong>
+        </Typography>
+        <Typography>
+          <strong>Frågor?</strong> Tveka inte att höra av dig.
+        </Typography>
+        <Typography sx={{ m: 2, textAlign: "center" }}>
+          Vi på Blombutiken hoppas du blir nöjd med <br></br>dina varor och att
+          vi ses snart igen.
+        </Typography>
+
+        <Link to={"/sortiment"} style={{ textDecoration: "none" }}>
+          <Button
+            size="small"
+            variant="contained"
+            endIcon={<LocalFloristIcon />}
+            sx={{
+              backgroundColor: "rgba(214, 186, 227)",
+              boxShadow: "none",
+              color: "black",
+              position: "static",
+              mt: 3,
+            }}
+          >
+            Till startsidan
+          </Button>
+        </Link>
       </Box>
-      </Box>
-    );
-  }
-export default OrderConfirmation
+    </Box>
+  );
+}
+export default OrderConfirmation;

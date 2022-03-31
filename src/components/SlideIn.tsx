@@ -47,7 +47,7 @@ function CheckOutButton() {
   </Button>
   }
    else {
-    return <Typography sx={{ml: 4, color: "red"}}>Oups! <br></br>Varukorgen är tom.</Typography>
+    return <Typography sx={{ mt: 2, color: "red"}}>Oups! <br></br>Varukorgen är tom.</Typography>
   } 
 }
   
@@ -104,7 +104,7 @@ function CheckOutButton() {
           ))}
         </Box>
 
-        <Box sx={{display: "flex"}}>
+        <Box sx={{display: "flex", flexDirection: "column"}}>
           <Box>
           <Typography>
           Totalpris: {totalPrice} kr
