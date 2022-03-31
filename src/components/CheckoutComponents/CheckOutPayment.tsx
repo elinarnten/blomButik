@@ -2,11 +2,10 @@ import { Box, Button, Menu, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ConsumerContext } from "../contexts/ConsumerContext";
-import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import { ConsumerContext } from "../../contexts/ConsumerContext";
 import CheckOutBagOverview from "./CheckOutBagOverview";
-import { createOrder } from "../mockedOrderApi";
-import { CartContext } from "../contexts/CartContext";
+import { createOrder } from "../../mockedOrderApi";
+import { CartContext } from "../../contexts/CartContext";
 
 function CheckOutPayment() {
   const { setItemInCart } = useContext(CartContext);
@@ -62,7 +61,6 @@ function CheckOutPayment() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

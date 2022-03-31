@@ -2,8 +2,7 @@ import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ConsumerContext } from "../contexts/ConsumerContext";
-import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
+import { ConsumerContext } from "../../contexts/ConsumerContext";
 
 function CheckOutContact() {
   const {
@@ -72,7 +71,6 @@ function CheckOutContact() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

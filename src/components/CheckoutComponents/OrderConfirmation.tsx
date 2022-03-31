@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Box, Typography } from "@mui/material";
-import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 function OrderConfirmation() {
   const { getOrderNumber } = useContext(CartContext);
@@ -17,7 +16,6 @@ function OrderConfirmation() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
