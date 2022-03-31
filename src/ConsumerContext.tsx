@@ -22,8 +22,23 @@ const ConsumerContextProvider: React.FC<ReactNode> = ({ children }) => {
   const [city, setCity] = useState<string>("");
   const [deliveryOption, setDeliveryOption] = useState([{}]);
   const [deliveryDate, setDeliveryDate] = useState<string>("");
+  const [cardnumber, setCardnumber] = useState<string>("");
+  const [validity, setValidity] = useState<string>("");
+  const [cvc, setCvc] = useState<string>("");
+  const [personalId, setPersonalId] = useState<string>("");
 
-  console.log("consumer and delivery:", firstname, lastname, phoneNumber, email, address, code, city, deliveryDate, deliveryOption)
+  console.log(
+    "consumer and delivery:",
+    firstname,
+    lastname,
+    phoneNumber,
+    email,
+    address,
+    code,
+    city,
+    deliveryDate,
+    deliveryOption
+  );
 
   return (
     <ConsumerContext.Provider
@@ -46,6 +61,14 @@ const ConsumerContextProvider: React.FC<ReactNode> = ({ children }) => {
         setDeliveryOption,
         deliveryDate,
         setDeliveryDate,
+        cardnumber,
+        setCardnumber,
+        validity,
+        setValidity,
+        cvc,
+        setCvc,
+        personalId,
+        setPersonalId,
       }}
     >
       {children}

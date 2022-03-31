@@ -109,9 +109,11 @@ function CheckOutContact() {
               size="small"
               name="family-name"
               autoComplete="family-name"
+              value={lastname}
+              error={lastname === ""}
+              helperText={lastname === "" ? 'Vänligen fyll i ditt efternamn' : ' '}
               sx={{ mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1 }}
+               }}
             />
           </FormControl>
         </div>
@@ -128,9 +130,11 @@ function CheckOutContact() {
               type="email"
               label="E-post"
               size="small"
+              value={email}
+              error={email === ""}
+              helperText={email === "" ? 'Vänligen fyll i din e-post' : ' '}
               sx={{ mr: 2, mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1 }}
+               }}
             />
           </FormControl>
           <FormControl>
@@ -145,10 +149,12 @@ function CheckOutContact() {
               label="Telefonnummer"
               size="small"
               name="tel"
+              value={phoneNumber}
+              error={phoneNumber === ""}
+              helperText={phoneNumber === "" ? 'Vänligen fyll i ditt telefonnummer' : ' '}
               autoComplete="tel"
               sx={{ mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1}}
+              }}
             />
           </FormControl>
         </div>
@@ -165,9 +171,11 @@ function CheckOutContact() {
               id="outlined-required"
               label="Gatuadress"
               size="small"
+              value={address}
+              error={address === ""}
+              helperText={address === "" ? 'Vänligen fyll i din adress' : ' '}
               sx={{ mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1 }}
+               }}
             />
           </FormControl>
         </div>
@@ -184,9 +192,11 @@ function CheckOutContact() {
               autoComplete="postal-code"
               label="Postnummer"
               size="small"
+              value={code}
+              error={code === ""}
+              helperText={code === "" ? 'Vänligen fyll i ditt postnummer' : ' '}
               sx={{ mr: 2, mb: 2, color: "black",
-              border: "solid black 2px",
-                borderRadius: 1,}}
+              }}
             />
           </FormControl>
           <FormControl>
@@ -199,9 +209,11 @@ function CheckOutContact() {
               label="Ort"
               name="address-level2"
               size="small"
+              value={city}
+              error={city === ""}
+              helperText={city === "" ? 'Vänligen fyll i din stad' : ' '}
               sx={{ color: "black",
-              border: "solid black 2px",
-              borderRadius: 1}}
+              }}
             />
           </FormControl>
         </div>

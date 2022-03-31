@@ -29,7 +29,7 @@ function CheckOutPayment() {
     navigate("/orderbekraftelse")
   }
 
-  const { firstname, lastname, phoneNumber } = useContext(ConsumerContext);
+  const { firstname, lastname, phoneNumber, cardnumber, setCardnumber, validity, setValidity, cvc, setCvc, personalId, setPersonalId } = useContext(ConsumerContext);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
@@ -63,7 +63,71 @@ function CheckOutPayment() {
     setAnchorSwishEl(null);
   };
 
- 
+  function SubmitButton() {
+    if (cardnumber && validity && cvc ) {
+      return <Button
+      size="small"
+      variant="contained"
+      sx={{
+        backgroundColor: "pink",
+        boxShadow: "none",
+        color: "black",
+
+        mt: 3,
+      }}
+      onClick={proceedOrder}
+    >
+      Gå vidare
+    </Button>
+    } else {
+      return <Button disabled
+              size="small"
+              variant="contained"
+              sx={{
+                backgroundColor: "#F4EAC6",
+                boxShadow: "none",
+                color: "black",
+                mt: 3,
+              }}
+            >
+              Gå vidare
+            </Button>
+    }
+  }
+
+  function SubmitInvoiceButton() {
+    if (personalId) {
+      return <Button
+      size="small"
+      variant="contained"
+      sx={{
+        backgroundColor: "pink",
+        boxShadow: "none",
+        color: "black",
+
+        mt: 3,
+      }}
+      onClick={proceedOrder}
+    >
+      Gå vidare
+    </Button>
+    } else {
+      return <Button disabled
+              size="small"
+              variant="contained"
+              sx={{
+                backgroundColor: "#F4EAC6",
+                boxShadow: "none",
+                color: "black",
+                mt: 3,
+              }}
+            >
+              Gå vidare
+            </Button>
+    }
+  }
+
+
 
   return (
     <Box
@@ -134,20 +198,32 @@ function CheckOutPayment() {
           <div>
             <TextField
               required
+              onChange={(event) => {
+                setCardnumber(event.target.value);
+              }}
               //onChange={handleFirstnameChange}
               id="outlined-required"
+              value={cardnumber}
               label="Kortnummer"
               size="small"
+              type="number"
               name="cardnumber"
               autoComplete="cc-number"
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
+            
+              
+              
           </div>
           <div>
             <TextField
               required
+              onChange={(event) => {
+                setValidity(event.target.value);
+              }}
               //onChange={handleFirstnameChange}
               id="outlined-required"
+              value={validity}
               label="Giltlighet"
               size="small"
               name="ccyear"
@@ -156,8 +232,12 @@ function CheckOutPayment() {
             />
             <TextField
               required
+              onChange={(event) => {
+                setCvc(event.target.value);
+              }}
               //onChange={handleFirstnameChange}
               id="outlined-required"
+              value={cvc}
               label="CVC"
               size="small"
               name="cvc"
@@ -195,20 +275,9 @@ function CheckOutPayment() {
             >
               Stäng
             </Button>
-            <Button
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "black",
-                boxShadow: "none",
-                color: "white",
-                mt: 2,
-              }}
-              onClick={proceedOrder}
-            >
-              Slutför köp
-            </Button>
+            <SubmitButton />
           </div>
+             
         </Menu>
 
         <Button
@@ -305,6 +374,7 @@ function CheckOutPayment() {
         </Button>
         <Menu
           id="basic-menu"
+          
           anchorEl={anchorInvoiceEl}
           open={openInvoice}
           onClose={handleInvoiceClose}
@@ -319,6 +389,10 @@ function CheckOutPayment() {
           <div>
             <TextField
               required
+              onChange={(event) => {
+                setPersonalId(event.target.value);
+              }}
+              value={personalId}
               //onChange={handleFirstnameChange}
               id="outlined-required"
               label="Personnummer"
@@ -343,19 +417,7 @@ function CheckOutPayment() {
             >
               Stäng
             </Button>
-            <Button
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "black",
-                boxShadow: "none",
-                color: "white",
-                mt: 2,
-              }}
-              onClick={proceedOrder}
-            >
-              Slutför köp
-            </Button>
+            <SubmitInvoiceButton/>
           </div>
         </Menu>
 
