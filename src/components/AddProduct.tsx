@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../productContext";
+import { ProductContext } from "../contexts/productContext";
 import { generateId } from "../data/ShopContent";
 
 interface Option {

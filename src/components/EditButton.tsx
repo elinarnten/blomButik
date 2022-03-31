@@ -1,16 +1,9 @@
-import {
-  Button,
-  createTheme,
-  Input,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
-import { margin } from "@mui/system";
+import { Button, createTheme, Input, ThemeProvider } from "@mui/material";
 import React from "react";
-import { createElement, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
-import { generateId, ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../productContext";
+import { ShopItem } from "../data/ShopContent";
+import { ProductContext } from "../contexts/productContext";
 
 interface Props {
   hideShow: Boolean;
@@ -57,8 +50,8 @@ export default function EditButton(props: Props) {
   const [img, setImg] = useState(props.item.img);
   const [price, setPrice] = useState(props.item.price);
   const [tag, setTag] = useState(props.item.tag);
-  const [id, setId] = useState(props.item.id);
-  const [description, setDescription] = useState(props.item.description);
+  const [id] = useState(props.item.id);
+  const [description] = useState(props.item.description);
 
   function handleSubmit(e: any) {
     e.preventDefault();

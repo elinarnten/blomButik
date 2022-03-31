@@ -7,26 +7,17 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { ShopItem } from "../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import "../App.css";
-import { useState } from "react";
-import { IconButton } from "@mui/material";
-import { ConsumerContext } from "../ConsumerContext";
-import { CartContext, CartItem } from "../CartContext";
-import { CloseOutlined } from "@mui/icons-material";
-import CloseIcon from "@mui/icons-material/Close";
-import { Box, Menu, Modal, Popover } from "@mui/material";
+import { CartContext } from "../contexts/CartContext";
+import { Box, Popover } from "@mui/material";
 import React from "react";
-
 
 interface Props {
   item: ShopItem;
 }
 
 export default function CardView(props: Props) {
-
   //const { itemInCart, setItemInCart, addItem } = useContext(CartContext);
-
 
   const { addItem } = useContext(CartContext);
 
@@ -41,11 +32,9 @@ export default function CardView(props: Props) {
     setAnchorCardEl(null);
   };
 
-
   const handleOnClick = () => {
     addItem(props.item);
   };
-
 
   //console.log(itemInCart)
   /* 
@@ -56,9 +45,8 @@ export default function CardView(props: Props) {
     console.log(cartArray)
   }; */
 
-
-  const [toggle, setToggle] = useState(true);
-  const [name, setName] = useState("test");
+  // const [toggle, setToggle] = useState(true);
+  // const [name, setName] = useState("test");
 
   return (
     <Card
@@ -170,9 +158,7 @@ export default function CardView(props: Props) {
           variant="body2"
           color="text.secondary"
         >
-
           {props.item.price} kr/st
-
         </Typography>
       </CardContent>
       <CardActions
@@ -182,8 +168,6 @@ export default function CardView(props: Props) {
           marginTop: "10px",
         }}
       >
-
-
         <Button
           size="small"
           variant="contained"

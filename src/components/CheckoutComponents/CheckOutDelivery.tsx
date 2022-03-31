@@ -7,13 +7,11 @@ import {
 } from "@mui/material";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import BgCheckOut from "../Assets/backgroundCheckOut.jpg";
-import { ConsumerContext } from "../ConsumerContext";
-import { deliveryAlternatives, DeliveryOption } from "../mockedDelivery";
+import { ConsumerContext } from "../../contexts/ConsumerContext";
+import { deliveryAlternatives, DeliveryOption } from "../../mockedDelivery";
 
 function CheckOutDelivery() {
-  const { deliveryOption, setDeliveryOption, deliveryDate, setDeliveryDate } =
-    useContext(ConsumerContext);
+  const { setDeliveryOption, setDeliveryDate } = useContext(ConsumerContext);
 
   const handleOnChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -35,7 +33,6 @@ function CheckOutDelivery() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundImage: `url(${BgCheckOut})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -51,7 +48,7 @@ function CheckOutDelivery() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <Typography sx={{ mb: 3 }} variant="h6">

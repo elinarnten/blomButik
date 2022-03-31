@@ -1,7 +1,7 @@
 import { createWriteStream } from "fs";
 import { createContext, Key, ReactNode, useState } from "react";
 import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
-import { ShopItem, shopItems } from "./data/ShopContent";
+import { ShopItem, shopItems } from "../data/ShopContent";
 
 export interface CartItem {
   shopItem: ShopItem;
@@ -24,7 +24,7 @@ export const CartContext = createContext<ContextInterface>({
   getTotalQuantity: () => 0,
   removeItem: () => undefined,
   setItemInCart: () => undefined,
-  getOrderNumber: () => 0
+  getOrderNumber: () => 0,
 });
 
 const CartContextProvider: React.FC<ReactNode> = (props) => {
@@ -52,14 +52,13 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
     );
     if (cartListCopy[foundIndex].quantity === 1) {
       cartListCopy.splice(foundIndex, 1);
-      setItemInCart(cartListCopy) 
-  }
-     else {
+      setItemInCart(cartListCopy);
+    } else {
       cartListCopy[foundIndex].quantity--;
       setItemInCart(cartListCopy);
-    } 
-    setItemInCart(cartListCopy)
-    console.log(foundIndex)
+    }
+    setItemInCart(cartListCopy);
+    console.log(foundIndex);
   };
 
   const getTotalPrice = (): number => {
@@ -80,9 +79,9 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
 
   const getOrderNumber = (): number => {
     let orderNumber = Math.floor(Math.random() * 100000) + 600000;
-    return orderNumber
-    console.log(orderNumber)
-  }
+    return orderNumber;
+    console.log(orderNumber);
+  };
 
   return (
     <CartContext.Provider
@@ -93,7 +92,7 @@ const CartContextProvider: React.FC<ReactNode> = (props) => {
         getTotalQuantity,
         removeItem,
         setItemInCart,
-        getOrderNumber
+        getOrderNumber,
       }}
     >
       {props.children}

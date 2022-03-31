@@ -1,14 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
-import { CartContext } from "../CartContext";
-import { ConsumerContext } from "../ConsumerContext";
+import { CartContext } from "../../contexts/CartContext";
+import { ConsumerContext } from "../../contexts/ConsumerContext";
 
 function CheckOutBagOverview() {
   const { deliveryOption, deliveryDate } = useContext(ConsumerContext);
   const { getTotalPrice } = useContext(CartContext);
 
   let totalPrice = getTotalPrice();
-  console.log(deliveryDate, deliveryOption)
+  console.log(deliveryDate, deliveryOption);
 
   return (
     <Box
