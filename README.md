@@ -16,3 +16,6 @@ To run our application please follow these steps:
 
 1. `npm install`
 2. `npm start`
+
+<br> <br>
+Netlify Link --> [BlomButik](https://blombutik.netlify.app/)
