@@ -19,7 +19,7 @@ interface Props {
 export default function CardView(props: Props) {
   const { addItem } = useContext(CartContext);
 
-  //handle the popover with product info
+  //handle the popover with product information
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
   );
