@@ -4,16 +4,16 @@ import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Contact from "./Contact";
-import CardList from "./CardList";
+import CardList from "./Product/CardList";
 import StartPage from "./StartPage";
 import About from "./About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CheckOutContact from "./CheckoutComponents/CheckOutContact";
-import CheckOutDelivery from "./CheckoutComponents/CheckOutDelivery";
-import CheckOutPayment from "./CheckoutComponents/CheckOutPayment";
-import OrderConfirmation from "./CheckoutComponents/OrderConfirmation";
-import Admin from "./Admin";
-import SlideIn from "./SlideIn";
+import CheckOutContact from "./Checkout/CheckOutContact";
+import CheckOutDelivery from "./Checkout/CheckOutDelivery";
+import CheckOutPayment from "./Checkout/CheckOutPayment";
+import OrderConfirmation from "./Checkout/OrderConfirmation";
+import Admin from "./Admin/Admin";
+import SlideIn from "./Product/SlideIn";
 import ProductContextProvider from "../contexts/productContext";
 import CartContextProvider from "../contexts/CartContext";
 
@@ -54,4 +54,5 @@ function App() {
     </ProductContextProvider>
   );
 }
+
 export default App;

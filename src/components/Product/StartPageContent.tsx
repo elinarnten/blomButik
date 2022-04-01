@@ -8,9 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import { ProductContext } from "../contexts/productContext";
+import { ProductContext } from "../../contexts/productContext";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 export default function StartPageContent() {
   const { startPageProducts } = useContext(ProductContext);
@@ -19,8 +19,6 @@ export default function StartPageContent() {
   return (
     <Box
       sx={{
-        //width: "auto",
-        //heigth: "100%",
         alignItems: "center",
         justifyContent: "center",
       }}
@@ -30,7 +28,6 @@ export default function StartPageContent() {
         style={{
           display: "flex",
           justifyContent: "center",
-          //alignItems: "center",
           fontFamily: "Pacifico, cursive",
           marginTop: 40,
           marginBottom: 15,
@@ -45,7 +42,6 @@ export default function StartPageContent() {
           alignItems: "center",
           flexWrap: "wrap",
           width: "100%",
-          //mt: "1rem",
         }}
       >
         {startPageProducts.map((item) => (
@@ -71,7 +67,6 @@ export default function StartPageContent() {
             <CardMedia
               component="img"
               alt="shopItem"
-              //height= "120rem"
               image={item.img}
               sx={{ height: 120 }}
             ></CardMedia>

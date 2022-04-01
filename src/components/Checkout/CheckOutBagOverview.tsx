@@ -7,6 +7,8 @@ function CheckOutBagOverview() {
   const { deliveryOption, deliveryDate } = useContext(ConsumerContext);
   const { getTotalPrice } = useContext(CartContext);
 
+  //function from CartContext
+  //calculates each item price * quantity
   let totalPrice = getTotalPrice();
 
   return (
@@ -22,7 +24,6 @@ function CheckOutBagOverview() {
       }}
     >
       <Typography sx={{ fontSize: "100%", mb: 1 }}>Specifikation</Typography>
-
       <Typography sx={{ fontSize: 15 }}>Pris: {totalPrice} SEK</Typography>
       <Typography sx={{ fontSize: 15 }}>
         Frakt: {deliveryOption.price} SEK

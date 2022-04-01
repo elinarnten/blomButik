@@ -8,7 +8,7 @@ function OrderConfirmation() {
   const { getOrderNumber } = useContext(CartContext);
 
   let orderNumber = getOrderNumber();
-
+  //directs user to startpage if user navigates back
   window.addEventListener("popstate", (e) => {
     window.location.assign("/");
   });
@@ -27,17 +27,25 @@ function OrderConfirmation() {
       <Box
         sx={{
           width: "100%",
-          //height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Typography sx={{m: 3, fontSize: 20}}>Tack för ditt köp!</Typography>
-        <Typography>Ditt ordernummer är: <strong>{orderNumber}</strong></Typography>
-        <Typography sx={{m: 1}}><strong>Frågor?</strong> Tveka inte att höra av dig.</Typography>
-        <Typography>Vi på Blombutiken hoppas att du blir nöjd med ditt köp!</Typography>
+        <Typography variant="h4" sx={{ mt: 10 }}>
+          Tack för ditt köp!
+        </Typography>
+        <Typography sx={{ m: 2 }}>
+          Ditt ordernummer är: <strong> {orderNumber} </strong>
+        </Typography>
+        <Typography>
+          <strong>Frågor?</strong> Tveka inte att höra av dig.
+        </Typography>
+        <Typography sx={{ m: 2, textAlign: "center" }}>
+          Vi på Blombutiken hoppas du blir nöjd med <br></br>dina varor och att
+          vi ses snart igen.
+        </Typography>
         <Link to={"/"} style={{ textDecoration: "none" }}>
           <Button
             size="small"
@@ -58,4 +66,5 @@ function OrderConfirmation() {
     </Box>
   );
 }
+
 export default OrderConfirmation;

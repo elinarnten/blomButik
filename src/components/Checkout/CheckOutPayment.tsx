@@ -4,12 +4,13 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 import CheckOutBagOverview from "./CheckOutBagOverview";
-import { createOrder } from "../../mockedOrderApi";
+import { createOrder } from "../../data/mockedOrderApi";
 import { CartContext } from "../../contexts/CartContext";
 
 function CheckOutPayment() {
   const { setItemInCart } = useContext(CartContext);
 
+  //empy cart after completed purchase
   const clearState = () => {
     setItemInCart([]);
   };
@@ -22,7 +23,19 @@ function CheckOutPayment() {
     navigate("/orderbekraftelse");
   }
 
-  const { firstname, lastname, phoneNumber, cardnumber, setCardnumber, validity, setValidity, cvc, setCvc, personalId, setPersonalId } = useContext(ConsumerContext);
+  const {
+    firstname,
+    lastname,
+    phoneNumber,
+    cardnumber,
+    setCardnumber,
+    validity,
+    setValidity,
+    cvc,
+    setCvc,
+    personalId,
+    setPersonalId,
+  } = useContext(ConsumerContext);
 
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
@@ -56,71 +69,79 @@ function CheckOutPayment() {
     setAnchorSwishEl(null);
   };
 
+  //disables button if fields misses values
   function SubmitButton() {
-    if (cardnumber && validity && cvc ) {
-      return <Button
-      size="small"
-      variant="contained"
-      sx={{
-        backgroundColor: "pink",
-        boxShadow: "none",
-        color: "black",
-
-        mt: 3,
-      }}
-      onClick={proceedOrder}
-    >
-      Gå vidare
-    </Button>
+    if (cardnumber && validity && cvc) {
+      return (
+        <Button
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "pink",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+          onClick={proceedOrder}
+        >
+          Gå vidare
+        </Button>
+      );
     } else {
-      return <Button disabled
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button>
+      return (
+        <Button
+          disabled
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "#F4EAC6",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
+      );
     }
   }
 
+  //disables button if field miss value
   function SubmitInvoiceButton() {
     if (personalId) {
-      return <Button
-      size="small"
-      variant="contained"
-      sx={{
-        backgroundColor: "pink",
-        boxShadow: "none",
-        color: "black",
-
-        mt: 3,
-      }}
-      onClick={proceedOrder}
-    >
-      Gå vidare
-    </Button>
+      return (
+        <Button
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "pink",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+          onClick={proceedOrder}
+        >
+          Gå vidare
+        </Button>
+      );
     } else {
-      return <Button disabled
-              size="small"
-              variant="contained"
-              sx={{
-                backgroundColor: "#F4EAC6",
-                boxShadow: "none",
-                color: "black",
-                mt: 3,
-              }}
-            >
-              Gå vidare
-            </Button>
+      return (
+        <Button
+          disabled
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "#F4EAC6",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
+      );
     }
   }
-
-
 
   return (
     <Box
@@ -149,7 +170,6 @@ function CheckOutPayment() {
         <Typography sx={{ mb: 3 }} variant="h6">
           Hur vill du betala?
         </Typography>
-
         <Button
           variant="outlined"
           id="basic-button"
@@ -161,8 +181,7 @@ function CheckOutPayment() {
             width: "50%",
             color: "black",
             border: "solid black 2px",
-                borderRadius: 1,
-
+            borderRadius: 1,
             backgroundColor: "white",
           }}
         >
@@ -192,7 +211,6 @@ function CheckOutPayment() {
               onChange={(event) => {
                 setCardnumber(event.target.value);
               }}
-              //onChange={handleFirstnameChange}
               id="outlined-required"
               value={cardnumber}
               label="Kortnummer"
@@ -202,9 +220,6 @@ function CheckOutPayment() {
               autoComplete="cc-number"
               sx={{ ml: 2, mb: 2, mr: 2, width: "90%" }}
             />
-            
-              
-              
           </div>
           <div>
             <TextField
@@ -212,7 +227,6 @@ function CheckOutPayment() {
               onChange={(event) => {
                 setValidity(event.target.value);
               }}
-              //onChange={handleFirstnameChange}
               id="outlined-required"
               value={validity}
               label="Giltlighet"
@@ -226,7 +240,6 @@ function CheckOutPayment() {
               onChange={(event) => {
                 setCvc(event.target.value);
               }}
-              //onChange={handleFirstnameChange}
               id="outlined-required"
               value={cvc}
               label="CVC"
@@ -239,7 +252,6 @@ function CheckOutPayment() {
           <div>
             <TextField
               required
-              //onChange={handleFirstnameChange}
               id="outlined-required"
               label="Namn"
               size="small"
@@ -268,9 +280,7 @@ function CheckOutPayment() {
             </Button>
             <SubmitButton />
           </div>
-             
         </Menu>
-
         <Button
           variant="outlined"
           id="swish-button"
@@ -283,8 +293,7 @@ function CheckOutPayment() {
             mt: 2,
             color: "black",
             border: "solid black 2px",
-                borderRadius: 1,
-
+            borderRadius: 1,
             backgroundColor: "white",
           }}
         >
@@ -343,7 +352,6 @@ function CheckOutPayment() {
             </Button>
           </div>
         </Menu>
-
         <Button
           variant="outlined"
           id="basic-button"
@@ -357,15 +365,13 @@ function CheckOutPayment() {
             color: "black",
             border: "solid black 2px",
             borderRadius: 1,
-
-        backgroundColor: "white",
+            backgroundColor: "white",
           }}
         >
           Privatfaktura
         </Button>
         <Menu
           id="basic-menu"
-          
           anchorEl={anchorInvoiceEl}
           open={openInvoice}
           onClose={handleInvoiceClose}
@@ -384,7 +390,6 @@ function CheckOutPayment() {
                 setPersonalId(event.target.value);
               }}
               value={personalId}
-              //onChange={handleFirstnameChange}
               id="outlined-required"
               label="Personnummer"
               size="small"
@@ -408,10 +413,9 @@ function CheckOutPayment() {
             >
               Stäng
             </Button>
-            <SubmitInvoiceButton/>
+            <SubmitInvoiceButton />
           </div>
         </Menu>
-
         <Link to={"/leverans"}>
           <Button
             size="small"

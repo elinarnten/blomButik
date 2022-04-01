@@ -1,5 +1,4 @@
 import {
-  bottomNavigationActionClasses,
   Box,
   Button,
   ToggleButton,
@@ -9,24 +8,22 @@ import {
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
-import { deliveryAlternatives, DeliveryOption } from "../../mockedDelivery";
+import { deliveryAlternatives, DeliveryOption } from "../../data/mockedDelivery";
 
 function CheckOutDelivery() {
-  const { deliveryOption, setDeliveryOption, deliveryDate, setDeliveryDate } =
+  const { deliveryOption, setDeliveryOption, setDeliveryDate } =
     useContext(ConsumerContext);
-   
-  
-   
 
+  //sets the chosen delivery
   const handleOnChange = (
     event: React.MouseEvent<HTMLElement>,
     newSelected: DeliveryOption
   ) => {
-    
     setDeliveryOption(newSelected);
     calcDeliveryDate(newSelected.deliveryTime);
   };
 
+  //calculates the delivery date
   const calcDeliveryDate = (newDeliveryVal: number) => {
     const date = new Date();
     const result = new Date(date);
@@ -61,23 +58,21 @@ function CheckOutDelivery() {
           Hur vill du få dina varor levererade?
         </Typography>
         <ToggleButtonGroup
-        value={deliveryOption}
+          value={deliveryOption}
           exclusive
           onChange={handleOnChange}
           sx={{ display: "flex", flexDirection: "column" }}
         >
           {deliveryAlternatives.map((item, idx) => (
             <ToggleButton
-            className={'buttonStyle'}
+              className={"buttonStyle"}
               key={item.label}
               value={deliveryAlternatives[idx]}
-              //color="primary"
               sx={{
                 width: "100%",
                 color: "black",
                 border: "solid black 2px",
                 borderRadius: 1,
-                //backgroundColor: "pink",
                 mb: 1,
               }}
             >
@@ -116,18 +111,18 @@ function CheckOutDelivery() {
             </Button>
           </Link>
           <Link to={"/betalning"}>
-          <Button
-      size="small"
-      variant="contained"
-      sx={{
-        backgroundColor: "pink",
-        boxShadow: "none",
-        color: "black",
-        mt: 3,
-      }}
-    >
-      Gå vidare
-    </Button>
+            <Button
+              size="small"
+              variant="contained"
+              sx={{
+                backgroundColor: "pink",
+                boxShadow: "none",
+                color: "black",
+                mt: 3,
+              }}
+            >
+              Gå vidare
+            </Button>
           </Link>
         </div>
       </Box>

@@ -2,14 +2,14 @@ import CardView from "./Card";
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useContext } from "react";
-import AddProduct from "./AddProduct";
-import DeleteButton from "./buttonDeleteItem";
-import { ProductContext } from "../contexts/productContext";
-import EditButton from "./EditButton";
-
+import AddProduct from "../Admin/AddProduct";
+import DeleteButton from "../Admin/buttonDeleteItem";
+import { ProductContext } from "../../contexts/productContext";
+import EditButton from "../Admin/EditButton";
 interface Adminprops {
   hideShow: Boolean;
 }
+
 export default function CardList(props: Adminprops) {
   const { removeProduct, addProduct, updateProduct, products } =
     useContext(ProductContext);

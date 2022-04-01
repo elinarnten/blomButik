@@ -2,8 +2,8 @@ import { Button, createTheme, Input, ThemeProvider } from "@mui/material";
 import React from "react";
 import { useContext, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
-import { ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../contexts/productContext";
+import { ShopItem } from "../../data/ShopContent";
+import { ProductContext } from "../../contexts/productContext";
 
 interface Props {
   hideShow: Boolean;
@@ -52,6 +52,7 @@ export default function EditButton(props: Props) {
   const [id] = useState(props.item.id);
   const [description, setDescription] = useState(props.item.description);
 
+  //handle the edits of a product from admin page
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("You clicked submit.");
@@ -213,69 +214,3 @@ export default function EditButton(props: Props) {
 
   return <></>;
 }
-//deleteThisItem={Props.deleteThisItem}
-
-// import { Button } from "@mui/material";
-// import React from "react";
-// import { createElement, useContext, useState } from "react";
-// import { Dispatch, SetStateAction } from "react";
-// import { ShopItem } from "../data/ShopContent";
-// import { ProductContext } from "../productContext";
-
-// interface Props {
-//   hideShow: Boolean;
-//   item: ShopItem
-//   updateItem: Dispatch<SetStateAction<any>>;
-
-// }
-
-// export default function EditButton(props: Props) {
-//   let [isEditing, setIsEditing] = useState(false);
-
-// const { updateProduct } =
-//   useContext(ProductContext);
-
-// const handleUpdateProduct = () => {
-//  {
-//     setIsEditing(true);
-
-//   }
-//  updateProduct(props.item)
-
-// };
-
-//   if (props.hideShow === true) {
-//     {
-//       return (
-//         <>
-//           {isEditing ? (
-//             <form>
-//               <input type="text" defaultValue={props.item.title} />
-//               <input type="text" defaultValue={props.item.img} />
-//               <input type="text" defaultValue={props.item.tag} />
-//               <input type="number" defaultValue={props.item.price} />
-//             </form>
-//           ) : (
-//             <Button
-//               variant="contained"
-//               style={{
-//                 backgroundColor: "#c4e6c1",
-//                 alignSelf: "center",
-//                 width: "50%",
-//               }}
-//               onClick={handleUpdateProduct}
-//             >
-//               edit Item
-//             </Button>
-//           )}
-//         </>
-//       );
-//     }
-//   }
-
-//       return (
-//         <>
-//         </>
-//       );
-// }
-// //deleteThisItem={Props.deleteThisItem}
