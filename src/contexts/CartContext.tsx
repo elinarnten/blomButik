@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { ShopItem, shopItems } from "../data/ShopContent";
+import { ShopItem } from "../data/ShopContent";
 export interface CartItem {
   shopItem: ShopItem;
   quantity: number;

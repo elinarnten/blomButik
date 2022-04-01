@@ -1,5 +1,4 @@
-import CardList from "./CardList";
-
+import CardList from "../Product/CardList";
 interface Props {
   hideShow: Boolean;
 }

@@ -1,9 +1,8 @@
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import { Dispatch, SetStateAction } from "react";
-import { ShopItem } from "../data/ShopContent";
-import { ProductContext } from "../contexts/productContext";
-
+import { ShopItem } from "../../data/ShopContent";
+import { ProductContext } from "../../contexts/productContext";
 interface Props {
   hideShow: Boolean;
   item: ShopItem;
@@ -13,6 +12,7 @@ interface Props {
 export default function DeleteButton(Props: Props) {
   const { removeProduct } = useContext(ProductContext);
 
+  //from admin, deletes product
   const handleDeleteItem = () => {
     removeProduct(Props.item);
   };
@@ -25,13 +25,10 @@ export default function DeleteButton(Props: Props) {
           style={{
             backgroundColor: "red",
             alignSelf: "center",
-            width:"6rem",
+            width: "6rem",
             height: "2rem",
-            margin: 5
+            margin: 5,
           }}
-          //   onClick={() => console.log(Props.item)}
-          //   onClick={() => {Props.deleteThisItem(Props.item.id)}}
-
           onClick={handleDeleteItem}
         >
           Ta bort
@@ -41,4 +38,3 @@ export default function DeleteButton(Props: Props) {
   }
   return <></>;
 }
-//deleteThisItem={Props.deleteThisItem}

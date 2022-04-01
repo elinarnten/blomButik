@@ -9,7 +9,6 @@ export interface ProductContextValue {
   removeProduct: (shopItem: ShopItem) => void;
   addProduct: (shopItem: ShopItem) => void;
   updateProduct: (shopItem: ShopItem) => void;
-  filterProduct: (ShopItem: ShopItem) => void;
 }
 
 export const ProductContext = createContext<ProductContextValue>({
@@ -19,7 +18,6 @@ export const ProductContext = createContext<ProductContextValue>({
   removeProduct: () => undefined,
   addProduct: () => undefined,
   updateProduct: () => undefined,
-  filterProduct: () => undefined,
 });
 
 const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
@@ -81,18 +79,7 @@ const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
     if (matchingIndex !== -1) {
       update.splice(matchingIndex, 1, shopItem);
     }
-    console.log(update);
     setProducts(update);
-  };
-
-  const filterProduct = (shopItem: ShopItem) => {
-    // if (sortButton.value === "") {
-    //   setProducts(products);
-    // } else {
-    //   setProducts(
-    //     shopItems.filter((product) => sortButton.value === product.tag)
-    //   ),[selectedTag];
-    // }
   };
 
   return (
@@ -104,7 +91,6 @@ const ProductContextProvider: React.FC<ReactNode> = ({ children }) => {
         removeProduct,
         addProduct,
         updateProduct,
-        filterProduct,
       }}
     >
       {children}

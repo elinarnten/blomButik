@@ -1,9 +1,8 @@
 import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import React from "react";
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 import { Link } from "react-router-dom";
-import StartPageContent from "./StartPageContent";
+import StartPageContent from "./Product/StartPageContent";
 
 function StartPage() {
   return (
@@ -11,7 +10,6 @@ function StartPage() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        //backgroundImage: `url(${temporary})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -28,8 +26,6 @@ function StartPage() {
             width: "50%",
             height: "35%",
             mt: "10%",
-            // backgroundColor: "rgba(244, 234, 198, 0.4)",
-            //backgroundColor: "rgba(214, 186, 227, 0.4)",
             borderRadius: 3,
             display: "flex",
             flexDirection: "column",

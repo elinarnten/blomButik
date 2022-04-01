@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Box,
@@ -12,7 +12,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 interface Props {
   menuOpen: boolean;
@@ -25,6 +25,7 @@ function SlideIn(props: Props) {
 
   let totalPrice = getTotalPrice();
 
+  //if cart is empty, checkout button disabled
   function CheckOutButton() {
     if (itemInCart.length >= 1) {
       return (
@@ -44,11 +45,13 @@ function SlideIn(props: Props) {
         </Button>
       );
     } else {
-    return <Typography sx={{ mt: 2, color: "red"}}>Oups! <br></br>Varukorgen är tom.</Typography>
-  } 
-}
-  
-
+      return (
+        <Typography sx={{ mt: 2, color: "red" }}>
+          Oups! <br></br>Varukorgen är tom.
+        </Typography>
+      );
+    }
+  }
 
   const slideFrame = (
     <Box
@@ -68,11 +71,24 @@ function SlideIn(props: Props) {
       <Box sx={{ width: "auto", p: "1rem" }}>
         <Typography variant="h5">Varukorg</Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", mt: 1, alignItems: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            mt: 1,
+            alignItems: "center",
+          }}
+        >
           {itemInCart.map((cartItem) => (
             <Card
               key={cartItem.shopItem.id}
-              sx={{ display: "flex", m: 1, height: 180, width: "100%", border: "solid black 2px"}}
+              sx={{
+                display: "flex",
+                m: 1,
+                height: 180,
+                width: "100%",
+                border: "solid black 2px",
+              }}
             >
               <CardMedia
                 sx={{ width: "40%", height: "100%" }}
@@ -84,11 +100,9 @@ function SlideIn(props: Props) {
                 <Typography sx={{ m: 1, fontSize: "80%" }}>
                   {cartItem.shopItem.title}
                 </Typography>
-                {/* <br></br> */}
                 <Typography sx={{ m: 1, fontSize: "80%" }}>
                   {cartItem.shopItem.price} kr
                 </Typography>
-
                 <Box sx={{ display: "flex", mt: 2, alignItems: "center" }}>
                   <IconButton onClick={() => addItem(cartItem.shopItem)}>
                     <AddIcon sx={{ fontSize: "80%" }} />
@@ -102,18 +116,13 @@ function SlideIn(props: Props) {
             </Card>
           ))}
         </Box>
-
-        <Box sx={{display: "flex", flexDirection: "column"}}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Box>
-          <Typography>
-          Totalpris: {totalPrice} kr
-          </Typography>
-          <Typography sx={{fontSize: 12}}>
-          Frakt tillkommer
-          </Typography>
+            <Typography>Totalpris: {totalPrice} kr</Typography>
+            <Typography sx={{ fontSize: 12 }}>Frakt tillkommer</Typography>
           </Box>
           <Link to="/kunduppgifter" style={{ textDecoration: "none" }}>
-           <CheckOutButton />
+            <CheckOutButton />
           </Link>
         </Box>
       </Box>

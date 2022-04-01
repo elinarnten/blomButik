@@ -5,10 +5,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { ShopItem } from "../data/ShopContent";
+import { ShopItem } from "../../data/ShopContent";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import "../App.css";
-import { CartContext } from "../contexts/CartContext";
+import "../../App.css";
+import { CartContext } from "../../contexts/CartContext";
 import { Box, Popover } from "@mui/material";
 import React from "react";
 
@@ -17,10 +17,9 @@ interface Props {
 }
 
 export default function CardView(props: Props) {
-  //const { itemInCart, setItemInCart, addItem } = useContext(CartContext);
-
   const { addItem } = useContext(CartContext);
 
+  //handle the popover with product information
   const [anchorCardEl, setAnchorCardEl] = React.useState<null | HTMLElement>(
     null
   );
@@ -35,18 +34,6 @@ export default function CardView(props: Props) {
   const handleOnClick = () => {
     addItem(props.item);
   };
-
-  //console.log(itemInCart)
-  /* 
-  const handleOnClick = (product: ShopItem, cartArray: CartItem[]) => {
-    //addItem(product, cartArray)
-   setItemInCart([...cartArray, product])
-   
-    console.log(cartArray)
-  }; */
-
-  // const [toggle, setToggle] = useState(true);
-  // const [name, setName] = useState("test");
 
   return (
     <Card
@@ -76,7 +63,6 @@ export default function CardView(props: Props) {
           image={`${props.item.img}`}
         ></CardMedia>
       </Button>
-
       <Popover
         anchorEl={anchorCardEl}
         open={openCard}
@@ -92,7 +78,14 @@ export default function CardView(props: Props) {
           horizontal: "center",
         }}
       >
-        <Card sx={{ display: "flex", height: "100%", width: "40rem", border:"solid black 2px" }}>
+        <Card
+          sx={{
+            display: "flex",
+            height: "100%",
+            width: "40rem",
+            border: "solid black 2px",
+          }}
+        >
           <CardMedia
             component="img"
             image={props.item.img}
@@ -106,7 +99,7 @@ export default function CardView(props: Props) {
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
-              m: 2
+              m: 2,
             }}
           >
             <Typography
@@ -114,13 +107,13 @@ export default function CardView(props: Props) {
               sx={{
                 fontFamily: "Quicksand, cursive",
                 color: "black",
-                mb: 1
+                mb: 1,
               }}
             >
               {props.item.title}
             </Typography>
-            <Typography sx={{mb: 1}}> {props.item.price} KR/ st</Typography>
-            <Typography sx={{mb: 1}}> {props.item.description} </Typography>
+            <Typography sx={{ mb: 1 }}> {props.item.price} KR/ st</Typography>
+            <Typography sx={{ mb: 1 }}> {props.item.description} </Typography>
             <Button
               size="small"
               variant="contained"
@@ -133,7 +126,6 @@ export default function CardView(props: Props) {
                 alignSelf: "center",
               }}
               onClick={handleOnClick}
-              //   onClick={() => addItem(props.item)}
             >
               <ShoppingCartIcon />
             </Button>

@@ -1,5 +1,4 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
-import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
@@ -22,22 +21,31 @@ function CheckOutContact() {
     setCity,
   } = useContext(ConsumerContext);
 
+  //disables button if form isn't filled correctly
   function SubmitButton() {
-    if (firstname && lastname && phoneNumber && email && address && code && city) {
-      return <Button
-      size="small"
-      variant="contained"
-      sx={{
-        backgroundColor: "pink",
-        boxShadow: "none",
-        color: "black",
-
+    if (
+      firstname &&
+      lastname &&
+      phoneNumber &&
+      email &&
+      address &&
+      code &&
+      city
+    ) {
+      return (
+        <Button
+          size="small"
+          variant="contained"
+          sx={{
+            backgroundColor: "pink",
+            boxShadow: "none",
+            color: "black",
             mt: 3,
           }}
         >
           Gå vidare
         </Button>
-      
+      );
     } else {
       return (
         <Button
@@ -98,14 +106,16 @@ function CheckOutContact() {
               size="small"
               value={firstname}
               error={firstname === ""}
-              helperText={firstname === "" ? 'Vänligen fyll i ditt förnamn' : ' '}
+              helperText={
+                firstname === "" ? "Vänligen fyll i ditt förnamn" : " "
+              }
               sx={{
                 mr: 2,
                 mb: 2,
-                color: "black"}}
+                color: "black",
+              }}
             />
           </FormControl>
-
           <FormControl>
             <TextField
               required
@@ -119,8 +129,10 @@ function CheckOutContact() {
               autoComplete="family-name"
               value={lastname}
               error={lastname === ""}
-              helperText={lastname === "" ? 'Vänligen fyll i ditt efternamn' : ' '}
-              sx={{ mb: 2, color: "black"}}
+              helperText={
+                lastname === "" ? "Vänligen fyll i ditt efternamn" : " "
+              }
+              sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
         </div>
@@ -128,7 +140,6 @@ function CheckOutContact() {
           <FormControl>
             <TextField
               required
-              //value={email}
               onChange={(event) => {
                 setEmail(event.target.value);
               }}
@@ -139,8 +150,8 @@ function CheckOutContact() {
               size="small"
               value={email}
               error={email === ""}
-              helperText={email === "" ? 'Vänligen fyll i din e-post' : ' '}
-              sx={{ mr: 2, mb: 2, color: "black"}}
+              helperText={email === "" ? "Vänligen fyll i din e-post" : " "}
+              sx={{ mr: 2, mb: 2, color: "black" }}
             />
           </FormControl>
           <FormControl>
@@ -149,7 +160,6 @@ function CheckOutContact() {
               onChange={(event) => {
                 setPhoneNumber(event.target.value);
               }}
-              //value={number}
               id="outlined-number"
               type="number"
               label="Telefonnummer"
@@ -158,8 +168,10 @@ function CheckOutContact() {
               autoComplete="tel"
               value={phoneNumber}
               error={phoneNumber === ""}
-              helperText={phoneNumber === "" ? 'Vänligen fyll i ditt telefonnummer' : ' '}
-              sx={{ mb: 2, color: "black"}}
+              helperText={
+                phoneNumber === "" ? "Vänligen fyll i ditt telefonnummer" : " "
+              }
+              sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
         </div>
@@ -167,12 +179,11 @@ function CheckOutContact() {
           <FormControl>
             <TextField
               required
-              //value={address}
               name="street-address"
               autoComplete="street-address"
               value={address}
               error={address === ""}
-              helperText={address === "" ? 'Vänligen fyll i din adress' : ' '}
+              helperText={address === "" ? "Vänligen fyll i din adress" : " "}
               onChange={(event) => {
                 setAddress(event.target.value);
               }}
@@ -198,8 +209,8 @@ function CheckOutContact() {
               size="small"
               value={code}
               error={code === ""}
-              helperText={code === "" ? 'Vänligen fyll i ditt postnummer' : ' '}
-              sx={{ mr: 2, mb: 2, color: "black"}}
+              helperText={code === "" ? "Vänligen fyll i ditt postnummer" : " "}
+              sx={{ mr: 2, mb: 2, color: "black" }}
             />
           </FormControl>
           <FormControl>
@@ -214,8 +225,8 @@ function CheckOutContact() {
               size="small"
               value={city}
               error={city === ""}
-              helperText={city === "" ? 'Vänligen fyll i din stad' : ' '}
-              sx={{ color: "black"}}
+              helperText={city === "" ? "Vänligen fyll i din stad" : " "}
+              sx={{ color: "black" }}
             />
           </FormControl>
         </div>
@@ -234,7 +245,7 @@ function CheckOutContact() {
             Tillbaka
           </Button>
           <Link to={"/leverans"}>
-            <SubmitButton/>           
+            <SubmitButton />
           </Link>
         </Box>
       </Box>

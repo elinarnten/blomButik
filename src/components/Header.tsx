@@ -24,11 +24,14 @@ const theme = createTheme({
   },
 });
 function Header(props: Props) {
+  //handle menu
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -48,11 +51,8 @@ function Header(props: Props) {
       <AppBar
         position="static"
         style={{
-          //backgroundColor: "#84A86F",
           backgroundColor: "rgba(214, 186, 227, 0.4)",
-          //color: "#F4EAC6",
           color: "black",
-
           borderBottom: "solid black 2px",
           height: "4rem",
           boxShadow: "none",
@@ -98,7 +98,6 @@ function Header(props: Props) {
               <MenuItem onClick={handleClose}>Kontakt</MenuItem>
             </a>
           </Menu>
-
           <Typography
             variant="h4"
             component="div"
@@ -114,7 +113,6 @@ function Header(props: Props) {
               Blombutiken
             </a>
           </Typography>
-
           <div>
             <ThemeProvider theme={theme}>
               <IconButton
