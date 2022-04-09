@@ -11,6 +11,7 @@ import "../../App.css";
 import { CartContext } from "../../contexts/CartContext";
 import { Box, Popover } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
   item: ShopItem;
@@ -49,6 +50,7 @@ export default function CardView(props: Props) {
       }}
       className="Quicksand"
     >
+      <Link to={props.item.title.replaceAll(" ", "-")}>
       <Button
         aria-controls={openCard ? "basic-menu" : undefined}
         aria-haspopup="true"
@@ -63,6 +65,7 @@ export default function CardView(props: Props) {
           image={`${props.item.img}`}
         ></CardMedia>
       </Button>
+      </Link>
       <Popover
         anchorEl={anchorCardEl}
         open={openCard}
