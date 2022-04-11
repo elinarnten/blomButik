@@ -12,6 +12,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { Box, Popover } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import ProductModal from './ProductModal'
 
 interface Props {
   item: ShopItem;

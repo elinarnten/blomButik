@@ -1,19 +1,19 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
-
+import e from "express";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 
 function CheckOutContact() {
+  const navigate = useNavigate();
+  const { itemInCart} = useContext(CartContext);
 
-const { itemInCart} = useContext(CartContext);
-
-window.addEventListener('click', () => { 
-  if (itemInCart.length <= 0){
-    window.location.assign("/")
-}})
+  window.addEventListener('click', () => { 
+    if (itemInCart.length <= 0){
+      window.location.assign("/")
+  }})
 
 
   const {
@@ -33,59 +33,113 @@ window.addEventListener('click', () => {
     setCity,
   } = useContext(ConsumerContext);
 
-  //const [text, setText] = React.useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [firstnameError, setFirstnameError] = useState("");
+  const [firstnameTouched, setFirstnameTouched] = useState(true);
+
+  const [lastnameError, setLastnameError] = useState("");
+  const [lastnameTouched, setLastnameTouched] = useState(true);
   
-/* 
-  function handleError (){
-    if (firstname === ""){
-      setErrorMessage(true)
-    }
-  } */
+  const [emailError, setEmailError] = useState("");
+  const [emailTouched, setEmailTouched] = useState(true);
 
-  //console.log(errorMessage)
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [phoneNumberTouched, setPhoneNumberTouched] = useState(true);
+
+  const [addressError, setAddressError] = useState("");
+  const [addressTouched, setAddressTouched] = useState(true);
+
+  const [codeError, setCodeError] = useState("");
+  const [codeTouched, setCodeTouched] = useState(true);
+
+  const [cityError, setCityError] = useState("");
+  const [cityTouched, setCityTouched] = useState(true);
+
+  function validateFirstname() {
+    if (!firstname) {
+      setFirstnameError('Vänligen fyll i ditt förnamn')
+      return true;
+    }
+    setFirstnameError('')
+    return false;
+  }
+
+  function validateLastname() {
+    if (!lastname) {
+      setLastnameError('Vänligen fyll i ditt efternamn')
+      return true;
+    }
+    setLastnameError('')
+    return false;
+  }
  
- /*  function handleError () {
-    if (firstname){
-      setErrorMessage(false)
+  function validateEmail() {
     
-      console.log(errorMessage, firstname)
+    if (!email) {
+      setEmailError('Vänligen fyll i din e-post')
+      return true;
     }
-    }  */
-     /*  return (
-       else {
-        setErrorMessage('')
-      } */
-   
-/* function handleError()  {
-  if (firstname /* && lastname &&
-    phoneNumber &&
-    email &&
-    address &&
-    code &&
-    city */ /* ) { */
-   /* setErrorMessage(false)
-  } else {
-    setErrorMessage(true)
-//  return (errorMessage(''))
-}
-  console.log('button clicked', errorMessage)
-} */
- 
- function handleError () {
-  //const navigate = useNavigate();
-  const allInputs = firstname && lastname && email && phoneNumber && address && code && city;
-  if (allInputs === ""){
-  //if (firstname === "" && lastname === "" && email === "" && phoneNumber === "" && address === "" && code === "" && city === "") {
-setErrorMessage('Fyll i fältet')
-  }  
-  if (allInputs !== ("")){
-    setErrorMessage("")
-  } 
- }  
- console.log(errorMessage)
+    setEmailError('')
+    return false;
+  }
 
+  function validatePhoneNumber() {
+    if (!phoneNumber) {
+      setPhoneNumberError('Vänligen fyll i ditt telefonnummer')
+      return true;
+    }
+    setPhoneNumberError('')
+    return false;
+  }
 
+  function validateAddress() {
+    if (!address) {
+      setAddressError('Vänligen fyll i din adress')
+      return true;
+    }
+    setAddressError('')
+    return false;
+  }
+
+  function validateCode() {
+    if (!code) {
+      setCodeError('Vänligen fyll i ditt postnummer')
+      return true;
+    }
+    setCodeError('')
+    return false;
+  }
+
+  function validateCity() {
+    if (!city) {
+      setCityError('Vänligen fyll i din stad')
+      return true;
+    }
+    setCityError('')
+    return false;
+  }
+
+  function handleSubmitForm() {
+    let formHasErrors = false;
+    formHasErrors = validateLastname() || formHasErrors;
+    formHasErrors = validateFirstname() || formHasErrors;
+    formHasErrors = validateEmail() || formHasErrors;
+    formHasErrors = validatePhoneNumber() || formHasErrors;
+    formHasErrors = validateAddress() || formHasErrors;
+    formHasErrors = validateCode()|| formHasErrors;
+    formHasErrors = validateCity() || formHasErrors;
+    
+    setFirstnameTouched(true)
+    setLastnameTouched(true)
+    setEmailTouched(true)
+    setAddressTouched(true)
+    setCodeTouched(true)
+    setCityTouched(true)
+
+    if (!formHasErrors){
+      navigate('/leverans');
+    }
+  }
+  
 
   return (
     <Box
@@ -117,8 +171,10 @@ setErrorMessage('Fyll i fältet')
         <div>
           <FormControl>
             <TextField
+            onFocus={() => setFirstnameTouched(true)}
               required
               onChange={(event) => {
+                validateFirstname()
                 setFirstname(event.target.value)
               }}
               id="filled"
@@ -128,20 +184,7 @@ setErrorMessage('Fyll i fältet')
               type="name"
               size="small"
               value={firstname}
-              //error={errorMessage}
-              //error={errorMessage? true : false}
-              //error={firstname.length >= 0}
-              //helperText={errorMessage}
-              //error={errorMessage? false : true}
-              //error={errorMessage? true : false}
-              /*helperText={
-                firstname === "" errorMessage? true : "Vänligen fyll i ditt förnamn"
-              } */
-              //error={firstname === ""}
-              helperText={firstname === ""? errorMessage : ""}
-              
-              //helperText={firstname === ""? 'Förnamn' : ""}
-              
+              helperText={firstnameTouched && firstnameError}
               sx={{
                 mr: 2,
                 mb: 2,
@@ -151,8 +194,10 @@ setErrorMessage('Fyll i fältet')
           </FormControl>
           <FormControl>
             <TextField
+            onFocus={() => setLastnameTouched(true)}
               required
               onChange={(event) => {
+                validateLastname()
                 setLastname(event.target.value);
               }}
               id="outlined-required"
@@ -161,12 +206,7 @@ setErrorMessage('Fyll i fältet')
               name="family-name"
               autoComplete="family-name"
               value={lastname}
-              /* error={lastname === ""}
-              helperText={
-                lastname === "" ? "Vänligen fyll i ditt efternamn" : " "
-              } */
-              //error={errorMessage === true }
-              helperText={lastname === ""? errorMessage : ""}
+              helperText={lastnameTouched && lastnameError}
               sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
@@ -174,29 +214,30 @@ setErrorMessage('Fyll i fältet')
         <div>
           <FormControl>
             <TextField
+              onFocus={() => setEmailTouched(true)}
               required
               onChange={(event) => {
+                validateEmail()
                 setEmail(event.target.value);
-              }}
+              }} 
               id="outlined-required"
               name="email"
               type="email"
               label="E-post"
               size="small"
               value={email}
-             /*  error={email === ""}
-              helperText={email === "" ? "Vänligen fyll i din e-post" : " "} */
-             // error={errorMessage === true }
-             helperText={email === ""? errorMessage : ""}
+              helperText={emailTouched && emailError}
             
               sx={{ mr: 2, mb: 2, color: "black" }}
             />
           </FormControl>
           <FormControl>
             <TextField
+            onFocus={() => setPhoneNumberTouched(true)}
               required
               onChange={(event) => {
-                setPhoneNumber(event.target.value);
+                validatePhoneNumber()
+                setPhoneNumber(event.target.value = Math.max(0, parseInt(event.target.value) ).toString().slice(0,12));
               }}
               id="outlined-number"
               type="number"
@@ -205,13 +246,7 @@ setErrorMessage('Fyll i fältet')
               name="tel"
               autoComplete="tel"
               value={phoneNumber}
-              /* error={phoneNumber === ""}
-              helperText={
-                phoneNumber === "" ? "Vänligen fyll i ditt telefonnummer" : " "
-              } */
-              //error={errorMessage === true }
-              helperText={phoneNumber === ""? errorMessage : ""}
-              //helperText={phoneNumber === ""? 'Telefonnummer' : ""}
+              helperText={phoneNumberTouched && phoneNumberError}
               sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
@@ -219,16 +254,14 @@ setErrorMessage('Fyll i fältet')
         <div>
           <FormControl>
             <TextField
+            onFocus={() => setAddressTouched(true)}
               required
               name="street-address"
               autoComplete="street-address"
               value={address}
-              /* error={address === ""}
-              helperText={address === "" ? "Vänligen fyll i din adress" : " "} */
-              //error={errorMessage === true }
-              helperText={address === ""? errorMessage : ""}
-              //helperText={address === ""? 'Adress' : ""}
+              helperText={addressTouched && addressError}
               onChange={(event) => {
+                validateAddress()
                 setAddress(event.target.value);
               }}
               id="outlined-required"
@@ -241,9 +274,12 @@ setErrorMessage('Fyll i fältet')
         <div>
           <FormControl>
             <TextField
+            onFocus={() => setCodeTouched(true)}
               required
               onChange={(event) => {
-                setCode(event.target.value);
+                validateCode()
+                setCode(event.target.value = Math.max(0, parseInt(event.target.value) ).toString().slice(0,5));
+                
               }}
               id="outlined-required"
               type="number"
@@ -252,18 +288,16 @@ setErrorMessage('Fyll i fältet')
               label="Postnummer"
               size="small"
               value={code}
-              /* error={code === ""}
-              helperText={code === "" ? "Vänligen fyll i ditt postnummer" : " "} */
-              //error={errorMessage === true }
-              helperText={code === ""? errorMessage : ""}
-              //helperText={code === ""? 'Postnummer' : ""}
+              helperText={codeTouched && codeError}
               sx={{ mr: 2, mb: 2, color: "black" }}
             />
           </FormControl>
           <FormControl>
             <TextField
+            onFocus={() => setCityTouched(true)}
               required
               onChange={(event) => {
+                validateCity()
                 setCity(event.target.value);
               }}
               id="outlined-required"
@@ -271,11 +305,7 @@ setErrorMessage('Fyll i fältet')
               name="address-level2"
               size="small"
               value={city}
-              /* error={city === ""}
-              helperText={city === "" ? "Vänligen fyll i din stad" : " "} */
-              //error={errorMessage === true }
-              helperText={city === ""? errorMessage : ""}
-              //helperText={city === ""? 'Ort' : ""}
+              helperText={cityTouched && cityError}
               sx={{ color: "black" }}
             />
           </FormControl>
@@ -294,15 +324,10 @@ setErrorMessage('Fyll i fältet')
           >
             Tillbaka
           </Button>
-          {/* <Link to={"/leverans"}> */}
-          {errorMessage === ("")?
-          <>
-           
         <Button
           size="small"
           variant="contained"
-       onClick={handleError}
-          //onClick={ () => setErrorMessage ("")}
+          onClick={handleSubmitForm}
           sx={{
             backgroundColor: "pink",
             boxShadow: "none",
@@ -311,32 +336,7 @@ setErrorMessage('Fyll i fältet')
           }}
         >
           Gå vidare
-        </Button> 
-        
-        </>
-        :
-        <>
-        <Link to={"/leverans"}>
-        <Button
-          size="small"
-          variant="contained"
-       onClick={handleError}
-          //onClick={ () => setErrorMessage ("")}
-          sx={{
-            backgroundColor: "pink",
-            boxShadow: "none",
-            color: "black",
-            mt: 3,
-          }}
-        >
-          Gå vidare
-        </Button> 
-        </Link>
-        </>
-}
-         {/* <HandleError />  */}
-           {/*  <SubmitButton /> */}
-          {/* </Link> */}
+        </Button>
         </Box>
       </Box>
     </Box>
