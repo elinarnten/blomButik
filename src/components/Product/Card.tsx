@@ -50,7 +50,7 @@ export default function CardView(props: Props) {
       }}
       className="Quicksand"
     >
-      <Link to={props.item.title.replaceAll(" ", "-")}>
+      <Link to={props.item.title.replaceAll(" ", "-")} >
       <Button
         aria-controls={openCard ? "basic-menu" : undefined}
         aria-haspopup="true"

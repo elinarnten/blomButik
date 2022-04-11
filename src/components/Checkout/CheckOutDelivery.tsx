@@ -7,10 +7,20 @@ import {
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 import { deliveryAlternatives, DeliveryOption } from "../../data/mockedDelivery";
 
 function CheckOutDelivery() {
+  const { itemInCart} =
+  useContext(CartContext);
+  
+  window.addEventListener('click', () => { 
+    if (itemInCart.length <= 0){
+      window.location.assign("/")
+  }
+  })
+
   const { deliveryOption, setDeliveryOption, setDeliveryDate } =
     useContext(ConsumerContext);
 

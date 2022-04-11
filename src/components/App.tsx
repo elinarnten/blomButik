@@ -16,7 +16,7 @@ import Admin from "./Admin/Admin";
 import SlideIn from "./Product/SlideIn";
 import ProductContextProvider from "../contexts/productContext";
 import CartContextProvider from "../contexts/CartContext";
-import ProductModal from "./Product/ProductModal";
+
 
 function App() {
   //Menuopen checker (cart menu slideIn)

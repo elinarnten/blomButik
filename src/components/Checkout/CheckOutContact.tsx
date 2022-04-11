@@ -1,11 +1,21 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
-import { link } from "fs/promises";
+
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 
 function CheckOutContact() {
+
+const { itemInCart} = useContext(CartContext);
+
+window.addEventListener('click', () => { 
+  if (itemInCart.length <= 0){
+    window.location.assign("/")
+}})
+
+
   const {
     firstname,
     setFirstname,
@@ -62,127 +72,20 @@ function CheckOutContact() {
   console.log('button clicked', errorMessage)
 } */
  
-function handleError () {
+ function handleError () {
   //const navigate = useNavigate();
-  if (firstname === "" && lastname === "" && email === "" && phoneNumber === "" && address === "" && code === "" && city === "") {
+  const allInputs = firstname && lastname && email && phoneNumber && address && code && city;
+  if (allInputs === ""){
+  //if (firstname === "" && lastname === "" && email === "" && phoneNumber === "" && address === "" && code === "" && city === "") {
 setErrorMessage('Fyll i fältet')
-  } /* else {
-    setErrorMessage('')
-  }  */
-} 
-const navigate = useNavigate();
-
-/* useEffect(() => {
-  if (firstname === "" && lastname === "" && email === "" && phoneNumber === "" && address === "" && code === "" && city === "") {
-    setErrorMessage('fel')
-      } else {
-        navigate('/leverans')
-      } 
-}) */
-
-  /* if (firstname !== "" && lastname !== "" && email !== "" && phoneNumber !== "" && address !== "" && code !== "" && city !== "") {
-    
-    return (
-      <Navigate to={"/leverans"} />
-    ) 
-  } */
-  /*if (email !== "") {
-    return (
-      <Link to={"/leverans"}>
-      <Button>
-        hej
-      </Button>
-      </Link>
-    ) */
-  //}
+  }  
+  if (allInputs !== ("")){
+    setErrorMessage("")
+  } 
+ }  
+ console.log(errorMessage)
 
 
-
-    // useEffect(() => {
-    // Set errorMessage only if text is equal or bigger than MAX_LENGTH
-    /* if (firstname === "") {
-      setErrorMessage("Fel");
-    }
-  }, [firstname]); 
-
-   useEffect(() => { */
-    // Set empty erroMessage only if text is less than MAX_LENGTH
-    // and errorMessage is not empty.
-    // avoids setting empty errorMessage if the errorMessage is already empty
-   /*  if (firstname !== ""  && errorMessage ) {
-      setErrorMessage("");
-    }
-  }, [firstname, errorMessage]);  */
-
-  console.log(errorMessage) 
-
-  //gora en komponent som hanterar error?
-/*   function handleError() {
-    if (firstname.lenght > 0) {
-      errorMessage = true} */
-    /*   return (
-        <Link to={"/leverans"}>
-      <Button>
-
-    </Button>
-    </Link>
-    )} else {
-      return (
-        <Button>
-
-        </Button>
-      )}
-    }}  */
-    /* useEffect(() => {
-    if (firstname.length < 0) {
-      setErrorMessage('fyll i namn')
-    }}, [firstname, errorMessage]) */
-    
-
-  //disables button if form isn't filled correctly
-  /* function SubmitButton() {
-    if (
-      firstname &&
-      lastname &&
-      phoneNumber &&
-      email &&
-      address &&
-      code &&
-      city
-    ) {
-      return (
-        <Button
-          size="small"
-          variant="contained"
-          onSubmit={handleError}
-          sx={{
-            backgroundColor: "pink",
-            boxShadow: "none",
-            color: "black",
-            mt: 3,
-          }}
-        >
-          Gå vidare
-        </Button>
-      );
-    } else {
-      return (
-        <Button
-          disabled
-          size="small"
-          variant="contained"
-          sx={{
-            backgroundColor: "#F4EAC6",
-            boxShadow: "none",
-            color: "black",
-            mt: 3,
-          }}
-        >
-          Gå vidare
-        </Button>
-      );
-    }
-  } */
 
   return (
     <Box
@@ -392,7 +295,10 @@ const navigate = useNavigate();
             Tillbaka
           </Button>
           {/* <Link to={"/leverans"}> */}
-          <Button
+          {errorMessage === ("")?
+          <>
+           
+        <Button
           size="small"
           variant="contained"
        onClick={handleError}
@@ -405,8 +311,30 @@ const navigate = useNavigate();
           }}
         >
           Gå vidare
-        </Button>
-        {/* <HandleError /> */}
+        </Button> 
+        
+        </>
+        :
+        <>
+        <Link to={"/leverans"}>
+        <Button
+          size="small"
+          variant="contained"
+       onClick={handleError}
+          //onClick={ () => setErrorMessage ("")}
+          sx={{
+            backgroundColor: "pink",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button> 
+        </Link>
+        </>
+}
+         {/* <HandleError />  */}
            {/*  <SubmitButton /> */}
           {/* </Link> */}
         </Box>
