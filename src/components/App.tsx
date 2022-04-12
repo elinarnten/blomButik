@@ -16,6 +16,8 @@ import Admin from "./Admin/Admin";
 import SlideIn from "./Product/SlideIn";
 import ProductContextProvider from "../contexts/productContext";
 import CartContextProvider from "../contexts/CartContext";
+import ProductModal from "./Product/ProductModal";
+import { shopItems } from '../data/ShopContent'
 
 
 function App() {
@@ -38,7 +40,6 @@ function App() {
                 <Route path="/betalning" element={<CheckOutPayment />} />
                 <Route path="/leverans" element={<CheckOutDelivery />} />
                 <Route path="/om" element={<About />} />
-                {/* <Route path="/sortiment/namn" element={<ProductModal />} /> */}
                 <Route
                   path="/orderbekraftelse"
                   element={<OrderConfirmation />}
@@ -47,6 +48,7 @@ function App() {
                   path="/sortiment"
                   element={<CardList hideShow={false} />}
                 />
+               <Route path="/sortiment/:title" element={<ProductModal product={shopItems}/> } />
               </Routes>
             </div>
             <Footer />

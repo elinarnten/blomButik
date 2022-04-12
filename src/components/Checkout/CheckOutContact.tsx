@@ -1,8 +1,7 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
-import e from "express";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 
@@ -55,7 +54,10 @@ function CheckOutContact() {
   const [cityTouched, setCityTouched] = useState(true);
 
   function validateFirstname() {
-    if (!firstname) {
+    const validFirstname = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validFirstname.test(firstname)) {
       setFirstnameError('Vänligen fyll i ditt förnamn')
       return true;
     }
@@ -64,7 +66,10 @@ function CheckOutContact() {
   }
 
   function validateLastname() {
-    if (!lastname) {
+    const validLastname = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validLastname.test(lastname)) {
       setLastnameError('Vänligen fyll i ditt efternamn')
       return true;
     }
@@ -73,8 +78,10 @@ function CheckOutContact() {
   }
  
   function validateEmail() {
-    
-    if (!email) {
+    const validEmail = new RegExp(
+      '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
+   );
+    if (!validEmail.test(email)) {
       setEmailError('Vänligen fyll i din e-post')
       return true;
     }
@@ -83,7 +90,10 @@ function CheckOutContact() {
   }
 
   function validatePhoneNumber() {
-    if (!phoneNumber) {
+    const validPhoneNumber = new RegExp(
+      '^.{9,12}$'
+    );
+    if (!validPhoneNumber.test(phoneNumber)) {
       setPhoneNumberError('Vänligen fyll i ditt telefonnummer')
       return true;
     }
@@ -92,7 +102,10 @@ function CheckOutContact() {
   }
 
   function validateAddress() {
-    if (!address) {
+    const validAddress = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validAddress.test(address)) {
       setAddressError('Vänligen fyll i din adress')
       return true;
     }
@@ -101,7 +114,11 @@ function CheckOutContact() {
   }
 
   function validateCode() {
-    if (!code) {
+    const validCode = new RegExp(
+      '^.{4,5}$'
+    );
+    
+    if (!validCode.test(code)) {
       setCodeError('Vänligen fyll i ditt postnummer')
       return true;
     }
@@ -110,7 +127,10 @@ function CheckOutContact() {
   }
 
   function validateCity() {
-    if (!city) {
+    const validCity = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validCity.test(city)) {
       setCityError('Vänligen fyll i din stad')
       return true;
     }
@@ -140,7 +160,6 @@ function CheckOutContact() {
     }
   }
   
-
   return (
     <Box
       sx={{
@@ -237,7 +256,7 @@ function CheckOutContact() {
               required
               onChange={(event) => {
                 validatePhoneNumber()
-                setPhoneNumber(event.target.value = Math.max(0, parseInt(event.target.value) ).toString().slice(0,12));
+                setPhoneNumber(event.target.value);
               }}
               id="outlined-number"
               type="number"
@@ -278,7 +297,7 @@ function CheckOutContact() {
               required
               onChange={(event) => {
                 validateCode()
-                setCode(event.target.value = Math.max(0, parseInt(event.target.value) ).toString().slice(0,5));
+                setCode(event.target.value);
                 
               }}
               id="outlined-required"
