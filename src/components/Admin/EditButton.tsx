@@ -98,6 +98,7 @@ export default function EditButton(props: Props) {
       description,
     };
     updateProduct(ChangedItem);
+    setIsEditing(false)
   };
 
   if (props.hideShow === true) {
@@ -169,6 +170,7 @@ export default function EditButton(props: Props) {
                     margin: 4,
                   }}
                   onClick={handleUpdateProduct}
+                  //onClick={() => {setIsEditing(false)}}
                   type="submit"
                 >
                   Klar

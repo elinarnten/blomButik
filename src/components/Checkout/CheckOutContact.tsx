@@ -1,9 +1,20 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import { ConsumerContext } from "../../contexts/ConsumerContext";
 
 function CheckOutContact() {
+  const navigate = useNavigate();
+  const { itemInCart} = useContext(CartContext);
+
+  window.addEventListener('click', () => { 
+    if (itemInCart.length <= 0){
+      window.location.assign("/")
+  }})
+
+
   const {
     firstname,
     setFirstname,
@@ -21,50 +32,134 @@ function CheckOutContact() {
     setCity,
   } = useContext(ConsumerContext);
 
-  //disables button if form isn't filled correctly
-  function SubmitButton() {
-    if (
-      firstname &&
-      lastname &&
-      phoneNumber &&
-      email &&
-      address &&
-      code &&
-      city
-    ) {
-      return (
-        <Button
-          size="small"
-          variant="contained"
-          sx={{
-            backgroundColor: "pink",
-            boxShadow: "none",
-            color: "black",
-            mt: 3,
-          }}
-        >
-          Gå vidare
-        </Button>
-      );
-    } else {
-      return (
-        <Button
-          disabled
-          size="small"
-          variant="contained"
-          sx={{
-            backgroundColor: "#F4EAC6",
-            boxShadow: "none",
-            color: "black",
-            mt: 3,
-          }}
-        >
-          Gå vidare
-        </Button>
-      );
+  const [firstnameError, setFirstnameError] = useState("");
+  const [firstnameTouched, setFirstnameTouched] = useState(true);
+
+  const [lastnameError, setLastnameError] = useState("");
+  const [lastnameTouched, setLastnameTouched] = useState(true);
+  
+  const [emailError, setEmailError] = useState("");
+  const [emailTouched, setEmailTouched] = useState(true);
+
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [phoneNumberTouched, setPhoneNumberTouched] = useState(true);
+
+  const [addressError, setAddressError] = useState("");
+  const [addressTouched, setAddressTouched] = useState(true);
+
+  const [codeError, setCodeError] = useState("");
+  const [codeTouched, setCodeTouched] = useState(true);
+
+  const [cityError, setCityError] = useState("");
+  const [cityTouched, setCityTouched] = useState(true);
+
+  function validateFirstname() {
+    const validFirstname = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validFirstname.test(firstname)) {
+      setFirstnameError('Vänligen fyll i ditt förnamn')
+      return true;
     }
+    setFirstnameError('')
+    return false;
   }
 
+  function validateLastname() {
+    const validLastname = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validLastname.test(lastname)) {
+      setLastnameError('Vänligen fyll i ditt efternamn')
+      return true;
+    }
+    setLastnameError('')
+    return false;
+  }
+ 
+  function validateEmail() {
+    const validEmail = new RegExp(
+      '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
+   );
+    if (!validEmail.test(email)) {
+      setEmailError('Vänligen fyll i din e-post')
+      return true;
+    }
+    setEmailError('')
+    return false;
+  }
+
+  function validatePhoneNumber() {
+    const validPhoneNumber = new RegExp(
+      '^.{9,12}$'
+    );
+    if (!validPhoneNumber.test(phoneNumber)) {
+      setPhoneNumberError('Vänligen fyll i ditt telefonnummer')
+      return true;
+    }
+    setPhoneNumberError('')
+    return false;
+  }
+
+  function validateAddress() {
+    const validAddress = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validAddress.test(address)) {
+      setAddressError('Vänligen fyll i din adress')
+      return true;
+    }
+    setAddressError('')
+    return false;
+  }
+
+  function validateCode() {
+    const validCode = new RegExp(
+      '^.{4,5}$'
+    );
+    
+    if (!validCode.test(code)) {
+      setCodeError('Vänligen fyll i ditt postnummer')
+      return true;
+    }
+    setCodeError('')
+    return false;
+  }
+
+  function validateCity() {
+    const validCity = new RegExp(
+      '([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*'
+    );
+    if (!validCity.test(city)) {
+      setCityError('Vänligen fyll i din stad')
+      return true;
+    }
+    setCityError('')
+    return false;
+  }
+
+  function handleSubmitForm() {
+    let formHasErrors = false;
+    formHasErrors = validateLastname() || formHasErrors;
+    formHasErrors = validateFirstname() || formHasErrors;
+    formHasErrors = validateEmail() || formHasErrors;
+    formHasErrors = validatePhoneNumber() || formHasErrors;
+    formHasErrors = validateAddress() || formHasErrors;
+    formHasErrors = validateCode()|| formHasErrors;
+    formHasErrors = validateCity() || formHasErrors;
+    
+    setFirstnameTouched(true)
+    setLastnameTouched(true)
+    setEmailTouched(true)
+    setAddressTouched(true)
+    setCodeTouched(true)
+    setCityTouched(true)
+
+    if (!formHasErrors){
+      navigate('/leverans');
+    }
+  }
+  
   return (
     <Box
       sx={{
@@ -84,6 +179,7 @@ function CheckOutContact() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
+          
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -94,9 +190,11 @@ function CheckOutContact() {
         <div>
           <FormControl>
             <TextField
+            onFocus={() => setFirstnameTouched(true)}
               required
               onChange={(event) => {
-                setFirstname(event.target.value);
+                validateFirstname()
+                setFirstname(event.target.value)
               }}
               id="filled"
               label="Förnamn"
@@ -105,10 +203,7 @@ function CheckOutContact() {
               type="name"
               size="small"
               value={firstname}
-              error={firstname === ""}
-              helperText={
-                firstname === "" ? "Vänligen fyll i ditt förnamn" : " "
-              }
+              helperText={firstnameTouched && firstnameError}
               sx={{
                 mr: 2,
                 mb: 2,
@@ -118,8 +213,10 @@ function CheckOutContact() {
           </FormControl>
           <FormControl>
             <TextField
+            onFocus={() => setLastnameTouched(true)}
               required
               onChange={(event) => {
+                validateLastname()
                 setLastname(event.target.value);
               }}
               id="outlined-required"
@@ -128,10 +225,7 @@ function CheckOutContact() {
               name="family-name"
               autoComplete="family-name"
               value={lastname}
-              error={lastname === ""}
-              helperText={
-                lastname === "" ? "Vänligen fyll i ditt efternamn" : " "
-              }
+              helperText={lastnameTouched && lastnameError}
               sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
@@ -139,25 +233,29 @@ function CheckOutContact() {
         <div>
           <FormControl>
             <TextField
+              onFocus={() => setEmailTouched(true)}
               required
               onChange={(event) => {
+                validateEmail()
                 setEmail(event.target.value);
-              }}
+              }} 
               id="outlined-required"
               name="email"
               type="email"
               label="E-post"
               size="small"
               value={email}
-              error={email === ""}
-              helperText={email === "" ? "Vänligen fyll i din e-post" : " "}
+              helperText={emailTouched && emailError}
+            
               sx={{ mr: 2, mb: 2, color: "black" }}
             />
           </FormControl>
           <FormControl>
             <TextField
+            onFocus={() => setPhoneNumberTouched(true)}
               required
               onChange={(event) => {
+                validatePhoneNumber()
                 setPhoneNumber(event.target.value);
               }}
               id="outlined-number"
@@ -167,10 +265,7 @@ function CheckOutContact() {
               name="tel"
               autoComplete="tel"
               value={phoneNumber}
-              error={phoneNumber === ""}
-              helperText={
-                phoneNumber === "" ? "Vänligen fyll i ditt telefonnummer" : " "
-              }
+              helperText={phoneNumberTouched && phoneNumberError}
               sx={{ mb: 2, color: "black" }}
             />
           </FormControl>
@@ -178,13 +273,14 @@ function CheckOutContact() {
         <div>
           <FormControl>
             <TextField
+            onFocus={() => setAddressTouched(true)}
               required
               name="street-address"
               autoComplete="street-address"
               value={address}
-              error={address === ""}
-              helperText={address === "" ? "Vänligen fyll i din adress" : " "}
+              helperText={addressTouched && addressError}
               onChange={(event) => {
+                validateAddress()
                 setAddress(event.target.value);
               }}
               id="outlined-required"
@@ -197,9 +293,12 @@ function CheckOutContact() {
         <div>
           <FormControl>
             <TextField
+            onFocus={() => setCodeTouched(true)}
               required
               onChange={(event) => {
+                validateCode()
                 setCode(event.target.value);
+                
               }}
               id="outlined-required"
               type="number"
@@ -208,15 +307,16 @@ function CheckOutContact() {
               label="Postnummer"
               size="small"
               value={code}
-              error={code === ""}
-              helperText={code === "" ? "Vänligen fyll i ditt postnummer" : " "}
+              helperText={codeTouched && codeError}
               sx={{ mr: 2, mb: 2, color: "black" }}
             />
           </FormControl>
           <FormControl>
             <TextField
+            onFocus={() => setCityTouched(true)}
               required
               onChange={(event) => {
+                validateCity()
                 setCity(event.target.value);
               }}
               id="outlined-required"
@@ -224,8 +324,7 @@ function CheckOutContact() {
               name="address-level2"
               size="small"
               value={city}
-              error={city === ""}
-              helperText={city === "" ? "Vänligen fyll i din stad" : " "}
+              helperText={cityTouched && cityError}
               sx={{ color: "black" }}
             />
           </FormControl>
@@ -244,9 +343,19 @@ function CheckOutContact() {
           >
             Tillbaka
           </Button>
-          <Link to={"/leverans"}>
-            <SubmitButton />
-          </Link>
+        <Button
+          size="small"
+          variant="contained"
+          onClick={handleSubmitForm}
+          sx={{
+            backgroundColor: "pink",
+            boxShadow: "none",
+            color: "black",
+            mt: 3,
+          }}
+        >
+          Gå vidare
+        </Button>
         </Box>
       </Box>
     </Box>

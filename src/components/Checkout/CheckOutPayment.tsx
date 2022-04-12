@@ -8,6 +8,16 @@ import { createOrder } from "../../data/mockedOrderApi";
 import { CartContext } from "../../contexts/CartContext";
 
 function CheckOutPayment() {
+
+  const { itemInCart} =
+  useContext(CartContext);
+  
+  window.addEventListener('click', () => { 
+    if (itemInCart.length <= 0){
+      window.location.assign("/")
+  }
+  })
+
   const { setItemInCart } = useContext(CartContext);
 
   //empy cart after completed purchase
