@@ -1,7 +1,8 @@
 import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ShopItem } from "../../data/ShopContent";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
 
@@ -35,13 +36,23 @@ function ProductModal({ product }: ProductModalProps) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column"
       }}
     >
+
+<Link to="/sortiment">
+      <Button>
+      <ArrowBackIcon sx={{color: "black", mb: 4, fontSize: "2rem"}}/>
+      </Button>
+      </Link>
+
       <Card
         sx={{
           display: "flex",
           height: "100%",
           width: "70%",
+          flexWrap: "wrap",
+          justifyContent: "center"
         }}
       >
         <CardMedia
@@ -71,7 +82,7 @@ function ProductModal({ product }: ProductModalProps) {
             {item?.title}
           </Typography>
           <Typography sx={{ mb: 1 }}> {item?.price} KR/ st</Typography>
-          <Typography sx={{ mb: 1 }}> {item?.description} </Typography>
+          <Typography sx={{ mb: 1, textAlign: "center" }}> {item?.description} </Typography>
           <Button
             size="small"
             variant="contained"
